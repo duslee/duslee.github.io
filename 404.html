@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Blog,Hexo,Github," />
 
 
 
@@ -102,16 +102,16 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jeff's Blog">
+<meta name="description" content="概况本文简单介绍下如何在Mac下使用Hexo、Github搭建博客开发环境，以及搭建过程中出现问题及解决方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac上使用Hexo、Github搭建博客">
 <meta property="og:url" content="http://yoursite.com/404.html">
 <meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-06-02T13:20:13.000Z">
+<meta property="og:description" content="概况本文简单介绍下如何在Mac下使用Hexo、Github搭建博客开发环境，以及搭建过程中出现问题及解决方案">
+<meta property="og:updated_time" content="2016-06-02T13:24:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jeff's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Mac上使用Hexo、Github搭建博客">
+<meta name="twitter:description" content="概况本文简单介绍下如何在Mac下使用Hexo、Github搭建博客开发环境，以及搭建过程中出现问题及解决方案">
 
 
 
@@ -129,13 +129,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-     | Jeff's Blog
-  
-</title>
+  <title> Mac上使用Hexo、Github搭建博客 | Jeff's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -156,7 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -276,24 +270,292 @@
 
   <div id="posts" class="posts-expand">
     
-    
-      <!DOCTYPE HTML>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="robots" content="all">
-  <meta name="robots" content="index,follow">
-</head>
-<body>
 
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="your site url " homepagename="回到我的主页">
-</script>
+  
+  
 
-</body>
-</html>
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Mac上使用Hexo、Github搭建博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-31T19:00:06+08:00" content="2016-05-31">
+              2016-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/tool/" itemprop="url" rel="index">
+                    <span itemprop="name">tool</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/404.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/404.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p>本文简单介绍下如何在Mac下使用Hexo、Github搭建博客开发环境，以及搭建过程中出现问题及解决方案</p>
+<a id="more"></a>
+<hr>
+<h1 id="Hexo概述"><a href="#Hexo概述" class="headerlink" title="Hexo概述"></a>Hexo概述</h1><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。详细介绍可参考<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external"><strong>Hexo官方文档</strong></a></p>
+<hr>
+<h1 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h1><p>安装Hexo之前需要检查Mac中是否安装<strong><code>Node.js</code></strong>和<strong><code>Git</code></strong>，若已安装，可直接开始安装Hexo</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>直接去<a href="https://desktop.github.com/" target="_blank" rel="external"><strong>Git官网</strong></a>下载支持Mac OS的最新版本安装即可</p>
+<h2 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h2><p>在使用Mac支持的<strong><code>brew</code></strong>命令（<strong><em><code>brew install node</code></em></strong>）下载Node时，会安装最新版本，或者通过<a href="https://nodejs.org/en/" target="_blank" rel="external"><strong>Node官网</strong></a>获取的最新版本（<strong>V6.2.0</strong>）直接完成安装，然后执行Hexo安装时，总会出现如下<strong>错误提示</strong></p>
+<pre><code>npm ERR! Darwin 15.4.0
+npm ERR! argv &quot;/usr/local/bin/node&quot;
+&quot;/usr/local/bin/npm&quot; &quot;install&quot; &quot;-g&quot; &quot;hexo-cli&quot;
+npm ERR! node v6.2.0
+npm ERR! npm  v3.8.9
+npm ERR! path /usr/local/bin/hexo
+npm ERR! code EEXIST
+npm ERR! Refusing to delete /usr/local/bin/hexo: ../lib/node_modules/hexo/bin/hexo symlink target is not controlled by npm /usr/local
+npm ERR! File exists: /usr/local/bin/hexo
+npm ERR! Move it away, and try again.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /Users/***/***/myBlog/npm-debug.log
+</code></pre><p>此时去<a href="https://nodejs.org/en/" target="_blank" rel="external"><strong>Node官网</strong></a>下载稳定的版本（<strong>V4.4.5</strong>）安装即可</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>在上面两部都成功执行之后，开始完成Hexo的安装操作了，这里使用<strong><code>npm</code></strong>命令来完成操作，使用<strong><code>npm install -g hexo-cli</code></strong>时会出现如下<strong>错误提示</strong></p>
+<pre><code>npm ERR! tar.unpack untar error /Users/***/.npm/hexo-cli/1.0.1/package.tgz
+npm ERR! Darwin 15.4.0
+npm ERR! argv &quot;/usr/local/bin/node&quot; &quot;/usr/local/bin/npm&quot; &quot;install&quot; &quot;-g&quot; &quot;hexo-cli&quot;
+npm ERR! node v4.4.5
+npm ERR! npm  v2.15.5
+npm ERR! path /usr/local/lib/node_modules/hexo-cli
+npm ERR! code EACCES
+npm ERR! errno -13
+npm ERR! syscall mkdir
+
+npm ERR! Error: EACCES: permission denied, mkdir &apos;/usr/local/lib/node_modules/hexo-cli&apos;
+npm ERR!     at Error (native)
+npm ERR!  { [Error: EACCES: permission denied, mkdir &apos;/usr/local/lib/node_modules/hexo-cli&apos;]
+npm ERR!   errno: -13,
+npm ERR!   code: &apos;EACCES&apos;,
+npm ERR!   syscall: &apos;mkdir&apos;,
+npm ERR!   path: &apos;/usr/local/lib/node_modules/hexo-cli&apos;,
+npm ERR!   fstream_type: &apos;Directory&apos;,
+npm ERR!   fstream_path: &apos;/usr/local/lib/node_modules/hexo-cli&apos;,
+npm ERR!   fstream_class: &apos;DirWriter&apos;,
+npm ERR!   fstream_stack: 
+npm ERR!    [ &apos;/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25&apos;,
+npm ERR!      &apos;/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53&apos;,
+npm ERR!      &apos;FSReqWrap.oncomplete (fs.js:82:15)&apos; ] }
+npm ERR! 
+npm ERR! Please try running this command again as root/Administrator.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /Users/***/***/myBlog/npm-debug.log&lt;/code&gt;&lt;/pre&gt;
+</code></pre><p>这是需要获取<strong><code>root</code></strong>权限来完成Hexo安装操作，即命令<strong><code>sudo npm install -g hexo-cli</code></strong></p>
+<hr>
+<h1 id="Hexo使用（建站）"><a href="#Hexo使用（建站）" class="headerlink" title="Hexo使用（建站）"></a>Hexo使用（建站）</h1><h2 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h2><p>在本地新建一个目录专门用于存放Hexo初始化配置的相关文件，然后进入到该目录内完成如下操作</p>
+<pre><code>$ mkdir &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ hexo init
+$ npm install
+</code></pre><p>或者直接执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre><p><strong>Note</strong>：关于此部分的详细情况可参考<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external"><strong>Hexo建站</strong></a></p>
+<h2 id="安装Hexo插件（可选）"><a href="#安装Hexo插件（可选）" class="headerlink" title="安装Hexo插件（可选）"></a>安装Hexo插件（可选）</h2><p>可以通过选择如下某个命令完成相应插件的下载</p>
+<pre><code>npm install hexo-generator-index --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-category --save
+npm install hexo-generator-tag --save
+npm install hexo-server --save
+npm install hexo-deployer-git --save
+npm install hexo-deployer-heroku --save
+npm install hexo-deployer-rsync --save
+npm install hexo-deployer-openshift --save
+npm install hexo-renderer-marked@0.2 --save
+npm install hexo-renderer-stylus@0.2 --save
+npm install hexo-generator-feed@1 --save
+npm install hexo-generator-sitemap@1 --save
+</code></pre><p>例如，你要使用Github方式发布博客内容到Github Pages上，需要在已经安装<strong><code>hexo-deployer-git</code></strong>的前提下，才可以成功上传部署的静态博客内容到Github Pages上，不然会提示如下错误（此种情况可以参考<a href="https://hexo.io/zh-cn/docs/deployment.html" target="_blank" rel="external"><strong>Hexo部署</strong></a>）</p>
+<pre><code>ERROR Deployer not found: git
+</code></pre><hr>
+<h1 id="Hexo主题及其配置"><a href="#Hexo主题及其配置" class="headerlink" title="Hexo主题及其配置"></a>Hexo主题及其配置</h1><h2 id="Hexo主题"><a href="#Hexo主题" class="headerlink" title="Hexo主题"></a>Hexo主题</h2><p>这里推荐使用<strong><code>NexT</code></strong>主题，其有三种外观可供选择，现已支持9种语言，当然还可以定制。具体内容可查看<a href="http://theme-next.iissnan.com/" target="_blank" rel="external"><code>NexT官网</code></a></p>
+<p>NexT主题下载可以进入到指定的Hexo初始化配置文件夹中，执行如下命令</p>
+<pre><code>$ cd your-hexo-site
+$ git clone https://github.com/iissnan/hexo-theme-next themes/next
+</code></pre><h2 id="NexT主题配置"><a href="#NexT主题配置" class="headerlink" title="NexT主题配置"></a>NexT主题配置</h2><h3 id="配置站点主题"><a href="#配置站点主题" class="headerlink" title="配置站点主题"></a>配置站点主题</h3><p>接下来完成Hexo主题的配置，在Hexo初始化配置文件夹中打开站点配置文件（<strong><code>_config.yml</code></strong>文件），修改<strong><code>theme</code></strong>字段的值为<strong><code>next</code></strong></p>
+<pre><code>theme: next
+</code></pre><h3 id="选择scheme"><a href="#选择scheme" class="headerlink" title="选择scheme"></a>选择scheme</h3><p>将主题配置文件的<strong><code>scheme</code></strong>字段修改为<strong><code>Mist</code></strong>值，详细介绍可参考<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">NexT主题配置</a></p>
+<pre><code>#scheme: Muse
+scheme: Mist
+#scheme: Pisces
+</code></pre><h3 id="选择语言"><a href="#选择语言" class="headerlink" title="选择语言"></a>选择语言</h3><p>将站点配置文件里的<strong><code>language</code></strong>字段修改为<strong><code>zh-Hans</code></strong>，即支持<strong>简体中文</strong></p>
+<pre><code>language: zh-Hans
+</code></pre><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>还有其它的配置信息，具体可以参考<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">NexT主题配置</a></p>
+<hr>
+<h1 id="Hexo使用"><a href="#Hexo使用" class="headerlink" title="Hexo使用"></a>Hexo使用</h1><p>主要是结合Hexo命令完成相应操作</p>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>新建一篇文章。如果没有设置<strong><code>layout</code></strong> 的话，默认使用站点配置文件中的 <strong><code>default_layout</code></strong> 参数代替。如果标题包含空格的话，请使用引号括起来</p>
+<pre><code>$ hexo new [layout] &lt;title&gt;
+</code></pre><h2 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h2><p>生成静态文件，提供<strong><code>-d</code></strong>（<code>--deploy</code>，文件生成后立即部署网站）和<strong><code>-w</code></strong>（<code>--watch</code>，监视文件变动）两个选项</p>
+<pre><code>$ hexo generate
+</code></pre><h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><p>启动服务器。默认情况下，访问网址为： <strong><code>http://localhost:4000/</code></strong></p>
+<pre><code>$ hexo server
+</code></pre><h2 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h2><p>部署网站。提供<strong><code>-g</code></strong>选项（<code>--generate</code>，部署之前预先生成静态文件）</p>
+<pre><code>$ hexo deploy
+</code></pre><p><strong>Note</strong>：更多命令可参考<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external"><strong>Hexo命令</strong></a></p>
+<hr>
+<h1 id="部署静态博客内容到Github"><a href="#部署静态博客内容到Github" class="headerlink" title="部署静态博客内容到Github"></a>部署静态博客内容到Github</h1><h2 id="注册设置Github"><a href="#注册设置Github" class="headerlink" title="注册设置Github"></a>注册设置Github</h2><ol>
+<li>登录<a href="https://github.com/" target="_blank" rel="external"><strong><code>GitHub</code></strong></a>，注册自定义用户名如<strong><code>duslee</code></strong></li>
+<li>在主页右下角创建New repository，name必须和用户名一致如<strong><code>duslee.github.io</code></strong></li>
+<li>首次创建耐心等待10分钟左右审核，之后即可访问静态主页如<strong><a href="http://duslee.github.io" target="_blank" rel="external">http://duslee.github.io</a></strong></li>
+</ol>
+<h2 id="同步内容到Github"><a href="#同步内容到Github" class="headerlink" title="同步内容到Github"></a>同步内容到Github</h2><ol>
+<li>使用<strong><code>hexo clean</code></strong>命令完成清除操作（即清除已有的public文件夹）</li>
+<li>使用<strong><code>hexo g</code></strong>命令，生成新的public文件夹</li>
+<li>执行<strong><code>hexo d</code></strong>命令，完成内容部署到Github上</li>
+<li>访问博客地址，查看网页效果</li>
+</ol>
+<p><strong>Note</strong>：这里的具体细节可参考<a href="https://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external"><strong><code>Hexo-Guide</code></strong></a></p>
+<hr>
+<h1 id="未处理-说明细节"><a href="#未处理-说明细节" class="headerlink" title="未处理/说明细节"></a>未处理/说明细节</h1><h2 id="搜索功能实现"><a href="#搜索功能实现" class="headerlink" title="搜索功能实现"></a>搜索功能实现</h2><p>这里使用Swiftype实现站内搜索功能，即<a href="http://theme-next.iissnan.com/getting-started.html#search-system-swiftype" target="_blank" rel="external"><code>Swiftype搜索</code></a>。<br>使用 Swiftype 之前需要前往 Swiftype 配置一个搜索引擎。 而后编辑<strong>站点配置</strong>文件， 新增 <strong><code>swiftype_key</code></strong> 字段，值为你的 swiftype 搜索引擎的 key。 详细的配置请参考： <a href="http://theme-next.iissnan.com/third-party-services.html#swiftype" target="_blank" rel="external"><code>第三方服务 - Swiftype</code></a></p>
+<h2 id="分类-标签显示"><a href="#分类-标签显示" class="headerlink" title="分类/标签显示"></a>分类/标签显示</h2><p>在站内博客的某篇文章中点击分类或标签时，按理来说应该进入分类或标签页面，但是如果出现如下<strong>错误提示</strong></p>
+<pre><code>Cannot GET /categories/ 
+</code></pre><p>或</p>
+<pre><code>Cannot GET /tags/ 
+</code></pre><p>这时不要着急，只需<a href="http://theme-next.iissnan.com/theme-settings.html#categories-page" target="_blank" rel="external"><code>新建分类页面</code></a>或<a href="http://theme-next.iissnan.com/theme-settings.html#tags-page" target="_blank" rel="external"><code>新建标签页面</code></a>即可</p>
+<h2 id="Hexo迁移"><a href="#Hexo迁移" class="headerlink" title="Hexo迁移"></a>Hexo迁移</h2><p>Hexo迁移的详细操作可参考<a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external"><code>Hexo迁移</code></a></p>
+<h2 id="设置“阅读全文”"><a href="#设置“阅读全文”" class="headerlink" title="设置“阅读全文”"></a>设置“阅读全文”</h2><p>这种操作是为了在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面。本人采用的是<strong><code>&lt;!-- more --&gt;</code></strong>来实现，这也是Hexo推荐的方式。具体方案可参考<a href="http://theme-next.iissnan.com/faqs.html#read-more" target="_blank" rel="external"><code>如何设置“阅读全文”</code></a></p>
+<h2 id="设置页面文章的篇数"><a href="#设置页面文章的篇数" class="headerlink" title="设置页面文章的篇数"></a>设置页面文章的篇数</h2><p>在Hexo里可以为首页和归档页面设置不同的文章篇数，但可能需要安装Hexo插件。详细步骤如下</p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>使用<strong><code>npm install --save</code></strong>命令来安装需要的Hexo插件</p>
+<pre><code>npm install --save hexo-generator-index
+npm install --save hexo-generator-archive
+npm install --save hexo-generator-tag
+</code></pre><h3 id="设置文章数量的配置"><a href="#设置文章数量的配置" class="headerlink" title="设置文章数量的配置"></a>设置文章数量的配置</h3><p>等待扩展全部安装完成后，在<strong>站点配置文件</strong>中，设定如下选项：</p>
+<pre><code>index_generator:
+  per_page: 5
+
+archive_generator:
+  per_page: 20
+  yearly: true
+  monthly: true
+
+tag_generator:
+  per_page: 10
+</code></pre><p><strong>Note</strong>：具体的介绍可参考<a href="http://theme-next.iissnan.com/faqs.html#setting-page-size" target="_blank" rel="external"><code>如何设置页面文章的篇数</code></a></p>
+<h2 id="更改内容区域的宽度"><a href="#更改内容区域的宽度" class="headerlink" title="更改内容区域的宽度"></a>更改内容区域的宽度</h2><p>NexT主题对于内容的宽度设定如下：</p>
+<ul>
+<li>700px，当屏幕宽度 &lt; 1600px</li>
+<li>700px，当屏幕宽度 &lt; 1600px</li>
+<li>移动设备下，宽度自适应</li>
+</ul>
+<p>如果需要修改内容的宽度，此时需要编辑样式文件。编辑主题的<code>source/css/_variables/custom.styl</code>文件，新增变量：</p>
+<pre><code>// 修改成你期望的宽度
+$content-desktop = 700px
+
+// 当视窗超过 1600px 后的宽度
+$content-desktop-large = 900px
+</code></pre><p><strong>Note</strong>：具体的介绍可参考<a href="http://theme-next.iissnan.com/faqs.html#custom-content-width" target="_blank" rel="external"><code>如何更改内容区域的宽度</code></a></p>
+<h2 id="设置字体"><a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h2><p>字体的具体设置操作可参考<a href="http://theme-next.iissnan.com/theme-settings.html#fonts-customization" target="_blank" rel="external"><code>NexT设置字体</code></a></p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+            <a href="/tags/Github/" rel="tag">#Github</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -304,8 +566,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="404.html"
-           data-title="" data-url="http://yoursite.com/404.html">
+      <div class="ds-thread" data-thread-key="/404.html"
+           data-title="Mac上使用Hexo、Github搭建博客" data-url="http://yoursite.com/404.html">
       </div>
     
   </div>
@@ -329,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/my_avatar.jpg"
@@ -380,6 +651,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo概述"><span class="nav-number">2.</span> <span class="nav-text">Hexo概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo安装"><span class="nav-number">3.</span> <span class="nav-text">Hexo安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">3.1.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Node"><span class="nav-number">3.2.</span> <span class="nav-text">安装Node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">3.3.</span> <span class="nav-text">安装Hexo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo使用（建站）"><span class="nav-number">4.</span> <span class="nav-text">Hexo使用（建站）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化配置"><span class="nav-number">4.1.</span> <span class="nav-text">初始化配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo插件（可选）"><span class="nav-number">4.2.</span> <span class="nav-text">安装Hexo插件（可选）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo主题及其配置"><span class="nav-number">5.</span> <span class="nav-text">Hexo主题及其配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo主题"><span class="nav-number">5.1.</span> <span class="nav-text">Hexo主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题配置"><span class="nav-number">5.2.</span> <span class="nav-text">NexT主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置站点主题"><span class="nav-number">5.2.1.</span> <span class="nav-text">配置站点主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择scheme"><span class="nav-number">5.2.2.</span> <span class="nav-text">选择scheme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择语言"><span class="nav-number">5.2.3.</span> <span class="nav-text">选择语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它"><span class="nav-number">5.2.4.</span> <span class="nav-text">其它</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo使用"><span class="nav-number">6.</span> <span class="nav-text">Hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">6.1.</span> <span class="nav-text">new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generate"><span class="nav-number">6.2.</span> <span class="nav-text">generate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server"><span class="nav-number">6.3.</span> <span class="nav-text">server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deploy"><span class="nav-number">6.4.</span> <span class="nav-text">deploy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署静态博客内容到Github"><span class="nav-number">7.</span> <span class="nav-text">部署静态博客内容到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册设置Github"><span class="nav-number">7.1.</span> <span class="nav-text">注册设置Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步内容到Github"><span class="nav-number">7.2.</span> <span class="nav-text">同步内容到Github</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未处理-说明细节"><span class="nav-number">8.</span> <span class="nav-text">未处理/说明细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能实现"><span class="nav-number">8.1.</span> <span class="nav-text">搜索功能实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类-标签显示"><span class="nav-number">8.2.</span> <span class="nav-text">分类/标签显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo迁移"><span class="nav-number">8.3.</span> <span class="nav-text">Hexo迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置“阅读全文”"><span class="nav-number">8.4.</span> <span class="nav-text">设置“阅读全文”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置页面文章的篇数"><span class="nav-number">8.5.</span> <span class="nav-text">设置页面文章的篇数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件"><span class="nav-number">8.5.1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文章数量的配置"><span class="nav-number">8.5.2.</span> <span class="nav-text">设置文章数量的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改内容区域的宽度"><span class="nav-number">8.6.</span> <span class="nav-text">更改内容区域的宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置字体"><span class="nav-number">8.7.</span> <span class="nav-text">设置字体</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -476,6 +758,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
