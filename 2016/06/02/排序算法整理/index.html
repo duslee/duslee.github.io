@@ -108,10 +108,16 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/02/排序算法整理/index.html">
 <meta property="og:site_name" content="Jeff's Blog">
 <meta property="og:description" content="概况本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
-<meta property="og:updated_time" content="2016-06-02T14:14:59.000Z">
+<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-0.png">
+<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-1.png">
+<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-2.png">
+<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-3.png">
+<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-4.png">
+<meta property="og:updated_time" content="2016-06-06T09:04:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法整理">
 <meta name="twitter:description" content="概况本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
+<meta name="twitter:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-0.png">
 
 
 
@@ -370,7 +376,77 @@
         <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p>本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等</p>
 <a id="more"></a>
 <hr>
-
+<h1 id="排序算法概述"><a href="#排序算法概述" class="headerlink" title="排序算法概述"></a>排序算法概述</h1><ul>
+<li><strong>排序算法</strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>是把列表的元素<u><font color="red">以某个顺序存放的算法</font></u>，最常用的顺序是<u><font color="red">数字排序</font></u>和<u><font color="red">字典顺序</font></u>。有效的排序对于其它如查找和合并算法（需要输入的数据在有序的列表里）的优化使用很重要，也常常在规范化数据和生产可读输出上很有用。</li>
+<li><strong>内部排序</strong><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>：如果对象的数目足够少，可以填入到主存中，这种排序称之为内部排序</li>
+<li><strong>外部排序</strong>：如果对象的数目足够多，以至于排序时部分对象要填入到外村中这种排序称之为外部排序</li>
+</ul>
+<hr>
+<h1 id="常见排序算法"><a href="#常见排序算法" class="headerlink" title="常见排序算法"></a>常见排序算法</h1><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><ol>
+<li><p><strong>桶排序的工作流程</strong></p>
+<p>先处理数组中的重复数据（<u><font color="red">有相同值的元素</font></u>），然后获取数组中最大值的元素，并创建元素个数为该值的数组，接着将原数组中的每个元素依次放入新数组的指定位置（<u><font color="red">元素值等于指数值</font></u>）处，最后从新数组中按顺序取出元素排序</p>
+</li>
+<li><p><strong>处理重复数据</strong></p>
+<p>有以下两种方式处理</p>
+<ul>
+<li><strong>链表</strong>：链表的指数值为元素值，并且该数值指数处所存放的值为重复数据的个数</li>
+<li><strong>计数器数组</strong>：采用计数的方式统计重复数据的个数，并存放在新数组的该数值指数处</li>
+</ul>
+</li>
+<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-0.png" alt=""></p>
+</li>
+<li><strong>时间复杂度</strong>：<code>O(n^2)</code></li>
+</ol>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><ol>
+<li><p><strong>工作流程</strong></p>
+<p> 通过<u><font color="red">将数组中的每个元素与它相邻的元素的值进行比较</font></u>，如果不符合<strong>要求</strong><sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，交换这两个元素所在位置的值，直到所有的数组元素都不能再实现交换为止。换句话说，数组中最大的元素冒出到了数组的顶端。</p>
+</li>
+<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-1.png" alt=""></p>
+</li>
+<li><p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = ar.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">     <span class="comment">// loop2</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">       <span class="comment">// compare</span></span><br><span class="line">       <span class="keyword">if</span> (ar[j-<span class="number">1</span>] &gt; ar[j]) &#123;</span><br><span class="line">         <span class="comment">// swap</span></span><br><span class="line">         <span class="keyword">int</span> temp = ar[j-<span class="number">1</span>];</span><br><span class="line">         ar[j-<span class="number">1</span>] = ar[j];</span><br><span class="line">         ar[j] = temp;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>时间复杂度</strong>：<code>[O(n), O(n^2)]</code></p>
+</li>
+</ol>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><ol>
+<li><p><strong>工作流程</strong></p>
+<p> <u><font color="red">选择数组中最小的未排序的条目，并移到数组的适合位置</font></u>。<br> 遍历整个数组查找最小的元素，一旦找到，将之与数组的第一个元素交换。然后在去掉第一个元素后的数组里继续遍历查找最小的元素，以此下去。</p>
+</li>
+<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-2.png" alt=""></p>
+</li>
+<li><p><strong>代码</strong></p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ar.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> min = i;</span><br><span class="line">    <span class="comment">// loop2</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;ar.length; j++) &#123;</span><br><span class="line">      <span class="comment">// compare</span></span><br><span class="line">      <span class="keyword">if</span> (ar[j] &lt; ar[min])</span><br><span class="line">        min = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// swap</span></span><br><span class="line">    <span class="keyword">int</span> temp = ar[i];</span><br><span class="line">    ar[i] = ar[min];</span><br><span class="line">    ar[min] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>时间复杂度</strong>：<code>[O(n), O(n^2)]</code></p>
+</li>
+</ol>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ol>
+<li><p><strong>工作流程</strong></p>
+<p> <u><font color="red">每次一个条目存放进有序的数组里，直到所有的条目都已排序</font></u>。</p>
+</li>
+<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-3.png" alt=""></p>
+</li>
+<li><p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; ar.length; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> index = ar[i];</span><br><span class="line">    <span class="keyword">int</span> j = i;</span><br><span class="line">    <span class="comment">// loop2 &amp; compare</span></span><br><span class="line">    <span class="keyword">while</span>(j &gt; <span class="number">0</span> &amp;&amp; ar[j-<span class="number">1</span>] &gt; index) &#123;</span><br><span class="line">      <span class="comment">// swap</span></span><br><span class="line">      ar[j] = ar[j-<span class="number">1</span>];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    ar[j] = index;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>时间复杂度</strong>：<code>[O(n), O(n^2)]</code></p>
+</li>
+</ol>
+<h2 id="合并排序"><a href="#合并排序" class="headerlink" title="合并排序"></a>合并排序</h2><ol>
+<li><p><strong>工作流程</strong></p>
+<p> 基于<u><font color="red">分而治之</font></u>的原则，分以下三步：</p>
+<ul>
+<li>把数组分割成2个或多个子数组</li>
+<li>排序每个子数组<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></li>
+<li>把每个排序好的子数组合并为一个数组<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup></li>
+</ul>
+</li>
+<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-4.png" alt=""></p>
+</li>
+<li><strong>时间复杂度</strong>：<code>O(n log n)</code></li>
+</ol>
+<div id="footnotes"><hr><div id="footnotelist"><ol><li id="fn:1"><a href="http://www.java2novice.com/java-sorting-algorithms/" target="_blank" rel="external"><strong>Java Sorting Algorithms</strong></a><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Sorting%20Algorithms/sorting.html" target="_blank" rel="external"><strong>Sorting</strong></a><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3">冒泡排序中按照从小到大的顺序依次从左到右排列<a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4">一般是按照从小到大的顺序排列数组的元素<a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5">从合并的两个数组中各取一个元素比较，取较小的数放在临时数组，直到两个数组的所有元素都放入到临时数组，即完成合并操作<a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -409,6 +485,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/05/Markdown语法、Jumly语法学习/" rel="prev" title="Markdown语法、Jumly语法学习">
+                Markdown语法、Jumly语法学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -480,7 +560,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -497,7 +577,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -526,7 +606,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序算法概述"><span class="nav-number">2.</span> <span class="nav-text">排序算法概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见排序算法"><span class="nav-number">3.</span> <span class="nav-text">常见排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#桶排序"><span class="nav-number">3.1.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">3.2.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">3.3.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">3.4.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并排序"><span class="nav-number">3.5.</span> <span class="nav-text">合并排序</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
