@@ -1,0 +1,758 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,Java,Memory," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概况本文主要介绍Java中数据的存储位置及机制。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java数据存储">
+<meta property="og:url" content="http://yoursite.com/2016/06/20/Java数据存储/index.html">
+<meta property="og:site_name" content="Jeff's Blog">
+<meta property="og:description" content="概况本文主要介绍Java中数据的存储位置及机制。">
+<meta property="og:updated_time" content="2016-06-20T16:36:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java数据存储">
+<meta name="twitter:description" content="概况本文主要介绍Java中数据的存储位置及机制。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Java数据存储 | Jeff's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jeff's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'zS2MTrod2Emy9CFwkkhx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java数据存储
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-20T22:59:02+08:00" content="2016-06-20">
+              2016-06-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/Java/Memory/" itemprop="url" rel="index">
+                    <span itemprop="name">Memory</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/20/Java数据存储/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/Java数据存储/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p>本文主要介绍Java中数据的存储位置及机制。</p>
+<a id="more"></a>
+<hr>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>在Java中，程序分为<u><font color="red">6个存储区域</font></u>来存放变量以及代码占用的内存</p>
+<ol>
+<li><strong>寄存器</strong>：<code>Register</code>，<u><font color="red">最快的存储区，位于CPU内部，程序无法控制</font></u></li>
+<li><strong>栈</strong>：<code>Stack</code><ul>
+<li>位于通用<code>RAM</code>中，通过<strong>栈指针</strong>可以从处理器那里直接获得</li>
+<li>栈指针若<u><font color="red">向下移动则分配新的内存</font></u>，若<u><font color="red">向上移动则释放内存</font></u></li>
+<li>一种快速的分配方法，<u><font color="red">仅次于寄存器</font></u></li>
+<li><u><font color="red">基本类型的数据</font></u>和<u><font color="red">对象</font></u>的引用</li>
+</ul>
+</li>
+<li><strong>堆</strong>：<code>Heap</code><ul>
+<li>存放由<code>new</code>创建的对象和数组</li>
+<li>由<code>JVM</code>自动管理</li>
+</ul>
+</li>
+<li><strong>静态存储区域</strong>：<code>Static Field</code><ul>
+<li><u><font color="red">在固定的位置存放应用程序运行时一直存在的数据</font></u></li>
+<li>生命周期<u><font color="red">随着程序编译而产生，程序结束而回收</font></u></li>
+</ul>
+</li>
+<li><strong>常量池</strong>：<code>Constant Pool</code><ul>
+<li><code>JVM</code>虚拟机必须<u><font color="red">为每个被装载的类型维护一个常量池</font></u></li>
+<li>常量池是<u><font color="red">该类型所用到常量的一个有序集合</font></u>，包括直接常量（基本类型，<code>String</code>）和其它类型、字段和方法的符号引用</li>
+</ul>
+</li>
+<li><strong>非RAM存储区</strong>：数据<u><font color="red">存活于程序之外，不受程序控制</font></u>，在没有程序的时候依然存在。如<strong>流对象</strong>和<strong>持久化对象</strong></li>
+</ol>
+<hr>
+<h1 id="堆内存存储与栈内存存储比较"><a href="#堆内存存储与栈内存存储比较" class="headerlink" title="堆内存存储与栈内存存储比较"></a>堆内存存储与栈内存存储比较</h1><h2 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>堆与栈都是用于程序中的数据在<code>RAM</code>（内存）上的存储区域，并且<code>Java</code>会<u><font color="red">自动地管理堆和栈，不能人为去直接设置</font></u></p>
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ol>
+<li><strong>存储数据类型</strong>：<u><font color="red">栈内存中存放局部变量（基本数据类型和对象引用）</font></u>，而<u><font color="red">堆内存用于存放对象（实体）</font></u></li>
+<li><strong>存储速度</strong>：<u><font color="red">栈内存的存储分配与清理速度更快于堆</font></u>，并且栈内存的存储速度仅次于直接位于处理器中的寄存器</li>
+<li><strong>灵活性</strong>：由于栈内存与堆内存存储机制的不同，<u><font color="red">堆内存灵活性更优于栈内存</font></u></li>
+</ol>
+<h2 id="存储机制"><a href="#存储机制" class="headerlink" title="存储机制"></a>存储机制</h2><ul>
+<li>栈内存被要求<u><font color="red">存放在其中的数据的大小、生命周期必须是已经确定的</font></u></li>
+<li>堆内存可以<u><font color="red">被虚拟机动态的分配内存大小，无需事先知道编译器的数据的大小、生命周期等相关信息</font></u></li>
+</ul>
+<h2 id="存储数据类型"><a href="#存储数据类型" class="headerlink" title="存储数据类型"></a>存储数据类型</h2><h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><ul>
+<li>在<code>Java</code>中，变量的类型通常分为<strong>基本数据类型变量</strong>和<strong>对象引用变量</strong></li>
+<li>8种基本数据类型实际上<u><font color="red">存储的是一组位数不同的二进制数据</font></u>，除此之外，布尔型只有<code>true</code>和<code>false</code>两种值</li>
+<li>对象引用变量<u><font color="red">存储的实际是其所关联（指向）对象在内存中的内存地址，而内存地址实际上也是一串二进制的数据</font></u></li>
+<li><u><font color="red">局部变量的大小可以确定，会在其自身所属方法（或代码块）执行完毕后，被自动释放</font></u></li>
+</ul>
+<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><ul>
+<li><code>Java</code>中使用关键字<code>new</code>通过调用类的构造函数，从而得到该类的对象</li>
+<li>对象类型数据<u><font color="red">在程序编译期并不会在内存中进行创建和存储工作</font></u>，而是<u><font color="red">在程序运行期才根据需要进行动态的创建和存储</font></u></li>
+<li>对象<u><font color="red">由堆内存进行存储管理</font></u></li>
+</ul>
+<h2 id="栈内存中存储的数据可以实现数据共享"><a href="#栈内存中存储的数据可以实现数据共享" class="headerlink" title="栈内存中存储的数据可以实现数据共享"></a>栈内存中存储的数据可以实现数据共享</h2><ul>
+<li><strong>好处</strong>：<u><font color="red">节约内存空间</font></u>，避免反复向内存中加入同样的值</li>
+<li>对于字符串而言，如果是<u><font color="red">编译器已经创建好</font></u>（直接使用双引号定义）的就<u><font color="red">存储在常量池中</font></u>，如果是<u><font color="red">运行期</font></u>（<code>new</code>出来的）才能确定<u><font color="red">存储在堆中</font></u></li>
+<li>对于<code>equals()</code>相等的字符串，<u><font color="red">在常量池中永远只有一份，在堆中可以有多份</font></u></li>
+<li><u><font color="red">常量池与栈内存一样，也可以实现数据共享</font></u></li>
+<li>成员变量的数据<u><font color="red">存储于堆中该成员变量所属的对象里</font></u></li>
+<li><u><font color="red">堆内存中存放的变量会进行默认初始化</font></u>，而<u><font color="red">栈内存中存放的变量却不会</font></u></li>
+</ul>
+<hr>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<li><a href="http://blog.csdn.net/ghost_programmer/article/details/40891735" target="_blank" rel="external"><strong>java中数据的5种存储位置（堆与栈）</strong></a></li>
+<li><a href="http://blog.csdn.net/woshimalingyi/article/details/44495497" target="_blank" rel="external"><strong>Java中数据存储方式、栈机制与引用的关系</strong></a></li>
+<li><a href="http://item.jd.com/11758334.html?cu=true&amp;utm_source=baidu-search&amp;utm_medium=cpc&amp;utm_campaign=t_262767352_baidusearch&amp;utm_term=25517772975_0_1403f3d34e3a454fa57ff079a7ca4130" target="_blank" rel="external"><strong>Android群英传</strong></a></li>
+<li><a href="http://www.cnblogs.com/zhguang/p/3257367.html" target="_blank" rel="external"><strong>Java系列笔记(3)-Java内存区域和GC机制</strong></a></li>
+<li><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="external"><strong>Jvm内存模型</strong></a></li>
+</ol>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/Memory/" rel="tag">#Memory</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/12/Java同步/" rel="next" title="Java同步">
+                <i class="fa fa-chevron-left"></i> Java同步
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/20/Java数据存储/"
+           data-title="Java数据存储" data-url="http://yoursite.com/2016/06/20/Java数据存储/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/my_avatar.jpg"
+               alt="Jeff" />
+          <p class="site-author-name" itemprop="name">Jeff</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆内存存储与栈内存存储比较"><span class="nav-number">3.</span> <span class="nav-text">堆内存存储与栈内存存储比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储方式"><span class="nav-number">3.1.</span> <span class="nav-text">存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相同点"><span class="nav-number">3.1.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">3.1.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储机制"><span class="nav-number">3.2.</span> <span class="nav-text">存储机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储数据类型"><span class="nav-number">3.3.</span> <span class="nav-text">存储数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈内存"><span class="nav-number">3.3.1.</span> <span class="nav-text">栈内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆内存"><span class="nav-number">3.3.2.</span> <span class="nav-text">堆内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈内存中存储的数据可以实现数据共享"><span class="nav-number">3.4.</span> <span class="nav-text">栈内存中存储的数据可以实现数据共享</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">4.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"duslee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
