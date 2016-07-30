@@ -102,16 +102,19 @@
 
 
 
-<meta name="description" content="概况本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="description" content="概况
+本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Annotation">
 <meta property="og:url" content="http://yoursite.com/2016/07/05/Java-Annotation/index.html">
 <meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description" content="概况本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
-<meta property="og:updated_time" content="2016-07-14T14:50:25.000Z">
+<meta property="og:description" content="概况
+本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta property="og:updated_time" content="2016-07-30T15:27:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Annotation">
-<meta name="twitter:description" content="概况本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="twitter:description" content="概况
+本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
 
 
 
@@ -379,7 +382,9 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p>本文主要介绍Java注解（<u><font color="red">Java Annotation</font></u>）的概念、类型及使用等知识。</p>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
+<p>本文主要介绍Java注解（<u><font color="red">Java Annotation</font></u>）的概念、类型及使用等知识。</p>
+</blockquote>
 <a id="more"></a>
 <hr>
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ul>
@@ -409,8 +414,12 @@
 </li>
 </ol>
 <hr>
-<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><p> 许多注解类型在<code>Java SE API</code>里预定义，一些注解类型用于Java编译器，一些应用到其它注解</p>
-<h2 id="应用到Java代码的注解"><a href="#应用到Java代码的注解" class="headerlink" title="应用到Java代码的注解"></a>应用到Java代码的注解</h2><p> 也称为内置注解（<code>Built-in Annotations</code>）</p>
+<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><blockquote>
+<p>许多注解类型在<code>Java SE API</code>里预定义，一些注解类型用于Java编译器，一些应用到其它注解</p>
+</blockquote>
+<h2 id="应用到Java代码的注解"><a href="#应用到Java代码的注解" class="headerlink" title="应用到Java代码的注解"></a>应用到Java代码的注解</h2><blockquote>
+<p>也称为内置注解（<code>Built-in Annotations</code>）</p>
+</blockquote>
 <ol>
 <li><p><code>@Override</code>：告知编译器该元素是为了覆盖定义在父类的元素，如果一个方法在父类或被实现接口中没有被发现，会引起编译器报错。如当覆盖子类的一个方法时，应该使用<code>@Override</code>来标记该方法，这样可以让代码可读，并且避免维护问题，例如当修改父类的方法签名时，开发人员必须修改子类中该方法的签名，否则编译器会抛出编译错误。当没有使用<code>@Override</code>时，会很难追踪到错误位置。见下面例子</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -424,7 +433,9 @@
 </li>
 <li><code>@FunctionalInterface</code>：在<code>Java SE 8</code>中引入，表明此类型声明是一个功能性接口</li>
 </ol>
-<h2 id="应用到其它注解的注解"><a href="#应用到其它注解的注解" class="headerlink" title="应用到其它注解的注解"></a>应用到其它注解的注解</h2><p> 也称为元注解（<code>Meta Annotations</code>）</p>
+<h2 id="应用到其它注解的注解"><a href="#应用到其它注解的注解" class="headerlink" title="应用到其它注解的注解"></a>应用到其它注解的注解</h2><blockquote>
+<p>也称为元注解（<code>Meta Annotations</code>）</p>
+</blockquote>
 <ol>
 <li><code>@Retention</code>：具体说明标记的注解如何被存储<ul>
 <li><strong>RetentionPolicy.SOURCE</strong>：保留在源码里，被编译器忽略</li>
@@ -508,6 +519,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/07/15/Retrofit 2.0使用总结/" rel="prev" title="Retrofit 2.0使用总结">
+                Retrofit 2.0使用总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -578,7 +593,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -586,7 +601,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -595,7 +610,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1,0 +1,894 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,Http,Retrofit," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概述
+本文主要介绍Retrofit 2.0的基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit 2.0使用总结">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/Retrofit 2.0使用总结/index.html">
+<meta property="og:site_name" content="Jeff's Blog">
+<meta property="og:description" content="概述
+本文主要介绍Retrofit 2.0的基础知识">
+<meta property="og:updated_time" content="2016-07-30T15:27:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit 2.0使用总结">
+<meta name="twitter:description" content="概述
+本文主要介绍Retrofit 2.0的基础知识">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Retrofit 2.0使用总结 | Jeff's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jeff's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'zS2MTrod2Emy9CFwkkhx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Retrofit 2.0使用总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T00:02:47+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/http/retrofit/" itemprop="url" rel="index">
+                    <span itemprop="name">retrofit</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/15/Retrofit 2.0使用总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/Retrofit 2.0使用总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>本文主要介绍<code>Retrofit 2.0</code>的基础知识</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><ol>
+<li><code>Retrofit</code>是由<code>Square</code>开发的一个Android和Java的<code>REST</code>库，可以<u><font color="red">利用接口、方法和注解参数</font></u>来声明式定义一个请求应该如何被创建</li>
+<li>Retrofit背后的<code>HTTP client</code>、序列化机制（<code>JSON/XML协议</code>）都是可替换（<code>pluggable</code>）的，使用者可以选择适合自己的方案</li>
+<li>请求的发送实现分<strong>同步</strong>和<strong>异步</strong>两种</li>
+<li>支持<code>RxJava</code></li>
+<li>Retrofit 1不够好：<ul>
+<li>为了支持可替换的功能模块，必须嵌套大量的组件，类的数量极多</li>
+<li>如果想要操作某次请求返回的数据，如返回的<code>Header</code>部分或<code>URL</code>，又同时想要操作序列化后的数据部分，这些在Retrofit 1.0上是不可能实现</li>
+<li>在同步、异步和RxJava的使用上比较刻板，不够灵活，如异步和同步的调用必须得分别声明两次方法</li>
+<li>Retrofit 1里<code>Converter</code>工作的效率不高，如传入了<code>Response</code>和想要转换的格式<code>Type</code>参数后，Converter必须得搞清楚到底应该如何去反序列化，这部分的实现很复杂，而且耗时</li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<p>在根模块的<code>build.gradle</code>文件的<code>dependencies</code>块中添加</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.0.0-beta4'</span></span><br></pre></td></tr></table></figure>
+<h2 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h2><h3 id="定义形式"><a href="#定义形式" class="headerlink" title="定义形式"></a>定义形式</h3><blockquote>
+<p>在Retrofit 2.0中，创建Service更简单了，因为<u><font color="red">只需定义一种形式</font></u></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">APIService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@POST</span>(<span class="string">"/list"</span>)</span><br><span class="line">    <span class="function">Call&lt;Repo&gt; <span class="title">loadRepo</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Call类型"><a href="#Call类型" class="headerlink" title="Call类型"></a>Call类型</h3><blockquote>
+<p>Retrofit 2.0使用新的类型<code>Call</code>来用于OkHttp的API请求，另外，每一个call对象实例只能被用一次，即<code>request</code>和<code>response</code>是一一对应，可以通过<code>clone</code>方法来创建一个一模一样的实例</p>
+</blockquote>
+<h3 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步 &amp; 异步"></a>同步 &amp; 异步</h3><blockquote>
+<p>Retrofit 2.0支持在同一个类型中的<strong>同步</strong>和<strong>异步</strong>，同时<u><font color="red">一个请求也可以被终止</font></u></p>
+</blockquote>
+<ol>
+<li><p><strong>同步</strong></p>
+<ul>
+<li>调用<code>execute</code>方法执行同步请求</li>
+<li>不能在Android主线程（<code>Main Thread</code>）中直接使用，因为会堵塞线程，否则会报错（<code>NetworkOnMainThreadException</code>）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Call&lt;Repo&gt; call = service.loadRepo();</span><br><span class="line">Repo repo = call.execute();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>异步</strong></p>
+<ul>
+<li>调用<code>enqueue</code>方法执行异步请求</li>
+<li><code>onResponse</code>和<code>onFailure</code>方法会在主线程（<code>Main Thread</code>）中被调用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Call&lt;Repo&gt; call = service.loadRepo();</span><br><span class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;Repo&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response&lt;Repo&gt; response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Get result Repo from response.body()</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable t)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>取消请求</strong>：可以随时调用<code>cancel</code>方法来取消请求</p>
+</li>
+</ol>
+<h3 id="Response类型"><a href="#Response类型" class="headerlink" title="Response类型"></a>Response类型</h3><ol>
+<li>Retrofit 2.0中使用了参数化的<code>Response</code>类型，Response对象增加了一些重要元数据：响应码（<code>the response code</code>）、响应消息（<code>the response message</code>）、响应头（<code>headers</code>）等</li>
+<li>Response类型提供了一系列函数，如<code>code</code>用来判断请求是否成功完成，<code>body</code>用来获取响应体等</li>
+<li><u><font color="red">只有响应成功后，才会去做反序列化操作，然后将反序列化的结果放到body回调中</font></u></li>
+<li>具体的<code>ResponseBody</code>（简单封装了的content-type、length、raw body等部分）由开发者处理</li>
+</ol>
+<h3 id="动态URL参数"><a href="#动态URL参数" class="headerlink" title="动态URL参数"></a>动态URL参数</h3><ol>
+<li>Retrofit 2.0使用新的标注<code>@Url</code>来允许<u><font color="red">直接传入一个请求的URL</font></u></li>
+<li>请求的服务器可能将<code>header link</code>地址列表里的数据已经缓存在服务器内存里，可以<u><font color="red">直接根据该地址去请求，然后毫不费劲地从数据库里拿数据，速度上也更快</font></u></li>
+</ol>
+<h2 id="API接口实现"><a href="#API接口实现" class="headerlink" title="API接口实现"></a>API接口实现</h2><h3 id="Converter"><a href="#Converter" class="headerlink" title="Converter"></a>Converter</h3><ol>
+<li>Retrofit 2.0中，<u><font color="red">Converter不再包含在包里了，开发者需要自己插入一个Converter，否则Retrofit只能接收到字符串的结果</font></u></li>
+<li>Retrofit 2.0<u><font color="red">支持多个Converter</font></u></li>
+<li>可以自定义实现<code>Converter.Factory</code>接口</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Converter</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gson</td>
+<td>com.squareup.retrofit:converter-gson</td>
+</tr>
+<tr>
+<td>Jackson</td>
+<td>com.squareup.retrofit:converter-jackson</td>
+</tr>
+<tr>
+<td>Moshi</td>
+<td>com.squareup.retrofit:converter-moshi</td>
+</tr>
+<tr>
+<td>Protobuf</td>
+<td>com.squareup.retrofit:converter-protobuf</td>
+</tr>
+<tr>
+<td>Wire</td>
+<td>com.squareup.retrofit:converter-wire</td>
+</tr>
+<tr>
+<td>Simple XML</td>
+<td>com.squareup.retrofit:converter-simplexml</td>
+</tr>
+</tbody>
+</table>
+<h3 id="新的URL定义形式"><a href="#新的URL定义形式" class="headerlink" title="新的URL定义形式"></a>新的URL定义形式</h3><ol>
+<li><strong>Base URL</strong>：总是以<code>/</code>结束</li>
+<li><strong>@Url</strong>：不要以/开始；Retrofit 2.0中可以<u><font color="red">在@Url中定义一个完全的URL</font></u></li>
+</ol>
+<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><blockquote>
+<p>Retrofit的<code>HTTP</code>注解用来<u><font color="red">修饰请求方法</font></u></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>请求指定url的数据,请求体为空(例如打开网页)。</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>请求指定url的数据，同时传递参数(在请求体中)。</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>类似于get请求，只不过返回的响应体为空，用于获取响应头。</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>请求服务器删除指定的页面。</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="URL-MANIPULATION"><a href="#URL-MANIPULATION" class="headerlink" title="URL MANIPULATION"></a>URL MANIPULATION</h3><ol>
+<li><strong>@Path</strong>：一个请求的URL可以使用方法上的<strong>替换块</strong>和<strong>参数</strong>来动态更新。一个替换块是由<code>{</code>和<code>}</code>包围，一个适合的参数必须使用同一字符串的<code>@Path</code>来注解</li>
+<li><strong>@Query</strong>：<u><font color="red">添加查询参数</font></u></li>
+<li><strong>@QueryMap</strong>：若有多个查询参数时，可以放在<code>Map</code>中</li>
+</ol>
+<h3 id="REQUEST-BODY"><a href="#REQUEST-BODY" class="headerlink" title="REQUEST BODY"></a>REQUEST BODY</h3><blockquote>
+<p>一个对象可以使用<code>@Body</code>注解被用作一个HTTP请求体。该对象也会通过使用在Retrofit实例中指定的转换器来转换，如果没有提添加转换器，默认使用<code>RequestBody</code></p>
+</blockquote>
+<h3 id="FORM-ENCODED-AND-MULTIPART"><a href="#FORM-ENCODED-AND-MULTIPART" class="headerlink" title="FORM ENCODED AND MULTIPART"></a>FORM ENCODED AND MULTIPART</h3><blockquote>
+<p>用于<strong>方法</strong>上</p>
+</blockquote>
+<ol>
+<li><strong>@FormUrlEncoded</strong>：发送表单数据，每个键值对使用带名称和提供的值的<code>@Field</code>注解</li>
+<li><strong>@Multipart</strong>：在方法上使用<code>@Multipart</code>注解，对每个part使用<code>@Part</code>注解，其中parts可以使用Retorfit的转换器或实现<code>RequestBody</code>来处理序列化</li>
+</ol>
+<h3 id="HEADER-MANIPULATION"><a href="#HEADER-MANIPULATION" class="headerlink" title="HEADER MANIPULATION"></a>HEADER MANIPULATION</h3><blockquote>
+<p>使用<code>@Headers</code>注解来为一个方法设置静态的头部</p>
+</blockquote>
+<ol>
+<li>头部不能复写，<u><font color="red">拥有同一名字的所有头部会被包含在请求中</font></u></li>
+<li>请求头可以使用<code>@Header</code>注解来动态更新，如果该值为null，该头部会被忽略</li>
+<li>需要被添加到每个请求的头部可以使用<code>OkHttp Interceptor</code>来指定</li>
+</ol>
+<h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><ol>
+<li>Retrofit 2.0中需要<code>OkHttp</code>库，并且被自动设置为依赖库</li>
+<li>Retrofit 2.0中无论响应是否能被解析，<code>onResponse</code>总会被调用，万一返回的结果不能被解析为对象，<code>response.body()</code>会返回<code>null</code>，注意不要忘记处理此情况</li>
+<li>Retrofit 2.0中如果忘记添加<code>INTERNET</code>权限，会立即抛出<code>SecurityException</code>，如果没有处理<code>try-catch</code>的话，会引起应用崩溃</li>
+<li>Retrofit 2.0中需要创建一个带<code>Interceptor</code>的OkHttpClient，然后作为参数放入Retrofit的<code>Builder</code>链中</li>
+</ol>
+<h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><ol>
+<li>Retrofit 2.0中除了定义<code>Call&lt;T&gt;</code>形式的接口，也可以定义自己的类型，该机制称为<code>CallAdapter</code></li>
+<li>RxJava作为一种非常流行的CallAdapter，返回的类型为<code>Observable&lt;T&gt;</code></li>
+<li><p>RxJava需要在根模块的<code>build.gradle</code>文件中使用如下依赖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'</span></span><br><span class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Retrofit的Builder链中作为<code>addCallAdapterFactory</code>的参数</p>
+</li>
+<li>API接口的方法返回对象是Observable<t>类型</t></li>
+<li>必须让代码在主线程中被调用，即<code>observeOn(AndroidSchedulers.mainThread())</code>方法</li>
+</ol>
+<hr>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<li><a href="https://realm.io/cn/news/droidcon-jake-wharton-simple-http-retrofit-2/" target="_blank" rel="external"><strong>用Retrofit 2简化HTTP请求</strong></a></li>
+<li><a href="http://square.github.io/retrofit/" target="_blank" rel="external"><strong>Retrofit-A type-safe HTTP client for Android and Java</strong></a></li>
+<li><a href="https://inthecheesefactory.com/blog/retrofit-2.0/en" target="_blank" rel="external"><strong>Retrofit 2.0: The biggest update yet on the best HTTP Client Library for Android</strong></a></li>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1016/3588.html" target="_blank" rel="external"><strong>使用Retrofit请求API数据－codepath教程</strong></a></li>
+<li><a href="http://www.jianshu.com/p/63723f593695" target="_blank" rel="external"><strong>Retrofit-网络请求库</strong></a></li>
+<li><a href="http://blog.csdn.net/sk719887916/article/details/51755427" target="_blank" rel="external"><strong>Retrofit 2.0超能实践（三），轻松实现文件/图片上传</strong></a></li>
+<li><a href="http://blog.csdn.net/sk719887916/article/details/51700659" target="_blank" rel="external"><strong>Retrofit2.0完美同步Cookie实现免登录</strong></a></li>
+<li><a href="http://blog.csdn.net/sk719887916/article/details/51597816" target="_blank" rel="external"><strong>Retrofit 2.0超能实践，完美支持Https传输</strong></a></li>
+<li><a href="http://www.jianshu.com/p/3141d4e46240" target="_blank" rel="external"><strong>Android网络请求心路历程</strong></a></li>
+<li><a href="http://www.jianshu.com/p/af38d9741655" target="_blank" rel="external"><strong>Retrofit的分析以及实现步骤</strong></a></li>
+<li><a href="http://www.tuicool.com/articles/aiyma2u" target="_blank" rel="external"><strong>Retrofit分析-漂亮的解耦套路</strong></a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/Http/" rel="tag">#Http</a>
+          
+            <a href="/tags/Retrofit/" rel="tag">#Retrofit</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/05/Java-Annotation/" rel="next" title="Java Annotation">
+                <i class="fa fa-chevron-left"></i> Java Annotation
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/15/Retrofit 2.0使用总结/"
+           data-title="Retrofit 2.0使用总结" data-url="http://yoursite.com/2016/07/15/Retrofit 2.0使用总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/my_avatar.jpg"
+               alt="Jeff" />
+          <p class="site-author-name" itemprop="name">Jeff</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本介绍"><span class="nav-number">2.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API接口"><span class="nav-number">2.3.</span> <span class="nav-text">API接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">Call类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步-amp-异步"><span class="nav-number">2.3.3.</span> <span class="nav-text">同步 & 异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">Response类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态URL参数"><span class="nav-number">2.3.5.</span> <span class="nav-text">动态URL参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API接口实现"><span class="nav-number">2.4.</span> <span class="nav-text">API接口实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Converter"><span class="nav-number">2.4.1.</span> <span class="nav-text">Converter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新的URL定义形式"><span class="nav-number">2.4.2.</span> <span class="nav-text">新的URL定义形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求方法"><span class="nav-number">2.4.3.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-MANIPULATION"><span class="nav-number">2.4.4.</span> <span class="nav-text">URL MANIPULATION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REQUEST-BODY"><span class="nav-number">2.4.5.</span> <span class="nav-text">REQUEST BODY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FORM-ENCODED-AND-MULTIPART"><span class="nav-number">2.4.6.</span> <span class="nav-text">FORM ENCODED AND MULTIPART</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEADER-MANIPULATION"><span class="nav-number">2.4.7.</span> <span class="nav-text">HEADER MANIPULATION</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttp"><span class="nav-number">2.5.</span> <span class="nav-text">OkHttp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava"><span class="nav-number">2.6.</span> <span class="nav-text">RxJava</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">3.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"duslee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
