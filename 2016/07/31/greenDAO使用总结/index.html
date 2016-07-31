@@ -1,0 +1,790 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,Tool,GreenDAO," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概况
+此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="greenDAO使用总结">
+<meta property="og:url" content="http://yoursite.com/2016/07/31/greenDAO使用总结/index.html">
+<meta property="og:site_name" content="Jeff's Blog">
+<meta property="og:description" content="概况
+此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
+<meta property="og:updated_time" content="2016-07-31T01:38:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="greenDAO使用总结">
+<meta name="twitter:description" content="概况
+此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> greenDAO使用总结 | Jeff's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jeff's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'zS2MTrod2Emy9CFwkkhx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                greenDAO使用总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-31T09:04:32+08:00" content="2016-07-31">
+              2016-07-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/tool/" itemprop="url" rel="index">
+                    <span itemprop="name">tool</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/tool/greenDAO/" itemprop="url" rel="index">
+                    <span itemprop="name">greenDAO</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/31/greenDAO使用总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/greenDAO使用总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
+<p>此文档主要描述<code>greenDAO 3</code>的相关概念及使用，包括<u><font color="red">项目中的配置、数据操作（增删改查）</font></u>等。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="与greenDAO-2的区别"><a href="#与greenDAO-2的区别" class="headerlink" title="与greenDAO 2的区别"></a>与greenDAO 2的区别</h2><blockquote>
+<p><code>greenDAO 2</code>（之前的版本）需要开发者在工程中另建一个独立的<code>Java生成器</code>项目（需要使用到<code>“greendao-generator”</code>依赖，来自动生成greenDAO需用的代码），然而<code>greenDAO 3</code>只需使用<code>注解</code>定义实体类，然后通过<code>gradle插件</code>就可以生成代码</p>
+</blockquote>
+<h2 id="greenDAO-3的配置"><a href="#greenDAO-3的配置" class="headerlink" title="greenDAO 3的配置"></a>greenDAO 3的配置</h2><h3 id="添加gradle插件到buildscript"><a href="#添加gradle插件到buildscript" class="headerlink" title="添加gradle插件到buildscript"></a>添加gradle插件到buildscript</h3><blockquote>
+<p>在工程的<code>build.gradle</code>文件中添加gradle插件到<code>buildscript</code>块中</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">  dependencies &#123;</span><br><span class="line">    classpath ‘org.greenrobot:greendao-gradle-plugin:<span class="number">3.0</span>.0’</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="根模块中使用gradle插件"><a href="#根模块中使用gradle插件" class="headerlink" title="根模块中使用gradle插件"></a>根模块中使用gradle插件</h3><blockquote>
+<p><u><font color="red">在根模块的build.gradle文件中使用gradle插件</font></u></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apply plugin ‘org.greenrobot.greendao’</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">  compile ‘org.greenrobot:greendao:<span class="number">3.0</span>.1’</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="gradle插件的配置"><a href="#gradle插件的配置" class="headerlink" title="gradle插件的配置"></a>gradle插件的配置</h3><blockquote>
+<p><u><font color="red">在根模块的build.gradle文件中配置greendao</font></u></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">greendao &#123;</span><br><span class="line">  schemaVersion <span class="number">2</span></span><br><span class="line">  daoPackage ‘…’</span><br><span class="line">  targetGenDir ‘…’</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>schemaVersion</strong>：指定数据库<code>schema</code>的当前版本号，被<code>*OpenHelpers</code>类使用，用于在不同的schema版本号之间迁移，如果修改了<code>Entity</code>或数据库的schema，该值必须增加，默认是1 </li>
+<li><strong>daoPackage</strong>：用于存放生成的<code>DAO</code>、<code>DaoMaster</code>和<code>DaoSession</code>的包名，默认是源Entities的包名</li>
+<li><strong>targetGenDir</strong>：生成的源码应存放的位置，默认是<u><font color="red">build目录下的generated文件夹</font></u>下（<code>build/generated/source/greendao</code>）</li>
+<li><strong>generateTests</strong>：设置为<code>true</code>时自动生成单元测试代码</li>
+<li><strong>targetGenGenTest</strong>：<u><font color="red">生成单元测试代码的存放位置</font></u></li>
+</ol>
+<h3 id="Gradle插件实现步骤"><a href="#Gradle插件实现步骤" class="headerlink" title="Gradle插件实现步骤"></a>Gradle插件实现步骤</h3><blockquote>
+<p>每次在<code>make</code>工程时，Gradle插件会扫描工程中所有的<code>@Entity</code>文件（greenDAO用到的数据库实体类），并根据实体类生成<code>DaoMaster</code>、<code>DaoSession</code>以及所有实体类的<code>DAO类</code>，生成的文件默认目录为<code>build/generated/source/greendao</code></p>
+</blockquote>
+<hr>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="Entity"><a href="#Entity" class="headerlink" title="@Entity"></a>@Entity</h2><blockquote>
+<p><code>@Entity</code>注解<u><font color="red">标记一个Java类为持久的实体</font></u>，可以配置如下参数</p>
+</blockquote>
+<ol>
+<li><strong>schema</strong>：<u><font color="red">告诉greenDAO该实体属于哪个schema</font></u>（<strong>Note</strong>：当使用Gradle插件时目前不支持多个schemas）</li>
+<li><strong>active</strong>：<u><font color="red">标记一个Entity的激活状态</font></u>，激活的Entity有更新/删除/刷新方法</li>
+<li><strong>nameInDb</strong>：<u><font color="red">指定表在数据库中的名称</font></u>，默认是实体的类名</li>
+<li><strong>indexes</strong>：<u><font color="red">定义跨越多列的索引</font></u></li>
+<li><strong>createInDb</strong>：<u><font color="red">标记greenDAO是否创建数据库表，默认为true</font></u>。如果有多个实体映射到同一个表，或者表在greenDAO外面创建了，可以设置为false</li>
+</ol>
+<h2 id="基本属性注解"><a href="#基本属性注解" class="headerlink" title="基本属性注解"></a>基本属性注解</h2><ol>
+<li><strong>@Id</strong>：<u><font color="red">选择一个long/Long类型的属性作为实体ID</font></u>。在数据库里，它是<code>主键（PK）</code>。参数<code>autoincrement</code>是一个让ID值增加的标记（不重用旧值）</li>
+<li><strong>@Property</strong>：<u><font color="red">定义一个属性映射的非默认的列名</font></u>，如果如果不指定，greenDAO默认以SQL-ish的形式使用域名，即大写、下划线代替驼峰，如customName会变成CUSTOM_NAME</li>
+<li><strong>@NotNull</strong>：让属性在数据库里成为一个<code>“NOT NULL”</code>列</li>
+<li><strong>@Transient</strong>：<u><font color="red">让属性不被存入持久层</font></u></li>
+</ol>
+<h2 id="索引注解"><a href="#索引注解" class="headerlink" title="索引注解"></a>索引注解</h2><ol>
+<li><strong>@Index</strong>：<u><font color="red">为一个数据库列创建一个数据库索引</font></u><ul>
+<li><strong>name</strong>：<u><font color="red">如果不喜欢greenDAO生成的默认索引名，可以通过该字段指定</font></u></li>
+<li><strong>unique</strong>：为该索引添加一个<code>UNIQUE</code>限制，强制所有值是唯一的</li>
+</ul>
+</li>
+<li><strong>@Unique</strong>：为一个数据库列添加一个<code>UNIQUE</code>限制。注意SQLite也默认创建了一个索引</li>
+</ol>
+<h2 id="关联注解"><a href="#关联注解" class="headerlink" title="关联注解"></a>关联注解</h2><ol>
+<li><strong>@ToOne</strong>：<u><font color="red">定义与另一个实体的关联，应用该注解到有另一个实体对象的属性上</font></u>。在内部，greenDAO需要一个额外的指向目标实体的属性，通过<code>joinProperty</code>参数来指定。如果没有该参数，一个额外的列会被自动创建并拥有此<code>KEY</code></li>
+<li><strong>@ToMany</strong>：<u><font color="red">定义与多个实体的关联，应用该注解到一组目标实体的属性上</font></u>。目标实体必须有一个或多个指向源Entity的属性。有三种可能（只能使用其中一种）指定关联的映射<ul>
+<li><strong>referencedJoinProperty</strong>：指向目标Entity的ID的<code>外键（FK）</code>属性名</li>
+<li><strong>joinProperties</strong>：为了更多复杂的关联，可以指定一组<code>@JoinProperty</code>注解。每个@JoinProperty需要一个源Entity的属性和目标Entity的属性</li>
+</ul>
+</li>
+<li><strong>@JoinEntity</strong>：<u><font color="red">如果一个多对多的关联有另一个entity/table，可以在该属性上添加该注解</font></u></li>
+</ol>
+<h2 id="Generated"><a href="#Generated" class="headerlink" title="@Generated"></a>@Generated</h2><blockquote>
+<p>在greenDAO 3中Entity类由开发者创建和编辑，在代码生成过程中，greenDAO会增加实体的源码，同时会添加<code>@Generated</code>注解到生成的方法和域上来提示开发者，为了阻止任何代码的丢失。<u><font color="red">在大多数情况下，开发者不应该接触带有@Generated注解的代码</font></u>。作为预防措施，greenDAO不会重写存在的代码，如果生成的代码被手动修改了，greenDAO会报错。</p>
+</blockquote>
+<hr>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="编写Entity类"><a href="#编写Entity类" class="headerlink" title="编写Entity类"></a>编写Entity类</h2><blockquote>
+<p><strong>App.java</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>(nameInDb = <span class="string">"app"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Id</span></span><br><span class="line">  <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String appUuid;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String iconUrl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> type;</span><br><span class="line">  …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>City.java</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>(nameInDb = <span class="string">"city"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">City</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String code;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Id</span></span><br><span class="line">  <span class="keyword">private</span> Long id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>JoinCityToApp.java</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JoinCityToApp</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Id</span></span><br><span class="line">  <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Long cityId;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Long appId;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>CityInfo.java</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>(nameInDb = <span class="string">"city_info"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CityInfo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Id</span></span><br><span class="line">  <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  <span class="keyword">private</span> String code;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ToMany</span></span><br><span class="line">  <span class="meta">@JoinEntity</span>(</span><br><span class="line">      entity = JoinCityToApp.class,</span><br><span class="line">      sourceProperty = <span class="string">"cityId"</span>,</span><br><span class="line">      targetProperty = <span class="string">"appId"</span></span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">private</span> List&lt;App&gt; appList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="增删改查操作"><a href="#增删改查操作" class="headerlink" title="增删改查操作"></a>增删改查操作</h2><h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><blockquote>
+<p>获取<code>DaoMaster.DevOpenHelper</code>的实例即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DaoMaster.DevOpenHelper mHelper = <span class="keyword">new</span> DaoMaster.DevOpenHelper(context, DB_NAME);</span><br></pre></td></tr></table></figure>
+<h3 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertCityInfo</span><span class="params">(CityInfo info, List&lt;App&gt; appList, List&lt;Banner&gt; bannerList)</span> </span>&#123;</span><br><span class="line">  DaoSession daoSession = <span class="keyword">new</span> DaoMaster(getWritableDatabase()).newSession();</span><br><span class="line">  <span class="keyword">long</span> infoId = daoSession.insert(info);</span><br><span class="line">  JoinCityToApp joinCityToApp = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">for</span> (App app : appList) &#123;</span><br><span class="line">    <span class="keyword">long</span> appId = daoSession.insert(app);</span><br><span class="line">    joinCityToApp = <span class="keyword">new</span> JoinCityToApp(<span class="keyword">null</span>, infoId, appId);</span><br><span class="line">    daoSession.insert(joinCityToApp);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  JoinCityToBanner joinCityToBanner = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">for</span> (Banner banner : bannerList) &#123;</span><br><span class="line">    <span class="keyword">long</span> bannerId = daoSession.insert(banner);</span><br><span class="line">    daoSession.insert(banner);</span><br><span class="line">    joinCityToBanner = <span class="keyword">new</span> JoinCityToBanner(<span class="keyword">null</span>, infoId, bannerId);</span><br><span class="line">    daoSession.insert(joinCityToBanner);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;App&gt; <span class="title">queryAppList</span><span class="params">(String code)</span> </span>&#123;</span><br><span class="line">  List&lt;App&gt; list = <span class="keyword">null</span>;</span><br><span class="line">  DaoSession daoSession = <span class="keyword">new</span> DaoMaster(getWritableDatabase()).newSession();</span><br><span class="line">  Query query = daoSession.getCityInfoDao().queryBuilder()</span><br><span class="line">      .where(CityInfoDao.Properties.Code.eq(code))</span><br><span class="line">      .build();</span><br><span class="line"></span><br><span class="line">  List&lt;CityInfo&gt; infoList = query.list();</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">null</span> != infoList &amp;&amp; infoList.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (CityInfo info : infoList) &#123;</span><br><span class="line">      list.addAll(info.getAppList());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<li><a href="http://greenrobot.org/greendao/documentation/updating-to-greendao-3-and-annotations/" target="_blank" rel="external"><strong>Updating to greenDAO 3 and annotations</strong></a></li>
+<li><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external"><strong>greenrobot/greenDAO</strong></a></li>
+<li><a href="http://blog.csdn.net/njweiyukun/article/details/51893092" target="_blank" rel="external"><strong>【greenDAO 3】项目搭建与增删该查操作</strong></a></li>
+<li><a href="http://greenrobot.org/greendao/features/" target="_blank" rel="external"><strong>greenDAO Features</strong></a></li>
+</ol>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/Tool/" rel="tag">#Tool</a>
+          
+            <a href="/tags/GreenDAO/" rel="tag">#GreenDAO</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/15/Retrofit 2.0使用总结/" rel="next" title="Retrofit 2.0使用总结">
+                <i class="fa fa-chevron-left"></i> Retrofit 2.0使用总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/31/greenDAO使用总结/"
+           data-title="greenDAO使用总结" data-url="http://yoursite.com/2016/07/31/greenDAO使用总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/my_avatar.jpg"
+               alt="Jeff" />
+          <p class="site-author-name" itemprop="name">Jeff</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#与greenDAO-2的区别"><span class="nav-number">2.1.</span> <span class="nav-text">与greenDAO 2的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#greenDAO-3的配置"><span class="nav-number">2.2.</span> <span class="nav-text">greenDAO 3的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加gradle插件到buildscript"><span class="nav-number">2.2.1.</span> <span class="nav-text">添加gradle插件到buildscript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根模块中使用gradle插件"><span class="nav-number">2.2.2.</span> <span class="nav-text">根模块中使用gradle插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradle插件的配置"><span class="nav-number">2.2.3.</span> <span class="nav-text">gradle插件的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle插件实现步骤"><span class="nav-number">2.2.4.</span> <span class="nav-text">Gradle插件实现步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Entity"><span class="nav-number">3.1.</span> <span class="nav-text">@Entity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本属性注解"><span class="nav-number">3.2.</span> <span class="nav-text">基本属性注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引注解"><span class="nav-number">3.3.</span> <span class="nav-text">索引注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联注解"><span class="nav-number">3.4.</span> <span class="nav-text">关联注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generated"><span class="nav-number">3.5.</span> <span class="nav-text">@Generated</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写Entity类"><span class="nav-number">4.1.</span> <span class="nav-text">编写Entity类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查操作"><span class="nav-number">4.2.</span> <span class="nav-text">增删改查操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化数据库"><span class="nav-number">4.2.1.</span> <span class="nav-text">初始化数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加操作"><span class="nav-number">4.2.2.</span> <span class="nav-text">增加操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询操作"><span class="nav-number">4.2.3.</span> <span class="nav-text">查询操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">5.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"duslee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
