@@ -1,0 +1,925 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,SQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概述
+本文主要介绍索引、数据类型和更多复杂的查询结构
+
+PS：译自SQL for Beginners Part 21">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学者快速使用SQL(二)">
+<meta property="og:url" content="http://yoursite.com/2016/08/10/初学者快速使用SQL(二)/index.html">
+<meta property="og:site_name" content="Jeff's Blog">
+<meta property="og:description" content="概述
+本文主要介绍索引、数据类型和更多复杂的查询结构
+
+PS：译自SQL for Beginners Part 21">
+<meta property="og:updated_time" content="2016-08-10T09:36:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学者快速使用SQL(二)">
+<meta name="twitter:description" content="概述
+本文主要介绍索引、数据类型和更多复杂的查询结构
+
+PS：译自SQL for Beginners Part 21">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 初学者快速使用SQL(二) | Jeff's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jeff's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'zS2MTrod2Emy9CFwkkhx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                初学者快速使用SQL(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-10T11:41:38+08:00" content="2016-08-10">
+              2016-08-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/translation/" itemprop="url" rel="index">
+                    <span itemprop="name">translation</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/translation/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/10/初学者快速使用SQL(二)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/10/初学者快速使用SQL(二)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>本文主要介绍<u><font color="red">索引</font></u>、<u><font color="red">数据类型</font></u>和更多复杂的<u><font color="red">查询结构</font></u></p>
+</blockquote>
+<p><strong>PS</strong>：译自<strong><code>SQL for Beginners Part 2</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+<a id="more"></a>
+<hr>
+<h1 id="Database-Indexes"><a href="#Database-Indexes" class="headerlink" title="Database Indexes"></a>Database Indexes</h1><blockquote>
+<p><code>Indexes</code>或<code>keys</code>主要用于<u><font color="red">提高表的数据获取速度</font></u>。对于指数化数据库的列的大多数原因如下：</p>
+</blockquote>
+<ul>
+<li>每个表应该有一个<code>PRIMARY KEY</code>索引，通常作为一个<code>id</code>列</li>
+<li>如果一列预计含有唯一的值，那么该列应该有一个<code>UNIQUE</code>索引</li>
+<li>如果经常在一列上执行搜索（在<code>WHERE</code>语句里），应该有一个正规的索引</li>
+<li>如果一列用于和另一个表的关系，如果可能，该列应该是一个<code>FOREIGN KEY</code>，否则只有一个正规的索引</li>
+</ul>
+<h2 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h2><blockquote>
+<p>几乎每个表都应该有一个<code>PRIMARY KEY</code>，大多数情况下作为一个带<code>AUTO_INCREMENT</code>选项的<code>INT</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> states (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> states (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h2><blockquote>
+<p>表示该列有唯一的值。默认<code>UNIQUE</code>索引会以列名来命名，也可以指定其它名称</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> states (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> (<span class="keyword">name</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> states (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> state_name (<span class="keyword">name</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="INDEX"><a href="#INDEX" class="headerlink" title="INDEX"></a>INDEX</h2><blockquote>
+<p>这种类型的索引不具有唯一性的限制</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> states (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  join_year <span class="built_in">INT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> (<span class="keyword">name</span>),</span><br><span class="line">  <span class="keyword">INDEX</span> (join_year)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>也可以使用<code>KEY</code>代替<code>INDEX</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> states (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  join_year <span class="built_in">INT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> (<span class="keyword">name</span>),</span><br><span class="line">  <span class="keyword">KEY</span> (join_year)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="More-About-Performance"><a href="#More-About-Performance" class="headerlink" title="More About Performance"></a>More About Performance</h2><blockquote>
+<p>添加一个索引减少了<code>INSERT</code>和<code>UPDATE</code>查询的性能，因为每次新数据被添加到表里时，索引数据也自动更新，需要做额外的工作，而在<code>SELECT</code>查询的性能增益通常远大于此。</p>
+</blockquote>
+<hr>
+<h1 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h1><h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><blockquote>
+<p><code>GROUP BY</code>语句将获取到的数据行分组</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> states <span class="keyword">GROUP</span> <span class="keyword">BY</span> join_year;</span><br></pre></td></tr></table></figure>
+<h2 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT(*)"></a>COUNT(*)</h2><blockquote>
+<p><code>COUNT(*)</code>是结合<code>GROUP BY</code>查询的最常用的函数，<u><font color="red">返回每组的行数</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*), join_year <span class="keyword">FROM</span> states <span class="keyword">GROUP</span> <span class="keyword">BY</span> join_year;</span><br></pre></td></tr></table></figure>
+<h2 id="Grouping-Everything"><a href="#Grouping-Everything" class="headerlink" title="Grouping Everything"></a>Grouping Everything</h2><blockquote>
+<p>如果不适用<code>GROUP BY</code>函数或语句，全部的结果会放在单一组里</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> states;</span><br></pre></td></tr></table></figure>
+<h2 id="MIN-MAX-and-AVG"><a href="#MIN-MAX-and-AVG" class="headerlink" title="MIN(), MAX() and AVG()"></a>MIN(), MAX() and AVG()</h2><blockquote>
+<p>这些函数返回<u><font color="red">最小数</font></u>，<u><font color="red">最大数</font></u>和<u><font color="red">平均数</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(population), <span class="keyword">MAX</span>(population), <span class="keyword">AVG</span>(population);</span><br></pre></td></tr></table></figure>
+<h2 id="GROUP-CONCAT"><a href="#GROUP-CONCAT" class="headerlink" title="GROUP_CONCAT()"></a>GROUP_CONCAT()</h2><blockquote>
+<p>将组里所有的值<u><font color="red">使用提供的分隔符连接成一个单一字符串</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(<span class="keyword">name</span> SEPERATOR ‘, ‘), join_year</span><br><span class="line">  <span class="keyword">FROM</span> states <span class="keyword">GROUP</span> <span class="keyword">BY</span> join_year;</span><br></pre></td></tr></table></figure>
+<h2 id="SUM"><a href="#SUM" class="headerlink" title="SUM()"></a>SUM()</h2><blockquote>
+<p><u><font color="red">累加数字值</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(population) <span class="keyword">AS</span> usa_population <span class="keyword">FROM</span> states;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Control-Flow"><a href="#Control-Flow" class="headerlink" title="Control Flow"></a>Control Flow</h1><h2 id="IF"><a href="#IF" class="headerlink" title="IF()"></a>IF()</h2><blockquote>
+<p><u><font color="red">需要三个参数</font></u>，第一个参数是条件，如果条件为<code>true</code>，使用第二个参数，否则使用第三个参数</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">IF</span>(<span class="literal">true</span>, ‘foo’, ‘bar’);</span><br></pre></td></tr></table></figure>
+<h2 id="CASE"><a href="#CASE" class="headerlink" title="CASE"></a>CASE</h2><blockquote>
+<p>类似于<code>switch-case</code>语句</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*),</span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">  <span class="keyword">WHEN</span> population &gt; <span class="number">5000000</span> <span class="keyword">THEN</span> ‘<span class="keyword">big</span>’</span><br><span class="line">  <span class="keyword">WHEN</span> population &gt; <span class="number">1000000</span> <span class="keyword">THEN</span> ‘<span class="keyword">medium</span>’</span><br><span class="line">  <span class="keyword">ELSE</span> ‘small’ <span class="keyword">END</span></span><br><span class="line">  <span class="keyword">AS</span> state_size</span><br><span class="line"><span class="keyword">FROM</span> states <span class="keyword">GROUP</span> <span class="keyword">BY</span> state_size;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><h2 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h2><blockquote>
+<p><u><font color="red">允许应用条件到隐藏的域上</font></u>，如聚合函数返回的结果，通常和<code>GROUP BY</code>结合使用</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*), join_year <span class="keyword">FROM</span> states</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> join_year</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt; <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Subqueries"><a href="#Subqueries" class="headerlink" title="Subqueries"></a>Subqueries</h2><blockquote>
+<p><u><font color="red">在获取一个查询的结果后，使用该结果用于其它查询</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> states <span class="keyword">WHERE</span> population = (</span><br><span class="line">  <span class="keyword">SELECT</span> <span class="keyword">MAX</span>(population) <span class="keyword">FROM</span> states</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>下面的查询语句和上面查询语句的区别</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> states <span class="keyword">ORDER</span> <span class="keyword">BY</span> population <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="IN"><a href="#IN" class="headerlink" title="IN()"></a>IN()</h2><blockquote>
+<p><u><font color="red">通过内部查询获取多个结果</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> states <span class="keyword">WHERE</span> join_year <span class="keyword">IN</span> (</span><br><span class="line">  <span class="keyword">SELECT</span> join_year <span class="keyword">FROM</span> states</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> join_year</span><br><span class="line">  <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt; <span class="number">1</span></span><br><span class="line">) <span class="keyword">ORDER</span> <span class="keyword">BY</span> join_year;</span><br></pre></td></tr></table></figure>
+<h2 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h2><blockquote>
+<p>使用<code>UNION</code>查询，可以结合多个<code>SELECT</code>查询的结果</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> states <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">LIKE</span> ‘n%’)</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line">(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> states <span class="keyword">WHERE</span> population &gt; <span class="number">10000000</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>Note</strong>：</p>
+<ol>
+<li>使用<code>UNION</code>查询的结果只会出现一次，因为重复行自动从查询结果中移除</li>
+<li>使用<code>UNION</code>可以在不同的表里结合查询结果</li>
+</ol>
+<h2 id="INSERT-…-ON-DUPLICATE-KEY-UPDATE"><a href="#INSERT-…-ON-DUPLICATE-KEY-UPDATE" class="headerlink" title="INSERT … ON DUPLICATE KEY UPDATE"></a>INSERT … ON DUPLICATE KEY UPDATE</h2><blockquote>
+<p>首先执行<code>INSERT</code>，如果因为带<code>PRIMARY KEY或UNIQUE KEY</code>索引的重复值而失败，就去执行<code>UPDATE</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> products <span class="keyword">SET</span> <span class="keyword">name</span> = ‘breadmaker’, stock = <span class="number">1</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> stock = stock + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="REPLACE-INTO"><a href="#REPLACE-INTO" class="headerlink" title="REPLACE INTO"></a>REPLACE INTO</h2><blockquote>
+<p>如果一个重复行被发现，先删除然后再执行<code>INSERT</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REPLACE</span> <span class="keyword">INTO</span> products <span class="keyword">SET</span> <span class="keyword">name</span> = ‘breadmaker’, stock = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="INSERT-IGNORE"><a href="#INSERT-IGNORE" class="headerlink" title="INSERT IGNORE"></a>INSERT IGNORE</h2><blockquote>
+<p>禁止重复错误的一种方式，通常<u><font color="red">用来阻止应用破坏</font></u>。有时企图添加一个新行，万一有重复行，让该操作直接失败，没有任何抱怨</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">IGNORE</span> <span class="keyword">INTO</span> products <span class="keyword">SET</span> <span class="keyword">name</span> = ‘breadmaker’, stock = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Date-Types"><a href="#Date-Types" class="headerlink" title="Date Types"></a>Date Types</h1><blockquote>
+<p><u><font color="red">每个表列需要有一个数据类型</font></u></p>
+</blockquote>
+<h2 id="Integer-Data-Types"><a href="#Integer-Data-Types" class="headerlink" title="Integer Data Types"></a>Integer Data Types</h2><blockquote>
+<p>整数列只能<u><font color="red">存放自然数（没有小数点）</font></u>，默认可以是正负数，如果指定了<code>UNSIGNED</code>，则只能存放整数</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>4</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Non-Integer-Numeric-Data-Types"><a href="#Non-Integer-Numeric-Data-Types" class="headerlink" title="Non-Integer Numeric Data Types"></a>Non-Integer Numeric Data Types</h2><blockquote>
+<p>这些数据类型可以<u><font color="red">存放小数</font></u>，如<code>FLOAT</code>、<code>DOUBLE</code>和<code>DECIMAL</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font color="red">FLOAT</font></td>
+<td>4字节</td>
+</tr>
+<tr>
+<td><font color="red">DOUBLE</font></td>
+<td>8字节，有更好的进度</td>
+</tr>
+<tr>
+<td><font color="red">DECIMAL(M, N)</font></td>
+<td>有基于精度级别的大小，<code>M</code>是数字的最大位数，<code>N</code>是小数点右边的位数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="String-Data-Types"><a href="#String-Data-Types" class="headerlink" title="String Data Types"></a>String Data Types</h2><blockquote>
+<p>这些数据类型可以<u><font color="red">存放字符串</font></u></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font color="red">CHAR(N)</font></td>
+<td>存放N个字符，有一个固定的大小，最多存放255个字符</td>
+</tr>
+<tr>
+<td><font color="red">VARCHAR(N)</font></td>
+<td>存放N个字符，但存储大小不固定，N只是用于最大大小，最多存放65535个字符</td>
+</tr>
+<tr>
+<td><font color="red">TEXT</font></td>
+<td>适合于长字符串，有65535个字符的限制</td>
+</tr>
+<tr>
+<td><font color="red">MEDIUMTEXT</font></td>
+<td>1670W个字符限制</td>
+</tr>
+<tr>
+<td><font color="red">LONGTEXT</font></td>
+<td>43亿个字符限制</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Date-Types-1"><a href="#Date-Types-1" class="headerlink" title="Date Types"></a>Date Types</h2><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font color="red">DATE</font></td>
+<td>存放日期，以<code>YYYY-MM-DD</code>的格式显示，不包含时间信息；范围从<code>1001-01-01</code>到<code>9999-12-31</code></td>
+</tr>
+<tr>
+<td><font color="red">DATETIME </font></td>
+<td>包含日期和时间，以<code>YYYY-MM-DD HH:MM:SS</code>的格式显示；范围从<code>1001-01-01 00:00:00</code>到<code>9999-12-31 23:59:59</code>；占8个字节</td>
+</tr>
+<tr>
+<td><font color="red">TIMESTAMP</font></td>
+<td>占4个字节；范围从<code>1970-01-01 00:00:01</code>到<code>2038-01-19 03:14:07</code></td>
+</tr>
+</tbody>
+</table>
+<div id="footnotes"><hr><div id="footnotelist"><ol><li id="fn:1"><a href="http://code.tutsplus.com/tutorials/sql-for-beginners-part-2--net-8274" target="_blank" rel="external"><strong>SQL for Beginners Part 2</strong></a><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/09/初学者快速使用SQL(一)/" rel="next" title="初学者快速使用SQL(一)">
+                <i class="fa fa-chevron-left"></i> 初学者快速使用SQL(一)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/10/初学者快速使用SQL(三)/" rel="prev" title="初学者快速使用SQL(三)">
+                初学者快速使用SQL(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/10/初学者快速使用SQL(二)/"
+           data-title="初学者快速使用SQL(二)" data-url="http://yoursite.com/2016/08/10/初学者快速使用SQL(二)/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/my_avatar.jpg"
+               alt="Jeff" />
+          <p class="site-author-name" itemprop="name">Jeff</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-Indexes"><span class="nav-number">2.</span> <span class="nav-text">Database Indexes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PRIMARY-KEY"><span class="nav-number">2.1.</span> <span class="nav-text">PRIMARY KEY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNIQUE"><span class="nav-number">2.2.</span> <span class="nav-text">UNIQUE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INDEX"><span class="nav-number">2.3.</span> <span class="nav-text">INDEX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-About-Performance"><span class="nav-number">2.4.</span> <span class="nav-text">More About Performance</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Function"><span class="nav-number">3.</span> <span class="nav-text">Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">3.1.</span> <span class="nav-text">GROUP BY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#COUNT"><span class="nav-number">3.2.</span> <span class="nav-text">COUNT(*)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grouping-Everything"><span class="nav-number">3.3.</span> <span class="nav-text">Grouping Everything</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIN-MAX-and-AVG"><span class="nav-number">3.4.</span> <span class="nav-text">MIN(), MAX() and AVG()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-CONCAT"><span class="nav-number">3.5.</span> <span class="nav-text">GROUP_CONCAT()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUM"><span class="nav-number">3.6.</span> <span class="nav-text">SUM()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Control-Flow"><span class="nav-number">4.</span> <span class="nav-text">Control Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IF"><span class="nav-number">4.1.</span> <span class="nav-text">IF()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CASE"><span class="nav-number">4.2.</span> <span class="nav-text">CASE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other"><span class="nav-number">5.</span> <span class="nav-text">Other</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Having"><span class="nav-number">5.1.</span> <span class="nav-text">Having</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subqueries"><span class="nav-number">5.2.</span> <span class="nav-text">Subqueries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IN"><span class="nav-number">5.3.</span> <span class="nav-text">IN()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNION"><span class="nav-number">5.4.</span> <span class="nav-text">UNION</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INSERT-…-ON-DUPLICATE-KEY-UPDATE"><span class="nav-number">5.5.</span> <span class="nav-text">INSERT … ON DUPLICATE KEY UPDATE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REPLACE-INTO"><span class="nav-number">5.6.</span> <span class="nav-text">REPLACE INTO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INSERT-IGNORE"><span class="nav-number">5.7.</span> <span class="nav-text">INSERT IGNORE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Date-Types"><span class="nav-number">6.</span> <span class="nav-text">Date Types</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer-Data-Types"><span class="nav-number">6.1.</span> <span class="nav-text">Integer Data Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Integer-Numeric-Data-Types"><span class="nav-number">6.2.</span> <span class="nav-text">Non-Integer Numeric Data Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Data-Types"><span class="nav-number">6.3.</span> <span class="nav-text">String Data Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-Types-1"><span class="nav-number">6.4.</span> <span class="nav-text">Date Types</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"duslee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

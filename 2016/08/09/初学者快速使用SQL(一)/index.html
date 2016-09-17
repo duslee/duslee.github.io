@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,SQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概述
+SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。
+
+PS：译自SQL for Beginners1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学者快速使用SQL(一)">
+<meta property="og:url" content="http://yoursite.com/2016/08/09/初学者快速使用SQL(一)/index.html">
+<meta property="og:site_name" content="Jeff's Blog">
+<meta property="og:description" content="概述
+SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。
+
+PS：译自SQL for Beginners1">
+<meta property="og:updated_time" content="2016-08-10T09:36:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学者快速使用SQL(一)">
+<meta name="twitter:description" content="概述
+SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。
+
+PS：译自SQL for Beginners1">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 初学者快速使用SQL(一) | Jeff's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jeff's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'zS2MTrod2Emy9CFwkkhx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                初学者快速使用SQL(一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-09T19:42:50+08:00" content="2016-08-09">
+              2016-08-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/translation/" itemprop="url" rel="index">
+                    <span itemprop="name">translation</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/translation/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/09/初学者快速使用SQL(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/初学者快速使用SQL(一)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p><code>SQL</code>，<strong>Structured Query Language</strong>，被设计用于关系型数据库管理系统（<code>RDBMS</code>，<strong>relational database management systems</strong>）的一种语言。</p>
+</blockquote>
+<p><strong>PS</strong>：译自<strong><code>SQL for Beginners</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+<a id="more"></a>
+<hr>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="DATABASE"><a href="#DATABASE" class="headerlink" title="DATABASE"></a>DATABASE</h2><h3 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h3><blockquote>
+<p><u><font color="red">创建一个数据库</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> my_first_db;</span><br></pre></td></tr></table></figure>
+<h3 id="SHOW-DATABASES"><a href="#SHOW-DATABASES" class="headerlink" title="SHOW DATABASES"></a>SHOW DATABASES</h3><blockquote>
+<p><u><font color="red">获取所有的数据库列表</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="DROP-DATABASE"><a href="#DROP-DATABASE" class="headerlink" title="DROP DATABASE"></a>DROP DATABASE</h3><blockquote>
+<p><u><font color="red">删除一个存在的数据库</font></u>，在输入此命令后会直接删除，不会提示</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> my_first_db;</span><br></pre></td></tr></table></figure>
+<h3 id="USE"><a href="#USE" class="headerlink" title="USE"></a>USE</h3><blockquote>
+<p><u><font color="red">选择一个数据库</font></u>，不需要在查询语句后加上<code>;</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> my_first_db</span><br></pre></td></tr></table></figure>
+<h2 id="Database-Table"><a href="#Database-Table" class="headerlink" title="Database Table"></a>Database Table</h2><blockquote>
+<p>数据库表可以<u><font color="red">存放结构化数据</font></u>，也可对数据进行<u><font color="red">增加</font></u>、<u><font color="red">读取</font></u>、<u><font color="red">更新</font></u>和<u><font color="red">删除</font></u>操作</p>
+</blockquote>
+<h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><blockquote>
+<p><u><font color="red">创建数据库表</font></u>，可以使用多行和缩进来完成创建</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span> &#123;</span><br><span class="line">  username <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  create_date <span class="built_in">DATE</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>PRIMARY KEY</strong>：用于区分表里的每一行数据</li>
+<li><p><strong>AUTO_INCREMENT</strong>：每次添加新行时自动增加一个新的ID数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span> &#123;</span><br><span class="line">  user_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  username <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">  create_date <span class="built_in">DATE</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>SHOW TABLES</strong>：显示当前数据库里的所有表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>EXPLAIN</strong>：查看一个存在的数据库表的结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>DROP TABLE</strong>：删除一个数据库表，没有任何提示</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ALTER TABLE</strong>：修改一个数据库表的结构</p>
+<ul>
+<li><p><strong>Add a column</strong>：添加一列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">users</span></span><br><span class="line">  <span class="keyword">ADD</span> email <span class="built_in">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">  <span class="keyword">AFTER</span> username;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Remove a column</strong>：移除一列，没有任何提示</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">users</span> <span class="keyword">DROP</span> email;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Modify a column</strong>：修改一列，即修改该列的属性</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">users</span></span><br><span class="line">  <span class="keyword">CHANGE</span> username</span><br><span class="line">  user_name <span class="built_in">VARCHAR</span>(<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><blockquote>
+<p><u><font color="red">添加一些数据到数据库表里</font></u></p>
+</blockquote>
+<ol>
+<li><p><strong>VALUES</strong>：存放属性值的列表，使用<code>,</code>隔开；注意主键值为<code>NULL</code>的情况，该值可以自动生成，因为该列设置为<code>AUTO_INCREMENT</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">VALUES</span> (</span><br><span class="line">  <span class="literal">NULL</span>,</span><br><span class="line">  ‘johndoe’,</span><br><span class="line">  ‘john@doe.com’,</span><br><span class="line">  ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-14</span>’</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Alternate Syntax</strong>：使用<code>SET</code>关键字代替<code>VALUES</code>；注意一列可以被忽略，并且每列必须通过列名被引用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">SET</span></span><br><span class="line">  user_name = ‘nettuts’,</span><br><span class="line">  email = ‘nettuts@gmail.com’,</span><br><span class="line">  create_date = ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-15</span>’</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Alternate Syntax 2</strong>：每一列通过列名被引用，可以指定任意的顺序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> (email, user_name, created_date)</span><br><span class="line">  <span class="keyword">VALUES</span> (‘foo@bar.com’, ‘foobar’, ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-16</span>’);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>LAST_INSERT_ID()</strong>：获取当前会话里被插入最后一行的<code>ID</code>值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LAST_INSERT_ID</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>NOW()</strong>：返回当前的日期</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">SET</span></span><br><span class="line">  create_date = <span class="keyword">NOW</span>(),</span><br><span class="line">  user_name = ‘batman’,</span><br><span class="line">  email = ‘bat@man.com’;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><blockquote>
+<p><u><font color="red">从一个数据库表里读取数据</font></u></p>
+</blockquote>
+<ol>
+<li><p><strong>Asterisk(*)</strong>：从数据库表里获取所有列的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>WHERE</strong>：筛选出符合条件的某些行数据，如<code>=</code>、<code>&gt;=</code>、<code>&lt;=</code>等条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> email <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_name = ‘nettuts’;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>AND and OR</strong>：组合筛选的条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span></span><br><span class="line">  user_id = <span class="number">1</span> <span class="keyword">OR</span> user_name = ‘nettuts’;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>IN()</strong>：用于匹配多个值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span></span><br><span class="line">  create_date <span class="keyword">IN</span> (‘<span class="number">2009</span><span class="number">-12</span><span class="number">-15</span>’, ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-16</span>’);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>LIKE</strong>：通配符（<code>%</code>标记）查找</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span></span><br><span class="line">  email <span class="keyword">LIKE</span> ‘%tuts%’;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ORDER BY</strong>：获取指定顺序的结果，如增序（<code>ASC</code>）、降序（<code>DESC</code>）等</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span></span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> create_date;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>LIMIT … OFFSET …</strong>：限制返回结果的数目，如<code>LIMIT 2</code>表示获取前两条结果，<code>LIMIT 1 OFFSET 2</code>表示在前两条结果后获取一条结果，<code>LIMIT2, 1</code>表示在前一条结果后获取两条结果</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">LIMIT</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">LIMIT</span> <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">LIMIT</span> <span class="number">2</span>, <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><blockquote>
+<p><u><font color="red">更新数据库表里的数据</font></u>，可以结合<code>WHERE</code>和<code>LIMIT</code>语句</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">users</span> <span class="keyword">SET</span></span><br><span class="line">  email = ‘<span class="keyword">changed</span>@gmail.cm’,</span><br><span class="line">  user_name = ‘barfoo’,</span><br><span class="line">  <span class="keyword">WHERE</span> user_name = ‘foobar’;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">users</span> <span class="keyword">SET</span> create_date = ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-01</span>’</span><br><span class="line">  <span class="keyword">WHERE</span> create_date = ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-14</span>’ <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><blockquote>
+<p><u><font color="red">结合<code>WHERE</code>语句来删除数据库表里的数据</font></u></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_name = ‘batman’;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><u><font color="red">通常使用TRUNCATE更有效</font></u>，可以重置<code>AUTO_INCREMENT</code>数，即一个新行的<code>ID</code>值为1，而<code>DELETE</code>会继续计数</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="转移字符和特殊单词"><a href="#转移字符和特殊单词" class="headerlink" title="转移字符和特殊单词"></a>转移字符和特殊单词</h1><h2 id="转义字符串"><a href="#转义字符串" class="headerlink" title="转义字符串"></a>转义字符串</h2><blockquote>
+<p>某些字符需要被转义，可以使用<code>\</code>来实现</p>
+</blockquote>
+<h2 id="特殊单词"><a href="#特殊单词" class="headerlink" title="特殊单词"></a>特殊单词</h2><blockquote>
+<p>因MySQL有很多如<code>SELECT</code>或<code>UPDATE</code>等特殊单词，可以通过<code>` </code>来避免冲突</p>
+</blockquote>
+<div id="footnotes"><hr><div id="footnotelist"><ol><li id="fn:1"><a href="http://code.tutsplus.com/tutorials/sql-for-beginners--net-8200" target="_blank" rel="external"><strong>SQL for Beginners</strong></a><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/31/greenDAO使用总结/" rel="next" title="greenDAO使用总结">
+                <i class="fa fa-chevron-left"></i> greenDAO使用总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/10/初学者快速使用SQL(二)/" rel="prev" title="初学者快速使用SQL(二)">
+                初学者快速使用SQL(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/09/初学者快速使用SQL(一)/"
+           data-title="初学者快速使用SQL(一)" data-url="http://yoursite.com/2016/08/09/初学者快速使用SQL(一)/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/my_avatar.jpg"
+               alt="Jeff" />
+          <p class="site-author-name" itemprop="name">Jeff</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DATABASE"><span class="nav-number">2.1.</span> <span class="nav-text">DATABASE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-DATABASE"><span class="nav-number">2.1.1.</span> <span class="nav-text">CREATE DATABASE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHOW-DATABASES"><span class="nav-number">2.1.2.</span> <span class="nav-text">SHOW DATABASES</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DROP-DATABASE"><span class="nav-number">2.1.3.</span> <span class="nav-text">DROP DATABASE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USE"><span class="nav-number">2.1.4.</span> <span class="nav-text">USE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Table"><span class="nav-number">2.2.</span> <span class="nav-text">Database Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-TABLE"><span class="nav-number">2.2.1.</span> <span class="nav-text">CREATE TABLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT"><span class="nav-number">2.2.2.</span> <span class="nav-text">INSERT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT"><span class="nav-number">2.2.3.</span> <span class="nav-text">SELECT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UPDATE"><span class="nav-number">2.2.4.</span> <span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DELETE"><span class="nav-number">2.2.5.</span> <span class="nav-text">DELETE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转移字符和特殊单词"><span class="nav-number">3.</span> <span class="nav-text">转移字符和特殊单词</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转义字符串"><span class="nav-number">3.1.</span> <span class="nav-text">转义字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊单词"><span class="nav-number">3.2.</span> <span class="nav-text">特殊单词</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"duslee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
