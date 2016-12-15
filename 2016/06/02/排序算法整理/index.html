@@ -110,17 +110,17 @@
 <meta property="og:site_name" content="Jeff's Blog">
 <meta property="og:description" content="概况
 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
-<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-0.png">
-<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-1.png">
-<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-2.png">
-<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-3.png">
-<meta property="og:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-4.png">
-<meta property="og:updated_time" content="2016-07-30T15:41:59.000Z">
+<meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-0.png">
+<meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-1.png">
+<meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-2.png">
+<meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-3.png">
+<meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-4.png">
+<meta property="og:updated_time" content="2016-12-15T15:12:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法整理">
 <meta name="twitter:description" content="概况
 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
-<meta name="twitter:image" content="http://yoursite.com/diagrams/排序算法整理-diagram-0.png">
+<meta name="twitter:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-0.png">
 
 
 
@@ -398,7 +398,7 @@
 <li><strong>计数器数组</strong>：采用计数的方式统计重复数据的个数，并存放在新数组的该数值指数处</li>
 </ul>
 </li>
-<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-0.png" alt=""></p>
+<li><p><strong>实现逻辑</strong><br><img src="/images/sorting/排序算法整理-diagram-0.png" alt=""></p>
 </li>
 <li><strong>时间复杂度</strong>：<code>O(n^2)</code></li>
 </ol>
@@ -406,7 +406,7 @@
 <li><p><strong>工作流程</strong></p>
 <p> 通过<u><font color="red">将数组中的每个元素与它相邻的元素的值进行比较</font></u>，如果不符合<strong>要求</strong><sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，交换这两个元素所在位置的值，直到所有的数组元素都不能再实现交换为止。换句话说，数组中最大的元素冒出到了数组的顶端。</p>
 </li>
-<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-1.png" alt=""></p>
+<li><p><strong>实现逻辑</strong><br><img src="/images/sorting/排序算法整理-diagram-1.png" alt=""></p>
 </li>
 <li><p><strong>代码</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = ar.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">     <span class="comment">// loop2</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">       <span class="comment">// compare</span></span><br><span class="line">       <span class="keyword">if</span> (ar[j-<span class="number">1</span>] &gt; ar[j]) &#123;</span><br><span class="line">         <span class="comment">// swap</span></span><br><span class="line">         <span class="keyword">int</span> temp = ar[j-<span class="number">1</span>];</span><br><span class="line">         ar[j-<span class="number">1</span>] = ar[j];</span><br><span class="line">         ar[j] = temp;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -418,7 +418,7 @@
 <li><p><strong>工作流程</strong></p>
 <p> <u><font color="red">选择数组中最小的未排序的条目，并移到数组的适合位置</font></u>。<br> 遍历整个数组查找最小的元素，一旦找到，将之与数组的第一个元素交换。然后在去掉第一个元素后的数组里继续遍历查找最小的元素，以此下去。</p>
 </li>
-<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-2.png" alt=""></p>
+<li><p><strong>实现逻辑</strong><br><img src="/images/sorting/排序算法整理-diagram-2.png" alt=""></p>
 </li>
 <li><p><strong>代码</strong></p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ar.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> min = i;</span><br><span class="line">    <span class="comment">// loop2</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;ar.length; j++) &#123;</span><br><span class="line">      <span class="comment">// compare</span></span><br><span class="line">      <span class="keyword">if</span> (ar[j] &lt; ar[min])</span><br><span class="line">        min = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// swap</span></span><br><span class="line">    <span class="keyword">int</span> temp = ar[i];</span><br><span class="line">    ar[i] = ar[min];</span><br><span class="line">    ar[min] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -430,7 +430,7 @@
 <li><p><strong>工作流程</strong></p>
 <p> <u><font color="red">每次一个条目存放进有序的数组里，直到所有的条目都已排序</font></u>。</p>
 </li>
-<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-3.png" alt=""></p>
+<li><p><strong>实现逻辑</strong><br><img src="/images/sorting/排序算法整理-diagram-3.png" alt=""></p>
 </li>
 <li><p><strong>代码</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; ar.length; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> index = ar[i];</span><br><span class="line">    <span class="keyword">int</span> j = i;</span><br><span class="line">    <span class="comment">// loop2 &amp; compare</span></span><br><span class="line">    <span class="keyword">while</span>(j &gt; <span class="number">0</span> &amp;&amp; ar[j-<span class="number">1</span>] &gt; index) &#123;</span><br><span class="line">      <span class="comment">// swap</span></span><br><span class="line">      ar[j] = ar[j-<span class="number">1</span>];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    ar[j] = index;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -447,7 +447,7 @@
 <li>把每个排序好的子数组合并为一个数组<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup></li>
 </ul>
 </li>
-<li><p><strong>实现逻辑</strong><br><img src="/diagrams/排序算法整理-diagram-4.png" alt=""></p>
+<li><p><strong>实现逻辑</strong><br><img src="/images/sorting/排序算法整理-diagram-4.png" alt=""></p>
 </li>
 <li><strong>时间复杂度</strong>：<code>O(n log n)</code></li>
 </ol>
@@ -565,7 +565,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -573,7 +573,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -582,7 +582,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
