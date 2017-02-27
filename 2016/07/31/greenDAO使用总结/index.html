@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Jeff's Blog">
 <meta property="og:description" content="概况
 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
-<meta property="og:updated_time" content="2016-07-31T01:38:11.000Z">
+<meta property="og:updated_time" content="2017-02-27T13:50:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="greenDAO使用总结">
 <meta name="twitter:description" content="概况
@@ -386,7 +386,6 @@
 <p>此文档主要描述<code>greenDAO 3</code>的相关概念及使用，包括<u><font color="red">项目中的配置、数据操作（增删改查）</font></u>等。</p>
 </blockquote>
 <a id="more"></a>
-<hr>
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="与greenDAO-2的区别"><a href="#与greenDAO-2的区别" class="headerlink" title="与greenDAO 2的区别"></a>与greenDAO 2的区别</h2><blockquote>
 <p><code>greenDAO 2</code>（之前的版本）需要开发者在工程中另建一个独立的<code>Java生成器</code>项目（需要使用到<code>“greendao-generator”</code>依赖，来自动生成greenDAO需用的代码），然而<code>greenDAO 3</code>只需使用<code>注解</code>定义实体类，然后通过<code>gradle插件</code>就可以生成代码</p>
 </blockquote>
@@ -412,7 +411,6 @@
 <h3 id="Gradle插件实现步骤"><a href="#Gradle插件实现步骤" class="headerlink" title="Gradle插件实现步骤"></a>Gradle插件实现步骤</h3><blockquote>
 <p>每次在<code>make</code>工程时，Gradle插件会扫描工程中所有的<code>@Entity</code>文件（greenDAO用到的数据库实体类），并根据实体类生成<code>DaoMaster</code>、<code>DaoSession</code>以及所有实体类的<code>DAO类</code>，生成的文件默认目录为<code>build/generated/source/greendao</code></p>
 </blockquote>
-<hr>
 <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="Entity"><a href="#Entity" class="headerlink" title="@Entity"></a>@Entity</h2><blockquote>
 <p><code>@Entity</code>注解<u><font color="red">标记一个Java类为持久的实体</font></u>，可以配置如下参数</p>
 </blockquote>
@@ -449,7 +447,6 @@
 <h2 id="Generated"><a href="#Generated" class="headerlink" title="@Generated"></a>@Generated</h2><blockquote>
 <p>在greenDAO 3中Entity类由开发者创建和编辑，在代码生成过程中，greenDAO会增加实体的源码，同时会添加<code>@Generated</code>注解到生成的方法和域上来提示开发者，为了阻止任何代码的丢失。<u><font color="red">在大多数情况下，开发者不应该接触带有@Generated注解的代码</font></u>。作为预防措施，greenDAO不会重写存在的代码，如果生成的代码被手动修改了，greenDAO会报错。</p>
 </blockquote>
-<hr>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="编写Entity类"><a href="#编写Entity类" class="headerlink" title="编写Entity类"></a>编写Entity类</h2><blockquote>
 <p><strong>App.java</strong></p>
 </blockquote>
@@ -472,14 +469,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DaoMaster.DevOpenHelper mHelper = <span class="keyword">new</span> DaoMaster.DevOpenHelper(context, DB_NAME);</span><br></pre></td></tr></table></figure>
 <h3 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertCityInfo</span><span class="params">(CityInfo info, List&lt;App&gt; appList, List&lt;Banner&gt; bannerList)</span> </span>&#123;</span><br><span class="line">  DaoSession daoSession = <span class="keyword">new</span> DaoMaster(getWritableDatabase()).newSession();</span><br><span class="line">  <span class="keyword">long</span> infoId = daoSession.insert(info);</span><br><span class="line">  JoinCityToApp joinCityToApp = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">for</span> (App app : appList) &#123;</span><br><span class="line">    <span class="keyword">long</span> appId = daoSession.insert(app);</span><br><span class="line">    joinCityToApp = <span class="keyword">new</span> JoinCityToApp(<span class="keyword">null</span>, infoId, appId);</span><br><span class="line">    daoSession.insert(joinCityToApp);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  JoinCityToBanner joinCityToBanner = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">for</span> (Banner banner : bannerList) &#123;</span><br><span class="line">    <span class="keyword">long</span> bannerId = daoSession.insert(banner);</span><br><span class="line">    daoSession.insert(banner);</span><br><span class="line">    joinCityToBanner = <span class="keyword">new</span> JoinCityToBanner(<span class="keyword">null</span>, infoId, bannerId);</span><br><span class="line">    daoSession.insert(joinCityToBanner);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;App&gt; <span class="title">queryAppList</span><span class="params">(String code)</span> </span>&#123;</span><br><span class="line">  List&lt;App&gt; list = <span class="keyword">null</span>;</span><br><span class="line">  DaoSession daoSession = <span class="keyword">new</span> DaoMaster(getWritableDatabase()).newSession();</span><br><span class="line">  Query query = daoSession.getCityInfoDao().queryBuilder()</span><br><span class="line">      .where(CityInfoDao.Properties.Code.eq(code))</span><br><span class="line">      .build();</span><br><span class="line"></span><br><span class="line">  List&lt;CityInfo&gt; infoList = query.list();</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">null</span> != infoList &amp;&amp; infoList.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (CityInfo info : infoList) &#123;</span><br><span class="line">      list.addAll(info.getAppList());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
 <li><a href="http://greenrobot.org/greendao/documentation/updating-to-greendao-3-and-annotations/" target="_blank" rel="external"><strong>Updating to greenDAO 3 and annotations</strong></a></li>
 <li><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external"><strong>greenrobot/greenDAO</strong></a></li>
 <li><a href="http://blog.csdn.net/njweiyukun/article/details/51893092" target="_blank" rel="external"><strong>【greenDAO 3】项目搭建与增删该查操作</strong></a></li>
 <li><a href="http://greenrobot.org/greendao/features/" target="_blank" rel="external"><strong>greenDAO Features</strong></a></li>
 </ol>
-<hr>
 
       
     </div>
@@ -596,7 +591,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -604,7 +599,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -613,7 +608,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -661,7 +656,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

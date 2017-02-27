@@ -114,7 +114,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 本文主要介绍表的关系及相关查询操作
 
 P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
-<meta property="og:updated_time" content="2016-12-02T01:36:49.000Z">
+<meta property="og:updated_time" content="2017-02-27T13:49:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初学者快速使用SQL(三)">
 <meta name="twitter:description" content="概述
@@ -393,7 +393,6 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 </blockquote>
 <p><strong>P.S.</strong>：译自<strong><code>SQL for Beginners: Part 3 – Database Relationships</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
 <a id="more"></a>
-<hr>
 <h1 id="Database-Relationships"><a href="#Database-Relationships" class="headerlink" title="Database Relationships"></a>Database Relationships</h1><h2 id="One-to-One-Relationships"><a href="#One-to-One-Relationships" class="headerlink" title="One to One Relationships"></a>One to One Relationships</h2><blockquote>
 <p>一对一意味着两个表之间的关联只存在于从表A的任意一行至多在表B中拥有一行，其中应用到了FOREIGN KEY，用于关联从表</p>
 </blockquote>
@@ -409,7 +408,6 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 <h2 id="Self-Referencing-Relationships"><a href="#Self-Referencing-Relationships" class="headerlink" title="Self Referencing Relationships"></a>Self Referencing Relationships</h2><blockquote>
 <p>用于一个表需要有自身的关联，类似于一对多关联</p>
 </blockquote>
-<hr>
 <h1 id="FOREIGN-KEY"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h1><h2 id="显示定义外键"><a href="#显示定义外键" class="headerlink" title="显示定义外键"></a>显示定义外键</h2><blockquote>
 <p>使用到FOREIGN KEY关键字，两个关联表的对应列必须是同一数据类型</p>
 </blockquote>
@@ -419,7 +417,6 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 <p>没有使用到外键（FOREIGN KEY）定义两个表之间的关联，但数据库仍然会将该列作为外键</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  customer_id <span class="built_in">INT</span>,</span><br><span class="line">  amount <span class="keyword">DOUBLE</span>,</span><br><span class="line">  <span class="keyword">INDEX</span> (customer_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<hr>
 <h1 id="JOIN-Queries"><a href="#JOIN-Queries" class="headerlink" title="JOIN Queries"></a>JOIN Queries</h1><blockquote>
 <p>为了从关联表里获取到数据，需要使用到JOIN查询</p>
 </blockquote>
@@ -457,7 +454,6 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers RIGHTOUTER <span class="keyword">JOIN</span> orders</span><br><span class="line"><span class="keyword">USING</span> (customer_id);</span><br></pre></td></tr></table></figure>
 <p>Note：可以调换两个表的顺序，达到与LEFT OUTER JOIN一样的查询结果</p>
-<hr>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
 <li><a href="https://howtoprogramwithjava.com/database-relationships-many-many-one-one/" target="_blank" rel="external"><strong>Database Relationships – Many to Many / One to One</strong></a></li>
 <li><a href="https://howtoprogramwithjava.com/database-relationships-one-to-many/" target="_blank" rel="external"><strong>Database Relationships – One to Many</strong></a></li>
@@ -576,7 +572,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -584,7 +580,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -593,7 +589,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -641,7 +637,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

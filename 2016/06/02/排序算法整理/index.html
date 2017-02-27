@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-2.png">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-3.png">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-4.png">
-<meta property="og:updated_time" content="2016-12-15T15:12:42.000Z">
+<meta property="og:updated_time" content="2017-02-27T07:29:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法整理">
 <meta name="twitter:description" content="概况
@@ -380,13 +380,11 @@
 <p>本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等</p>
 </blockquote>
 <a id="more"></a>
-<hr>
 <h1 id="排序算法概述"><a href="#排序算法概述" class="headerlink" title="排序算法概述"></a>排序算法概述</h1><ul>
 <li><strong>排序算法</strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>是把列表的元素<u><font color="red">以某个顺序存放的算法</font></u>，最常用的顺序是<u><font color="red">数字排序</font></u>和<u><font color="red">字典顺序</font></u>。有效的排序对于其它如查找和合并算法（需要输入的数据在有序的列表里）的优化使用很重要，也常常在规范化数据和生产可读输出上很有用。</li>
 <li><strong>内部排序</strong><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>：如果对象的数目足够少，可以填入到主存中，这种排序称之为内部排序</li>
 <li><strong>外部排序</strong>：如果对象的数目足够多，以至于排序时部分对象要填入到外村中这种排序称之为外部排序</li>
 </ul>
-<hr>
 <h1 id="常见排序算法"><a href="#常见排序算法" class="headerlink" title="常见排序算法"></a>常见排序算法</h1><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><ol>
 <li><p><strong>桶排序的工作流程</strong></p>
 <p>先处理数组中的重复数据（<u><font color="red">有相同值的元素</font></u>），然后获取数组中最大值的元素，并创建元素个数为该值的数组，接着将原数组中的每个元素依次放入新数组的指定位置（<u><font color="red">元素值等于指数值</font></u>）处，最后从新数组中按顺序取出元素排序</p>
@@ -409,7 +407,7 @@
 <li><p><strong>实现逻辑</strong><br><img src="/images/sorting/排序算法整理-diagram-1.png" alt=""></p>
 </li>
 <li><p><strong>代码</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// loop1</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = ar.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">     <span class="comment">// loop2</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">       <span class="comment">// compare</span></span><br><span class="line">       <span class="keyword">if</span> (ar[j-<span class="number">1</span>] &gt; ar[j]) &#123;</span><br><span class="line">         <span class="comment">// swap</span></span><br><span class="line">         <span class="keyword">int</span> temp = ar[j-<span class="number">1</span>];</span><br><span class="line">         ar[j-<span class="number">1</span>] = ar[j];</span><br><span class="line">         ar[j] = temp;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] ar)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// loop1</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = ar.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">       <span class="comment">// loop2</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">         <span class="comment">// compare</span></span><br><span class="line">         <span class="keyword">if</span> (ar[j-<span class="number">1</span>] &gt; ar[j]) &#123;</span><br><span class="line">           <span class="comment">// swap</span></span><br><span class="line">           <span class="keyword">int</span> temp = ar[j-<span class="number">1</span>];</span><br><span class="line">           ar[j-<span class="number">1</span>] = ar[j];</span><br><span class="line">           ar[j] = temp;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>时间复杂度</strong>：<code>[O(n), O(n^2)]</code></p>
 </li>
@@ -565,7 +563,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -573,7 +571,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -582,7 +580,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -630,7 +628,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

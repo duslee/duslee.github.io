@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Jeff's Blog">
 <meta property="og:description" content="概况
 本文主要介绍Java中同步的概念、类型、使用等相关内容。">
-<meta property="og:updated_time" content="2016-07-30T15:37:42.000Z">
+<meta property="og:updated_time" content="2017-02-27T13:51:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java同步">
 <meta name="twitter:description" content="概况
@@ -386,7 +386,6 @@
 <p>本文主要介绍Java中同步的概念、类型、使用等相关内容。</p>
 </blockquote>
 <a id="more"></a>
-<hr>
 <h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="Java同步"><a href="#Java同步" class="headerlink" title="Java同步"></a>Java同步</h2><ul>
 <li><strong>Java同步</strong>是<u><font color="red">控制多线程访问任意共享资源的能力</font></u></li>
 <li>在想要<u><font color="red">允许唯一一个线程访问共享资源</font></u>时Java同步是一种更好的选择</li>
@@ -408,7 +407,6 @@
 <li><u><font color="red">每个对象有一个与之关联的锁</font></u></li>
 <li>按照惯例，一个需要<u><font color="red">持续访问一个对象的域</font></u>的线程不得不<u><font color="red">在访问之前获取对象的锁，当完成访问后释放该锁</font></u></li>
 </ul>
-<hr>
 <h1 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h1><blockquote>
 <p>互斥锁<u><font color="red">帮助在共享数据时阻止线程相互干涉</font></u></p>
 </blockquote>
@@ -424,12 +422,10 @@
 <li>如果<u><font color="red">让任意的静态方法同步</font></u>，这个锁会<u><font color="red">在类上而不是对象上</font></u></li>
 <li>也可以<u><font color="red">在同步块上使用类锁</font></u></li>
 </ul>
-<hr>
 <h1 id="Java死锁"><a href="#Java死锁" class="headerlink" title="Java死锁"></a>Java死锁</h1><ul>
 <li><strong>Java死锁</strong>是<u><font color="red">多线程的一部分</font></u></li>
 <li><strong>死锁发生情况</strong>：<u><font color="red">一个对象等待被另一个线程获取的对象锁，并且另一个线程也在等待被第一个线程获取的对象锁</font></u>。因为<u><font color="red">两个线程都在等待对方释放对象锁</font></u>，这种情况称为死锁</li>
 </ul>
-<hr>
 <h1 id="Java线程间通信"><a href="#Java线程间通信" class="headerlink" title="Java线程间通信"></a>Java线程间通信</h1><ul>
 <li><strong>线程间通信</strong>或<strong>协作</strong>是关于<u><font color="red">允许同步线程相互通信</font></u></li>
 <li>协作（线程间通信）是<u><font color="red">一种机制</font></u>，即<u><font color="red">在关键部分运行着的线程被暂停，同时另一个线程在同一关键部分被允许进入或锁住</font></u></li>
@@ -487,7 +483,6 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h1 id="中断线程"><a href="#中断线程" class="headerlink" title="中断线程"></a>中断线程</h1><ul>
 <li>如果一个线程正在休眠或等待状态（sleep()或wait()方法被调用），在这个线程上调用<code>interrupt()</code>方法，会<u><font color="red">打破休眠或等待状态，抛出异常</font></u></li>
 <li>如果一个线程不在休眠或等待状态，调用<code>interrupt()</code>方法<u><font color="red">表现正常的行为，不中断线程</font></u>，但是设置中断标记为<code>true</code></li>
@@ -495,14 +490,11 @@
 <li><strong>public static boolean interrupted()</strong></li>
 <li><strong>public boolean isInterrupted()</strong>: 返回中断的标记（<code>true</code>或<code>false</code>）</li>
 </ul>
-<hr>
 <h1 id="重进入监视器"><a href="#重进入监视器" class="headerlink" title="重进入监视器"></a>重进入监视器</h1><ul>
 <li>如果一个方法可以<u><font color="red">从方法内部调用</font></u>，Java线程因不同的同步方法<u><font color="red">可重用同一监视器</font></u></li>
 <li><u><font color="red">终结了单线程死锁的可能性</font></u></li>
 </ul>
-<hr>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><p><a href="http://www.javatpoint.com/synchronization-in-java" target="_blank" rel="external"><strong>Synchronization in Java</strong></a></p>
-<hr>
 
       
     </div>
@@ -619,7 +611,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -627,7 +619,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -636,7 +628,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -684,7 +676,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

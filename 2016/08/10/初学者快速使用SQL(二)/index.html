@@ -114,7 +114,7 @@ P.S.：译自SQL for Beginners Part 21">
 本文主要介绍索引、数据类型和更多复杂的查询结构
 
 P.S.：译自SQL for Beginners Part 21">
-<meta property="og:updated_time" content="2016-12-02T01:36:56.000Z">
+<meta property="og:updated_time" content="2017-02-27T13:49:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初学者快速使用SQL(二)">
 <meta name="twitter:description" content="概述
@@ -393,7 +393,6 @@ P.S.：译自SQL for Beginners Part 21">
 </blockquote>
 <p><strong>P.S.</strong>：译自<strong><code>SQL for Beginners Part 2</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
 <a id="more"></a>
-<hr>
 <h1 id="Database-Indexes"><a href="#Database-Indexes" class="headerlink" title="Database Indexes"></a>Database Indexes</h1><blockquote>
 <p><code>Indexes</code>或<code>keys</code>主要用于<u><font color="red">提高表的数据获取速度</font></u>。对于指数化数据库的列的大多数原因如下：</p>
 </blockquote>
@@ -424,7 +423,6 @@ P.S.：译自SQL for Beginners Part 21">
 <h2 id="More-About-Performance"><a href="#More-About-Performance" class="headerlink" title="More About Performance"></a>More About Performance</h2><blockquote>
 <p>添加一个索引减少了<code>INSERT</code>和<code>UPDATE</code>查询的性能，因为每次新数据被添加到表里时，索引数据也自动更新，需要做额外的工作，而在<code>SELECT</code>查询的性能增益通常远大于此。</p>
 </blockquote>
-<hr>
 <h1 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h1><h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><blockquote>
 <p><code>GROUP BY</code>语句将获取到的数据行分组</p>
 </blockquote>
@@ -449,7 +447,6 @@ P.S.：译自SQL for Beginners Part 21">
 <p><u><font color="red">累加数字值</font></u></p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(population) <span class="keyword">AS</span> usa_population <span class="keyword">FROM</span> states;</span><br></pre></td></tr></table></figure>
-<hr>
 <h1 id="Control-Flow"><a href="#Control-Flow" class="headerlink" title="Control Flow"></a>Control Flow</h1><h2 id="IF"><a href="#IF" class="headerlink" title="IF()"></a>IF()</h2><blockquote>
 <p><u><font color="red">需要三个参数</font></u>，第一个参数是条件，如果条件为<code>true</code>，使用第二个参数，否则使用第三个参数</p>
 </blockquote>
@@ -458,7 +455,6 @@ P.S.：译自SQL for Beginners Part 21">
 <p>类似于<code>switch-case</code>语句</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*),</span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">  <span class="keyword">WHEN</span> population &gt; <span class="number">5000000</span> <span class="keyword">THEN</span> ‘<span class="keyword">big</span>’</span><br><span class="line">  <span class="keyword">WHEN</span> population &gt; <span class="number">1000000</span> <span class="keyword">THEN</span> ‘<span class="keyword">medium</span>’</span><br><span class="line">  <span class="keyword">ELSE</span> ‘small’ <span class="keyword">END</span></span><br><span class="line">  <span class="keyword">AS</span> state_size</span><br><span class="line"><span class="keyword">FROM</span> states <span class="keyword">GROUP</span> <span class="keyword">BY</span> state_size;</span><br></pre></td></tr></table></figure>
-<hr>
 <h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><h2 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h2><blockquote>
 <p><u><font color="red">允许应用条件到隐藏的域上</font></u>，如聚合函数返回的结果，通常和<code>GROUP BY</code>结合使用</p>
 </blockquote>
@@ -496,7 +492,6 @@ P.S.：译自SQL for Beginners Part 21">
 <p>禁止重复错误的一种方式，通常<u><font color="red">用来阻止应用破坏</font></u>。有时企图添加一个新行，万一有重复行，让该操作直接失败，没有任何抱怨</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">IGNORE</span> <span class="keyword">INTO</span> products <span class="keyword">SET</span> <span class="keyword">name</span> = ‘breadmaker’, stock = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<hr>
 <h1 id="Date-Types"><a href="#Date-Types" class="headerlink" title="Date Types"></a>Date Types</h1><blockquote>
 <p><u><font color="red">每个表列需要有一个数据类型</font></u></p>
 </blockquote>
@@ -727,7 +722,7 @@ P.S.：译自SQL for Beginners Part 21">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -735,7 +730,7 @@ P.S.：译自SQL for Beginners Part 21">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -744,7 +739,7 @@ P.S.：译自SQL for Beginners Part 21">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -792,7 +787,7 @@ P.S.：译自SQL for Beginners Part 21">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

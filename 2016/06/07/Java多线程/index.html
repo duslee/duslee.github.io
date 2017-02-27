@@ -111,7 +111,7 @@
 <meta property="og:description" content="概况
 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等">
 <meta property="og:image" content="http://yoursite.com/images/java-multithreading/thread-5-states.jpg">
-<meta property="og:updated_time" content="2016-07-30T15:39:31.000Z">
+<meta property="og:updated_time" content="2017-02-27T13:52:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程">
 <meta name="twitter:description" content="概况
@@ -388,7 +388,6 @@
 <p>本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等</p>
 </blockquote>
 <a id="more"></a>
-<hr>
 <h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h2><blockquote>
 <p><code>Multitasking</code>，<u><font color="red">同时执行多个任务的过程</font></u>，可以用于充分利用CPU。</p>
 </blockquote>
@@ -427,7 +426,6 @@
 <li>可以<u><font color="red">同时执行许多操作来节省时间</font></u></li>
 <li>线程是独立的，<u><font color="red">如果一个线程发生异常了，它不会影响其它线程</font></u></li>
 </ol>
-<hr>
 <h1 id="线程相关点"><a href="#线程相关点" class="headerlink" title="线程相关点"></a>线程相关点</h1><h2 id="生命周期（状态）"><a href="#生命周期（状态）" class="headerlink" title="生命周期（状态）"></a>生命周期（状态）</h2><p>Java中线程的生命周期由<code>JVM</code>控制，如下图所示</p>
 <p><img src="/images/java-multithreading/thread-5-states.jpg" alt=""></p>
 <ol>
@@ -508,7 +506,6 @@
 <h3 id="若没有用户线程，JVM终止守护线程"><a href="#若没有用户线程，JVM终止守护线程" class="headerlink" title="若没有用户线程，JVM终止守护线程"></a>若没有用户线程，JVM终止守护线程</h3><blockquote>
 <p>守护线程的<u><font color="red">单独目的是为支持后台任务</font></u>，提供服务给用户线程。如果没有用户线程了，JVM为何要一直运行此线程呢？</p>
 </blockquote>
-<hr>
 <h1 id="线程调度器"><a href="#线程调度器" class="headerlink" title="线程调度器"></a>线程调度器</h1><ul>
 <li>线程是JVM的一部分，用于<u><font color="red">决定哪个线程应该运行</font></u></li>
 <li><u><font color="red">没有保证哪个可运行的线程被线程调度器选中运行</font></u></li>
@@ -519,7 +516,6 @@
 <li>抢占式调度中，<u><font color="red">高优先级的任务执行，直到进入等待或死亡状态</font></u></li>
 <li>时间分片中，<u><font color="red">一个任务执行一段预定时间片，然后重新进入准备任务池，调度器然后基于优先级和其它因素来决定接下来哪个任务应该执行</font></u></li>
 </ul>
-<hr>
 <h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h2><ul>
 <li>线程池代表<u><font color="red">一组等待多次工作和重用的工作线程</font></u></li>
 <li>在线程池的情况下，一组固定大小的线程被创建</li>
@@ -529,12 +525,10 @@
 <h2 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h2><blockquote>
 <p><u><font color="red">节省时间，因没有必要创建新线程</font></u></p>
 </blockquote>
-<hr>
 <h1 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h1><ul>
 <li>Java提供了一种方式<u><font color="red">在一个单独的对象里组合多个线程，在这种情况下，可以通过一个单独的方法调用来实现一组线程的挂起、重启或中断</font></u></li>
 <li>Java线程组被<code>java.lang.ThreadGroup</code>类实现</li>
 </ul>
-<hr>
 <h1 id="Java-Shutdown-Hook"><a href="#Java-Shutdown-Hook" class="headerlink" title="Java Shutdown Hook"></a>Java Shutdown Hook</h1><h2 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h2><ul>
 <li><code>shutdown hook</code>用于<u><font color="red">当JVM正常或异常关闭时执行清理资源或保存状态</font></u></li>
 <li>执行清理资源意味着<u><font color="red">关闭日志文件、发送警告或其它</font></u></li>
@@ -549,12 +543,10 @@
 <h2 id="addShutdownHook-THread-hook"><a href="#addShutdownHook-THread-hook" class="headerlink" title="addShutdownHook(THread hook)"></a>addShutdownHook(THread hook)</h2><blockquote>
 <p><code>Runtime</code>类的<code>addShutdownHook()</code>方法用于<u><font color="red">注册虚拟机的线程</font></u>。<code>Runtime</code>类的对象可以通过调用静态工厂方法<code>getRuntime()</code>来获取。</p>
 </blockquote>
-<hr>
 <h1 id="执行多任务"><a href="#执行多任务" class="headerlink" title="执行多任务"></a>执行多任务</h1><ul>
 <li><strong>使用多线程执行单独的任务</strong>：如果需要被许多线程执行单独的任务，只需要拥有一个<code>run()</code>方法</li>
 <li><strong>使用多线程执行多个任务</strong>：如果需要被许多线程执行多个任务，需要拥有多个<code>run()</code>方法</li>
 </ul>
-<hr>
 <h1 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h1><h2 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h2><ul>
 <li>Java中垃圾意味着<u><font color="red">不被引用的对象</font></u></li>
 <li>垃圾收集是<u><font color="red">一种自动回收运行时未使用内存的机制</font></u>，换句话说，是一种销毁不再使用对象的方式</li>
@@ -580,7 +572,6 @@
 <li>该方法在<code>System</code>和<code>Runtime</code>类里被定义里</li>
 <li>垃圾收集被一个叫<code>GC (Garbage Collection)</code>的守护线程执行。守护线程在对象被垃圾回收之前调用<code>finalize()</code>方法</li>
 </ul>
-<hr>
 <h1 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h1><ul>
 <li><code>Runtime</code>类用于和<code>java运行时环境</code>交互</li>
 <li><code>Runtime</code>类提供方法执行操作，如调用<code>GC</code>、获取全部和剩余内存等</li>
@@ -596,9 +587,7 @@
 <h2 id="totalMemory"><a href="#totalMemory" class="headerlink" title="totalMemory()"></a>totalMemory()</h2><blockquote>
 <p><u><font color="red">返回JVM里全部内存</font></u></p>
 </blockquote>
-<hr>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><p><a href="http://www.javatpoint.com/multithreading-in-java" target="_blank" rel="external"><strong>Multithreading in Java</strong></a></p>
-<hr>
 
       
     </div>
@@ -715,7 +704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -723,7 +712,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -732,7 +721,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -780,7 +769,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
