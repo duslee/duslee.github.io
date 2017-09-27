@@ -102,19 +102,18 @@
 
 
 
-<meta name="description" content="概述
-本文主要介绍Retrofit 2.0的基础知识">
+<meta name="description" content="概述 本文主要介绍Retrofit 2.0的基础知识">
+<meta name="keywords" content="Blog,Http,Retrofit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Retrofit 2.0使用总结">
 <meta property="og:url" content="http://yoursite.com/2016/07/15/Retrofit 2.0使用总结/index.html">
-<meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description" content="概述
-本文主要介绍Retrofit 2.0的基础知识">
+<meta property="og:site_name" content="Jeff&#39;s Blog">
+<meta property="og:description" content="概述 本文主要介绍Retrofit 2.0的基础知识">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-27T13:53:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit 2.0使用总结">
-<meta name="twitter:description" content="概述
-本文主要介绍Retrofit 2.0的基础知识">
+<meta name="twitter:description" content="概述 本文主要介绍Retrofit 2.0的基础知识">
 
 
 
@@ -402,11 +401,11 @@
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
 <p>在根模块的<code>build.gradle</code>文件的<code>dependencies</code>块中添加</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.0.0-beta4'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.0.0-beta4'</span></div></pre></td></tr></table></figure>
 <h2 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h2><h3 id="定义形式"><a href="#定义形式" class="headerlink" title="定义形式"></a>定义形式</h3><blockquote>
 <p>在Retrofit 2.0中，创建Service更简单了，因为<u><font color="red">只需定义一种形式</font></u></p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">APIService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@POST</span>(<span class="string">"/list"</span>)</span><br><span class="line">    <span class="function">Call&lt;Repo&gt; <span class="title">loadRepo</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">APIService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@POST</span>(<span class="string">"/list"</span>)</div><div class="line">    <span class="function">Call&lt;Repo&gt; <span class="title">loadRepo</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="Call类型"><a href="#Call类型" class="headerlink" title="Call类型"></a>Call类型</h3><blockquote>
 <p>Retrofit 2.0使用新的类型<code>Call</code>来用于OkHttp的API请求，另外，每一个call对象实例只能被用一次，即<code>request</code>和<code>response</code>是一一对应，可以通过<code>clone</code>方法来创建一个一模一样的实例</p>
 </blockquote>
@@ -419,14 +418,14 @@
 <li>调用<code>execute</code>方法执行同步请求</li>
 <li>不能在Android主线程（<code>Main Thread</code>）中直接使用，因为会堵塞线程，否则会报错（<code>NetworkOnMainThreadException</code>）</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Call&lt;Repo&gt; call = service.loadRepo();</span><br><span class="line">Repo repo = call.execute();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Call&lt;Repo&gt; call = service.loadRepo();</div><div class="line">Repo repo = call.execute();</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>异步</strong></p>
 <ul>
 <li>调用<code>enqueue</code>方法执行异步请求</li>
 <li><code>onResponse</code>和<code>onFailure</code>方法会在主线程（<code>Main Thread</code>）中被调用</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Call&lt;Repo&gt; call = service.loadRepo();</span><br><span class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;Repo&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response&lt;Repo&gt; response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Get result Repo from response.body()</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable t)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Call&lt;Repo&gt; call = service.loadRepo();</div><div class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;Repo&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response&lt;Repo&gt; response)</span> </span>&#123;</div><div class="line">        <span class="comment">// Get result Repo from response.body()</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable t)</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>取消请求</strong>：可以随时调用<code>cancel</code>方法来取消请求</p>
 </li>
@@ -562,7 +561,7 @@
 <li>Retrofit 2.0中除了定义<code>Call&lt;T&gt;</code>形式的接口，也可以定义自己的类型，该机制称为<code>CallAdapter</code></li>
 <li>RxJava作为一种非常流行的CallAdapter，返回的类型为<code>Observable&lt;T&gt;</code></li>
 <li><p>RxJava需要在根模块的<code>build.gradle</code>文件中使用如下依赖</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'</span></span><br><span class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'</span></div><div class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>在Retrofit的Builder链中作为<code>addCallAdapterFactory</code>的参数</p>
 </li>
@@ -698,7 +697,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -706,7 +705,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -715,7 +714,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Blog,Git," />
+  <meta name="keywords" content="Blog,Tool,VPS|SS," />
 
 
 
@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概述 本文主要介绍Git的基本知识，及其相关操作">
-<meta name="keywords" content="Blog,Git">
+<meta name="description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。">
+<meta name="keywords" content="Blog,Tool,VPS|SS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git学习">
-<meta property="og:url" content="http://yoursite.com/2017/01/07/Git学习/index.html">
+<meta property="og:title" content="Mac下使用VPS搭建SS">
+<meta property="og:url" content="http://yoursite.com/2017/09/27/Mac下使用VPS搭建SS/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 本文主要介绍Git的基本知识，及其相关操作">
+<meta property="og:description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-07T06:14:29.000Z">
+<meta property="og:updated_time" content="2017-09-27T06:07:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git学习">
-<meta name="twitter:description" content="概述 本文主要介绍Git的基本知识，及其相关操作">
+<meta name="twitter:title" content="Mac下使用VPS搭建SS">
+<meta name="twitter:description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title> Git学习 | Jeff's Blog </title>
+  <title> Mac下使用VPS搭建SS | Jeff's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +291,7 @@
             
             
               
-                Git学习
+                Mac下使用VPS搭建SS
               
             
           </h1>
@@ -303,8 +303,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-07T13:47:42+08:00" content="2017-01-07">
-              2017-01-07
+            <time itemprop="dateCreated" datetime="2017-09-27T10:41:21+08:00" content="2017-09-27">
+              2017-09-27
             </time>
           </span>
 
@@ -336,6 +336,18 @@
 
                 
                 
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/tool/vps-SS/" itemprop="url" rel="index">
+                    <span itemprop="name">vps|SS</span>
+                  </a>
+                </span>
+
+                
+                
 
               
             </span>
@@ -345,8 +357,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/01/07/Git学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/07/Git学习/" itemprop="commentsCount"></span>
+                <a href="/2017/09/27/Mac下使用VPS搭建SS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/27/Mac下使用VPS搭建SS/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -369,21 +381,57 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
-<p>本文主要介绍<code>Git</code>的基本知识，及其相关操作</p>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
+<p>本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h2><blockquote>
-<p>有以下两种方式</p>
+<h1 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ol>
+<li><code>VPS</code>，Virtual Private Server，虚拟专用服务器，VPS技术可以将一台服务器分割成多个虚拟专享服务器的优质服务。</li>
+<li>在容器或虚拟机中，每个VPS都可分配独立公网IP地址、独立操作系统、实现不同VPS间磁盘空间、内存、CPU资源、进程和系统配置的隔离。</li>
+<li>VPS可以像独立服务器一样，重装操作系统，安装程序，单独重启服务器。简单理解VPS就是一台拥有公网IP地址的服务器。</li>
+<li>最重要的是接下来要描述的重点，可以用VPS搭建<code>Shadowsocks</code>用于翻墙。</li>
+</ol>
+<h2 id="Vultr"><a href="#Vultr" class="headerlink" title="Vultr"></a>Vultr</h2><h3 id="VPS选择"><a href="#VPS选择" class="headerlink" title="VPS选择"></a>VPS选择</h3><p> VPS选择可以参考<a href="https://zhuanlan.zhihu.com/p/21872685" target="_blank" rel="external"><strong>十个便宜VPS（国内国外）主机分享–VPS服务器建站和搭建应用服务体验</strong></a>，笔者这里选择<code>Vultr</code>，建议可以使用<a href="https://www.vultr.com/?ref=7220951" target="_blank" rel="external"><strong>链接地址</strong></a>去注册账号，会有优惠。</p>
+<h3 id="Vultr操作流程"><a href="#Vultr操作流程" class="headerlink" title="Vultr操作流程"></a>Vultr操作流程</h3><p> 根据该链接地址进入Vultr后，依次完成<font color="red"><strong>账号注册</strong></font>、<font color="red"><strong>支付充值（至少$10）</strong></font>、<font color="red"><strong>Server创建</strong></font>（笔者选择的操作系统是Ubuntu）流程（这里不仔细介绍了），接下来就是在部署的Server上搭建Shadowsocks</p>
+<p> <font color="red"><strong>Note</strong></font>：Server创建成功后记得纪录下对应的IP地址、Username、Password等（可以在Server的详情页面看到），下面操作会用到。</p>
+<h1 id="搭建SS"><a href="#搭建SS" class="headerlink" title="搭建SS"></a>搭建SS</h1><blockquote>
+<p>以下操作是在Mac环境下完成</p>
 </blockquote>
-<h3 id="使用存在的目录初始化仓库"><a href="#使用存在的目录初始化仓库" class="headerlink" title="使用存在的目录初始化仓库"></a>使用存在的目录初始化仓库</h3><p>进入指定目录，输入<code>git init</code>创建一个名为<code>.git</code>的新的子目录，此时指定目录里还未有任何可追踪（<code>tracked</code>）的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
-<p>如果想要新建版本控制的文件，需要完成追踪（<code>track</code>）和发送（<code>commit</code>）操作。可以使用<code>git add</code>命令添加文件，<code>git commit</code>完成该文件的追踪</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add *.c</div><div class="line">git add License</div><div class="line">git commit -m &apos;initial project version&apos;</div></pre></td></tr></table></figure>
-<h3 id="克隆存在的仓库"><a href="#克隆存在的仓库" class="headerlink" title="克隆存在的仓库"></a>克隆存在的仓库</h3><p>使用<code>git clone [url]</code>命令直接获取已存在仓库的拷贝，如果想要拷贝仓库到指定的目录，可以指定目录名（<code>git clone [url] dirName</code>）</p>
+<h2 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h2><ol>
+<li><p>进入终端或<code>iTerm</code>环境，使用ssh命令输入上面记录的用户名和IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@ip_address</div></pre></td></tr></table></figure>
+</li>
+<li><p>提示输入密码（使用上面记录的密码即可），输入正确则进入远程服务器环境</p>
+</li>
+</ol>
+<h2 id="远程服务器环境"><a href="#远程服务器环境" class="headerlink" title="远程服务器环境"></a>远程服务器环境</h2><h3 id="安装Shadowsocks"><a href="#安装Shadowsocks" class="headerlink" title="安装Shadowsocks"></a>安装Shadowsocks</h3><ol>
+<li><p>安装Shadowsocks：运行如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">chmod +x shadowsocks-all.sh</div><div class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure>
+</li>
+<li><p>选择脚本（<code>Python</code>、<code>R</code>、<code>Go</code>、<code>libev</code>），任选一个：笔者选择的libev，依次会要求提示输入Ip地址、端口和密码等</p>
+</li>
+<li>上述操作完成后，任意键点击后开始安装，等待安装成功</li>
+</ol>
+<h3 id="Mac配置SS"><a href="#Mac配置SS" class="headerlink" title="Mac配置SS"></a>Mac配置SS</h3><ol>
+<li><a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases/" target="_blank" rel="external"><strong>ShadowsocksX-NG下载地址</strong></a>：若该地址下载不了，可考虑<a href="https://c.yitianjianss.com/tutorial/trial_port#download" target="_blank" rel="external"><strong>倚天剑ss</strong></a>下载对应的版本即可</li>
+<li>安装<code>ShadowsocksX-NG</code>后打开，输入上面操作记录的服务器IP地址、端口、密码、加密方式等</li>
+<li>Google浏览器配置：在chrome扩展中安装switchysharp，分别配置代理（<code>proxy</code>）模式和自动切换（<code>auto switch</code>）模式</li>
+<li><p>proxy模式配置信息如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">代理协议：socks5</div><div class="line">代理服务器：127.0.0.1  // 本地IP</div><div class="line">代理端口：1080</div></pre></td></tr></table></figure>
+</li>
+<li><p>auto switch模式配置信息：根据需要代理的域名或网址等来选择情景模式，如<code>*.biadu.com</code>使用“直接连接”，<code>*.google.com</code>使用“proxy”模式等，可以自主添加</p>
+</li>
+</ol>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><blockquote>
+<p>加速（待续）</p>
+</blockquote>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
-<li><a href="https://git-scm.com/documentation" target="_blank" rel="external"><strong>Git Documentation</strong></a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external"><strong>Git远程操作详解</strong></a></li>
+<li><a href="https://www.diycode.cc/topics/738" target="_blank" rel="external"><strong>轻松在VPS搭建Shadowsocks翻墙（$2.5/月）</strong></a></li>
+<li><a href="http://blog.csdn.net/bing900713/article/details/71274519?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="external"><strong>Mac搭建VPS和shadowsocks</strong></a></li>
+<li><a href="http://blog.csdn.net/nomisshe/article/details/50771644" target="_blank" rel="external"><strong>mac连接VPS搭建SS，mac使用SS客户端配置</strong></a></li>
+<li><a href="http://blog.csdn.net/creasylai19/article/details/52268995" target="_blank" rel="external"><strong>VPS+SS搭建自己的VPN</strong></a></li>
+<li><a href="http://blog.csdn.net/chengliang0315/article/details/69788958" target="_blank" rel="external"><strong>为你的vps安装shadwosocks和搭建VPN</strong></a></li>
+<li><a href="https://baike.baidu.com/item/VPS/11053576?fr=aladdin" target="_blank" rel="external"><strong>VPS百度百科</strong></a></li>
 </ol>
 
       
@@ -408,7 +456,9 @@
           
             <a href="/tags/Blog/" rel="tag">#Blog</a>
           
-            <a href="/tags/Git/" rel="tag">#Git</a>
+            <a href="/tags/Tool/" rel="tag">#Tool</a>
+          
+            <a href="/tags/VPS-SS/" rel="tag">#VPS|SS</a>
           
         </div>
       
@@ -417,17 +467,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/16/Fragment管理问题/" rel="next" title="Fragment管理问题">
-                <i class="fa fa-chevron-left"></i> Fragment管理问题
+              <a href="/2017/02/27/JNI-简单入门/" rel="next" title="JNI 简单入门">
+                <i class="fa fa-chevron-left"></i> JNI 简单入门
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/27/JNI-简单入门/" rel="prev" title="JNI 简单入门">
-                JNI 简单入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,8 +499,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/07/Git学习/"
-           data-title="Git学习" data-url="http://yoursite.com/2017/01/07/Git学习/">
+      <div class="ds-thread" data-thread-key="2017/09/27/Mac下使用VPS搭建SS/"
+           data-title="Mac下使用VPS搭建SS" data-url="http://yoursite.com/2017/09/27/Mac下使用VPS搭建SS/">
       </div>
     
   </div>
@@ -545,7 +591,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basics"><span class="nav-number">2.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Git仓库"><span class="nav-number">2.1.</span> <span class="nav-text">获取Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用存在的目录初始化仓库"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用存在的目录初始化仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克隆存在的仓库"><span class="nav-number">2.1.2.</span> <span class="nav-text">克隆存在的仓库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">3.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPS"><span class="nav-number">2.</span> <span class="nav-text">VPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vultr"><span class="nav-number">2.2.</span> <span class="nav-text">Vultr</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS选择"><span class="nav-number">2.2.1.</span> <span class="nav-text">VPS选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vultr操作流程"><span class="nav-number">2.2.2.</span> <span class="nav-text">Vultr操作流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建SS"><span class="nav-number">3.</span> <span class="nav-text">搭建SS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接服务器"><span class="nav-number">3.1.</span> <span class="nav-text">连接服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程服务器环境"><span class="nav-number">3.2.</span> <span class="nav-text">远程服务器环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Shadowsocks"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装Shadowsocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac配置SS"><span class="nav-number">3.2.2.</span> <span class="nav-text">Mac配置SS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">4.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">5.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>

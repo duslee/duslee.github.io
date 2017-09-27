@@ -102,19 +102,18 @@
 
 
 
-<meta name="description" content="概况
-本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="keywords" content="Blog,Java,Annotation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Annotation">
 <meta property="og:url" content="http://yoursite.com/2016/07/05/Java-Annotation/index.html">
-<meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description" content="概况
-本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta property="og:site_name" content="Jeff&#39;s Blog">
+<meta property="og:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-27T13:53:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Annotation">
-<meta name="twitter:description" content="概况
-本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="twitter:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
 
 
 
@@ -397,17 +396,17 @@
 <li><p>注解可以包含元素</p>
 <ul>
 <li><p>这些元素对名称没有要求，可以有值，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Author</span> &#123;</span><br><span class="line">  name = <span class="string">"Benjamin Franklin"</span></span><br><span class="line">  data = <span class="string">"3/27/2003"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span> &#123;</div><div class="line">  name = <span class="string">"Benjamin Franklin"</span></div><div class="line">  data = <span class="string">"3/27/2003"</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>如果只有一个带值的元素，其名称可以被忽略，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarning</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function">voido <span class="title">myMethod</span><span class="params">()</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarning</span>(<span class="string">"unchecked"</span>)</div><div class="line"><span class="function">voido <span class="title">myMethod</span><span class="params">()</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>如果没有元素，圆括号可以去掉，如<code>@Override</code></p>
 </li>
 </ul>
 </li>
 <li><p>在同一定义上也可以使用多个注解，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</span><br><span class="line"><span class="meta">@EBook</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</div><div class="line"><span class="meta">@EBook</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>如果注解有同一类型，则被称为重复注解（<code>repeating annotation</code>）</p>
 </li>
@@ -420,12 +419,12 @@
 </blockquote>
 <ol>
 <li><p><code>@Override</code>：告知编译器该元素是为了覆盖定义在父类的元素，如果一个方法在父类或被实现接口中没有被发现，会引起编译器报错。如当覆盖子类的一个方法时，应该使用<code>@Override</code>来标记该方法，这样可以让代码可读，并且避免维护问题，例如当修改父类的方法签名时，开发人员必须修改子类中该方法的签名，否则编译器会抛出编译错误。当没有使用<code>@Override</code>时，会很难追踪到错误位置。见下面例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p><code>@Deprecated</code>：提示标记的元素（类、方法或域）过时了，应该不再使用。无论何时程序使用已经使用<code>@Deprecated</code>注解标记的方法、类或域时，编译器生成一个警告</p>
 </li>
 <li><p><code>@SuppressWarnings</code>：指示编译器忽略特殊的警告。如当在调用过时的方法（假定该方法使用<code>@Deprecated</code>标记）时，使用<code>@SuppressWarnings</code>注解来禁止派生的警告，如下代码所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p><code>@SafeVarargs</code>：在<code>Java SE 7</code>中引入，当应用到方法或构造函数时，声称代码不对其可变参数（<code>varargs</code>）的参数进行潜在的不安全操作。当该注解类型被使用时，关联到可变参数的<code>unchecked</code>警告被禁止</p>
 </li>
@@ -453,13 +452,13 @@
 <li><strong>ElementType.PARAMETER</strong>：用于方法的参数</li>
 <li><strong>ElementType.TYPE</strong>：用于类的任意元素</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  <span class="meta">@MyCustomAnnotation</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myMethod</span><span class="params">()</span> </span>&#123; <span class="comment">// do sth &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD&#125;)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">  <span class="meta">@MyCustomAnnotation</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myMethod</span><span class="params">()</span> </span>&#123; <span class="comment">// do sth &#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p><code>@Inherited</code>：指明在一个类里被使用的自定义注解应该被所有的子类继承，如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@MyCustomAnnotation</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Inherited</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</div><div class="line"></div><div class="line"><span class="meta">@MyCustomAnnotation</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p><code>@Repeatable</code>：在Java SE 8中引入，具体指明该注解可以用于同一定义多次，如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</span><br><span class="line"><span class="meta">@Author</span>(name=<span class="string">"John Smith"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</div><div class="line"><span class="meta">@Author</span>(name=<span class="string">"John Smith"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
@@ -588,7 +587,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -596,7 +595,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -605,7 +604,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

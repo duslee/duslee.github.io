@@ -102,14 +102,14 @@
 
 
 
-<meta name="description" content="概况
-本文主要介绍下Markdown的基本语法1，以及如何使用Jumly2（译文）在Markdown中支持流表等">
+<meta name="description" content="概况 本文主要介绍下Markdown的基本语法1，以及如何使用Jumly2（译文）在Markdown中支持流表等">
+<meta name="keywords" content="Blog,Markdown,Jumly">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown语法、Jumly语法学习">
 <meta property="og:url" content="http://yoursite.com/2016/06/05/Markdown语法、Jumly语法学习/index.html">
-<meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description" content="概况
-本文主要介绍下Markdown的基本语法1，以及如何使用Jumly2（译文）在Markdown中支持流表等">
+<meta property="og:site_name" content="Jeff&#39;s Blog">
+<meta property="og:description" content="概况 本文主要介绍下Markdown的基本语法1，以及如何使用Jumly2（译文）在Markdown中支持流表等">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-0.png">
 <meta property="og:image" content="http://yoursite.com/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-1.png">
 <meta property="og:image" content="http://yoursite.com/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-2.png">
@@ -123,8 +123,7 @@
 <meta property="og:updated_time" content="2017-02-27T13:53:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown语法、Jumly语法学习">
-<meta name="twitter:description" content="概况
-本文主要介绍下Markdown的基本语法1，以及如何使用Jumly2（译文）在Markdown中支持流表等">
+<meta name="twitter:description" content="概况 本文主要介绍下Markdown的基本语法1，以及如何使用Jumly2（译文）在Markdown中支持流表等">
 <meta name="twitter:image" content="http://yoursite.com/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-0.png">
 
 
@@ -467,7 +466,7 @@ This is an H2
 </li>
 <li><p>在列表条目中<u><font color="red">添加代码块</font></u>，需要缩进2次，即8个空格或2个Tabs</p>
 <ul>
-<li>A list item with a code block<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printName</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>A list item with a code block<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printName</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -496,10 +495,10 @@ end tell
 </blockquote>
 <ul>
 <li><p><strong>inline</strong>：以<u><font color="red">中括号</font></u>标记显示的链接文本，后面紧跟用<u><font color="red">小括号</font></u>包围的链接。如果链接有title属性，则在链接中使用<u><font color="red">空格加”title属性”</font></u>。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is [an example](http://example.com/ &quot;Title&quot;) inline link.</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">This is [an example](http://example.com/ &quot;Title&quot;) inline link.</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>reference</strong>：一般应用于<u><font color="red">多个不同位置使用相同链接</font></u>。通常分为两个部分，<u><font color="red">调用部分</font></u>为链接文本；<u><font color="red">定义部分</font></u>可以出现在文本中的其他位置，格式为 ref: <a href="http://some/link/address" target="_blank" rel="external">http://some/link/address</a> (可选的标题)。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This is [an example][id] reference-style link.</span><br><span class="line"></span><br><span class="line">[id]: http://example.com/  &quot;Optional Title Here&quot;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">This is [an example][id] reference-style link.</div><div class="line"></div><div class="line">[id]: http://example.com/  &quot;Optional Title Here&quot;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><ul>
@@ -509,10 +508,10 @@ end tell
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
 <li>使用反引号<strong><code>` </code></strong>来指示其跨度，不像预格式化的代码块，一段代码的跨度表明在一个段落里。</li>
 <li><p>为了在一个代码跨度里包含反引号，可以<u><font color="red">使用多个反引号来当作开闭分隔符</font></u></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``There is a literal backtick (`) here.``</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">``There is a literal backtick (`) here.``</div></pre></td></tr></table></figure>
 </li>
 <li><p>围绕一个代码跨度的反引号分隔符可能<u><font color="red">包括空格，开始后一个，关闭前一个</font></u></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A single backtick in a code span: `` ` ``</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A single backtick in a code span: `` ` ``</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><blockquote>
@@ -520,10 +519,10 @@ end tell
 </blockquote>
 <ul>
 <li><p><strong>inline</strong></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](/path/to/img.jpg)</span><br><span class="line"></span><br><span class="line">![Alt text](/path/to/img.jpg &quot;Optional title&quot;)</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![Alt text](/path/to/img.jpg)</div><div class="line"></div><div class="line">![Alt text](/path/to/img.jpg &quot;Optional title&quot;)</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>reference</strong></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![Alt text][id]</span><br><span class="line"></span><br><span class="line">[id]: url/to/image  &quot;Optional title attribute&quot;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![Alt text][id]</div><div class="line"></div><div class="line">[id]: url/to/image  &quot;Optional title attribute&quot;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h3><blockquote>
@@ -553,55 +552,55 @@ end tell
 <h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="Sequence-Diagram"><a href="#Sequence-Diagram" class="headerlink" title="Sequence Diagram"></a>Sequence Diagram</h3><h4 id="found"><a href="#found" class="headerlink" title="@found"></a><strong>@found</strong></h4><blockquote>
 <p><u><font color="red">开始交互的顶级元素</font></u>，将<u><font color="red">参与者</font></u>与<u><font color="red">生命线</font></u>（虚线表示）和<u><font color="red">发生的事</font></u>（灰色边界矩形）放在一起</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;He&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@found &quot;He&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-0.png" alt=""></p>
 <p>可以使用<strong><code>-&gt;</code></strong>来<u><font color="red">显示发生的事的交互</font></u>，使用缩进（2个空格或1个Tab）并且写如<strong>@message</strong>的其它指令</p>
 <h4 id="message"><a href="#message" class="headerlink" title="@message"></a><strong>@message</strong></h4><blockquote>
 <p><u><font color="red">两个参与者或自调用之间的交互</font></u></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;He&quot;,  -&gt;</span><br><span class="line">	@message &quot;calls&quot;, &quot;Her&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@found &quot;He&quot;,  -&gt;</div><div class="line">	@message &quot;calls&quot;, &quot;Her&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-1.png" alt=""></p>
 <p>如果第二个参数未提供，则表示<u><font color="red">自调用</font></u></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;He&quot;,  -&gt;</span><br><span class="line">	@message &quot;thinks&quot;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@found &quot;He&quot;,  -&gt;</div><div class="line">	@message &quot;thinks&quot;,</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-2.png" alt=""></p>
 <p>可以在上述两种情况下将<strong><code>-&gt;</code></strong>放在<u><font color="red">最后一个参数后面</font></u>，用于嵌套的交互</p>
 <h4 id="create"><a href="#create" class="headerlink" title="@create"></a><strong>@create</strong></h4><blockquote>
 <p><u><font color="red">新建一个交互</font></u>，参与者的名字即给定的参数名，创建的参与者会向下移动，并且箭头是虚线形式</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;He&quot;,  -&gt;</span><br><span class="line">	@create &quot;Contact&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@found &quot;He&quot;,  -&gt;</div><div class="line">	@create &quot;Contact&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-3.png" alt=""></p>
 <p><strong>可选</strong>：将<strong><code>-&gt;</code></strong>作为第二个参数；也可以结合其它指令</p>
 <h4 id="reply"><a href="#reply" class="headerlink" title="@reply"></a><strong>@reply</strong></h4><blockquote>
 <p><u><font color="red">显示回调的信息</font></u>，可以和一个简短说明的参数放在一个<strong>@message</strong>指令里</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;Browser&quot;, -&gt;</span><br><span class="line">	@message &quot;GET&quot;, &quot;Server&quot;, -&gt;</span><br><span class="line">		@reply &quot;200&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@found &quot;Browser&quot;, -&gt;</div><div class="line">	@message &quot;GET&quot;, &quot;Server&quot;, -&gt;</div><div class="line">		@reply &quot;200&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-4.png" alt=""></p>
 <h4 id="alt"><a href="#alt" class="headerlink" title="@alt"></a><strong>@alt</strong></h4><blockquote>
 <p>一种碎片，通常<u><font color="red">形成带有一些交互的2个或多个条件部分</font></u>。<strong>@alt</strong>的一部分由一对文本和<strong><code>-&gt;</code></strong>组成，可以在<strong>@alt</strong>里存放多对</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;You&quot;, -&gt;</span><br><span class="line">	@alt</span><br><span class="line">		&quot;[male]&quot;: -&gt;</span><br><span class="line">			@message &quot;pay with a card&quot;, &quot;Bar&quot;, -&gt;</span><br><span class="line">				@message &quot;auth the card&quot;, &quot;Visa&quot;</span><br><span class="line">		&quot;[female]&quot;: -&gt;</span><br><span class="line">			@message &quot;wait for his payment&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@found &quot;You&quot;, -&gt;</div><div class="line">	@alt</div><div class="line">		&quot;[male]&quot;: -&gt;</div><div class="line">			@message &quot;pay with a card&quot;, &quot;Bar&quot;, -&gt;</div><div class="line">				@message &quot;auth the card&quot;, &quot;Visa&quot;</div><div class="line">		&quot;[female]&quot;: -&gt;</div><div class="line">			@message &quot;wait for his payment&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-5.png" alt=""></p>
 <h4 id="loop"><a href="#loop" class="headerlink" title="@loop"></a><strong>@loop</strong></h4><blockquote>
 <p>一种碎片，显示<u><font color="red">重复</font></u>。一个亮灰色的矩形表示一个循环</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;You&quot;, -&gt;</span><br><span class="line">	@loop &quot;[until she answer]&quot;, -&gt;</span><br><span class="line">		@message &quot;call&quot;, &quot;Her&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@found &quot;You&quot;, -&gt;</div><div class="line">	@loop &quot;[until she answer]&quot;, -&gt;</div><div class="line">		@message &quot;call&quot;, &quot;Her&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-6.png" alt=""></p>
 <h4 id="fragment"><a href="#fragment" class="headerlink" title="@fragment"></a><strong>@fragment</strong></h4><blockquote>
 <p><u><font color="red">泛型指令</font></u>，生成如<strong>@alt</strong>和<strong>@loop</strong>的碎片</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;Thread-A&quot;, -&gt;</span><br><span class="line">	@fragment &quot;critical section&quot;: -&gt;</span><br><span class="line">		@message &quot;acquire&quot;, &quot;Mutex&quot;</span><br><span class="line">		@message &quot;do something&quot;</span><br><span class="line">		@message &quot;release&quot;, &quot;Mutex&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@found &quot;Thread-A&quot;, -&gt;</div><div class="line">	@fragment &quot;critical section&quot;: -&gt;</div><div class="line">		@message &quot;acquire&quot;, &quot;Mutex&quot;</div><div class="line">		@message &quot;do something&quot;</div><div class="line">		@message &quot;release&quot;, &quot;Mutex&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-7.png" alt=""></p>
 <h4 id="ref"><a href="#ref" class="headerlink" title="@ref"></a><strong>@ref</strong></h4><blockquote>
 <p><u><font color="red">移动到另一个图表</font></u>的指令</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;MacOX&quot;, -&gt;</span><br><span class="line">	@ref &quot;initialize&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@found &quot;MacOX&quot;, -&gt;</div><div class="line">	@ref &quot;initialize&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-8.png" alt=""></p>
 <h4 id="note"><a href="#note" class="headerlink" title="@note"></a><strong>@note</strong></h4><blockquote>
 <p>存放<u><font color="red">注意提示</font></u>的指令</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@found &quot;She&quot;, -&gt;</span><br><span class="line">	@note &quot;Eventually&quot;</span><br><span class="line">	@message &quot;meets&quot;, &quot;You&quot;, -&gt;</span><br><span class="line">		@note &quot;can&apos;t do anything then&quot;</span><br><span class="line">	@note &quot;Just say goodbye...&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@found &quot;She&quot;, -&gt;</div><div class="line">	@note &quot;Eventually&quot;</div><div class="line">	@message &quot;meets&quot;, &quot;You&quot;, -&gt;</div><div class="line">		@note &quot;can&apos;t do anything then&quot;</div><div class="line">	@note &quot;Just say goodbye...&quot;</div></pre></td></tr></table></figure>
 <p><img src="/images/markdown_jumly/Markdown语法-Jumly语法学习-diagram-9.png" alt=""></p>
-<div id="footnotes"><hr><div id="footnotelist"><ol><li id="fn:1"><a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external"><strong>Markdown: Syntax</strong></a><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><a href="http://jumly.tmtk.net/" target="_blank" rel="external"><strong>Jumly</strong></a><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3">Structure-enhanced text，<a href="http://docutils.sourceforge.net/mirror/setext.html" target="_blank" rel="external">文档地址</a><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4">atx, the true structured text format，<a href="http://www.aaronsw.com/2002/atx/" target="_blank" rel="external">文档地址</a><a href="#fnref:4" rev="footnote"> ↩</a></li></ol></div></div>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external"><strong>Markdown: Syntax</strong></a></span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="http://jumly.tmtk.net/" target="_blank" rel="external"><strong>Jumly</strong></a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">Structure-enhanced text，<a href="http://docutils.sourceforge.net/mirror/setext.html" target="_blank" rel="external">文档地址</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;">atx, the true structured text format，<a href="http://www.aaronsw.com/2002/atx/" target="_blank" rel="external">文档地址</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -717,7 +716,7 @@ end tell
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -725,7 +724,7 @@ end tell
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -734,7 +733,7 @@ end tell
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

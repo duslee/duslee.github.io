@@ -102,25 +102,18 @@
 
 
 
-<meta name="description" content="概述
-本文主要介绍表的关系及相关查询操作
-
-P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
+<meta name="description" content="概述 本文主要介绍表的关系及相关查询操作  P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
+<meta name="keywords" content="Blog,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初学者快速使用SQL(三)">
 <meta property="og:url" content="http://yoursite.com/2016/08/10/初学者快速使用SQL(三)/index.html">
-<meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description" content="概述
-本文主要介绍表的关系及相关查询操作
-
-P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
+<meta property="og:site_name" content="Jeff&#39;s Blog">
+<meta property="og:description" content="概述 本文主要介绍表的关系及相关查询操作  P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-27T13:49:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初学者快速使用SQL(三)">
-<meta name="twitter:description" content="概述
-本文主要介绍表的关系及相关查询操作
-
-P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
+<meta name="twitter:description" content="概述 本文主要介绍表的关系及相关查询操作  P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 
 
 
@@ -411,54 +404,54 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
 <h1 id="FOREIGN-KEY"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h1><h2 id="显示定义外键"><a href="#显示定义外键" class="headerlink" title="显示定义外键"></a>显示定义外键</h2><blockquote>
 <p>使用到FOREIGN KEY关键字，两个关联表的对应列必须是同一数据类型</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> customers (</span><br><span class="line">  customer_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  customer_name <span class="built_in">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  customer_id <span class="built_in">INT</span>,</span><br><span class="line">  amount <span class="keyword">DOUBLE</span>,</span><br><span class="line">  FOREIGN <span class="keyword">KEY</span> (customer_id) <span class="keyword">REFERENCES</span> customers(customer_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> customers (</div><div class="line">  customer_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">  customer_name <span class="built_in">VARCHAR</span>(<span class="number">100</span>)</div><div class="line">);</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</div><div class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">  customer_id <span class="built_in">INT</span>,</div><div class="line">  amount <span class="keyword">DOUBLE</span>,</div><div class="line">  FOREIGN <span class="keyword">KEY</span> (customer_id) <span class="keyword">REFERENCES</span> customers(customer_id)</div><div class="line">);</div></pre></td></tr></table></figure>
 <h2 id="隐式定义外键"><a href="#隐式定义外键" class="headerlink" title="隐式定义外键"></a>隐式定义外键</h2><blockquote>
 <p>没有使用到外键（FOREIGN KEY）定义两个表之间的关联，但数据库仍然会将该列作为外键</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  customer_id <span class="built_in">INT</span>,</span><br><span class="line">  amount <span class="keyword">DOUBLE</span>,</span><br><span class="line">  <span class="keyword">INDEX</span> (customer_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</div><div class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">  customer_id <span class="built_in">INT</span>,</div><div class="line">  amount <span class="keyword">DOUBLE</span>,</div><div class="line">  <span class="keyword">INDEX</span> (customer_id)</div><div class="line">);</div></pre></td></tr></table></figure>
 <h1 id="JOIN-Queries"><a href="#JOIN-Queries" class="headerlink" title="JOIN Queries"></a>JOIN Queries</h1><blockquote>
 <p>为了从关联表里获取到数据，需要使用到JOIN查询</p>
 </blockquote>
 <h2 id="Cross-Join"><a href="#Cross-Join" class="headerlink" title="Cross Join"></a>Cross Join</h2><blockquote>
 <p>当没有条件指定时，这是一种默认的JOIN查询类型，意味着第一个表的每一行匹配到第二个表的每一行</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>JOIN关键字可以使用逗号代替</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers , orders;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers , orders;</div></pre></td></tr></table></figure>
 <h2 id="Natural-Join"><a href="#Natural-Join" class="headerlink" title="Natural Join"></a>Natural Join</h2><blockquote>
 <p>这种JOIN查询需要两个关联表有匹配的列名，并且重复列只显示一次</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> orders;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> orders;</div></pre></td></tr></table></figure>
 <h2 id="Inner-Join"><a href="#Inner-Join" class="headerlink" title="Inner Join"></a>Inner Join</h2><blockquote>
 <p>当一个join条件被指定时，Inner Join开始执行，查询结果类似于Natural Join，区别是Inner Join不处理重复的列</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> customers.customer_id = orders.customer_id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">WHERE</span> customers.customer_id = orders.customer_id;</div></pre></td></tr></table></figure>
 <h3 id="ON语句"><a href="#ON语句" class="headerlink" title="ON语句"></a>ON语句</h3><blockquote>
 <p>在把JOIN条件放在分离语句里非常有效</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</span><br><span class="line"><span class="keyword">ON</span> (customers.customer_id = orders.customer_id)</span><br><span class="line"><span class="keyword">WHERE</span> order.amount &gt; <span class="number">15</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">ON</span> (customers.customer_id = orders.customer_id)</div><div class="line"><span class="keyword">WHERE</span> order.amount &gt; <span class="number">15</span>;</div></pre></td></tr></table></figure>
 <h2 id="USING语句"><a href="#USING语句" class="headerlink" title="USING语句"></a>USING语句</h2><blockquote>
 <p>类似于ON语句，但是更短；事实上更像Natural JOIN，查询结果中重复的行只显示一次</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</span><br><span class="line"><span class="keyword">USING</span> (customer_id)</span><br><span class="line"><span class="keyword">WHERE</span> order.amount &gt; <span class="number">15</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">USING</span> (customer_id)</div><div class="line"><span class="keyword">WHERE</span> order.amount &gt; <span class="number">15</span>;</div></pre></td></tr></table></figure>
 <h2 id="Left-Outer-Join"><a href="#Left-Outer-Join" class="headerlink" title="Left(Outer) Join"></a>Left(Outer) Join</h2><blockquote>
 <p>Left Join是Outer Join的一种类型，如果从第二个表里没有匹配的行被找到，第一个表里的记录仍然被显示</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> orders</span><br><span class="line"><span class="keyword">USING</span> (customer_id);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">USING</span> (customer_id);</div></pre></td></tr></table></figure>
 <p>Note：OUTER关键字是可选的，可以只使用LEFT JOIN代替LEFT OUTER JOIN</p>
 <h2 id="Right-Outer-Join"><a href="#Right-Outer-Join" class="headerlink" title="Right(Outer) Join"></a>Right(Outer) Join</h2><blockquote>
 <p>RIGHT OUTER JOIN的工作机制与LEFT OUTER JOIN类似，但是表的顺序倒过来了</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers RIGHTOUTER <span class="keyword">JOIN</span> orders</span><br><span class="line"><span class="keyword">USING</span> (customer_id);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers RIGHTOUTER <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">USING</span> (customer_id);</div></pre></td></tr></table></figure>
 <p>Note：可以调换两个表的顺序，达到与LEFT OUTER JOIN一样的查询结果</p>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
 <li><a href="https://howtoprogramwithjava.com/database-relationships-many-many-one-one/" target="_blank" rel="external"><strong>Database Relationships – Many to Many / One to One</strong></a></li>
 <li><a href="https://howtoprogramwithjava.com/database-relationships-one-to-many/" target="_blank" rel="external"><strong>Database Relationships – One to Many</strong></a></li>
 </ol>
-<div id="footnotes"><hr><div id="footnotelist"><ol><li id="fn:1"><a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank" rel="external"><strong>SQL for Beginners: Part 3 – Database Relationships</strong></a><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank" rel="external"><strong>SQL for Beginners: Part 3 – Database Relationships</strong></a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -572,7 +565,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -580,7 +573,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -589,7 +582,7 @@ P.S.：译自SQL for Beginners: Part 3 – Database Relationships1">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

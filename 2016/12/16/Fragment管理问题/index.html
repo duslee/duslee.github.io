@@ -102,25 +102,18 @@
 
 
 
-<meta name="description" content="概述
-该文档主要描述个人在Android开发中关于Fragment的管理，使用Stack的特性（后进先出原则）来存放Fragment，可以在处理Activity的返回操作时得到充分发挥。
-
-Note：这里主要介绍Fragment的添加/替换/移除操作。">
+<meta name="description" content="概述 该文档主要描述个人在Android开发中关于Fragment的管理，使用Stack的特性（后进先出原则）来存放Fragment，可以在处理Activity的返回操作时得到充分发挥。  Note：这里主要介绍Fragment的添加/替换/移除操作。">
+<meta name="keywords" content="Blog,Android,Fragment">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fragment管理问题">
 <meta property="og:url" content="http://yoursite.com/2016/12/16/Fragment管理问题/index.html">
-<meta property="og:site_name" content="Jeff's Blog">
-<meta property="og:description" content="概述
-该文档主要描述个人在Android开发中关于Fragment的管理，使用Stack的特性（后进先出原则）来存放Fragment，可以在处理Activity的返回操作时得到充分发挥。
-
-Note：这里主要介绍Fragment的添加/替换/移除操作。">
+<meta property="og:site_name" content="Jeff&#39;s Blog">
+<meta property="og:description" content="概述 该文档主要描述个人在Android开发中关于Fragment的管理，使用Stack的特性（后进先出原则）来存放Fragment，可以在处理Activity的返回操作时得到充分发挥。  Note：这里主要介绍Fragment的添加/替换/移除操作。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-27T14:35:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fragment管理问题">
-<meta name="twitter:description" content="概述
-该文档主要描述个人在Android开发中关于Fragment的管理，使用Stack的特性（后进先出原则）来存放Fragment，可以在处理Activity的返回操作时得到充分发挥。
-
-Note：这里主要介绍Fragment的添加/替换/移除操作。">
+<meta name="twitter:description" content="概述 该文档主要描述个人在Android开发中关于Fragment的管理，使用Stack的特性（后进先出原则）来存放Fragment，可以在处理Activity的返回操作时得到充分发挥。  Note：这里主要介绍Fragment的添加/替换/移除操作。">
 
 
 
@@ -398,22 +391,22 @@ Note：这里主要介绍Fragment的添加/替换/移除操作。">
 </blockquote>
 <ol>
 <li><p>初始时添加Fragment到Activity上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String tag = <span class="string">"1"</span>;</span><br><span class="line">    getSupportFragmentManager()</span><br><span class="line">            .beginTransaction()</span><br><span class="line">            .add(R.id.content, MyFragment.newInstance(tag), tag)</span><br><span class="line">            .commit();</span><br><span class="line">   mTagStack.push(tag);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> String tag = <span class="string">"1"</span>;</div><div class="line">    getSupportFragmentManager()</div><div class="line">            .beginTransaction()</div><div class="line">            .add(R.id.content, MyFragment.newInstance(tag), tag)</div><div class="line">            .commit();</div><div class="line">   mTagStack.push(tag);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>添加Fragment到已存在的Fragment上：需要先隐藏已存在的Fragment，再完成添加操作，否则原先存在的Fragment还会显示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFragmentToTop</span><span class="params">(<span class="keyword">final</span> String oldTag, <span class="keyword">final</span> String newTag)</span> </span>&#123;</span><br><span class="line">    FragmentManager fm = getSupportFragmentManager();</span><br><span class="line"></span><br><span class="line">    Fragment fragment = fm.findFragmentByTag(oldTag);</span><br><span class="line">    FragmentTransaction ft = fm</span><br><span class="line">            .beginTransaction()</span><br><span class="line">            .hide(fragment)</span><br><span class="line">            .add(R.id.content, MyFragment.newInstance(newTag), newTag);</span><br><span class="line">    ft.addToBackStack(newTag);</span><br><span class="line">    ft.commit();</span><br><span class="line">    mTagStack.push(newTag);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFragmentToTop</span><span class="params">(<span class="keyword">final</span> String oldTag, <span class="keyword">final</span> String newTag)</span> </span>&#123;</div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line"></div><div class="line">    Fragment fragment = fm.findFragmentByTag(oldTag);</div><div class="line">    FragmentTransaction ft = fm</div><div class="line">            .beginTransaction()</div><div class="line">            .hide(fragment)</div><div class="line">            .add(R.id.content, MyFragment.newInstance(newTag), newTag);</div><div class="line">    ft.addToBackStack(newTag);</div><div class="line">    ft.commit();</div><div class="line">    mTagStack.push(newTag);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h1 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h1><blockquote>
 <p>用新的Fragment替换当前显示的Fragment，注意这里不会使用<code>FragmentTransaction.replace(int, Fragment, String)</code>方法，因为<code>replace</code>方法会将已有的Fragment全部移除，不能实现我们想要的替换效果。这里是先移除当前显示的Fragment，再将新的Fragment添加进来。注意这里Stack的操作是直接替换栈顶元素。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">replace</span><span class="params">(<span class="keyword">final</span> String oldTag, <span class="keyword">final</span> String newTag)</span> </span>&#123;</span><br><span class="line">    FragmentManager fm = getSupportFragmentManager();</span><br><span class="line"></span><br><span class="line">    Fragment oldFragment = fm.findFragmentByTag(oldTag);</span><br><span class="line">    FragmentTransaction ft = fm.beginTransaction();</span><br><span class="line"></span><br><span class="line">    ft.remove(oldFragment)</span><br><span class="line">            .add(R.id.content, MyFragment.newInstance(newTag), newTag)</span><br><span class="line">            .commit();</span><br><span class="line">    mTagStack.set(mTagStack.size() - <span class="number">1</span>, newTag);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">replace</span><span class="params">(<span class="keyword">final</span> String oldTag, <span class="keyword">final</span> String newTag)</span> </span>&#123;</div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line"></div><div class="line">    Fragment oldFragment = fm.findFragmentByTag(oldTag);</div><div class="line">    FragmentTransaction ft = fm.beginTransaction();</div><div class="line"></div><div class="line">    ft.remove(oldFragment)</div><div class="line">            .add(R.id.content, MyFragment.newInstance(newTag), newTag)</div><div class="line">            .commit();</div><div class="line">    mTagStack.set(mTagStack.size() - <span class="number">1</span>, newTag);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h1><blockquote>
 <p>直接根据tag移除栈顶的Fragment。先执行<code>remove</code>操作，再判断Stack的元素个数是否大于2，若大于2，表示栈里还存在Fragment，则需要显示下一个Fragment，否则和Activity的正常退出操作一样。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(String tag)</span> </span>&#123;</span><br><span class="line">    FragmentManager fm = getSupportFragmentManager();</span><br><span class="line"></span><br><span class="line">    Fragment removeFragment = fm.findFragmentByTag(tag);</span><br><span class="line">    FragmentTransaction ft = fm.beginTransaction();</span><br><span class="line"></span><br><span class="line">    ft.remove(removeFragment);</span><br><span class="line">    <span class="keyword">if</span> (mTagStack.size() &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">        Fragment showFragment = fm</span><br><span class="line">                .findFragmentByTag(mTagStack.get(mTagStack.size() - <span class="number">2</span>));</span><br><span class="line">        ft.show(showFragment);</span><br><span class="line">    &#125;</span><br><span class="line">    ft.commit();</span><br><span class="line">    fm.popBackStack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(String tag)</span> </span>&#123;</div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line"></div><div class="line">    Fragment removeFragment = fm.findFragmentByTag(tag);</div><div class="line">    FragmentTransaction ft = fm.beginTransaction();</div><div class="line"></div><div class="line">    ft.remove(removeFragment);</div><div class="line">    <span class="keyword">if</span> (mTagStack.size() &gt;= <span class="number">2</span>) &#123;</div><div class="line">        Fragment showFragment = fm</div><div class="line">                .findFragmentByTag(mTagStack.get(mTagStack.size() - <span class="number">2</span>));</div><div class="line">        ft.show(showFragment);</div><div class="line">    &#125;</div><div class="line">    ft.commit();</div><div class="line">    fm.popBackStack();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>Note</strong>：Activity的返回操作需要根据<code>FragmentManager.getBackStackEntryCount()</code>方法判断BackStack的个数来执行<font color="red"><u>移除</u></font>或<font color="red"><u>退出Activity</u></font>操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> backStackCount = getSupportFragmentManager().getBackStackEntryCount();</span><br><span class="line">    <span class="keyword">if</span> (backStackCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        remove(mTagStack.peek());</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">super</span>.onBackPressed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> backStackCount = getSupportFragmentManager().getBackStackEntryCount();</div><div class="line">    <span class="keyword">if</span> (backStackCount &gt; <span class="number">0</span>) &#123;</div><div class="line">        remove(mTagStack.peek());</div><div class="line">    &#125; <span class="keyword">else</span></div><div class="line">        <span class="keyword">super</span>.onBackPressed();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
 <li><a href="https://github.com/duslee/Fragment-BackStack-Test.git" target="_blank" rel="external"><strong>DEMO参考(下载地址)</strong></a></li>
 </ol>
@@ -533,7 +526,7 @@ Note：这里主要介绍Fragment的添加/替换/移除操作。">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -541,7 +534,7 @@ Note：这里主要介绍Fragment的添加/替换/移除操作。">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -550,7 +543,7 @@ Note：这里主要介绍Fragment的添加/替换/移除操作。">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
