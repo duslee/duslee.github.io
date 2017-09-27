@@ -102,23 +102,23 @@
 
 
 
-<meta name="description" content="概况 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
+<meta name="description" content="概况 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等 排序算法概述 排序算法1是把列表的元素以某个顺序存放的算法，最常用的顺序是数字排序和字典顺序。有效的排序对于其它如查找和合并算法（需要输入的数据在有序的列表里）的优化使用很重要，也常常在规范化数据和生产可读输出上很有用。 内部排序2：如果对象的数目足够少，可以填入到主存中，这种排序称之为">
 <meta name="keywords" content="Blog,Sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法整理">
 <meta property="og:url" content="http://yoursite.com/2016/06/02/排序算法整理/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
+<meta property="og:description" content="概况 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等 排序算法概述 排序算法1是把列表的元素以某个顺序存放的算法，最常用的顺序是数字排序和字典顺序。有效的排序对于其它如查找和合并算法（需要输入的数据在有序的列表里）的优化使用很重要，也常常在规范化数据和生产可读输出上很有用。 内部排序2：如果对象的数目足够少，可以填入到主存中，这种排序称之为">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-0.png">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-1.png">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-2.png">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-3.png">
 <meta property="og:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-4.png">
-<meta property="og:updated_time" content="2017-02-27T15:10:45.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:34:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法整理">
-<meta name="twitter:description" content="概况 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等">
+<meta name="twitter:description" content="概况 本文简单介绍下内部排序算法的实现机制，主要包括桶排序、冒泡排序、选择排序、插入排序、快速排序、合并排序等 排序算法概述 排序算法1是把列表的元素以某个顺序存放的算法，最常用的顺序是数字排序和字典顺序。有效的排序对于其它如查找和合并算法（需要输入的数据在有序的列表里）的优化使用很重要，也常常在规范化数据和生产可读输出上很有用。 内部排序2：如果对象的数目足够少，可以填入到主存中，这种排序称之为">
 <meta name="twitter:image" content="http://yoursite.com/images/sorting/排序算法整理-diagram-0.png">
 
 
@@ -375,15 +375,13 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>本文简单介绍下内部排序算法的实现机制，主要包括<strong>桶排序</strong>、<strong>冒泡排序</strong>、<strong>选择排序</strong>、<strong>插入排序</strong>、<strong>快速排序</strong>、<strong>合并排序</strong>等</p>
-</blockquote>
-<a id="more"></a>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文简单介绍下内部排序算法的实现机制，主要包括<strong>桶排序</strong>、<strong>冒泡排序</strong>、<strong>选择排序</strong>、<strong>插入排序</strong>、<strong>快速排序</strong>、<strong>合并排序</strong>等</p>
 <h1 id="排序算法概述"><a href="#排序算法概述" class="headerlink" title="排序算法概述"></a>排序算法概述</h1><ul>
 <li><strong>排序算法</strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>是把列表的元素<u><font color="red">以某个顺序存放的算法</font></u>，最常用的顺序是<u><font color="red">数字排序</font></u>和<u><font color="red">字典顺序</font></u>。有效的排序对于其它如查找和合并算法（需要输入的数据在有序的列表里）的优化使用很重要，也常常在规范化数据和生产可读输出上很有用。</li>
 <li><strong>内部排序</strong><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>：如果对象的数目足够少，可以填入到主存中，这种排序称之为内部排序</li>
 <li><strong>外部排序</strong>：如果对象的数目足够多，以至于排序时部分对象要填入到外存中这种排序称之为外部排序</li>
 </ul>
+<a id="more"></a>
 <h1 id="常见排序算法"><a href="#常见排序算法" class="headerlink" title="常见排序算法"></a>常见排序算法</h1><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><ol>
 <li><p><strong>桶排序的工作流程</strong></p>
 <p>先处理数组中的重复数据（<u><font color="red">有相同值的元素</font></u>），然后获取数组中最大值的元素，并创建元素个数为该值的数组，接着将原数组中的每个元素依次放入新数组的指定位置（<u><font color="red">元素值等于指数值</font></u>）处，最后从新数组中按顺序取出元素排序</p>

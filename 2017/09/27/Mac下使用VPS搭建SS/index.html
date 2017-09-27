@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。">
+<meta name="description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。 VPS介绍 VPS，Virtual Private Server，虚拟专用服务器，VPS技术可以将一台服务器分割成多个虚拟专享服务器的优质服务。 在容器或虚拟机中，每个VPS都可分配独立公网IP地址、独立操作系统、实现不同VPS间磁盘空间、内存、CPU资源、进程和系统配置的隔离。 VPS可以像">
 <meta name="keywords" content="Blog,Tool,VPS|SS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac下使用VPS搭建SS">
 <meta property="og:url" content="http://yoursite.com/2017/09/27/Mac下使用VPS搭建SS/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。">
+<meta property="og:description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。 VPS介绍 VPS，Virtual Private Server，虚拟专用服务器，VPS技术可以将一台服务器分割成多个虚拟专享服务器的优质服务。 在容器或虚拟机中，每个VPS都可分配独立公网IP地址、独立操作系统、实现不同VPS间磁盘空间、内存、CPU资源、进程和系统配置的隔离。 VPS可以像">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-27T06:07:25.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:38:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下使用VPS搭建SS">
-<meta name="twitter:description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。">
+<meta name="twitter:description" content="概况 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。 VPS介绍 VPS，Virtual Private Server，虚拟专用服务器，VPS技术可以将一台服务器分割成多个虚拟专享服务器的优质服务。 在容器或虚拟机中，每个VPS都可分配独立公网IP地址、独立操作系统、实现不同VPS间磁盘空间、内存、CPU资源、进程和系统配置的隔离。 VPS可以像">
 
 
 
@@ -381,22 +381,18 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。</p>
-</blockquote>
-<a id="more"></a>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。</p>
 <h1 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ol>
 <li><code>VPS</code>，Virtual Private Server，虚拟专用服务器，VPS技术可以将一台服务器分割成多个虚拟专享服务器的优质服务。</li>
 <li>在容器或虚拟机中，每个VPS都可分配独立公网IP地址、独立操作系统、实现不同VPS间磁盘空间、内存、CPU资源、进程和系统配置的隔离。</li>
 <li>VPS可以像独立服务器一样，重装操作系统，安装程序，单独重启服务器。简单理解VPS就是一台拥有公网IP地址的服务器。</li>
 <li>最重要的是接下来要描述的重点，可以用VPS搭建<code>Shadowsocks</code>用于翻墙。</li>
 </ol>
+<a id="more"></a>
 <h2 id="Vultr"><a href="#Vultr" class="headerlink" title="Vultr"></a>Vultr</h2><h3 id="VPS选择"><a href="#VPS选择" class="headerlink" title="VPS选择"></a>VPS选择</h3><p> VPS选择可以参考<a href="https://zhuanlan.zhihu.com/p/21872685" target="_blank" rel="external"><strong>十个便宜VPS（国内国外）主机分享–VPS服务器建站和搭建应用服务体验</strong></a>，笔者这里选择<code>Vultr</code>，建议可以使用<a href="https://www.vultr.com/?ref=7220951" target="_blank" rel="external"><strong>链接地址</strong></a>去注册账号，会有优惠。</p>
 <h3 id="Vultr操作流程"><a href="#Vultr操作流程" class="headerlink" title="Vultr操作流程"></a>Vultr操作流程</h3><p> 根据该链接地址进入Vultr后，依次完成<font color="red"><strong>账号注册</strong></font>、<font color="red"><strong>支付充值（至少$10）</strong></font>、<font color="red"><strong>Server创建</strong></font>（笔者选择的操作系统是Ubuntu）流程（这里不仔细介绍了），接下来就是在部署的Server上搭建Shadowsocks</p>
 <p> <font color="red"><strong>Note</strong></font>：Server创建成功后记得纪录下对应的IP地址、Username、Password等（可以在Server的详情页面看到），下面操作会用到。</p>
-<h1 id="搭建SS"><a href="#搭建SS" class="headerlink" title="搭建SS"></a>搭建SS</h1><blockquote>
-<p>以下操作是在Mac环境下完成</p>
-</blockquote>
+<h1 id="搭建SS"><a href="#搭建SS" class="headerlink" title="搭建SS"></a>搭建SS</h1><p> 以下操作是在Mac环境下完成</p>
 <h2 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h2><ol>
 <li><p>进入终端或<code>iTerm</code>环境，使用ssh命令输入上面记录的用户名和IP地址</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@ip_address</div></pre></td></tr></table></figure>
@@ -422,9 +418,7 @@
 <li><p>auto switch模式配置信息：根据需要代理的域名或网址等来选择情景模式，如<code>*.biadu.com</code>使用“直接连接”，<code>*.google.com</code>使用“proxy”模式等，可以自主添加</p>
 </li>
 </ol>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><blockquote>
-<p>加速（待续）</p>
-</blockquote>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><p> 加速（待续）</p>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
 <li><a href="https://www.diycode.cc/topics/738" target="_blank" rel="external"><strong>轻松在VPS搭建Shadowsocks翻墙（$2.5/月）</strong></a></li>
 <li><a href="http://blog.csdn.net/bing900713/article/details/71274519?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="external"><strong>Mac搭建VPS和shadowsocks</strong></a></li>

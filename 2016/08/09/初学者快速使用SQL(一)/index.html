@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概述 SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。  P.S.：译自SQL for Beginners1">
+<meta name="description" content="概述 SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。 P.S.：译自SQL for Beginners1 基本操作DATABASECREATE DATABASE 创建一个数据库 1CREATE DATABASE my_first_db;">
 <meta name="keywords" content="Blog,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初学者快速使用SQL(一)">
 <meta property="og:url" content="http://yoursite.com/2016/08/09/初学者快速使用SQL(一)/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。  P.S.：译自SQL for Beginners1">
+<meta property="og:description" content="概述 SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。 P.S.：译自SQL for Beginners1 基本操作DATABASECREATE DATABASE 创建一个数据库 1CREATE DATABASE my_first_db;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-27T13:48:58.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:31:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初学者快速使用SQL(一)">
-<meta name="twitter:description" content="概述 SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。  P.S.：译自SQL for Beginners1">
+<meta name="twitter:description" content="概述 SQL，Structured Query Language，被设计用于关系型数据库管理系统（RDBMS，relational database management systems）的一种语言。 P.S.：译自SQL for Beginners1 基本操作DATABASECREATE DATABASE 创建一个数据库 1CREATE DATABASE my_first_db;">
 
 
 
@@ -381,33 +381,19 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
-<p><code>SQL</code>，<strong>Structured Query Language</strong>，被设计用于关系型数据库管理系统（<code>RDBMS</code>，<strong>relational database management systems</strong>）的一种语言。</p>
-</blockquote>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> <code>SQL</code>，<strong>Structured Query Language</strong>，被设计用于关系型数据库管理系统（<code>RDBMS</code>，<strong>relational database management systems</strong>）的一种语言。</p>
 <p><strong>P.S.</strong>：译自<strong><code>SQL for Beginners</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-<a id="more"></a>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="DATABASE"><a href="#DATABASE" class="headerlink" title="DATABASE"></a>DATABASE</h2><h3 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h3><blockquote>
-<p><u><font color="red">创建一个数据库</font></u></p>
-</blockquote>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="DATABASE"><a href="#DATABASE" class="headerlink" title="DATABASE"></a>DATABASE</h2><h3 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h3><p> <u><font color="red">创建一个数据库</font></u></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> my_first_db;</div></pre></td></tr></table></figure>
-<h3 id="SHOW-DATABASES"><a href="#SHOW-DATABASES" class="headerlink" title="SHOW DATABASES"></a>SHOW DATABASES</h3><blockquote>
-<p><u><font color="red">获取所有的数据库列表</font></u></p>
-</blockquote>
+<a id="more"></a>
+<h3 id="SHOW-DATABASES"><a href="#SHOW-DATABASES" class="headerlink" title="SHOW DATABASES"></a>SHOW DATABASES</h3><p> <u><font color="red">获取所有的数据库列表</font></u></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>;</div></pre></td></tr></table></figure>
-<h3 id="DROP-DATABASE"><a href="#DROP-DATABASE" class="headerlink" title="DROP DATABASE"></a>DROP DATABASE</h3><blockquote>
-<p><u><font color="red">删除一个存在的数据库</font></u>，在输入此命令后会直接删除，不会提示</p>
-</blockquote>
+<h3 id="DROP-DATABASE"><a href="#DROP-DATABASE" class="headerlink" title="DROP DATABASE"></a>DROP DATABASE</h3><p> <u><font color="red">删除一个存在的数据库</font></u>，在输入此命令后会直接删除，不会提示</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> my_first_db;</div></pre></td></tr></table></figure>
-<h3 id="USE"><a href="#USE" class="headerlink" title="USE"></a>USE</h3><blockquote>
-<p><u><font color="red">选择一个数据库</font></u>，不需要在查询语句后加上<code>;</code></p>
-</blockquote>
+<h3 id="USE"><a href="#USE" class="headerlink" title="USE"></a>USE</h3><p> <u><font color="red">选择一个数据库</font></u>，不需要在查询语句后加上<code>;</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">USE</span> my_first_db</div></pre></td></tr></table></figure>
-<h2 id="Database-Table"><a href="#Database-Table" class="headerlink" title="Database Table"></a>Database Table</h2><blockquote>
-<p>数据库表可以<u><font color="red">存放结构化数据</font></u>，也可对数据进行<u><font color="red">增加</font></u>、<u><font color="red">读取</font></u>、<u><font color="red">更新</font></u>和<u><font color="red">删除</font></u>操作</p>
-</blockquote>
-<h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><blockquote>
-<p><u><font color="red">创建数据库表</font></u>，可以使用多行和缩进来完成创建</p>
-</blockquote>
+<h2 id="Database-Table"><a href="#Database-Table" class="headerlink" title="Database Table"></a>Database Table</h2><p> 数据库表可以<u><font color="red">存放结构化数据</font></u>，也可对数据进行<u><font color="red">增加</font></u>、<u><font color="red">读取</font></u>、<u><font color="red">更新</font></u>和<u><font color="red">删除</font></u>操作</p>
+<h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><p> <u><font color="red">创建数据库表</font></u>，可以使用多行和缩进来完成创建</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span> &#123;</div><div class="line">  username <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</div><div class="line">  create_date <span class="built_in">DATE</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <ol>
 <li><strong>PRIMARY KEY</strong>：用于区分表里的每一行数据</li>
@@ -437,9 +423,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><blockquote>
-<p><u><font color="red">添加一些数据到数据库表里</font></u></p>
-</blockquote>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><p> <u><font color="red">添加一些数据到数据库表里</font></u></p>
 <ol>
 <li><p><strong>VALUES</strong>：存放属性值的列表，使用<code>,</code>隔开；注意主键值为<code>NULL</code>的情况，该值可以自动生成，因为该列设置为<code>AUTO_INCREMENT</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">VALUES</span> (</div><div class="line">  <span class="literal">NULL</span>,</div><div class="line">  ‘johndoe’,</div><div class="line">  ‘john@doe.com’,</div><div class="line">  ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-14</span>’</div><div class="line">);</div></pre></td></tr></table></figure>
@@ -457,9 +441,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">SET</span></div><div class="line">  create_date = <span class="keyword">NOW</span>(),</div><div class="line">  user_name = ‘batman’,</div><div class="line">  email = ‘bat@man.com’;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><blockquote>
-<p><u><font color="red">从一个数据库表里读取数据</font></u></p>
-</blockquote>
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p> <u><font color="red">从一个数据库表里读取数据</font></u></p>
 <ol>
 <li><p><strong>Asterisk(*)</strong>：从数据库表里获取所有列的数据</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span>;</div></pre></td></tr></table></figure>
@@ -485,25 +467,15 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">LIMIT</span> <span class="number">2</span>, <span class="number">1</span>;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><blockquote>
-<p><u><font color="red">更新数据库表里的数据</font></u>，可以结合<code>WHERE</code>和<code>LIMIT</code>语句</p>
-</blockquote>
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><p> <u><font color="red">更新数据库表里的数据</font></u>，可以结合<code>WHERE</code>和<code>LIMIT</code>语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> <span class="keyword">users</span> <span class="keyword">SET</span></div><div class="line">  email = ‘<span class="keyword">changed</span>@gmail.cm’,</div><div class="line">  user_name = ‘barfoo’,</div><div class="line">  <span class="keyword">WHERE</span> user_name = ‘foobar’;</div></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> <span class="keyword">users</span> <span class="keyword">SET</span> create_date = ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-01</span>’</div><div class="line">  <span class="keyword">WHERE</span> create_date = ‘<span class="number">2009</span><span class="number">-12</span><span class="number">-14</span>’ <span class="keyword">LIMIT</span> <span class="number">1</span>;</div></pre></td></tr></table></figure>
-<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><blockquote>
-<p><u><font color="red">结合<code>WHERE</code>语句来删除数据库表里的数据</font></u></p>
-</blockquote>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p> <u><font color="red">结合<code>WHERE</code>语句来删除数据库表里的数据</font></u></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_name = ‘batman’;</div></pre></td></tr></table></figure>
-<blockquote>
-<p><u><font color="red">通常使用TRUNCATE更有效</font></u>，可以重置<code>AUTO_INCREMENT</code>数，即一个新行的<code>ID</code>值为1，而<code>DELETE</code>会继续计数</p>
-</blockquote>
+<p> <u><font color="red">通常使用TRUNCATE更有效</font></u>，可以重置<code>AUTO_INCREMENT</code>数，即一个新行的<code>ID</code>值为1，而<code>DELETE</code>会继续计数</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span>;</div></pre></td></tr></table></figure>
-<h1 id="转移字符和特殊单词"><a href="#转移字符和特殊单词" class="headerlink" title="转移字符和特殊单词"></a>转移字符和特殊单词</h1><h2 id="转义字符串"><a href="#转义字符串" class="headerlink" title="转义字符串"></a>转义字符串</h2><blockquote>
-<p>某些字符需要被转义，可以使用<code>\</code>来实现</p>
-</blockquote>
-<h2 id="特殊单词"><a href="#特殊单词" class="headerlink" title="特殊单词"></a>特殊单词</h2><blockquote>
-<p>因MySQL有很多如<code>SELECT</code>或<code>UPDATE</code>等特殊单词，可以通过<code>` </code>来避免冲突</p>
-</blockquote>
+<h1 id="转移字符和特殊单词"><a href="#转移字符和特殊单词" class="headerlink" title="转移字符和特殊单词"></a>转移字符和特殊单词</h1><h2 id="转义字符串"><a href="#转义字符串" class="headerlink" title="转义字符串"></a>转义字符串</h2><p> 某些字符需要被转义，可以使用<code>\</code>来实现</p>
+<h2 id="特殊单词"><a href="#特殊单词" class="headerlink" title="特殊单词"></a>特殊单词</h2><p> 因MySQL有很多如<code>SELECT</code>或<code>UPDATE</code>等特殊单词，可以通过<code>` </code>来避免冲突</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="http://code.tutsplus.com/tutorials/sql-for-beginners--net-8200" target="_blank" rel="external"><strong>SQL for Beginners</strong></a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>

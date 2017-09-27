@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
+<meta name="description" content="概况 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。 配置与greenDAO 2的区别 greenDAO 2（之前的版本）需要开发者在工程中另建一个独立的Java生成器项目（需要使用到“greendao-generator”依赖，来自动生成greenDAO需用的代码），然而greenDAO 3只需使用注解定义实体类，然后通过gradle插件就可以生成">
 <meta name="keywords" content="Blog,Tool,GreenDAO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="greenDAO使用总结">
 <meta property="og:url" content="http://yoursite.com/2016/07/31/greenDAO使用总结/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
+<meta property="og:description" content="概况 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。 配置与greenDAO 2的区别 greenDAO 2（之前的版本）需要开发者在工程中另建一个独立的Java生成器项目（需要使用到“greendao-generator”依赖，来自动生成greenDAO需用的代码），然而greenDAO 3只需使用注解定义实体类，然后通过gradle插件就可以生成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-27T13:50:42.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:36:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="greenDAO使用总结">
-<meta name="twitter:description" content="概况 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。">
+<meta name="twitter:description" content="概况 此文档主要描述greenDAO 3的相关概念及使用，包括项目中的配置、数据操作（增删改查）等。 配置与greenDAO 2的区别 greenDAO 2（之前的版本）需要开发者在工程中另建一个独立的Java生成器项目（需要使用到“greendao-generator”依赖，来自动生成greenDAO需用的代码），然而greenDAO 3只需使用注解定义实体类，然后通过gradle插件就可以生成">
 
 
 
@@ -381,24 +381,14 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>此文档主要描述<code>greenDAO 3</code>的相关概念及使用，包括<u><font color="red">项目中的配置、数据操作（增删改查）</font></u>等。</p>
-</blockquote>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 此文档主要描述<code>greenDAO 3</code>的相关概念及使用，包括<u><font color="red">项目中的配置、数据操作（增删改查）</font></u>等。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="与greenDAO-2的区别"><a href="#与greenDAO-2的区别" class="headerlink" title="与greenDAO 2的区别"></a>与greenDAO 2的区别</h2><p> <code>greenDAO 2</code>（之前的版本）需要开发者在工程中另建一个独立的<code>Java生成器</code>项目（需要使用到<code>“greendao-generator”</code>依赖，来自动生成greenDAO需用的代码），然而<code>greenDAO 3</code>只需使用<code>注解</code>定义实体类，然后通过<code>gradle插件</code>就可以生成代码</p>
 <a id="more"></a>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="与greenDAO-2的区别"><a href="#与greenDAO-2的区别" class="headerlink" title="与greenDAO 2的区别"></a>与greenDAO 2的区别</h2><blockquote>
-<p><code>greenDAO 2</code>（之前的版本）需要开发者在工程中另建一个独立的<code>Java生成器</code>项目（需要使用到<code>“greendao-generator”</code>依赖，来自动生成greenDAO需用的代码），然而<code>greenDAO 3</code>只需使用<code>注解</code>定义实体类，然后通过<code>gradle插件</code>就可以生成代码</p>
-</blockquote>
-<h2 id="greenDAO-3的配置"><a href="#greenDAO-3的配置" class="headerlink" title="greenDAO 3的配置"></a>greenDAO 3的配置</h2><h3 id="添加gradle插件到buildscript"><a href="#添加gradle插件到buildscript" class="headerlink" title="添加gradle插件到buildscript"></a>添加gradle插件到buildscript</h3><blockquote>
-<p>在工程的<code>build.gradle</code>文件中添加gradle插件到<code>buildscript</code>块中</p>
-</blockquote>
+<h2 id="greenDAO-3的配置"><a href="#greenDAO-3的配置" class="headerlink" title="greenDAO 3的配置"></a>greenDAO 3的配置</h2><h3 id="添加gradle插件到buildscript"><a href="#添加gradle插件到buildscript" class="headerlink" title="添加gradle插件到buildscript"></a>添加gradle插件到buildscript</h3><p> 在工程的<code>build.gradle</code>文件中添加gradle插件到<code>buildscript</code>块中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">  dependencies &#123;</div><div class="line">    classpath ‘org.greenrobot:greendao-gradle-plugin:<span class="number">3.0</span>.0’</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="根模块中使用gradle插件"><a href="#根模块中使用gradle插件" class="headerlink" title="根模块中使用gradle插件"></a>根模块中使用gradle插件</h3><blockquote>
-<p><u><font color="red">在根模块的build.gradle文件中使用gradle插件</font></u></p>
-</blockquote>
+<h3 id="根模块中使用gradle插件"><a href="#根模块中使用gradle插件" class="headerlink" title="根模块中使用gradle插件"></a>根模块中使用gradle插件</h3><p> <u><font color="red">在根模块的build.gradle文件中使用gradle插件</font></u></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apply plugin ‘org.greenrobot.greendao’</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">  compile ‘org.greenrobot:greendao:<span class="number">3.0</span>.1’</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="gradle插件的配置"><a href="#gradle插件的配置" class="headerlink" title="gradle插件的配置"></a>gradle插件的配置</h3><blockquote>
-<p><u><font color="red">在根模块的build.gradle文件中配置greendao</font></u></p>
-</blockquote>
+<h3 id="gradle插件的配置"><a href="#gradle插件的配置" class="headerlink" title="gradle插件的配置"></a>gradle插件的配置</h3><p> <u><font color="red">在根模块的build.gradle文件中配置greendao</font></u></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">greendao &#123;</div><div class="line">  schemaVersion <span class="number">2</span></div><div class="line">  daoPackage ‘…’</div><div class="line">  targetGenDir ‘…’</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol>
 <li><strong>schemaVersion</strong>：指定数据库<code>schema</code>的当前版本号，被<code>*OpenHelpers</code>类使用，用于在不同的schema版本号之间迁移，如果修改了<code>Entity</code>或数据库的schema，该值必须增加，默认是1 </li>
@@ -407,12 +397,8 @@
 <li><strong>generateTests</strong>：设置为<code>true</code>时自动生成单元测试代码</li>
 <li><strong>targetGenGenTest</strong>：<u><font color="red">生成单元测试代码的存放位置</font></u></li>
 </ol>
-<h3 id="Gradle插件实现步骤"><a href="#Gradle插件实现步骤" class="headerlink" title="Gradle插件实现步骤"></a>Gradle插件实现步骤</h3><blockquote>
-<p>每次在<code>make</code>工程时，Gradle插件会扫描工程中所有的<code>@Entity</code>文件（greenDAO用到的数据库实体类），并根据实体类生成<code>DaoMaster</code>、<code>DaoSession</code>以及所有实体类的<code>DAO类</code>，生成的文件默认目录为<code>build/generated/source/greendao</code></p>
-</blockquote>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="Entity"><a href="#Entity" class="headerlink" title="@Entity"></a>@Entity</h2><blockquote>
-<p><code>@Entity</code>注解<u><font color="red">标记一个Java类为持久的实体</font></u>，可以配置如下参数</p>
-</blockquote>
+<h3 id="Gradle插件实现步骤"><a href="#Gradle插件实现步骤" class="headerlink" title="Gradle插件实现步骤"></a>Gradle插件实现步骤</h3><p> 每次在<code>make</code>工程时，Gradle插件会扫描工程中所有的<code>@Entity</code>文件（greenDAO用到的数据库实体类），并根据实体类生成<code>DaoMaster</code>、<code>DaoSession</code>以及所有实体类的<code>DAO类</code>，生成的文件默认目录为<code>build/generated/source/greendao</code></p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="Entity"><a href="#Entity" class="headerlink" title="@Entity"></a>@Entity</h2><p> <code>@Entity</code>注解<u><font color="red">标记一个Java类为持久的实体</font></u>，可以配置如下参数</p>
 <ol>
 <li><strong>schema</strong>：<u><font color="red">告诉greenDAO该实体属于哪个schema</font></u>（<strong>Note</strong>：当使用Gradle插件时目前不支持多个schemas）</li>
 <li><strong>active</strong>：<u><font color="red">标记一个Entity的激活状态</font></u>，激活的Entity有更新/删除/刷新方法</li>
@@ -443,9 +429,7 @@
 </li>
 <li><strong>@JoinEntity</strong>：<u><font color="red">如果一个多对多的关联有另一个entity/table，可以在该属性上添加该注解</font></u></li>
 </ol>
-<h2 id="Generated"><a href="#Generated" class="headerlink" title="@Generated"></a>@Generated</h2><blockquote>
-<p>在greenDAO 3中Entity类由开发者创建和编辑，在代码生成过程中，greenDAO会增加实体的源码，同时会添加<code>@Generated</code>注解到生成的方法和域上来提示开发者，为了阻止任何代码的丢失。<u><font color="red">在大多数情况下，开发者不应该接触带有@Generated注解的代码</font></u>。作为预防措施，greenDAO不会重写存在的代码，如果生成的代码被手动修改了，greenDAO会报错。</p>
-</blockquote>
+<h2 id="Generated"><a href="#Generated" class="headerlink" title="@Generated"></a>@Generated</h2><p> 在greenDAO 3中Entity类由开发者创建和编辑，在代码生成过程中，greenDAO会增加实体的源码，同时会添加<code>@Generated</code>注解到生成的方法和域上来提示开发者，为了阻止任何代码的丢失。<u><font color="red">在大多数情况下，开发者不应该接触带有@Generated注解的代码</font></u>。作为预防措施，greenDAO不会重写存在的代码，如果生成的代码被手动修改了，greenDAO会报错。</p>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="编写Entity类"><a href="#编写Entity类" class="headerlink" title="编写Entity类"></a>编写Entity类</h2><blockquote>
 <p><strong>App.java</strong></p>
 </blockquote>
@@ -462,9 +446,7 @@
 <p><strong>CityInfo.java</strong></p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span>(nameInDb = <span class="string">"city_info"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CityInfo</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="meta">@Id</span></div><div class="line">  <span class="keyword">private</span> Long id;</div><div class="line"></div><div class="line">  <span class="meta">@NotNull</span></div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">  <span class="meta">@NotNull</span></div><div class="line">  <span class="keyword">private</span> String code;</div><div class="line"></div><div class="line">  <span class="meta">@ToMany</span></div><div class="line">  <span class="meta">@JoinEntity</span>(</div><div class="line">      entity = JoinCityToApp.class,</div><div class="line">      sourceProperty = <span class="string">"cityId"</span>,</div><div class="line">      targetProperty = <span class="string">"appId"</span></div><div class="line">  )</div><div class="line">  <span class="keyword">private</span> List&lt;App&gt; appList;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="增删改查操作"><a href="#增删改查操作" class="headerlink" title="增删改查操作"></a>增删改查操作</h2><h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><blockquote>
-<p>获取<code>DaoMaster.DevOpenHelper</code>的实例即可</p>
-</blockquote>
+<h2 id="增删改查操作"><a href="#增删改查操作" class="headerlink" title="增删改查操作"></a>增删改查操作</h2><h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p> 获取<code>DaoMaster.DevOpenHelper</code>的实例即可</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DaoMaster.DevOpenHelper mHelper = <span class="keyword">new</span> DaoMaster.DevOpenHelper(context, DB_NAME);</div></pre></td></tr></table></figure>
 <h3 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertCityInfo</span><span class="params">(CityInfo info, List&lt;App&gt; appList, List&lt;Banner&gt; bannerList)</span> </span>&#123;</div><div class="line">  DaoSession daoSession = <span class="keyword">new</span> DaoMaster(getWritableDatabase()).newSession();</div><div class="line">  <span class="keyword">long</span> infoId = daoSession.insert(info);</div><div class="line">  JoinCityToApp joinCityToApp = <span class="keyword">null</span>;</div><div class="line">  <span class="keyword">for</span> (App app : appList) &#123;</div><div class="line">    <span class="keyword">long</span> appId = daoSession.insert(app);</div><div class="line">    joinCityToApp = <span class="keyword">new</span> JoinCityToApp(<span class="keyword">null</span>, infoId, appId);</div><div class="line">    daoSession.insert(joinCityToApp);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  JoinCityToBanner joinCityToBanner = <span class="keyword">null</span>;</div><div class="line">  <span class="keyword">for</span> (Banner banner : bannerList) &#123;</div><div class="line">    <span class="keyword">long</span> bannerId = daoSession.insert(banner);</div><div class="line">    daoSession.insert(banner);</div><div class="line">    joinCityToBanner = <span class="keyword">new</span> JoinCityToBanner(<span class="keyword">null</span>, infoId, bannerId);</div><div class="line">    daoSession.insert(joinCityToBanner);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;App&gt; <span class="title">queryAppList</span><span class="params">(String code)</span> </span>&#123;</div><div class="line">  List&lt;App&gt; list = <span class="keyword">null</span>;</div><div class="line">  DaoSession daoSession = <span class="keyword">new</span> DaoMaster(getWritableDatabase()).newSession();</div><div class="line">  Query query = daoSession.getCityInfoDao().queryBuilder()</div><div class="line">      .where(CityInfoDao.Properties.Code.eq(code))</div><div class="line">      .build();</div><div class="line"></div><div class="line">  List&lt;CityInfo&gt; infoList = query.list();</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">null</span> != infoList &amp;&amp; infoList.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">    list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    <span class="keyword">for</span> (CityInfo info : infoList) &#123;</div><div class="line">      list.addAll(info.getAppList());</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> list;</div><div class="line">&#125;</div></pre></td></tr></table></figure>

@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概述 本文主要介绍Retrofit 2.0的基础知识">
+<meta name="description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础基本介绍 Retrofit是由Square开发的一个Android和Java的REST库，可以利用接口、方法和注解参数来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化机制（JSON/XML协议）都是可替换（pluggable）的，使用者可以选择适合自己的方案 请求的发送实现分同步和异步两种 支持RxJ">
 <meta name="keywords" content="Blog,Http,Retrofit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Retrofit 2.0使用总结">
 <meta property="og:url" content="http://yoursite.com/2016/07/15/Retrofit 2.0使用总结/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 本文主要介绍Retrofit 2.0的基础知识">
+<meta property="og:description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础基本介绍 Retrofit是由Square开发的一个Android和Java的REST库，可以利用接口、方法和注解参数来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化机制（JSON/XML协议）都是可替换（pluggable）的，使用者可以选择适合自己的方案 请求的发送实现分同步和异步两种 支持RxJ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-27T13:53:45.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:39:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit 2.0使用总结">
-<meta name="twitter:description" content="概述 本文主要介绍Retrofit 2.0的基础知识">
+<meta name="twitter:description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础基本介绍 Retrofit是由Square开发的一个Android和Java的REST库，可以利用接口、方法和注解参数来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化机制（JSON/XML协议）都是可替换（pluggable）的，使用者可以选择适合自己的方案 请求的发送实现分同步和异步两种 支持RxJ">
 
 
 
@@ -381,10 +381,7 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
-<p>本文主要介绍<code>Retrofit 2.0</code>的基础知识</p>
-</blockquote>
-<a id="more"></a>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<code>Retrofit 2.0</code>的基础知识</p>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><ol>
 <li><code>Retrofit</code>是由<code>Square</code>开发的一个Android和Java的<code>REST</code>库，可以<u><font color="red">利用接口、方法和注解参数</font></u>来声明式定义一个请求应该如何被创建</li>
 <li>Retrofit背后的<code>HTTP client</code>、序列化机制（<code>JSON/XML协议</code>）都是可替换（<code>pluggable</code>）的，使用者可以选择适合自己的方案</li>
@@ -398,20 +395,13 @@
 </ul>
 </li>
 </ol>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
-<p>在根模块的<code>build.gradle</code>文件的<code>dependencies</code>块中添加</p>
-</blockquote>
+<a id="more"></a>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 在根模块的<code>build.gradle</code>文件的<code>dependencies</code>块中添加</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.0.0-beta4'</span></div></pre></td></tr></table></figure>
-<h2 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h2><h3 id="定义形式"><a href="#定义形式" class="headerlink" title="定义形式"></a>定义形式</h3><blockquote>
-<p>在Retrofit 2.0中，创建Service更简单了，因为<u><font color="red">只需定义一种形式</font></u></p>
-</blockquote>
+<h2 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h2><h3 id="定义形式"><a href="#定义形式" class="headerlink" title="定义形式"></a>定义形式</h3><p> 在Retrofit 2.0中，创建Service更简单了，因为<u><font color="red">只需定义一种形式</font></u></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">APIService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@POST</span>(<span class="string">"/list"</span>)</div><div class="line">    <span class="function">Call&lt;Repo&gt; <span class="title">loadRepo</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Call类型"><a href="#Call类型" class="headerlink" title="Call类型"></a>Call类型</h3><blockquote>
-<p>Retrofit 2.0使用新的类型<code>Call</code>来用于OkHttp的API请求，另外，每一个call对象实例只能被用一次，即<code>request</code>和<code>response</code>是一一对应，可以通过<code>clone</code>方法来创建一个一模一样的实例</p>
-</blockquote>
-<h3 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步 &amp; 异步"></a>同步 &amp; 异步</h3><blockquote>
-<p>Retrofit 2.0支持在同一个类型中的<strong>同步</strong>和<strong>异步</strong>，同时<u><font color="red">一个请求也可以被终止</font></u></p>
-</blockquote>
+<h3 id="Call类型"><a href="#Call类型" class="headerlink" title="Call类型"></a>Call类型</h3><p> Retrofit 2.0使用新的类型<code>Call</code>来用于OkHttp的API请求，另外，每一个call对象实例只能被用一次，即<code>request</code>和<code>response</code>是一一对应，可以通过<code>clone</code>方法来创建一个一模一样的实例</p>
+<h3 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步 &amp; 异步"></a>同步 &amp; 异步</h3><p> Retrofit 2.0支持在同一个类型中的<strong>同步</strong>和<strong>异步</strong>，同时<u><font color="red">一个请求也可以被终止</font></u></p>
 <ol>
 <li><p><strong>同步</strong></p>
 <ul>
@@ -483,9 +473,7 @@
 <li><strong>Base URL</strong>：总是以<code>/</code>结束</li>
 <li><strong>@Url</strong>：不要以/开始；Retrofit 2.0中可以<u><font color="red">在@Url中定义一个完全的URL</font></u></li>
 </ol>
-<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><blockquote>
-<p>Retrofit的<code>HTTP</code>注解用来<u><font color="red">修饰请求方法</font></u></p>
-</blockquote>
+<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><p> Retrofit的<code>HTTP</code>注解用来<u><font color="red">修饰请求方法</font></u></p>
 <table>
 <thead>
 <tr>
@@ -533,19 +521,13 @@
 <li><strong>@Query</strong>：<u><font color="red">添加查询参数</font></u></li>
 <li><strong>@QueryMap</strong>：若有多个查询参数时，可以放在<code>Map</code>中</li>
 </ol>
-<h3 id="REQUEST-BODY"><a href="#REQUEST-BODY" class="headerlink" title="REQUEST BODY"></a>REQUEST BODY</h3><blockquote>
-<p>一个对象可以使用<code>@Body</code>注解被用作一个HTTP请求体。该对象也会通过使用在Retrofit实例中指定的转换器来转换，如果没有提添加转换器，默认使用<code>RequestBody</code></p>
-</blockquote>
-<h3 id="FORM-ENCODED-AND-MULTIPART"><a href="#FORM-ENCODED-AND-MULTIPART" class="headerlink" title="FORM ENCODED AND MULTIPART"></a>FORM ENCODED AND MULTIPART</h3><blockquote>
-<p>用于<strong>方法</strong>上</p>
-</blockquote>
+<h3 id="REQUEST-BODY"><a href="#REQUEST-BODY" class="headerlink" title="REQUEST BODY"></a>REQUEST BODY</h3><p> 一个对象可以使用<code>@Body</code>注解被用作一个HTTP请求体。该对象也会通过使用在Retrofit实例中指定的转换器来转换，如果没有提添加转换器，默认使用<code>RequestBody</code></p>
+<h3 id="FORM-ENCODED-AND-MULTIPART"><a href="#FORM-ENCODED-AND-MULTIPART" class="headerlink" title="FORM ENCODED AND MULTIPART"></a>FORM ENCODED AND MULTIPART</h3><p> 用于<strong>方法</strong>上</p>
 <ol>
 <li><strong>@FormUrlEncoded</strong>：发送表单数据，每个键值对使用带名称和提供的值的<code>@Field</code>注解</li>
 <li><strong>@Multipart</strong>：在方法上使用<code>@Multipart</code>注解，对每个part使用<code>@Part</code>注解，其中parts可以使用Retorfit的转换器或实现<code>RequestBody</code>来处理序列化</li>
 </ol>
-<h3 id="HEADER-MANIPULATION"><a href="#HEADER-MANIPULATION" class="headerlink" title="HEADER MANIPULATION"></a>HEADER MANIPULATION</h3><blockquote>
-<p>使用<code>@Headers</code>注解来为一个方法设置静态的头部</p>
-</blockquote>
+<h3 id="HEADER-MANIPULATION"><a href="#HEADER-MANIPULATION" class="headerlink" title="HEADER MANIPULATION"></a>HEADER MANIPULATION</h3><p> 使用<code>@Headers</code>注解来为一个方法设置静态的头部</p>
 <ol>
 <li>头部不能复写，<u><font color="red">拥有同一名字的所有头部会被包含在请求中</font></u></li>
 <li>请求头可以使用<code>@Header</code>注解来动态更新，如果该值为null，该头部会被忽略</li>

@@ -102,19 +102,19 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等">
+<meta name="description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念多任务 Multitasking，同时执行多个任务的过程，可以用于充分利用CPU。  基于进程的多任务  每个进程在内存中有自己的地址（每个进程分配独立的内存区） 进程是重量级的 进程间通信的代价是昂贵的 从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等   基于线程的多任务">
 <meta name="keywords" content="Blog,Java,Multithreading">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多线程">
 <meta property="og:url" content="http://yoursite.com/2016/06/07/Java多线程/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等">
+<meta property="og:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念多任务 Multitasking，同时执行多个任务的过程，可以用于充分利用CPU。  基于进程的多任务  每个进程在内存中有自己的地址（每个进程分配独立的内存区） 进程是重量级的 进程间通信的代价是昂贵的 从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等   基于线程的多任务">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/java-multithreading/thread-5-states.jpg">
-<meta property="og:updated_time" content="2017-02-27T13:52:23.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:37:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程">
-<meta name="twitter:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等">
+<meta name="twitter:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念多任务 Multitasking，同时执行多个任务的过程，可以用于充分利用CPU。  基于进程的多任务  每个进程在内存中有自己的地址（每个进程分配独立的内存区） 进程是重量级的 进程间通信的代价是昂贵的 从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等   基于线程的多任务">
 <meta name="twitter:image" content="http://yoursite.com/images/java-multithreading/thread-5-states.jpg">
 
 
@@ -383,13 +383,8 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h2><blockquote>
-<p><code>Multitasking</code>，<u><font color="red">同时执行多个任务的过程</font></u>，可以用于充分利用CPU。</p>
-</blockquote>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h2><p> <code>Multitasking</code>，<u><font color="red">同时执行多个任务的过程</font></u>，可以用于充分利用CPU。</p>
 <ol>
 <li><p><strong>基于进程的多任务</strong></p>
 <ul>
@@ -407,6 +402,7 @@
 </ul>
 </li>
 </ol>
+<a id="more"></a>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
 <li>线程是一个<u><font color="red">轻量级的子进程</font></u>，一个<u><font color="red">最小处理单元</font></u></li>
 <li>线程是一个<u><font color="red">单独的执行路径</font></u></li>
@@ -434,9 +430,7 @@
 <li><strong>Non-Runnable（Blocked）</strong>：当线程还存活时该线程处于<strong>不可运行（堵塞）状态</strong>，但是该线程当前不能运行</li>
 <li><strong>Terminated</strong>：当线程的<code>run()</code>方法存在时该线程处于<strong>终止/死亡状态</strong></li>
 </ol>
-<h2 id="create"><a href="#create" class="headerlink" title="create()"></a>create()</h2><blockquote>
-<p><u><font color="red">创建线程</font></u>，有以下两种方式</p>
-</blockquote>
+<h2 id="create"><a href="#create" class="headerlink" title="create()"></a>create()</h2><p> <u><font color="red">创建线程</font></u>，有以下两种方式</p>
 <h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><ul>
 <li>线程类提供了<u><font color="red">构造函数</font></u>和<u><font color="red">方法</font></u>来创建和执行线程操作</li>
 <li>线程类继承<code>Object</code>类，实现<code>Runnable</code>接口</li>
@@ -445,9 +439,7 @@
 <li><code>Runnable</code>接口应该由想要<u><font color="red">被线程执行的类</font></u>实现</li>
 <li><code>Runnable</code>接口只有一个<code>run()</code>方法</li>
 </ul>
-<h2 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h2><blockquote>
-<p><u><font color="red">启动一个新建的线程</font></u>，执行以下任务</p>
-</blockquote>
+<h2 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h2><p> <u><font color="red">启动一个新建的线程</font></u>，执行以下任务</p>
 <ul>
 <li><u><font color="red">一个新建的线程启动</font></u>（包括<strong>调用堆栈</strong>）</li>
 <li>线程从<code>New</code>状态变换到<code>Runnable</code>状态</li>
@@ -466,19 +458,13 @@
 <li><strong>public static void sleep(long miliseconds) throws InterruptedException</strong></li>
 <li><strong>public static void sleep(long miliseconds, int nanos) throws InterruptedException</strong></li>
 </ul>
-<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><blockquote>
-<p><u><font color="red">等待一个线程死亡</font></u>。换句话说，<code>join()</code>方法引起当前运行着的线程停止执行知道联合的线程完成任务</p>
-</blockquote>
-<h2 id="命名线程"><a href="#命名线程" class="headerlink" title="命名线程"></a>命名线程</h2><blockquote>
-<p><u><font color="red">线程提供方法修改和获取线程的名字</font></u></p>
-</blockquote>
+<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p> <u><font color="red">等待一个线程死亡</font></u>。换句话说，<code>join()</code>方法引起当前运行着的线程停止执行知道联合的线程完成任务</p>
+<h2 id="命名线程"><a href="#命名线程" class="headerlink" title="命名线程"></a>命名线程</h2><p> <u><font color="red">线程提供方法修改和获取线程的名字</font></u></p>
 <ul>
 <li><strong>public String getName()</strong>：用于返回一个线程的名字</li>
 <li><strong>public void setName(String name)</strong>：用于修改一个线程的名字</li>
 </ul>
-<h2 id="currentThread"><a href="#currentThread" class="headerlink" title="currentThread()"></a>currentThread()</h2><blockquote>
-<p><u><font color="red">返回当前执行线程对象的引用</font></u></p>
-</blockquote>
+<h2 id="currentThread"><a href="#currentThread" class="headerlink" title="currentThread()"></a>currentThread()</h2><p> <u><font color="red">返回当前执行线程对象的引用</font></u></p>
 <h2 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
 <li><u><font color="red">每个线程有一个优先级</font></u></li>
 <li>优先级可以使用<u><font color="red">1~10的数字</font></u>来描述</li>
@@ -487,11 +473,10 @@
 <h3 id="线程定义的3个常量"><a href="#线程定义的3个常量" class="headerlink" title="线程定义的3个常量"></a>线程定义的3个常量</h3><ul>
 <li><strong>public static int MIN_PRIORITY</strong></li>
 <li><strong>public static int NORM_PRIORITY</strong></li>
-<li><strong>public static int MAX_PRIORITY</strong></li>
-</ul>
-<blockquote>
+<li><p><strong>public static int MAX_PRIORITY</strong></p>
 <p>一个线程的<u><font color="red">默认优先级是5</font></u>（NORM_PRIORITY），MIN_PRIORITY的值为1，MAX_PRIORITY的值为10</p>
-</blockquote>
+</li>
+</ul>
 <h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><ul>
 <li>Java中的<strong>守护线程</strong>是一个提供服务线程，可以为用户线程提供服务</li>
 <li>它的<u><font color="red">生命周期依赖于用户线程</font></u>，当所有的用户线程都死亡后，JVM自动终止这个线程</li>
@@ -502,9 +487,7 @@
 <li>生命周期依赖于用户线程</li>
 <li><u><font color="red">低优先级</font></u>的线程</li>
 </ul>
-<h3 id="若没有用户线程，JVM终止守护线程"><a href="#若没有用户线程，JVM终止守护线程" class="headerlink" title="若没有用户线程，JVM终止守护线程"></a>若没有用户线程，JVM终止守护线程</h3><blockquote>
-<p>守护线程的<u><font color="red">单独目的是为支持后台任务</font></u>，提供服务给用户线程。如果没有用户线程了，JVM为何要一直运行此线程呢？</p>
-</blockquote>
+<h3 id="若没有用户线程，JVM终止守护线程"><a href="#若没有用户线程，JVM终止守护线程" class="headerlink" title="若没有用户线程，JVM终止守护线程"></a>若没有用户线程，JVM终止守护线程</h3><p> 守护线程的<u><font color="red">单独目的是为支持后台任务</font></u>，提供服务给用户线程。如果没有用户线程了，JVM为何要一直运行此线程呢？</p>
 <h1 id="线程调度器"><a href="#线程调度器" class="headerlink" title="线程调度器"></a>线程调度器</h1><ul>
 <li>线程是JVM的一部分，用于<u><font color="red">决定哪个线程应该运行</font></u></li>
 <li><u><font color="red">没有保证哪个可运行的线程被线程调度器选中运行</font></u></li>
@@ -521,9 +504,7 @@
 <li><u><font color="red">一个线程从线程池中被取出来，被服务提供者分配一个工作</font></u></li>
 <li><u><font color="red">在工作完成后，线程再次保留在线程池中</font></u></li>
 </ul>
-<h2 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h2><blockquote>
-<p><u><font color="red">节省时间，因没有必要创建新线程</font></u></p>
-</blockquote>
+<h2 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h2><p> <u><font color="red">节省时间，因没有必要创建新线程</font></u></p>
 <h1 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h1><ul>
 <li>Java提供了一种方式<u><font color="red">在一个单独的对象里组合多个线程，在这种情况下，可以通过一个单独的方法调用来实现一组线程的挂起、重启或中断</font></u></li>
 <li>Java线程组被<code>java.lang.ThreadGroup</code>类实现</li>
@@ -539,9 +520,7 @@
 <li><u><font color="red">用户注销</font></u></li>
 <li><u><font color="red">用户关闭</font></u></li>
 </ul>
-<h2 id="addShutdownHook-THread-hook"><a href="#addShutdownHook-THread-hook" class="headerlink" title="addShutdownHook(THread hook)"></a>addShutdownHook(THread hook)</h2><blockquote>
-<p><code>Runtime</code>类的<code>addShutdownHook()</code>方法用于<u><font color="red">注册虚拟机的线程</font></u>。<code>Runtime</code>类的对象可以通过调用静态工厂方法<code>getRuntime()</code>来获取。</p>
-</blockquote>
+<h2 id="addShutdownHook-THread-hook"><a href="#addShutdownHook-THread-hook" class="headerlink" title="addShutdownHook(THread hook)"></a>addShutdownHook(THread hook)</h2><p> <code>Runtime</code>类的<code>addShutdownHook()</code>方法用于<u><font color="red">注册虚拟机的线程</font></u>。<code>Runtime</code>类的对象可以通过调用静态工厂方法<code>getRuntime()</code>来获取。</p>
 <h1 id="执行多任务"><a href="#执行多任务" class="headerlink" title="执行多任务"></a>执行多任务</h1><ul>
 <li><strong>使用多线程执行单独的任务</strong>：如果需要被许多线程执行单独的任务，只需要拥有一个<code>run()</code>方法</li>
 <li><strong>使用多线程执行多个任务</strong>：如果需要被许多线程执行多个任务，需要拥有多个<code>run()</code>方法</li>
@@ -577,15 +556,9 @@
 <li>对于一个Java应用来说，只有一个<code>java.lang.Runtime</code>类实例</li>
 <li><code>Runtime.getRuntime()</code>方法返回<code>Runtime</code>类的实例</li>
 </ul>
-<h2 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h2><blockquote>
-<p><u><font color="red">在一个单独的进程里执行被提供的命令</font></u></p>
-</blockquote>
-<h2 id="freeMemory"><a href="#freeMemory" class="headerlink" title="freeMemory()"></a>freeMemory()</h2><blockquote>
-<p><u><font color="red">返回JVM里剩余内存</font></u></p>
-</blockquote>
-<h2 id="totalMemory"><a href="#totalMemory" class="headerlink" title="totalMemory()"></a>totalMemory()</h2><blockquote>
-<p><u><font color="red">返回JVM里全部内存</font></u></p>
-</blockquote>
+<h2 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h2><p> <u><font color="red">在一个单独的进程里执行被提供的命令</font></u></p>
+<h2 id="freeMemory"><a href="#freeMemory" class="headerlink" title="freeMemory()"></a>freeMemory()</h2><p> <u><font color="red">返回JVM里剩余内存</font></u></p>
+<h2 id="totalMemory"><a href="#totalMemory" class="headerlink" title="totalMemory()"></a>totalMemory()</h2><p> <u><font color="red">返回JVM里全部内存</font></u></p>
 <h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><p><a href="http://www.javatpoint.com/multithreading-in-java" target="_blank" rel="external"><strong>Multithreading in Java</strong></a></p>
 
       

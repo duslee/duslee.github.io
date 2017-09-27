@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java中数据的存储位置及机制。">
+<meta name="description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为6个存储区域来存放变量以及代码占用的内存">
 <meta name="keywords" content="Blog,Java,Memory">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java数据存储">
 <meta property="og:url" content="http://yoursite.com/2016/06/20/Java数据存储/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java中数据的存储位置及机制。">
+<meta property="og:description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为6个存储区域来存放变量以及代码占用的内存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-27T13:52:43.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:37:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java数据存储">
-<meta name="twitter:description" content="概况 本文主要介绍Java中数据的存储位置及机制。">
+<meta name="twitter:description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为6个存储区域来存放变量以及代码占用的内存">
 
 
 
@@ -381,13 +381,9 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>本文主要介绍Java中数据的存储位置及机制。</p>
-</blockquote>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java中数据的存储位置及机制。</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p> 在Java中，程序分为<u><font color="red">6个存储区域</font></u>来存放变量以及代码占用的内存</p>
 <a id="more"></a>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote>
-<p>在Java中，程序分为<u><font color="red">6个存储区域</font></u>来存放变量以及代码占用的内存</p>
-</blockquote>
 <ol>
 <li><strong>寄存器</strong>：<code>Register</code>，<u><font color="red">最快的存储区，位于CPU内部，程序无法控制</font></u></li>
 <li><strong>栈</strong>：<code>Stack</code><ul>
@@ -414,9 +410,7 @@
 </li>
 <li><strong>非RAM存储区</strong>：数据<u><font color="red">存活于程序之外，不受程序控制</font></u>，在没有程序的时候依然存在。如<strong>流对象</strong>和<strong>持久化对象</strong></li>
 </ol>
-<h1 id="堆内存存储与栈内存存储比较"><a href="#堆内存存储与栈内存存储比较" class="headerlink" title="堆内存存储与栈内存存储比较"></a>堆内存存储与栈内存存储比较</h1><h2 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><blockquote>
-<p>堆与栈都是用于程序中的数据在<code>RAM</code>（内存）上的存储区域，并且<code>Java</code>会<u><font color="red">自动地管理堆和栈，不能人为去直接设置</font></u></p>
-</blockquote>
+<h1 id="堆内存存储与栈内存存储比较"><a href="#堆内存存储与栈内存存储比较" class="headerlink" title="堆内存存储与栈内存存储比较"></a>堆内存存储与栈内存存储比较</h1><h2 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p> 堆与栈都是用于程序中的数据在<code>RAM</code>（内存）上的存储区域，并且<code>Java</code>会<u><font color="red">自动地管理堆和栈，不能人为去直接设置</font></u></p>
 <h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ol>
 <li><strong>存储数据类型</strong>：<u><font color="red">栈内存中存放局部变量（基本数据类型和对象引用）</font></u>，而<u><font color="red">堆内存用于存放对象（实体）</font></u></li>
 <li><strong>存储速度</strong>：<u><font color="red">栈内存的存储分配与清理速度更快于堆</font></u>，并且栈内存的存储速度仅次于直接位于处理器中的寄存器</li>

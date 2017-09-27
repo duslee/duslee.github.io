@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。 概念基本知识 Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（methods）、变量（variables）、参数（parameters）和包（packages）都可以被注解 Java注解从JDK 1.5开始被">
 <meta name="keywords" content="Blog,Java,Annotation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Annotation">
 <meta property="og:url" content="http://yoursite.com/2016/07/05/Java-Annotation/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta property="og:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。 概念基本知识 Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（methods）、变量（variables）、参数（parameters）和包（packages）都可以被注解 Java注解从JDK 1.5开始被">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-27T13:53:04.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:38:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Annotation">
-<meta name="twitter:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。">
+<meta name="twitter:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。 概念基本知识 Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（methods）、变量（variables）、参数（parameters）和包（packages）都可以被注解 Java注解从JDK 1.5开始被">
 
 
 
@@ -381,16 +381,14 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>本文主要介绍Java注解（<u><font color="red">Java Annotation</font></u>）的概念、类型及使用等知识。</p>
-</blockquote>
-<a id="more"></a>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java注解（<u><font color="red">Java Annotation</font></u>）的概念、类型及使用等知识。</p>
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ul>
 <li>Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（<code>metadata</code>），尽管它们不是程序的一部分</li>
 <li>类（<code>Classes</code>）、方法（<code>methods</code>）、变量（<code>variables</code>）、参数（<code>parameters</code>）和包（<code>packages</code>）都可以被注解</li>
 <li>Java注解从<u><font color="red">JDK 1.5</font></u>开始被加入到Java中</li>
 <li>Java注解对程序的执行没有影响</li>
 </ul>
+<a id="more"></a>
 <h2 id="注解形式"><a href="#注解形式" class="headerlink" title="注解形式"></a>注解形式</h2><ol>
 <li>使用<code>@</code>来告诉编译器，如<code>@Entity</code>告诉编译器注解的名字是Entity</li>
 <li><p>注解可以包含元素</p>
@@ -411,12 +409,8 @@
 <li><p>如果注解有同一类型，则被称为重复注解（<code>repeating annotation</code>）</p>
 </li>
 </ol>
-<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><blockquote>
-<p>许多注解类型在<code>Java SE API</code>里预定义，一些注解类型用于Java编译器，一些应用到其它注解</p>
-</blockquote>
-<h2 id="应用到Java代码的注解"><a href="#应用到Java代码的注解" class="headerlink" title="应用到Java代码的注解"></a>应用到Java代码的注解</h2><blockquote>
-<p>也称为内置注解（<code>Built-in Annotations</code>）</p>
-</blockquote>
+<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><p> 许多注解类型在<code>Java SE API</code>里预定义，一些注解类型用于Java编译器，一些应用到其它注解</p>
+<h2 id="应用到Java代码的注解"><a href="#应用到Java代码的注解" class="headerlink" title="应用到Java代码的注解"></a>应用到Java代码的注解</h2><p> 也称为内置注解（<code>Built-in Annotations</code>）</p>
 <ol>
 <li><p><code>@Override</code>：告知编译器该元素是为了覆盖定义在父类的元素，如果一个方法在父类或被实现接口中没有被发现，会引起编译器报错。如当覆盖子类的一个方法时，应该使用<code>@Override</code>来标记该方法，这样可以让代码可读，并且避免维护问题，例如当修改父类的方法签名时，开发人员必须修改子类中该方法的签名，否则编译器会抛出编译错误。当没有使用<code>@Override</code>时，会很难追踪到错误位置。见下面例子</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -430,9 +424,7 @@
 </li>
 <li><code>@FunctionalInterface</code>：在<code>Java SE 8</code>中引入，表明此类型声明是一个功能性接口</li>
 </ol>
-<h2 id="应用到其它注解的注解"><a href="#应用到其它注解的注解" class="headerlink" title="应用到其它注解的注解"></a>应用到其它注解的注解</h2><blockquote>
-<p>也称为元注解（<code>Meta Annotations</code>）</p>
-</blockquote>
+<h2 id="应用到其它注解的注解"><a href="#应用到其它注解的注解" class="headerlink" title="应用到其它注解的注解"></a>应用到其它注解的注解</h2><p> 也称为元注解（<code>Meta Annotations</code>）</p>
 <ol>
 <li><code>@Retention</code>：具体说明标记的注解如何被存储<ul>
 <li><strong>RetentionPolicy.SOURCE</strong>：保留在源码里，被编译器忽略</li>

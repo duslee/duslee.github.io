@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。">
+<meta name="description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念Java同步 Java同步是控制多线程访问任意共享资源的能力 在想要允许唯一一个线程访问共享资源时Java同步是一种更好的选择  为什么使用同步 阻止线程干涉 阻止一致性问题">
 <meta name="keywords" content="Blog,Java,Synchronization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java同步">
 <meta property="og:url" content="http://yoursite.com/2016/06/12/Java同步/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。">
+<meta property="og:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念Java同步 Java同步是控制多线程访问任意共享资源的能力 在想要允许唯一一个线程访问共享资源时Java同步是一种更好的选择  为什么使用同步 阻止线程干涉 阻止一致性问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-27T13:51:33.000Z">
+<meta property="og:updated_time" content="2017-09-27T07:37:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java同步">
-<meta name="twitter:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。">
+<meta name="twitter:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念Java同步 Java同步是控制多线程访问任意共享资源的能力 在想要允许唯一一个线程访问共享资源时Java同步是一种更好的选择  为什么使用同步 阻止线程干涉 阻止一致性问题">
 
 
 
@@ -381,10 +381,7 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><blockquote>
-<p>本文主要介绍Java中同步的概念、类型、使用等相关内容。</p>
-</blockquote>
-<a id="more"></a>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java中同步的概念、类型、使用等相关内容。</p>
 <h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="Java同步"><a href="#Java同步" class="headerlink" title="Java同步"></a>Java同步</h2><ul>
 <li><strong>Java同步</strong>是<u><font color="red">控制多线程访问任意共享资源的能力</font></u></li>
 <li>在想要<u><font color="red">允许唯一一个线程访问共享资源</font></u>时Java同步是一种更好的选择</li>
@@ -393,6 +390,7 @@
 <li><u><font color="red">阻止线程干涉</font></u></li>
 <li><u><font color="red">阻止一致性问题</font></u></li>
 </ul>
+<a id="more"></a>
 <h2 id="同步类型"><a href="#同步类型" class="headerlink" title="同步类型"></a>同步类型</h2><ul>
 <li><strong>进程同步</strong></li>
 <li><strong>线程同步</strong></li>
@@ -406,9 +404,7 @@
 <li><u><font color="red">每个对象有一个与之关联的锁</font></u></li>
 <li>按照惯例，一个需要<u><font color="red">持续访问一个对象的域</font></u>的线程不得不<u><font color="red">在访问之前获取对象的锁，当完成访问后释放该锁</font></u></li>
 </ul>
-<h1 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h1><blockquote>
-<p>互斥锁<u><font color="red">帮助在共享数据时阻止线程相互干涉</font></u></p>
-</blockquote>
+<h1 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h1><p> 互斥锁<u><font color="red">帮助在共享数据时阻止线程相互干涉</font></u></p>
 <h2 id="Java同步方法"><a href="#Java同步方法" class="headerlink" title="Java同步方法"></a>Java同步方法</h2><ul>
 <li>同步方法因任意共享资源用于<u><font color="red">锁定一个对象</font></u></li>
 <li>当一个线程调用同步方法时，<u><font color="red">自动获取对象的锁，并且当线程完成任务时释放该锁</font></u></li>
