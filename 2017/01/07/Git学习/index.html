@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概述 本文主要介绍Git的基本知识，及其相关操作 Basics获取Git仓库 有以下两种方式 使用存在的目录初始化仓库进入指定目录，输入git init创建一个名为.git的新的子目录，此时指定目录里还未有任何可追踪（tracked）的文件">
+<meta name="description" content="概述 本文主要介绍Git的基本知识，及其相关操作 Basics 获取Git仓库 有以下两种方式 使用存在的目录初始化仓库 进入指定目录，输入git init创建一个名为.git的新的子目录，此时指定目录里还未有任何可追踪（tracked）的文件 &amp;lt;!-- more --&amp;gt; 1git init 如果想要新建版本控制的文件，需要完成追踪（track）和发送（commit）操作。可以使用gi">
 <meta name="keywords" content="Blog,Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习">
 <meta property="og:url" content="http://yoursite.com/2017/01/07/Git学习/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 本文主要介绍Git的基本知识，及其相关操作 Basics获取Git仓库 有以下两种方式 使用存在的目录初始化仓库进入指定目录，输入git init创建一个名为.git的新的子目录，此时指定目录里还未有任何可追踪（tracked）的文件">
+<meta property="og:description" content="概述 本文主要介绍Git的基本知识，及其相关操作 Basics 获取Git仓库 有以下两种方式 使用存在的目录初始化仓库 进入指定目录，输入git init创建一个名为.git的新的子目录，此时指定目录里还未有任何可追踪（tracked）的文件 &amp;lt;!-- more --&amp;gt; 1git init 如果想要新建版本控制的文件，需要完成追踪（track）和发送（commit）操作。可以使用gi">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-27T07:34:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习">
-<meta name="twitter:description" content="概述 本文主要介绍Git的基本知识，及其相关操作 Basics获取Git仓库 有以下两种方式 使用存在的目录初始化仓库进入指定目录，输入git init创建一个名为.git的新的子目录，此时指定目录里还未有任何可追踪（tracked）的文件">
+<meta name="twitter:description" content="概述 本文主要介绍Git的基本知识，及其相关操作 Basics 获取Git仓库 有以下两种方式 使用存在的目录初始化仓库 进入指定目录，输入git init创建一个名为.git的新的子目录，此时指定目录里还未有任何可追踪（tracked）的文件 &amp;lt;!-- more --&amp;gt; 1git init 如果想要新建版本控制的文件，需要完成追踪（track）和发送（commit）操作。可以使用gi">
 
 
 
@@ -369,15 +369,21 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<code>Git</code>的基本知识，及其相关操作</p>
-<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h2><p> 有以下两种方式</p>
-<h3 id="使用存在的目录初始化仓库"><a href="#使用存在的目录初始化仓库" class="headerlink" title="使用存在的目录初始化仓库"></a>使用存在的目录初始化仓库</h3><p>进入指定目录，输入<code>git init</code>创建一个名为<code>.git</code>的新的子目录，此时指定目录里还未有任何可追踪（<code>tracked</code>）的文件</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+        <h1>概述</h1>
+<p>本文主要介绍<code>Git</code>的基本知识，及其相关操作</p>
+<h1>Basics</h1>
+<h2>获取Git仓库</h2>
+<p>有以下两种方式</p>
+<h3>使用存在的目录初始化仓库</h3>
+<p>进入指定目录，输入<code>git init</code>创建一个名为<code>.git</code>的新的子目录，此时指定目录里还未有任何可追踪（<code>tracked</code>）的文件</p>
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure></p>
 <p>如果想要新建版本控制的文件，需要完成追踪（<code>track</code>）和发送（<code>commit</code>）操作。可以使用<code>git add</code>命令添加文件，<code>git commit</code>完成该文件的追踪</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add *.c</div><div class="line">git add License</div><div class="line">git commit -m &apos;initial project version&apos;</div></pre></td></tr></table></figure>
-<h3 id="克隆存在的仓库"><a href="#克隆存在的仓库" class="headerlink" title="克隆存在的仓库"></a>克隆存在的仓库</h3><p>使用<code>git clone [url]</code>命令直接获取已存在仓库的拷贝，如果想要拷贝仓库到指定的目录，可以指定目录名（<code>git clone [url] dirName</code>）</p>
-<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add *.c</div><div class="line">git add License</div><div class="line">git commit -m &apos;initial project version&apos;</div></pre></td></tr></table></figure></p>
+<h3>克隆存在的仓库</h3>
+<p>使用<code>git clone [url]</code>命令直接获取已存在仓库的拷贝，如果想要拷贝仓库到指定的目录，可以指定目录名（<code>git clone [url] dirName</code>）</p>
+<h1>参考方案</h1>
+<ol>
 <li><a href="https://git-scm.com/documentation" target="_blank" rel="external"><strong>Git Documentation</strong></a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external"><strong>Git远程操作详解</strong></a></li>
 </ol>
@@ -495,7 +501,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -503,7 +509,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -512,7 +518,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -541,7 +547,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basics"><span class="nav-number">2.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Git仓库"><span class="nav-number">2.1.</span> <span class="nav-text">获取Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用存在的目录初始化仓库"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用存在的目录初始化仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克隆存在的仓库"><span class="nav-number">2.1.2.</span> <span class="nav-text">克隆存在的仓库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">3.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">获取Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用存在的目录初始化仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.2.</span> <span class="nav-text">克隆存在的仓库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>
@@ -560,7 +566,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

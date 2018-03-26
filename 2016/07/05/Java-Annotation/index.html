@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。 概念基本知识 Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（methods）、变量（variables）、参数（parameters）和包（packages）都可以被注解 Java注解从JDK 1.5开始被">
+<meta name="description" content="概况 本文主要介绍Java注解（&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;Java Annotation&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;）的概念、类型及使用等知识。 概念 基本知识  Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（metho">
 <meta name="keywords" content="Blog,Java,Annotation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Annotation">
 <meta property="og:url" content="http://yoursite.com/2016/07/05/Java-Annotation/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。 概念基本知识 Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（methods）、变量（variables）、参数（parameters）和包（packages）都可以被注解 Java注解从JDK 1.5开始被">
+<meta property="og:description" content="概况 本文主要介绍Java注解（&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;Java Annotation&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;）的概念、类型及使用等知识。 概念 基本知识  Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（metho">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-27T07:38:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Annotation">
-<meta name="twitter:description" content="概况 本文主要介绍Java注解（Java Annotation）的概念、类型及使用等知识。 概念基本知识 Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（methods）、变量（variables）、参数（parameters）和包（packages）都可以被注解 Java注解从JDK 1.5开始被">
+<meta name="twitter:description" content="概况 本文主要介绍Java注解（&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;Java Annotation&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;）的概念、类型及使用等知识。 概念 基本知识  Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（metadata），尽管它们不是程序的一部分 类（Classes）、方法（metho">
 
 
 
@@ -381,59 +381,81 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java注解（<u><font color="red">Java Annotation</font></u>）的概念、类型及使用等知识。</p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><ul>
+        <h1>概况</h1>
+<p>本文主要介绍Java注解（&lt;u&gt;&lt;font color=&quot;red&quot;&gt;Java Annotation&lt;/font&gt;&lt;/u&gt;）的概念、类型及使用等知识。</p>
+<h1>概念</h1>
+<h2>基本知识</h2>
+<ul>
 <li>Java编程语言里，Java注解是一种可以被添加到Java源码里的元数据（<code>metadata</code>），尽管它们不是程序的一部分</li>
 <li>类（<code>Classes</code>）、方法（<code>methods</code>）、变量（<code>variables</code>）、参数（<code>parameters</code>）和包（<code>packages</code>）都可以被注解</li>
-<li>Java注解从<u><font color="red">JDK 1.5</font></u>开始被加入到Java中</li>
+<li>Java注解从&lt;u&gt;&lt;font color=&quot;red&quot;&gt;JDK 1.5&lt;/font&gt;&lt;/u&gt;开始被加入到Java中</li>
 <li>Java注解对程序的执行没有影响</li>
 </ul>
-<a id="more"></a>
-<h2 id="注解形式"><a href="#注解形式" class="headerlink" title="注解形式"></a>注解形式</h2><ol>
+<p>&lt;!-- more --&gt;</p>
+<h2>注解形式</h2>
+<ol>
 <li>使用<code>@</code>来告诉编译器，如<code>@Entity</code>告诉编译器注解的名字是Entity</li>
-<li><p>注解可以包含元素</p>
+<li>注解可以包含元素</li>
+</ol>
 <ul>
-<li><p>这些元素对名称没有要求，可以有值，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span> &#123;</div><div class="line">  name = <span class="string">"Benjamin Franklin"</span></div><div class="line">  data = <span class="string">"3/27/2003"</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+<li>
+<p>这些元素对名称没有要求，可以有值，如
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span> &#123;</div><div class="line">  name = <span class="string">"Benjamin Franklin"</span></div><div class="line">  data = <span class="string">"3/27/2003"</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li><p>如果只有一个带值的元素，其名称可以被忽略，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarning</span>(<span class="string">"unchecked"</span>)</div><div class="line"><span class="function">voido <span class="title">myMethod</span><span class="params">()</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+<li>
+<p>如果只有一个带值的元素，其名称可以被忽略，如
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarning</span>(<span class="string">"unchecked"</span>)</div><div class="line"><span class="function">voido <span class="title">myMethod</span><span class="params">()</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li><p>如果没有元素，圆括号可以去掉，如<code>@Override</code></p>
+<li>
+<p>如果没有元素，圆括号可以去掉，如<code>@Override</code></p>
 </li>
 </ul>
+<ol start="3">
+<li>
+<p>在同一定义上也可以使用多个注解，如
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</div><div class="line"><span class="meta">@EBook</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li><p>在同一定义上也可以使用多个注解，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</div><div class="line"><span class="meta">@EBook</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果注解有同一类型，则被称为重复注解（<code>repeating annotation</code>）</p>
+<li>
+<p>如果注解有同一类型，则被称为重复注解（<code>repeating annotation</code>）</p>
 </li>
 </ol>
-<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><p> 许多注解类型在<code>Java SE API</code>里预定义，一些注解类型用于Java编译器，一些应用到其它注解</p>
-<h2 id="应用到Java代码的注解"><a href="#应用到Java代码的注解" class="headerlink" title="应用到Java代码的注解"></a>应用到Java代码的注解</h2><p> 也称为内置注解（<code>Built-in Annotations</code>）</p>
+<h1>类型</h1>
+<p>许多注解类型在<code>Java SE API</code>里预定义，一些注解类型用于Java编译器，一些应用到其它注解</p>
+<h2>应用到Java代码的注解</h2>
+<p>也称为内置注解（<code>Built-in Annotations</code>）</p>
 <ol>
-<li><p><code>@Override</code>：告知编译器该元素是为了覆盖定义在父类的元素，如果一个方法在父类或被实现接口中没有被发现，会引起编译器报错。如当覆盖子类的一个方法时，应该使用<code>@Override</code>来标记该方法，这样可以让代码可读，并且避免维护问题，例如当修改父类的方法签名时，开发人员必须修改子类中该方法的签名，否则编译器会抛出编译错误。当没有使用<code>@Override</code>时，会很难追踪到错误位置。见下面例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>
+<p><code>@Override</code>：告知编译器该元素是为了覆盖定义在父类的元素，如果一个方法在父类或被实现接口中没有被发现，会引起编译器报错。如当覆盖子类的一个方法时，应该使用<code>@Override</code>来标记该方法，这样可以让代码可读，并且避免维护问题，例如当修改父类的方法签名时，开发人员必须修改子类中该方法的签名，否则编译器会抛出编译错误。当没有使用<code>@Override</code>时，会很难追踪到错误位置。见下面例子
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">justMethod</span><span class="params">()</span> </span>&#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li><p><code>@Deprecated</code>：提示标记的元素（类、方法或域）过时了，应该不再使用。无论何时程序使用已经使用<code>@Deprecated</code>注解标记的方法、类或域时，编译器生成一个警告</p>
+<li>
+<p><code>@Deprecated</code>：提示标记的元素（类、方法或域）过时了，应该不再使用。无论何时程序使用已经使用<code>@Deprecated</code>注解标记的方法、类或域时，编译器生成一个警告</p>
 </li>
-<li><p><code>@SuppressWarnings</code>：指示编译器忽略特殊的警告。如当在调用过时的方法（假定该方法使用<code>@Deprecated</code>标记）时，使用<code>@SuppressWarnings</code>注解来禁止派生的警告，如下代码所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+<li>
+<p><code>@SuppressWarnings</code>：指示编译器忽略特殊的警告。如当在调用过时的方法（假定该方法使用<code>@Deprecated</code>标记）时，使用<code>@SuppressWarnings</code>注解来禁止派生的警告，如下代码所示
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li><p><code>@SafeVarargs</code>：在<code>Java SE 7</code>中引入，当应用到方法或构造函数时，声称代码不对其可变参数（<code>varargs</code>）的参数进行潜在的不安全操作。当该注解类型被使用时，关联到可变参数的<code>unchecked</code>警告被禁止</p>
+<li>
+<p><code>@SafeVarargs</code>：在<code>Java SE 7</code>中引入，当应用到方法或构造函数时，声称代码不对其可变参数（<code>varargs</code>）的参数进行潜在的不安全操作。当该注解类型被使用时，关联到可变参数的<code>unchecked</code>警告被禁止</p>
 </li>
-<li><code>@FunctionalInterface</code>：在<code>Java SE 8</code>中引入，表明此类型声明是一个功能性接口</li>
+<li>
+<p><code>@FunctionalInterface</code>：在<code>Java SE 8</code>中引入，表明此类型声明是一个功能性接口</p>
+</li>
 </ol>
-<h2 id="应用到其它注解的注解"><a href="#应用到其它注解的注解" class="headerlink" title="应用到其它注解的注解"></a>应用到其它注解的注解</h2><p> 也称为元注解（<code>Meta Annotations</code>）</p>
+<h2>应用到其它注解的注解</h2>
+<p>也称为元注解（<code>Meta Annotations</code>）</p>
 <ol>
-<li><code>@Retention</code>：具体说明标记的注解如何被存储<ul>
+<li><code>@Retention</code>：具体说明标记的注解如何被存储</li>
+</ol>
+<ul>
 <li><strong>RetentionPolicy.SOURCE</strong>：保留在源码里，被编译器忽略</li>
 <li><strong>RetentionPolicy.CLASS</strong>：被编译时的编译器保留，但被<code>JVM</code>忽略</li>
 <li><strong>RetentionPolicy.RUNTIME</strong>：被<code>JVM</code>保留，可以在运行时环境被使用（通过反射）</li>
 </ul>
-</li>
+<ol start="2">
 <li><code>@Documented</code>：指明使用该注解的元素应该使用<code>javadoc</code>工具记录</li>
-<li><p><code>@Target</code>：具体说明可以在何处使用该注解，如定义目标类型为<code>METHOD</code>，意味着该注解只能用在方法上</p>
+<li><code>@Target</code>：具体说明可以在何处使用该注解，如定义目标类型为<code>METHOD</code>，意味着该注解只能用在方法上</li>
+</ol>
 <ul>
 <li><strong>ElementType.ANNOTATION_TYPE</strong>：用于注解类型</li>
 <li><strong>ElementType.CONSTRUCTOR</strong>：用于构造函数</li>
@@ -444,21 +466,25 @@
 <li><strong>ElementType.PARAMETER</strong>：用于方法的参数</li>
 <li><strong>ElementType.TYPE</strong>：用于类的任意元素</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD&#125;)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">  <span class="meta">@MyCustomAnnotation</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myMethod</span><span class="params">()</span> </span>&#123; <span class="comment">// do sth &#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD&#125;)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">  <span class="meta">@MyCustomAnnotation</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myMethod</span><span class="params">()</span> </span>&#123; <span class="comment">// do sth &#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>
+<p><code>@Inherited</code>：指明在一个类里被使用的自定义注解应该被所有的子类继承，如下所示
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Inherited</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</div><div class="line"></div><div class="line"><span class="meta">@MyCustomAnnotation</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li><p><code>@Inherited</code>：指明在一个类里被使用的自定义注解应该被所有的子类继承，如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Inherited</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCustomAnnotation &#123;&#125;</div><div class="line"></div><div class="line"><span class="meta">@MyCustomAnnotation</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChildClass</span> <span class="keyword">extends</span> <span class="title">MyParentClass</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>@Repeatable</code>：在Java SE 8中引入，具体指明该注解可以用于同一定义多次，如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</div><div class="line"><span class="meta">@Author</span>(name=<span class="string">"John Smith"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+<li>
+<p><code>@Repeatable</code>：在Java SE 8中引入，具体指明该注解可以用于同一定义多次，如下所示
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Author</span>(name=<span class="string">"Jane Doe"</span>)</div><div class="line"><span class="meta">@Author</span>(name=<span class="string">"John Smith"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure></p>
 </li>
 </ol>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<h1>使用</h1>
+<ol>
 <li><strong>编译器信息</strong>：<code>Information for the compiler</code>，被编译器用来检测错误或禁止警告；在Java中有三个内置的可用的注解（<code>@Deprecated</code>，<code>@Override</code>和<code>@SupressWarning</code>），能被用来提供某种指示给编译器</li>
 <li><strong>编译时和部署时处理</strong>：<code>Compile-time and deployment-time processing</code>，软件工具可以处理注解信息来生成代码、XML文件等等</li>
 <li><strong>运行时处理</strong>：<code>Runtime processing</code>，一些注解可用于在运行时被检测</li>
 </ol>
-<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<h1>参考方案</h1>
+<ol>
 <li><a href="http://beginnersbook.com/2014/09/java-annotations/" target="_blank" rel="external"><strong>Java annotations tutorial with examples</strong></a></li>
 <li><a href="https://en.wikipedia.org/wiki/Java_annotation" target="_blank" rel="external"><strong>Java annotation</strong></a></li>
 <li><strong>Java官方文档</strong></li>
@@ -579,7 +605,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -587,7 +613,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -596,7 +622,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -625,7 +651,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本知识"><span class="nav-number">2.1.</span> <span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解形式"><span class="nav-number">2.2.</span> <span class="nav-text">注解形式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型"><span class="nav-number">3.</span> <span class="nav-text">类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用到Java代码的注解"><span class="nav-number">3.1.</span> <span class="nav-text">应用到Java代码的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用到其它注解的注解"><span class="nav-number">3.2.</span> <span class="nav-text">应用到其它注解的注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">5.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">注解形式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">应用到Java代码的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">应用到其它注解的注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>
@@ -644,7 +670,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

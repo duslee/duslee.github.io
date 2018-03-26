@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概述 本文主要从概念上介绍Association、Aggregation和Composition 背景 UML中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（part-whole-associaiton）的特殊形式">
+<meta name="description" content="概述 本文主要从概念上介绍Association、Aggregation和Composition 背景 UML中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（part-whole-associaiton）的特殊形式 &amp;lt;!-- more --&amp;gt; Association 定义  当一个对象使用另一个对象时，Associ">
 <meta name="keywords" content="Blog,Relationship">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Association &amp; Aggregation &amp; Composition">
 <meta property="og:url" content="http://yoursite.com/2016/12/14/Association-Aggregation-Composition/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 本文主要从概念上介绍Association、Aggregation和Composition 背景 UML中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（part-whole-associaiton）的特殊形式">
+<meta property="og:description" content="概述 本文主要从概念上介绍Association、Aggregation和Composition 背景 UML中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（part-whole-associaiton）的特殊形式 &amp;lt;!-- more --&amp;gt; Association 定义  当一个对象使用另一个对象时，Associ">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-27T07:29:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Association &amp; Aggregation &amp; Composition">
-<meta name="twitter:description" content="概述 本文主要从概念上介绍Association、Aggregation和Composition 背景 UML中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（part-whole-associaiton）的特殊形式">
+<meta name="twitter:description" content="概述 本文主要从概念上介绍Association、Aggregation和Composition 背景 UML中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（part-whole-associaiton）的特殊形式 &amp;lt;!-- more --&amp;gt; Association 定义  当一个对象使用另一个对象时，Associ">
 
 
 
@@ -369,26 +369,35 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要从概念上介绍<code>Association</code>、<code>Aggregation</code>和<code>Composition</code></p>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p> <code>UML</code>中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（<code>part-whole-associaiton</code>）的特殊形式</p>
-<a id="more"></a>
-<h1 id="Association"><a href="#Association" class="headerlink" title="Association"></a>Association</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>当一个对象使用另一个对象时，Association关系出现在对象之间，技术上来说可以认为是基于两个类之间关系的引用，即<u><font color="red">一个类拥有另一个类的类级别的引用</font></u></li>
-<li>Association<u><font color="red">没有部分-整体的关系</font></u></li>
-<li>单向功能（<code>uni-directional functional</code>）的Association对应于面向对象（<code>OO</code>）编程语言里一个类的<u><font color="red">引用属性</font></u>（<code>reference property</code>），<code>SQL</code>中一个表的<u><font color="red">外键</font></u></li>
-<li>两个对象类型之间的Association被称作<u><font color="red">双向</font></u>的（<code>binary</code>）</li>
+        <h1>概述</h1>
+<p>本文主要从概念上介绍<code>Association</code>、<code>Aggregation</code>和<code>Composition</code></p>
+<h1>背景</h1>
+<p><code>UML</code>中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（<code>part-whole-associaiton</code>）的特殊形式</p>
+<p>&lt;!-- more --&gt;</p>
+<h1>Association</h1>
+<h2>定义</h2>
+<ul>
+<li>当一个对象使用另一个对象时，Association关系出现在对象之间，技术上来说可以认为是基于两个类之间关系的引用，即&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个类拥有另一个类的类级别的引用&lt;/font&gt;&lt;/u&gt;</li>
+<li>Association&lt;u&gt;&lt;font color=&quot;red&quot;&gt;没有部分-整体的关系&lt;/font&gt;&lt;/u&gt;</li>
+<li>单向功能（<code>uni-directional functional</code>）的Association对应于面向对象（<code>OO</code>）编程语言里一个类的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;引用属性&lt;/font&gt;&lt;/u&gt;（<code>reference property</code>），<code>SQL</code>中一个表的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;外键&lt;/font&gt;&lt;/u&gt;</li>
+<li>两个对象类型之间的Association被称作&lt;u&gt;&lt;font color=&quot;red&quot;&gt;双向&lt;/font&gt;&lt;/u&gt;的（<code>binary</code>）</li>
 </ul>
-<h1 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>当一个对象使用另一个对象时出现Aggregation关系，<u><font color="red">对象之间处于部分-整体的关系</font></u>，并且部分的生命期并不依赖于整体的生命期</li>
+<h1>Aggregation</h1>
+<h2>定义</h2>
+<ul>
+<li>当一个对象使用另一个对象时出现Aggregation关系，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;对象之间处于部分-整体的关系&lt;/font&gt;&lt;/u&gt;，并且部分的生命期并不依赖于整体的生命期</li>
 <li>Aggregation是部分-整体关联的一种特殊形式，即整体的部分可以被其它的整体共享</li>
 <li>Aggregation的多重性可以使用<code>*</code>在任何一边结束，因为这里的部分可能属于或被其它的整体分享</li>
 </ul>
-<h1 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h1><h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>Composition关系中一个对象使用另一个对象，并且对象之间<u><font color="red">存在部分-整体的关系</font></u>，但是<u><font color="red">部分的生命期依赖于整体的生命期</font></u></li>
+<h1>Composition</h1>
+<h2>定义</h2>
+<ul>
+<li>Composition关系中一个对象使用另一个对象，并且对象之间&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存在部分-整体的关系&lt;/font&gt;&lt;/u&gt;，但是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;部分的生命期依赖于整体的生命期&lt;/font&gt;&lt;/u&gt;</li>
 <li>如果一个Composition对象被删除了，所有其它的实例都会被删除</li>
 <li>Composition的多重性使用<code>1</code>或<code>0..1</code>在合成的一边结束，依赖于该组件是否有许多合成体</li>
 </ul>
-<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<h1>参考方案</h1>
+<ol>
 <li><a href="https://www.codeproject.com/articles/330447/understanding-association-aggregation-and-composit" target="_blank" rel="external"><strong>Understanding Association, Aggregation, and Composition</strong></a></li>
 <li><a href="https://www.codeproject.com/Articles/880451/Really-Understanding-Association-Aggregation-and-C" target="_blank" rel="external"><strong>Really Understanding Association, Aggregation, and Composition</strong></a></li>
 <li><a href="https://www.codeproject.com/articles/845140/why-are-associations-so-difficult-to-understand-no" target="_blank" rel="external"><strong>Why Are Associations So Difficult to Understand, Not Just for Developers?</strong></a></li>
@@ -508,7 +517,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -516,7 +525,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -525,7 +534,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -554,7 +563,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Association"><span class="nav-number">3.</span> <span class="nav-text">Association</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aggregation"><span class="nav-number">4.</span> <span class="nav-text">Aggregation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Composition"><span class="nav-number">5.</span> <span class="nav-text">Composition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">6.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Association</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Aggregation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Composition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>
@@ -573,7 +582,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

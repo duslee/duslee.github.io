@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础基本介绍 Retrofit是由Square开发的一个Android和Java的REST库，可以利用接口、方法和注解参数来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化机制（JSON/XML协议）都是可替换（pluggable）的，使用者可以选择适合自己的方案 请求的发送实现分同步和异步两种 支持RxJ">
+<meta name="description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础 基本介绍  Retrofit是由Square开发的一个Android和Java的REST库，可以&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;利用接口、方法和注解参数&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化">
 <meta name="keywords" content="Blog,Http,Retrofit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Retrofit 2.0使用总结">
 <meta property="og:url" content="http://yoursite.com/2016/07/15/Retrofit 2.0使用总结/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础基本介绍 Retrofit是由Square开发的一个Android和Java的REST库，可以利用接口、方法和注解参数来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化机制（JSON/XML协议）都是可替换（pluggable）的，使用者可以选择适合自己的方案 请求的发送实现分同步和异步两种 支持RxJ">
+<meta property="og:description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础 基本介绍  Retrofit是由Square开发的一个Android和Java的REST库，可以&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;利用接口、方法和注解参数&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-27T07:39:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit 2.0使用总结">
-<meta name="twitter:description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础基本介绍 Retrofit是由Square开发的一个Android和Java的REST库，可以利用接口、方法和注解参数来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化机制（JSON/XML协议）都是可替换（pluggable）的，使用者可以选择适合自己的方案 请求的发送实现分同步和异步两种 支持RxJ">
+<meta name="twitter:description" content="概述 本文主要介绍Retrofit 2.0的基础知识 基础 基本介绍  Retrofit是由Square开发的一个Android和Java的REST库，可以&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;利用接口、方法和注解参数&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;来声明式定义一个请求应该如何被创建 Retrofit背后的HTTP client、序列化">
 
 
 
@@ -381,58 +381,71 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<code>Retrofit 2.0</code>的基础知识</p>
-<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><ol>
-<li><code>Retrofit</code>是由<code>Square</code>开发的一个Android和Java的<code>REST</code>库，可以<u><font color="red">利用接口、方法和注解参数</font></u>来声明式定义一个请求应该如何被创建</li>
+        <h1>概述</h1>
+<p>本文主要介绍<code>Retrofit 2.0</code>的基础知识</p>
+<h1>基础</h1>
+<h2>基本介绍</h2>
+<ol>
+<li><code>Retrofit</code>是由<code>Square</code>开发的一个Android和Java的<code>REST</code>库，可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;利用接口、方法和注解参数&lt;/font&gt;&lt;/u&gt;来声明式定义一个请求应该如何被创建</li>
 <li>Retrofit背后的<code>HTTP client</code>、序列化机制（<code>JSON/XML协议</code>）都是可替换（<code>pluggable</code>）的，使用者可以选择适合自己的方案</li>
 <li>请求的发送实现分<strong>同步</strong>和<strong>异步</strong>两种</li>
 <li>支持<code>RxJava</code></li>
-<li>Retrofit 1不够好：<ul>
+<li>Retrofit 1不够好：</li>
+</ol>
+<ul>
 <li>为了支持可替换的功能模块，必须嵌套大量的组件，类的数量极多</li>
 <li>如果想要操作某次请求返回的数据，如返回的<code>Header</code>部分或<code>URL</code>，又同时想要操作序列化后的数据部分，这些在Retrofit 1.0上是不可能实现</li>
 <li>在同步、异步和RxJava的使用上比较刻板，不够灵活，如异步和同步的调用必须得分别声明两次方法</li>
 <li>Retrofit 1里<code>Converter</code>工作的效率不高，如传入了<code>Response</code>和想要转换的格式<code>Type</code>参数后，Converter必须得搞清楚到底应该如何去反序列化，这部分的实现很复杂，而且耗时</li>
 </ul>
-</li>
-</ol>
-<a id="more"></a>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 在根模块的<code>build.gradle</code>文件的<code>dependencies</code>块中添加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.0.0-beta4'</span></div></pre></td></tr></table></figure>
-<h2 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h2><h3 id="定义形式"><a href="#定义形式" class="headerlink" title="定义形式"></a>定义形式</h3><p> 在Retrofit 2.0中，创建Service更简单了，因为<u><font color="red">只需定义一种形式</font></u></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">APIService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@POST</span>(<span class="string">"/list"</span>)</div><div class="line">    <span class="function">Call&lt;Repo&gt; <span class="title">loadRepo</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Call类型"><a href="#Call类型" class="headerlink" title="Call类型"></a>Call类型</h3><p> Retrofit 2.0使用新的类型<code>Call</code>来用于OkHttp的API请求，另外，每一个call对象实例只能被用一次，即<code>request</code>和<code>response</code>是一一对应，可以通过<code>clone</code>方法来创建一个一模一样的实例</p>
-<h3 id="同步-amp-异步"><a href="#同步-amp-异步" class="headerlink" title="同步 &amp; 异步"></a>同步 &amp; 异步</h3><p> Retrofit 2.0支持在同一个类型中的<strong>同步</strong>和<strong>异步</strong>，同时<u><font color="red">一个请求也可以被终止</font></u></p>
+<p>&lt;!-- more --&gt;</p>
+<h2>配置</h2>
+<p>在根模块的<code>build.gradle</code>文件的<code>dependencies</code>块中添加</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.0.0-beta4'</span></div></pre></td></tr></table></figure></p>
+<h2>API接口</h2>
+<h3>定义形式</h3>
+<p>在Retrofit 2.0中，创建Service更简单了，因为&lt;u&gt;&lt;font color=&quot;red&quot;&gt;只需定义一种形式&lt;/font&gt;&lt;/u&gt;</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">APIService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@POST</span>(<span class="string">"/list"</span>)</div><div class="line">    <span class="function">Call&lt;Repo&gt; <span class="title">loadRepo</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3>Call类型</h3>
+<p>Retrofit 2.0使用新的类型<code>Call</code>来用于OkHttp的API请求，另外，每一个call对象实例只能被用一次，即<code>request</code>和<code>response</code>是一一对应，可以通过<code>clone</code>方法来创建一个一模一样的实例</p>
+<h3>同步 &amp; 异步</h3>
+<p>Retrofit 2.0支持在同一个类型中的<strong>同步</strong>和<strong>异步</strong>，同时&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个请求也可以被终止&lt;/font&gt;&lt;/u&gt;</p>
 <ol>
-<li><p><strong>同步</strong></p>
+<li><strong>同步</strong></li>
+</ol>
 <ul>
 <li>调用<code>execute</code>方法执行同步请求</li>
 <li>不能在Android主线程（<code>Main Thread</code>）中直接使用，因为会堵塞线程，否则会报错（<code>NetworkOnMainThreadException</code>）</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Call&lt;Repo&gt; call = service.loadRepo();</div><div class="line">Repo repo = call.execute();</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>异步</strong></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Call&lt;Repo&gt; call = service.loadRepo();</div><div class="line">Repo repo = call.execute();</div></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><strong>异步</strong></li>
+</ol>
 <ul>
 <li>调用<code>enqueue</code>方法执行异步请求</li>
 <li><code>onResponse</code>和<code>onFailure</code>方法会在主线程（<code>Main Thread</code>）中被调用</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Call&lt;Repo&gt; call = service.loadRepo();</div><div class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;Repo&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response&lt;Repo&gt; response)</span> </span>&#123;</div><div class="line">        <span class="comment">// Get result Repo from response.body()</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable t)</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>取消请求</strong>：可以随时调用<code>cancel</code>方法来取消请求</p>
-</li>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Call&lt;Repo&gt; call = service.loadRepo();</div><div class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;Repo&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response&lt;Repo&gt; response)</span> </span>&#123;</div><div class="line">        <span class="comment">// Get result Repo from response.body()</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable t)</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<ol start="3">
+<li><strong>取消请求</strong>：可以随时调用<code>cancel</code>方法来取消请求</li>
 </ol>
-<h3 id="Response类型"><a href="#Response类型" class="headerlink" title="Response类型"></a>Response类型</h3><ol>
+<h3>Response类型</h3>
+<ol>
 <li>Retrofit 2.0中使用了参数化的<code>Response</code>类型，Response对象增加了一些重要元数据：响应码（<code>the response code</code>）、响应消息（<code>the response message</code>）、响应头（<code>headers</code>）等</li>
 <li>Response类型提供了一系列函数，如<code>code</code>用来判断请求是否成功完成，<code>body</code>用来获取响应体等</li>
-<li><u><font color="red">只有响应成功后，才会去做反序列化操作，然后将反序列化的结果放到body回调中</font></u></li>
+<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;只有响应成功后，才会去做反序列化操作，然后将反序列化的结果放到body回调中&lt;/font&gt;&lt;/u&gt;</li>
 <li>具体的<code>ResponseBody</code>（简单封装了的content-type、length、raw body等部分）由开发者处理</li>
 </ol>
-<h3 id="动态URL参数"><a href="#动态URL参数" class="headerlink" title="动态URL参数"></a>动态URL参数</h3><ol>
-<li>Retrofit 2.0使用新的标注<code>@Url</code>来允许<u><font color="red">直接传入一个请求的URL</font></u></li>
-<li>请求的服务器可能将<code>header link</code>地址列表里的数据已经缓存在服务器内存里，可以<u><font color="red">直接根据该地址去请求，然后毫不费劲地从数据库里拿数据，速度上也更快</font></u></li>
+<h3>动态URL参数</h3>
+<ol>
+<li>Retrofit 2.0使用新的标注<code>@Url</code>来允许&lt;u&gt;&lt;font color=&quot;red&quot;&gt;直接传入一个请求的URL&lt;/font&gt;&lt;/u&gt;</li>
+<li>请求的服务器可能将<code>header link</code>地址列表里的数据已经缓存在服务器内存里，可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;直接根据该地址去请求，然后毫不费劲地从数据库里拿数据，速度上也更快&lt;/font&gt;&lt;/u&gt;</li>
 </ol>
-<h2 id="API接口实现"><a href="#API接口实现" class="headerlink" title="API接口实现"></a>API接口实现</h2><h3 id="Converter"><a href="#Converter" class="headerlink" title="Converter"></a>Converter</h3><ol>
-<li>Retrofit 2.0中，<u><font color="red">Converter不再包含在包里了，开发者需要自己插入一个Converter，否则Retrofit只能接收到字符串的结果</font></u></li>
-<li>Retrofit 2.0<u><font color="red">支持多个Converter</font></u></li>
+<h2>API接口实现</h2>
+<h3>Converter</h3>
+<ol>
+<li>Retrofit 2.0中，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;Converter不再包含在包里了，开发者需要自己插入一个Converter，否则Retrofit只能接收到字符串的结果&lt;/font&gt;&lt;/u&gt;</li>
+<li>Retrofit 2.0&lt;u&gt;&lt;font color=&quot;red&quot;&gt;支持多个Converter&lt;/font&gt;&lt;/u&gt;</li>
 <li>可以自定义实现<code>Converter.Factory</code>接口</li>
 </ol>
 <table>
@@ -469,11 +482,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="新的URL定义形式"><a href="#新的URL定义形式" class="headerlink" title="新的URL定义形式"></a>新的URL定义形式</h3><ol>
+<h3>新的URL定义形式</h3>
+<ol>
 <li><strong>Base URL</strong>：总是以<code>/</code>结束</li>
-<li><strong>@Url</strong>：不要以/开始；Retrofit 2.0中可以<u><font color="red">在@Url中定义一个完全的URL</font></u></li>
+<li><strong>@Url</strong>：不要以/开始；Retrofit 2.0中可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在@Url中定义一个完全的URL&lt;/font&gt;&lt;/u&gt;</li>
 </ol>
-<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><p> Retrofit的<code>HTTP</code>注解用来<u><font color="red">修饰请求方法</font></u></p>
+<h3>请求方法</h3>
+<p>Retrofit的<code>HTTP</code>注解用来&lt;u&gt;&lt;font color=&quot;red&quot;&gt;修饰请求方法&lt;/font&gt;&lt;/u&gt;</p>
 <table>
 <thead>
 <tr>
@@ -516,41 +531,58 @@
 </tr>
 </tbody>
 </table>
-<h3 id="URL-MANIPULATION"><a href="#URL-MANIPULATION" class="headerlink" title="URL MANIPULATION"></a>URL MANIPULATION</h3><ol>
+<h3>URL MANIPULATION</h3>
+<ol>
 <li><strong>@Path</strong>：一个请求的URL可以使用方法上的<strong>替换块</strong>和<strong>参数</strong>来动态更新。一个替换块是由<code>{</code>和<code>}</code>包围，一个适合的参数必须使用同一字符串的<code>@Path</code>来注解</li>
-<li><strong>@Query</strong>：<u><font color="red">添加查询参数</font></u></li>
+<li><strong>@Query</strong>：&lt;u&gt;&lt;font color=&quot;red&quot;&gt;添加查询参数&lt;/font&gt;&lt;/u&gt;</li>
 <li><strong>@QueryMap</strong>：若有多个查询参数时，可以放在<code>Map</code>中</li>
 </ol>
-<h3 id="REQUEST-BODY"><a href="#REQUEST-BODY" class="headerlink" title="REQUEST BODY"></a>REQUEST BODY</h3><p> 一个对象可以使用<code>@Body</code>注解被用作一个HTTP请求体。该对象也会通过使用在Retrofit实例中指定的转换器来转换，如果没有提添加转换器，默认使用<code>RequestBody</code></p>
-<h3 id="FORM-ENCODED-AND-MULTIPART"><a href="#FORM-ENCODED-AND-MULTIPART" class="headerlink" title="FORM ENCODED AND MULTIPART"></a>FORM ENCODED AND MULTIPART</h3><p> 用于<strong>方法</strong>上</p>
+<h3>REQUEST BODY</h3>
+<p>一个对象可以使用<code>@Body</code>注解被用作一个HTTP请求体。该对象也会通过使用在Retrofit实例中指定的转换器来转换，如果没有提添加转换器，默认使用<code>RequestBody</code></p>
+<h3>FORM ENCODED AND MULTIPART</h3>
+<p>用于<strong>方法</strong>上</p>
 <ol>
 <li><strong>@FormUrlEncoded</strong>：发送表单数据，每个键值对使用带名称和提供的值的<code>@Field</code>注解</li>
 <li><strong>@Multipart</strong>：在方法上使用<code>@Multipart</code>注解，对每个part使用<code>@Part</code>注解，其中parts可以使用Retorfit的转换器或实现<code>RequestBody</code>来处理序列化</li>
 </ol>
-<h3 id="HEADER-MANIPULATION"><a href="#HEADER-MANIPULATION" class="headerlink" title="HEADER MANIPULATION"></a>HEADER MANIPULATION</h3><p> 使用<code>@Headers</code>注解来为一个方法设置静态的头部</p>
+<h3>HEADER MANIPULATION</h3>
+<p>使用<code>@Headers</code>注解来为一个方法设置静态的头部</p>
 <ol>
-<li>头部不能复写，<u><font color="red">拥有同一名字的所有头部会被包含在请求中</font></u></li>
+<li>头部不能复写，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;拥有同一名字的所有头部会被包含在请求中&lt;/font&gt;&lt;/u&gt;</li>
 <li>请求头可以使用<code>@Header</code>注解来动态更新，如果该值为null，该头部会被忽略</li>
 <li>需要被添加到每个请求的头部可以使用<code>OkHttp Interceptor</code>来指定</li>
 </ol>
-<h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><ol>
+<h2>OkHttp</h2>
+<ol>
 <li>Retrofit 2.0中需要<code>OkHttp</code>库，并且被自动设置为依赖库</li>
 <li>Retrofit 2.0中无论响应是否能被解析，<code>onResponse</code>总会被调用，万一返回的结果不能被解析为对象，<code>response.body()</code>会返回<code>null</code>，注意不要忘记处理此情况</li>
 <li>Retrofit 2.0中如果忘记添加<code>INTERNET</code>权限，会立即抛出<code>SecurityException</code>，如果没有处理<code>try-catch</code>的话，会引起应用崩溃</li>
 <li>Retrofit 2.0中需要创建一个带<code>Interceptor</code>的OkHttpClient，然后作为参数放入Retrofit的<code>Builder</code>链中</li>
 </ol>
-<h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><ol>
-<li>Retrofit 2.0中除了定义<code>Call&lt;T&gt;</code>形式的接口，也可以定义自己的类型，该机制称为<code>CallAdapter</code></li>
-<li>RxJava作为一种非常流行的CallAdapter，返回的类型为<code>Observable&lt;T&gt;</code></li>
-<li><p>RxJava需要在根模块的<code>build.gradle</code>文件中使用如下依赖</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'</span></div><div class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></div></pre></td></tr></table></figure>
+<h2>RxJava</h2>
+<ol>
+<li>
+<p>Retrofit 2.0中除了定义<code>Call&lt;T&gt;</code>形式的接口，也可以定义自己的类型，该机制称为<code>CallAdapter</code></p>
 </li>
-<li><p>在Retrofit的Builder链中作为<code>addCallAdapterFactory</code>的参数</p>
+<li>
+<p>RxJava作为一种非常流行的CallAdapter，返回的类型为<code>Observable&lt;T&gt;</code></p>
 </li>
-<li>API接口的方法返回对象是Observable<t>类型</t></li>
-<li>必须让代码在主线程中被调用，即<code>observeOn(AndroidSchedulers.mainThread())</code>方法</li>
+<li>
+<p>RxJava需要在根模块的<code>build.gradle</code>文件中使用如下依赖
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'</span></div><div class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>在Retrofit的Builder链中作为<code>addCallAdapterFactory</code>的参数</p>
+</li>
+<li>
+<p>API接口的方法返回对象是Observable&lt;T&gt;类型</p>
+</li>
+<li>
+<p>必须让代码在主线程中被调用，即<code>observeOn(AndroidSchedulers.mainThread())</code>方法</p>
+</li>
 </ol>
-<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<h1>参考方案</h1>
+<ol>
 <li><a href="https://realm.io/cn/news/droidcon-jake-wharton-simple-http-retrofit-2/" target="_blank" rel="external"><strong>用Retrofit 2简化HTTP请求</strong></a></li>
 <li><a href="http://square.github.io/retrofit/" target="_blank" rel="external"><strong>Retrofit-A type-safe HTTP client for Android and Java</strong></a></li>
 <li><a href="https://inthecheesefactory.com/blog/retrofit-2.0/en" target="_blank" rel="external"><strong>Retrofit 2.0: The biggest update yet on the best HTTP Client Library for Android</strong></a></li>
@@ -679,7 +711,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -687,7 +719,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -696,7 +728,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -725,7 +757,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本介绍"><span class="nav-number">2.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API接口"><span class="nav-number">2.3.</span> <span class="nav-text">API接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">Call类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步-amp-异步"><span class="nav-number">2.3.3.</span> <span class="nav-text">同步 & 异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">Response类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态URL参数"><span class="nav-number">2.3.5.</span> <span class="nav-text">动态URL参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API接口实现"><span class="nav-number">2.4.</span> <span class="nav-text">API接口实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Converter"><span class="nav-number">2.4.1.</span> <span class="nav-text">Converter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新的URL定义形式"><span class="nav-number">2.4.2.</span> <span class="nav-text">新的URL定义形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求方法"><span class="nav-number">2.4.3.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-MANIPULATION"><span class="nav-number">2.4.4.</span> <span class="nav-text">URL MANIPULATION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REQUEST-BODY"><span class="nav-number">2.4.5.</span> <span class="nav-text">REQUEST BODY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FORM-ENCODED-AND-MULTIPART"><span class="nav-number">2.4.6.</span> <span class="nav-text">FORM ENCODED AND MULTIPART</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEADER-MANIPULATION"><span class="nav-number">2.4.7.</span> <span class="nav-text">HEADER MANIPULATION</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttp"><span class="nav-number">2.5.</span> <span class="nav-text">OkHttp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava"><span class="nav-number">2.6.</span> <span class="nav-text">RxJava</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">3.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">API接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">Call类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.3.</span> <span class="nav-text">同步 & 异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.4.</span> <span class="nav-text">Response类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.5.</span> <span class="nav-text">动态URL参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">API接口实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.1.</span> <span class="nav-text">Converter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.2.</span> <span class="nav-text">新的URL定义形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.3.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.4.</span> <span class="nav-text">URL MANIPULATION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.5.</span> <span class="nav-text">REQUEST BODY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.6.</span> <span class="nav-text">FORM ENCODED AND MULTIPART</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.7.</span> <span class="nav-text">HEADER MANIPULATION</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">OkHttp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">RxJava</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>
@@ -744,7 +776,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

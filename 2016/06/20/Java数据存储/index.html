@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为6个存储区域来存放变量以及代码占用的内存">
+<meta name="description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;6个存储区域&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;来存放变量以及代码占用的内存 &amp;lt;!-- more --&amp;gt;  寄存器：Register，&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;">
 <meta name="keywords" content="Blog,Java,Memory">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java数据存储">
 <meta property="og:url" content="http://yoursite.com/2016/06/20/Java数据存储/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为6个存储区域来存放变量以及代码占用的内存">
+<meta property="og:description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;6个存储区域&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;来存放变量以及代码占用的内存 &amp;lt;!-- more --&amp;gt;  寄存器：Register，&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-27T07:37:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java数据存储">
-<meta name="twitter:description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为6个存储区域来存放变量以及代码占用的内存">
+<meta name="twitter:description" content="概况 本文主要介绍Java中数据的存储位置及机制。 概念 在Java中，程序分为&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;6个存储区域&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;来存放变量以及代码占用的内存 &amp;lt;!-- more --&amp;gt;  寄存器：Register，&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;">
 
 
 
@@ -381,65 +381,84 @@
       
 
       
-        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java中数据的存储位置及机制。</p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p> 在Java中，程序分为<u><font color="red">6个存储区域</font></u>来存放变量以及代码占用的内存</p>
-<a id="more"></a>
+        <h1>概况</h1>
+<p>本文主要介绍Java中数据的存储位置及机制。</p>
+<h1>概念</h1>
+<p>在Java中，程序分为&lt;u&gt;&lt;font color=&quot;red&quot;&gt;6个存储区域&lt;/font&gt;&lt;/u&gt;来存放变量以及代码占用的内存</p>
+<p>&lt;!-- more --&gt;</p>
 <ol>
-<li><strong>寄存器</strong>：<code>Register</code>，<u><font color="red">最快的存储区，位于CPU内部，程序无法控制</font></u></li>
-<li><strong>栈</strong>：<code>Stack</code><ul>
+<li><strong>寄存器</strong>：<code>Register</code>，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;最快的存储区，位于CPU内部，程序无法控制&lt;/font&gt;&lt;/u&gt;</li>
+<li><strong>栈</strong>：<code>Stack</code>
+<ul>
 <li>位于通用<code>RAM</code>中，通过<strong>栈指针</strong>可以从处理器那里直接获得</li>
-<li>栈指针若<u><font color="red">向下移动则分配新的内存</font></u>，若<u><font color="red">向上移动则释放内存</font></u></li>
-<li>一种快速的分配方法，<u><font color="red">仅次于寄存器</font></u></li>
-<li><u><font color="red">基本类型的数据</font></u>和<u><font color="red">对象</font></u>的引用</li>
+<li>栈指针若&lt;u&gt;&lt;font color=&quot;red&quot;&gt;向下移动则分配新的内存&lt;/font&gt;&lt;/u&gt;，若&lt;u&gt;&lt;font color=&quot;red&quot;&gt;向上移动则释放内存&lt;/font&gt;&lt;/u&gt;</li>
+<li>一种快速的分配方法，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;仅次于寄存器&lt;/font&gt;&lt;/u&gt;</li>
+<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;基本类型的数据&lt;/font&gt;&lt;/u&gt;和&lt;u&gt;&lt;font color=&quot;red&quot;&gt;对象&lt;/font&gt;&lt;/u&gt;的引用</li>
 </ul>
 </li>
-<li><strong>堆</strong>：<code>Heap</code><ul>
+<li><strong>堆</strong>：<code>Heap</code></li>
+</ol>
+<ul>
 <li>存放由<code>new</code>创建的对象和数组</li>
 <li>由<code>JVM</code>自动管理</li>
 </ul>
-</li>
-<li><strong>静态存储区域</strong>：<code>Static Field</code><ul>
-<li><u><font color="red">在固定的位置存放应用程序运行时一直存在的数据</font></u></li>
-<li>生命周期<u><font color="red">随着程序编译而产生，程序结束而回收</font></u></li>
-</ul>
-</li>
-<li><strong>常量池</strong>：<code>Constant Pool</code><ul>
-<li><code>JVM</code>虚拟机必须<u><font color="red">为每个被装载的类型维护一个常量池</font></u></li>
-<li>常量池是<u><font color="red">该类型所用到常量的一个有序集合</font></u>，包括直接常量（基本类型，<code>String</code>）和其它类型、字段和方法的符号引用</li>
-</ul>
-</li>
-<li><strong>非RAM存储区</strong>：数据<u><font color="red">存活于程序之外，不受程序控制</font></u>，在没有程序的时候依然存在。如<strong>流对象</strong>和<strong>持久化对象</strong></li>
+<ol start="4">
+<li><strong>静态存储区域</strong>：<code>Static Field</code></li>
 </ol>
-<h1 id="堆内存存储与栈内存存储比较"><a href="#堆内存存储与栈内存存储比较" class="headerlink" title="堆内存存储与栈内存存储比较"></a>堆内存存储与栈内存存储比较</h1><h2 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p> 堆与栈都是用于程序中的数据在<code>RAM</code>（内存）上的存储区域，并且<code>Java</code>会<u><font color="red">自动地管理堆和栈，不能人为去直接设置</font></u></p>
-<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ol>
-<li><strong>存储数据类型</strong>：<u><font color="red">栈内存中存放局部变量（基本数据类型和对象引用）</font></u>，而<u><font color="red">堆内存用于存放对象（实体）</font></u></li>
-<li><strong>存储速度</strong>：<u><font color="red">栈内存的存储分配与清理速度更快于堆</font></u>，并且栈内存的存储速度仅次于直接位于处理器中的寄存器</li>
-<li><strong>灵活性</strong>：由于栈内存与堆内存存储机制的不同，<u><font color="red">堆内存灵活性更优于栈内存</font></u></li>
-</ol>
-<h2 id="存储机制"><a href="#存储机制" class="headerlink" title="存储机制"></a>存储机制</h2><ul>
-<li>栈内存被要求<u><font color="red">存放在其中的数据的大小、生命周期必须是已经确定的</font></u></li>
-<li>堆内存可以<u><font color="red">被虚拟机动态的分配内存大小，无需事先知道编译器的数据的大小、生命周期等相关信息</font></u></li>
+<ul>
+<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在固定的位置存放应用程序运行时一直存在的数据&lt;/font&gt;&lt;/u&gt;</li>
+<li>生命周期&lt;u&gt;&lt;font color=&quot;red&quot;&gt;随着程序编译而产生，程序结束而回收&lt;/font&gt;&lt;/u&gt;</li>
 </ul>
-<h2 id="存储数据类型"><a href="#存储数据类型" class="headerlink" title="存储数据类型"></a>存储数据类型</h2><h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><ul>
+<ol start="5">
+<li><strong>常量池</strong>：<code>Constant Pool</code></li>
+</ol>
+<ul>
+<li><code>JVM</code>虚拟机必须&lt;u&gt;&lt;font color=&quot;red&quot;&gt;为每个被装载的类型维护一个常量池&lt;/font&gt;&lt;/u&gt;</li>
+<li>常量池是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;该类型所用到常量的一个有序集合&lt;/font&gt;&lt;/u&gt;，包括直接常量（基本类型，<code>String</code>）和其它类型、字段和方法的符号引用</li>
+</ul>
+<ol start="6">
+<li><strong>非RAM存储区</strong>：数据&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存活于程序之外，不受程序控制&lt;/font&gt;&lt;/u&gt;，在没有程序的时候依然存在。如<strong>流对象</strong>和<strong>持久化对象</strong></li>
+</ol>
+<h1>堆内存存储与栈内存存储比较</h1>
+<h2>存储方式</h2>
+<h3>相同点</h3>
+<p>堆与栈都是用于程序中的数据在<code>RAM</code>（内存）上的存储区域，并且<code>Java</code>会&lt;u&gt;&lt;font color=&quot;red&quot;&gt;自动地管理堆和栈，不能人为去直接设置&lt;/font&gt;&lt;/u&gt;</p>
+<h3>不同点</h3>
+<ol>
+<li><strong>存储数据类型</strong>：&lt;u&gt;&lt;font color=&quot;red&quot;&gt;栈内存中存放局部变量（基本数据类型和对象引用）&lt;/font&gt;&lt;/u&gt;，而&lt;u&gt;&lt;font color=&quot;red&quot;&gt;堆内存用于存放对象（实体）&lt;/font&gt;&lt;/u&gt;</li>
+<li><strong>存储速度</strong>：&lt;u&gt;&lt;font color=&quot;red&quot;&gt;栈内存的存储分配与清理速度更快于堆&lt;/font&gt;&lt;/u&gt;，并且栈内存的存储速度仅次于直接位于处理器中的寄存器</li>
+<li><strong>灵活性</strong>：由于栈内存与堆内存存储机制的不同，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;堆内存灵活性更优于栈内存&lt;/font&gt;&lt;/u&gt;</li>
+</ol>
+<h2>存储机制</h2>
+<ul>
+<li>栈内存被要求&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存放在其中的数据的大小、生命周期必须是已经确定的&lt;/font&gt;&lt;/u&gt;</li>
+<li>堆内存可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;被虚拟机动态的分配内存大小，无需事先知道编译器的数据的大小、生命周期等相关信息&lt;/font&gt;&lt;/u&gt;</li>
+</ul>
+<h2>存储数据类型</h2>
+<h3>栈内存</h3>
+<ul>
 <li>在<code>Java</code>中，变量的类型通常分为<strong>基本数据类型变量</strong>和<strong>对象引用变量</strong></li>
-<li>8种基本数据类型实际上<u><font color="red">存储的是一组位数不同的二进制数据</font></u>，除此之外，布尔型只有<code>true</code>和<code>false</code>两种值</li>
-<li>对象引用变量<u><font color="red">存储的实际是其所关联（指向）对象在内存中的内存地址，而内存地址实际上也是一串二进制的数据</font></u></li>
-<li><u><font color="red">局部变量的大小可以确定，会在其自身所属方法（或代码块）执行完毕后，被自动释放</font></u></li>
+<li>8种基本数据类型实际上&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存储的是一组位数不同的二进制数据&lt;/font&gt;&lt;/u&gt;，除此之外，布尔型只有<code>true</code>和<code>false</code>两种值</li>
+<li>对象引用变量&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存储的实际是其所关联（指向）对象在内存中的内存地址，而内存地址实际上也是一串二进制的数据&lt;/font&gt;&lt;/u&gt;</li>
+<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;局部变量的大小可以确定，会在其自身所属方法（或代码块）执行完毕后，被自动释放&lt;/font&gt;&lt;/u&gt;</li>
 </ul>
-<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><ul>
+<h3>堆内存</h3>
+<ul>
 <li><code>Java</code>中使用关键字<code>new</code>通过调用类的构造函数，从而得到该类的对象</li>
-<li>对象类型数据<u><font color="red">在程序编译期并不会在内存中进行创建和存储工作</font></u>，而是<u><font color="red">在程序运行期才根据需要进行动态的创建和存储</font></u></li>
-<li>对象<u><font color="red">由堆内存进行存储管理</font></u></li>
+<li>对象类型数据&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在程序编译期并不会在内存中进行创建和存储工作&lt;/font&gt;&lt;/u&gt;，而是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在程序运行期才根据需要进行动态的创建和存储&lt;/font&gt;&lt;/u&gt;</li>
+<li>对象&lt;u&gt;&lt;font color=&quot;red&quot;&gt;由堆内存进行存储管理&lt;/font&gt;&lt;/u&gt;</li>
 </ul>
-<h2 id="栈内存中存储的数据可以实现数据共享"><a href="#栈内存中存储的数据可以实现数据共享" class="headerlink" title="栈内存中存储的数据可以实现数据共享"></a>栈内存中存储的数据可以实现数据共享</h2><ul>
-<li><strong>好处</strong>：<u><font color="red">节约内存空间</font></u>，避免反复向内存中加入同样的值</li>
-<li>对于字符串而言，如果是<u><font color="red">编译器已经创建好</font></u>（直接使用双引号定义）的就<u><font color="red">存储在常量池中</font></u>，如果是<u><font color="red">运行期</font></u>（<code>new</code>出来的）才能确定<u><font color="red">存储在堆中</font></u></li>
-<li>对于<code>equals()</code>相等的字符串，<u><font color="red">在常量池中永远只有一份，在堆中可以有多份</font></u></li>
-<li><u><font color="red">常量池与栈内存一样，也可以实现数据共享</font></u></li>
-<li>成员变量的数据<u><font color="red">存储于堆中该成员变量所属的对象里</font></u></li>
-<li><u><font color="red">堆内存中存放的变量会进行默认初始化</font></u>，而<u><font color="red">栈内存中存放的变量却不会</font></u></li>
+<h2>栈内存中存储的数据可以实现数据共享</h2>
+<ul>
+<li><strong>好处</strong>：&lt;u&gt;&lt;font color=&quot;red&quot;&gt;节约内存空间&lt;/font&gt;&lt;/u&gt;，避免反复向内存中加入同样的值</li>
+<li>对于字符串而言，如果是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;编译器已经创建好&lt;/font&gt;&lt;/u&gt;（直接使用双引号定义）的就&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存储在常量池中&lt;/font&gt;&lt;/u&gt;，如果是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;运行期&lt;/font&gt;&lt;/u&gt;（<code>new</code>出来的）才能确定&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存储在堆中&lt;/font&gt;&lt;/u&gt;</li>
+<li>对于<code>equals()</code>相等的字符串，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在常量池中永远只有一份，在堆中可以有多份&lt;/font&gt;&lt;/u&gt;</li>
+<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;常量池与栈内存一样，也可以实现数据共享&lt;/font&gt;&lt;/u&gt;</li>
+<li>成员变量的数据&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存储于堆中该成员变量所属的对象里&lt;/font&gt;&lt;/u&gt;</li>
+<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;堆内存中存放的变量会进行默认初始化&lt;/font&gt;&lt;/u&gt;，而&lt;u&gt;&lt;font color=&quot;red&quot;&gt;栈内存中存放的变量却不会&lt;/font&gt;&lt;/u&gt;</li>
 </ul>
-<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<h1>参考方案</h1>
+<ol>
 <li><a href="http://blog.csdn.net/ghost_programmer/article/details/40891735" target="_blank" rel="external"><strong>java中数据的5种存储位置（堆与栈）</strong></a></li>
 <li><a href="http://blog.csdn.net/woshimalingyi/article/details/44495497" target="_blank" rel="external"><strong>Java中数据存储方式、栈机制与引用的关系</strong></a></li>
 <li><a href="http://item.jd.com/11758334.html?cu=true&amp;utm_source=baidu-search&amp;utm_medium=cpc&amp;utm_campaign=t_262767352_baidusearch&amp;utm_term=25517772975_0_1403f3d34e3a454fa57ff079a7ca4130" target="_blank" rel="external"><strong>Android群英传</strong></a></li>
@@ -562,7 +581,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -570,7 +589,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -579,7 +598,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -608,7 +627,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆内存存储与栈内存存储比较"><span class="nav-number">3.</span> <span class="nav-text">堆内存存储与栈内存存储比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储方式"><span class="nav-number">3.1.</span> <span class="nav-text">存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相同点"><span class="nav-number">3.1.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">3.1.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储机制"><span class="nav-number">3.2.</span> <span class="nav-text">存储机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储数据类型"><span class="nav-number">3.3.</span> <span class="nav-text">存储数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈内存"><span class="nav-number">3.3.1.</span> <span class="nav-text">栈内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆内存"><span class="nav-number">3.3.2.</span> <span class="nav-text">堆内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈内存中存储的数据可以实现数据共享"><span class="nav-number">3.4.</span> <span class="nav-text">栈内存中存储的数据可以实现数据共享</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">4.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">堆内存存储与栈内存存储比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">存储机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">存储数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">栈内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.2.</span> <span class="nav-text">堆内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">栈内存中存储的数据可以实现数据共享</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>
@@ -627,7 +646,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

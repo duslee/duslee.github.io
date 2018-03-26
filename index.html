@@ -289,6 +289,154 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/26/CharSequence相关源码查看/" itemprop="url">
+                  CharSequence相关源码查看
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-26T10:26:27+08:00" content="2018-03-26">
+              2018-03-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/Source-Code-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Source Code View</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/Source-Code-View/CharSequence/" itemprop="url" rel="index">
+                    <span itemprop="name">CharSequence</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/26/CharSequence相关源码查看/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/26/CharSequence相关源码查看/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1>概述</h1>
+<p>该文档主要从源码角度学习<code>CharSequence</code>及相关内容（如<code>SpannableString</code>、<code>SpannableStringBuilder</code>、<code>String</code>、<code>StringBuilder</code>、<code>StringBuffer</code>等）的组织结构和实现</p>
+<p>具体的组织结构结构可以查看下图</p>
+<p><img src="/images/CharSequence.svg" alt=""></p>
+<h1>参考方案</h1>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/09/28/Mac下常用终端命令备忘录/" itemprop="url">
                   Mac下常用终端命令备忘录
                 </a>
@@ -382,13 +530,74 @@
 
       
         
-          <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Mac终端下常用命令使用，如<code>Homebrew</code>、<code>npm</code>等。</p>
-<h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><p> 用于<code>macOS</code>的包管理器</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/28/Mac下常用终端命令备忘录/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1>概况</h1>
+<p>本文主要介绍Mac终端下常用命令使用，如<code>Homebrew</code>、<code>npm</code>等。</p>
+<h1>Homebrew</h1>
+<p>用于<code>macOS</code>的包管理器</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Homebrew安装</h2>
+<p>在终端输入如下命令</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure></p>
+<h2>Homebrew用途</h2>
+<ol>
+<li>用于通过命令行形式快速安装Apple不支持的软件工具或第三方库</li>
+<li>用于创建自己的Homebrew包</li>
+</ol>
+<p>&lt;font color=&quot;red&quot;&gt;<strong>Note</strong>&lt;/font&gt;：<code>brew</code>的具体使用可通过<code>brew help</code>命令查看</p>
+<h2>Homebrew-cask</h2>
+<h3>介绍</h3>
+<p>用来下载带界面的软件，下载后自动安装，并能在Mac中直接运行使用</p>
+<h3>安装</h3>
+<p>在Homebrew安装OK的前提下，输入如下命令：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew tap caskroom/cask</div></pre></td></tr></table></figure></p>
+<h3>使用</h3>
+<p>通过如下命令完成软件名为<code>XXX</code>的自动安装</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew cask install XXX</div></pre></td></tr></table></figure></p>
+<p>&lt;font color=&quot;red&quot;&gt;<strong>Note</strong>&lt;/font&gt;：<code>brew-cask</code>的具体使用可通过<code>brew cask help</code>命令查看</p>
+<h1>npm</h1>
+<h2>介绍</h2>
+<ol>
+<li>使JavaScript开发者很方便分享/重用/更新代码（可参考<strong>What is npm</strong>&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;）</li>
+<li>结合<a href="https://nodejs.org/en/download/" target="_blank" rel="external"><strong>NodeJS</strong></a>使用，能解决NodeJS代码部署上的很多问题</li>
+</ol>
+<h2>升级</h2>
+<p>终端输入命令（<strong>升级出现问题未解决</strong>）</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sudo] npm install npm@latest -g</div></pre></td></tr></table></figure></p>
+<h2>安装npm包</h2>
+<h3>locally</h3>
+<p>终端输入命令</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install &lt;pacakge name&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>输入命令后会在当前目录下生成<code>node_modules</code>目录，并将下载的包存放在此目录下</li>
+<li>可根据<code>pacakge.json</code>文件查看已安装包的版本等信息</li>
+<li>可直接在代码里使用该包，通过<code>require('&lt;package name&gt;')</code>的方式</li>
+</ol>
+<h3>globally</h3>
+<p>可直接将安装的包用作命令行工具，在终端输入命令</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g &lt;package name&gt;</div></pre></td></tr></table></figure></p>
+<h3>node更新</h3>
+<p>终端输入命令</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g n</div><div class="line">n latest</div></pre></td></tr></table></figure></p>
+<h1>wget</h1>
+<h2>介绍</h2>
+<p>使用<code>HTTP</code>、<code>HTTPS</code>、<code>FTP</code>和<code>FTPS</code>协议获取免费软件包的管理器</p>
+<h2>安装</h2>
+<p>终端输入命令</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sudo] brew install wget</div></pre></td></tr></table></figure></p>
+<h1>参考方案</h1>
+<ol>
+<li><a href="https://brew.sh/" target="_blank" rel="external"><strong>Homebrew</strong></a></li>
+<li><a href="https://caskroom.github.io/" target="_blank" rel="external"><strong>Homebrew Cask</strong></a></li>
+<li><a href="https://github.com/caskroom/homebrew-cask" target="_blank" rel="external"><strong>Homebrew-cask Github</strong></a></li>
+<li><a href="https://www.zhihu.com/question/22624898" target="_blank" rel="external"><strong>brew和brew cask有什么区别？</strong></a></li>
+<li><a href="https://docs.npmjs.com/" target="_blank" rel="external"><strong>npm</strong></a></li>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external"><strong>nodejs</strong></a></li>
+<li><a href="http://www.gnu.org/software/wget/" target="_blank" rel="external"><strong>wget</strong></a></li>
+</ol>
+<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;&lt;a href=&quot;https://docs.npmjs.com/getting-started/what-is-npm&quot;&gt;&lt;strong&gt;What is npm?&lt;/strong&gt;&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+          
         
       
     </div>
@@ -529,18 +738,82 @@
 
       
         
-          <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。</p>
-<h1 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ol>
+          
+            <h1>概况</h1>
+<p>本文主要介绍VPS、在Mac下如何使用VPS搭建SS以及在不同平台下如何配置SS实现网络正常访问。</p>
+<h1>VPS</h1>
+<h2>介绍</h2>
+<ol>
 <li><code>VPS</code>，Virtual Private Server，虚拟专用服务器，VPS技术可以将一台服务器分割成多个虚拟专享服务器的优质服务。</li>
 <li>在容器或虚拟机中，每个VPS都可分配独立公网IP地址、独立操作系统、实现不同VPS间磁盘空间、内存、CPU资源、进程和系统配置的隔离。</li>
 <li>VPS可以像独立服务器一样，重装操作系统，安装程序，单独重启服务器。简单理解VPS就是一台拥有公网IP地址的服务器。</li>
 <li>最重要的是接下来要描述的重点，可以用VPS搭建<code>Shadowsocks</code>用于翻墙。</li>
 </ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/27/Mac下使用VPS搭建SS/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<p>&lt;!-- more --&gt;</p>
+<h2>Vultr</h2>
+<h3>VPS选择</h3>
+<p>VPS选择可以参考<a href="https://zhuanlan.zhihu.com/p/21872685" target="_blank" rel="external"><strong>十个便宜VPS（国内国外）主机分享--VPS服务器建站和搭建应用服务体验</strong></a>，笔者这里选择<code>Vultr</code>，建议可以使用<a href="https://www.vultr.com/?ref=7220951" target="_blank" rel="external"><strong>链接地址</strong></a>去注册账号，会有优惠。</p>
+<h3>Vultr操作流程</h3>
+<p>根据该链接地址进入Vultr后，依次完成&lt;font color='red'&gt;<strong>账号注册</strong>&lt;/font&gt;、&lt;font color='red'&gt;<strong>支付充值（至少$10）</strong>&lt;/font&gt;、&lt;font color='red'&gt;<strong>Server创建</strong>&lt;/font&gt;（笔者选择的操作系统是Ubuntu）流程（这里不仔细介绍了），接下来就是在部署的Server上搭建Shadowsocks</p>
+<p>&lt;font color='red'&gt;<strong>Note</strong>&lt;/font&gt;：Server创建成功后记得纪录下对应的IP地址、Username、Password等（可以在Server的详情页面看到），下面操作会用到。</p>
+<h1>搭建SS</h1>
+<p>以下操作是在Mac环境下完成</p>
+<h2>连接服务器</h2>
+<ol>
+<li>
+<p>进入终端或<code>iTerm</code>环境，使用ssh命令输入上面记录的用户名和IP地址
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@ip_address</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>提示输入密码（使用上面记录的密码即可），输入正确则进入远程服务器环境</p>
+</li>
+</ol>
+<h2>远程服务器环境</h2>
+<h3>安装Shadowsocks</h3>
+<ol>
+<li>
+<p>安装Shadowsocks：运行如下命令
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">chmod +x shadowsocks-all.sh</div><div class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>选择脚本（<code>Python</code>、<code>R</code>、<code>Go</code>、<code>libev</code>），任选一个：笔者选择的libev，依次会要求提示输入Ip地址、端口和密码等</p>
+</li>
+<li>
+<p>上述操作完成后，任意键点击后开始安装，等待安装成功</p>
+</li>
+</ol>
+<h3>Mac配置SS</h3>
+<ol>
+<li>
+<p><a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases/" target="_blank" rel="external"><strong>ShadowsocksX-NG下载地址</strong></a>：若该地址下载不了，可考虑<a href="https://c.yitianjianss.com/tutorial/trial_port#download" target="_blank" rel="external"><strong>倚天剑ss</strong></a>下载对应的版本即可</p>
+</li>
+<li>
+<p>安装<code>ShadowsocksX-NG</code>后打开，输入上面操作记录的服务器IP地址、端口、密码、加密方式等</p>
+</li>
+<li>
+<p>Google浏览器配置：在chrome扩展中安装switchysharp，分别配置代理（<code>proxy</code>）模式和自动切换（<code>auto switch</code>）模式</p>
+</li>
+<li>
+<p>proxy模式配置信息如下
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">代理协议：socks5</div><div class="line">代理服务器：127.0.0.1  // 本地IP</div><div class="line">代理端口：1080</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>auto switch模式配置信息：根据需要代理的域名或网址等来选择情景模式，如<code>*.biadu.com</code>使用“直接连接”，<code>*.google.com</code>使用“proxy”模式等，可以自主添加</p>
+</li>
+</ol>
+<h1>进阶</h1>
+<p>加速（待续）</p>
+<h1>参考方案</h1>
+<ol>
+<li><a href="https://www.diycode.cc/topics/738" target="_blank" rel="external"><strong>轻松在VPS搭建Shadowsocks翻墙（$2.5/月）</strong></a></li>
+<li><a href="http://blog.csdn.net/bing900713/article/details/71274519?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="external"><strong>Mac搭建VPS和shadowsocks</strong></a></li>
+<li><a href="http://blog.csdn.net/nomisshe/article/details/50771644" target="_blank" rel="external"><strong>mac连接VPS搭建SS，mac使用SS客户端配置</strong></a></li>
+<li><a href="http://blog.csdn.net/creasylai19/article/details/52268995" target="_blank" rel="external"><strong>VPS+SS搭建自己的VPN</strong></a></li>
+<li><a href="http://blog.csdn.net/chengliang0315/article/details/69788958" target="_blank" rel="external"><strong>为你的vps安装shadwosocks和搭建VPN</strong></a></li>
+<li><a href="https://baike.baidu.com/item/VPS/11053576?fr=aladdin" target="_blank" rel="external"><strong>VPS百度百科</strong></a></li>
+</ol>
+
+          
         
       
     </div>
@@ -681,12 +954,57 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<code>JNI</code>使用在Android开发中的简单入门</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/27/JNI-简单入门/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1>概述</h1>
+<p>本文主要介绍<code>JNI</code>使用在Android开发中的简单入门</p>
+<p>&lt;!-- more --&gt;</p>
+<h1>环境搭建</h1>
+<p><code>NDK</code>的开发是基于<code>JNI</code>的，下面是在<code>Android Studio</code>中配置<code>NDK</code>，按照图中的顺序依次下去，选择<code>NDK</code>开始下载</p>
+<p><img src="/images/jni/install_ndk_in_mac.png" alt=""></p>
+<h1>实例演示</h1>
+<h2>native方法声明</h2>
+<p>创建一个Android项目，在<code>MainActivity.java</code>里声明<code>native</code>方法</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">    System.loadLibrary(<span class="string">"jni-test"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line">    TextView textView = (TextView) findViewById(R.id.textView);</div><div class="line">    textView.setText(get());</div><div class="line">    set(<span class="string">"Hello world from JniTestApp!"</span>);</div><div class="line"></div><div class="line">    TextView textView2 = (TextView) findViewById(R.id.textView2);</div><div class="line">    textView2.setText(get2());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodCalledByJni</span><span class="params">(String msgFromJni)</span> </span>&#123;</div><div class="line">    Log.d(<span class="string">"test"</span>, <span class="string">"MainActivity methodCalledByJni msg: "</span> + msgFromJni);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">get</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">get2</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String str)</span></span>;</div></pre></td></tr></table></figure></p>
+<h2>实现native方法</h2>
+<p>在应用模块目录下创建<code>jni</code>目录，创建4个文件：<code>test.cpp</code>、<code>test2.cpp</code>、<code>Android.mk</code>、<code>Application.mk</code></p>
+<ol>
+<li>
+<p>test.cpp实现MainActivity.java的<code>get</code>和<code>set</code>方法
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// test.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="function">jstring <span class="title">Java_com_jeff_customjnitest_MainActivity_get</span><span class="params">(JNIEnv *env, jobject thiz)</span> </span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"invoke get in c++\n"</span>);</div><div class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(<span class="string">"Hello from JNI in libjni-test.so!"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Java_com_jeff_customjnitest_MainActivity_set</span><span class="params">(JNIEnv *env, jobject thiz, jstring <span class="built_in">string</span>)</span> </span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"invoke set from c++\n"</span>);</div><div class="line">    <span class="keyword">char</span> *str = (<span class="keyword">char</span>*) env-&gt;GetStringUTFChars(<span class="built_in">string</span>, <span class="literal">NULL</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, str);</div><div class="line">    env-&gt;ReleaseStringUTFChars(<span class="built_in">string</span>, str);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>test2.cpp实现MainActivity.java的<code>get2</code>方法，此方法是用于在JNI中调用Java方法，即先通过类名找到类，再根据方法名找到方法的ID，最后调用此方法
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// test2.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">callJavaMethod</span><span class="params">(JNIEnv *env, jobject thiz)</span> </span>&#123;</div><div class="line">    jclass clazz = env-&gt;FindClass(<span class="string">"com/jeff/customjnitest/MainActivity"</span>);</div><div class="line">    <span class="keyword">if</span> (clazz == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"find class MainActivity error!"</span>);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    jmethodID id = env-&gt;GetStaticMethodID(clazz, <span class="string">"methodCalledByJni"</span>, <span class="string">"(Ljava/lang/String;)V"</span>);</div><div class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == id)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"find method methodCalledByJni error!"</span>);</div><div class="line"></div><div class="line">    jstring msg = env-&gt;NewStringUTF(<span class="string">"msg send by calledJavaMethod in test2.cpp"</span>);</div><div class="line">    env-&gt;CallStaticVoidMethod(clazz, id, msg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">jstring <span class="title">Java_com_jeff_customjnitest_MainActivity_get2</span><span class="params">(JNIEnv *env, jobject thiz)</span> </span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"invoke get in c++\n"</span>);</div><div class="line">    callJavaMethod(env, thiz);</div><div class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(<span class="string">"Hello from JNI in libjni-test.so!====="</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>Android.mk中主要描述编译时的相关配置项，描述如下</p>
+</li>
+</ol>
+<ul>
+<li><code>LOCAL_MODULE</code>：模块的名称</li>
+<li><code>LOCAL_SRC_FILES</code>：参与编译的源文件，有多个时使用<code>\</code>和<code>换行符</code>隔开
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">LOCAL_PATH := $(call my-dir)</div><div class="line"></div><div class="line">include $(CLEAR_VARS)</div><div class="line"></div><div class="line">LOCAL_MODULE := jni-test</div><div class="line">LOCAL_SRC_FILES := test.cpp \</div><div class="line">                    test2.cpp</div><div class="line"></div><div class="line">include $(BUILD_SHARED_LIBRARY)</div></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li>Applicaiton.mk表示<code>CPU</code>的架构平台类型，这里使用<code>armeabi</code>和<code>x86</code>架构，多个架构平台使用<code>,</code>隔开
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">APP_ABI := armeabi,x86</div></pre></td></tr></table></figure></li>
+</ol>
+<h2>编译生成so库</h2>
+<p>进入<code>jni</code>目录，使用<code>ndk-build</code>命令编译生成<code>so</code>库，如下图所示，<code>so</code>库会存放在<code>jni</code>目录的对应不同架构的目录下</p>
+<p><img src="/images/jni/generate_so_libs.png" alt=""></p>
+<h2>运行Android程序</h2>
+<p>直接运行Android应用，会发现程序无法正常运行，提示<code>java.lang.UnstatisfiedLinkError</code>错误，即找不到<code>so</code>库文件，需要制定<code>so</code>库所在的目录（在<code>build.gradle</code>中添加指定<code>jniLibs</code>的目录）</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    sourceSets &#123;</div><div class="line">        main &#123;</div><div class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>：AndroidStudio中最好指定需要打包的<code>so</code>库到<code>APK</code>中，即需要在<code>build.gradle</code>中添加指定<code>abiFilters</code>内容</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line"></div><div class="line">        ndk &#123;</div><div class="line">            abiFilters <span class="string">"armeabi"</span>, <span class="string">"armeabi-v7a"</span>, <span class="string">"x86"</span>, <span class="string">"mips"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1>参考方案</h1>
+<ol>
+<li>Android开发艺术探索第十四章--JNI和NDK编程</li>
+<li><a href="http://www.jianshu.com/p/d08064bf6b85" target="_blank" rel="external"><strong>java.lang.UnsatisfiedLinkError 解决方法</strong></a></li>
+<li><a href="https://github.com/duslee/JNI-Test.git" target="_blank" rel="external"><strong>DEMO参考 (下载地址)</strong></a></li>
+</ol>
+
+          
         
       
     </div>
@@ -815,14 +1133,27 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<code>Git</code>的基本知识，及其相关操作</p>
-<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h2><p> 有以下两种方式</p>
-<h3 id="使用存在的目录初始化仓库"><a href="#使用存在的目录初始化仓库" class="headerlink" title="使用存在的目录初始化仓库"></a>使用存在的目录初始化仓库</h3><p>进入指定目录，输入<code>git init</code>创建一个名为<code>.git</code>的新的子目录，此时指定目录里还未有任何可追踪（<code>tracked</code>）的文件</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/07/Git学习/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1>概述</h1>
+<p>本文主要介绍<code>Git</code>的基本知识，及其相关操作</p>
+<h1>Basics</h1>
+<h2>获取Git仓库</h2>
+<p>有以下两种方式</p>
+<h3>使用存在的目录初始化仓库</h3>
+<p>进入指定目录，输入<code>git init</code>创建一个名为<code>.git</code>的新的子目录，此时指定目录里还未有任何可追踪（<code>tracked</code>）的文件</p>
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure></p>
+<p>如果想要新建版本控制的文件，需要完成追踪（<code>track</code>）和发送（<code>commit</code>）操作。可以使用<code>git add</code>命令添加文件，<code>git commit</code>完成该文件的追踪</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add *.c</div><div class="line">git add License</div><div class="line">git commit -m &apos;initial project version&apos;</div></pre></td></tr></table></figure></p>
+<h3>克隆存在的仓库</h3>
+<p>使用<code>git clone [url]</code>命令直接获取已存在仓库的拷贝，如果想要拷贝仓库到指定的目录，可以指定目录名（<code>git clone [url] dirName</code>）</p>
+<h1>参考方案</h1>
+<ol>
+<li><a href="https://git-scm.com/documentation" target="_blank" rel="external"><strong>Git Documentation</strong></a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external"><strong>Git远程操作详解</strong></a></li>
+</ol>
+
+          
         
       
     </div>
@@ -963,13 +1294,37 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 该文档主要描述个人在Android开发中关于<code>Fragment</code>的管理，使用<code>Stack</code>的特性（后进先出原则）来存放<code>Fragment</code>，可以在处理<code>Activity</code>的返回操作时得到充分发挥。</p>
-<p><strong>Note</strong>：这里主要介绍<code>Fragment</code>的<font color="red"><u>添加</u></font>/<font color="red"><u>替换</u></font>/<font color="red"><u>移除</u></font>操作。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/16/Fragment管理问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1>概述</h1>
+<p>该文档主要描述个人在Android开发中关于<code>Fragment</code>的管理，使用<code>Stack</code>的特性（后进先出原则）来存放<code>Fragment</code>，可以在处理<code>Activity</code>的返回操作时得到充分发挥。</p>
+<p><strong>Note</strong>：这里主要介绍<code>Fragment</code>的&lt;font color=&quot;red&quot;&gt;&lt;u&gt;添加&lt;/u&gt;&lt;/font&gt;/&lt;font color=&quot;red&quot;&gt;&lt;u&gt;替换&lt;/u&gt;&lt;/font&gt;/&lt;font color=&quot;red&quot;&gt;&lt;u&gt;移除&lt;/u&gt;&lt;/font&gt;操作。</p>
+<p>&lt;!-- more --&gt;</p>
+<h1>添加</h1>
+<p>直接添加Fragment覆盖原有的界面，这里添加的每个Fragment会使用唯一的<code>tag</code>常量来标记，用于推进到<code>Stack</code>里，便于对指定的Fragment完成后续的替换/移除操作，添加操作使用<code>FragmentTransaction.add(int, Fragment, String)</code>方法。</p>
+<ol>
+<li>
+<p>初始时添加Fragment到Activity上
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> String tag = <span class="string">"1"</span>;</div><div class="line">    getSupportFragmentManager()</div><div class="line">            .beginTransaction()</div><div class="line">            .add(R.id.content, MyFragment.newInstance(tag), tag)</div><div class="line">            .commit();</div><div class="line">   mTagStack.push(tag);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>添加Fragment到已存在的Fragment上：需要先隐藏已存在的Fragment，再完成添加操作，否则原先存在的Fragment还会显示
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFragmentToTop</span><span class="params">(<span class="keyword">final</span> String oldTag, <span class="keyword">final</span> String newTag)</span> </span>&#123;</div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line"></div><div class="line">    Fragment fragment = fm.findFragmentByTag(oldTag);</div><div class="line">    FragmentTransaction ft = fm</div><div class="line">            .beginTransaction()</div><div class="line">            .hide(fragment)</div><div class="line">            .add(R.id.content, MyFragment.newInstance(newTag), newTag);</div><div class="line">    ft.addToBackStack(newTag);</div><div class="line">    ft.commit();</div><div class="line">    mTagStack.push(newTag);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</li>
+</ol>
+<h1>替换</h1>
+<p>用新的Fragment替换当前显示的Fragment，注意这里不会使用<code>FragmentTransaction.replace(int, Fragment, String)</code>方法，因为<code>replace</code>方法会将已有的Fragment全部移除，不能实现我们想要的替换效果。这里是先移除当前显示的Fragment，再将新的Fragment添加进来。注意这里Stack的操作是直接替换栈顶元素。</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">replace</span><span class="params">(<span class="keyword">final</span> String oldTag, <span class="keyword">final</span> String newTag)</span> </span>&#123;</div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line"></div><div class="line">    Fragment oldFragment = fm.findFragmentByTag(oldTag);</div><div class="line">    FragmentTransaction ft = fm.beginTransaction();</div><div class="line"></div><div class="line">    ft.remove(oldFragment)</div><div class="line">            .add(R.id.content, MyFragment.newInstance(newTag), newTag)</div><div class="line">            .commit();</div><div class="line">    mTagStack.set(mTagStack.size() - <span class="number">1</span>, newTag);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1>移除</h1>
+<p>直接根据tag移除栈顶的Fragment。先执行<code>remove</code>操作，再判断Stack的元素个数是否大于2，若大于2，表示栈里还存在Fragment，则需要显示下一个Fragment，否则和Activity的正常退出操作一样。</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(String tag)</span> </span>&#123;</div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line"></div><div class="line">    Fragment removeFragment = fm.findFragmentByTag(tag);</div><div class="line">    FragmentTransaction ft = fm.beginTransaction();</div><div class="line"></div><div class="line">    ft.remove(removeFragment);</div><div class="line">    <span class="keyword">if</span> (mTagStack.size() &gt;= <span class="number">2</span>) &#123;</div><div class="line">        Fragment showFragment = fm</div><div class="line">                .findFragmentByTag(mTagStack.get(mTagStack.size() - <span class="number">2</span>));</div><div class="line">        ft.show(showFragment);</div><div class="line">    &#125;</div><div class="line">    ft.commit();</div><div class="line">    fm.popBackStack();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>：Activity的返回操作需要根据<code>FragmentManager.getBackStackEntryCount()</code>方法判断BackStack的个数来执行&lt;font color=&quot;red&quot;&gt;&lt;u&gt;移除&lt;/u&gt;&lt;/font&gt;或&lt;font color=&quot;red&quot;&gt;&lt;u&gt;退出Activity&lt;/u&gt;&lt;/font&gt;操作</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> backStackCount = getSupportFragmentManager().getBackStackEntryCount();</div><div class="line">    <span class="keyword">if</span> (backStackCount &gt; <span class="number">0</span>) &#123;</div><div class="line">        remove(mTagStack.peek());</div><div class="line">    &#125; <span class="keyword">else</span></div><div class="line">        <span class="keyword">super</span>.onBackPressed();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1>参考方案</h1>
+<ol>
+<li><a href="https://github.com/duslee/Fragment-BackStack-Test.git" target="_blank" rel="external"><strong>DEMO参考(下载地址)</strong></a></li>
+</ol>
+
+          
         
       
     </div>
@@ -1098,13 +1453,43 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要从概念上介绍<code>Association</code>、<code>Aggregation</code>和<code>Composition</code></p>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p> <code>UML</code>中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（<code>part-whole-associaiton</code>）的特殊形式</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/14/Association-Aggregation-Composition/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1>概述</h1>
+<p>本文主要从概念上介绍<code>Association</code>、<code>Aggregation</code>和<code>Composition</code></p>
+<h1>背景</h1>
+<p><code>UML</code>中aggregation和composition均被定义为association的特殊形式，更准确地说是部分-整体关联（<code>part-whole-associaiton</code>）的特殊形式</p>
+<p>&lt;!-- more --&gt;</p>
+<h1>Association</h1>
+<h2>定义</h2>
+<ul>
+<li>当一个对象使用另一个对象时，Association关系出现在对象之间，技术上来说可以认为是基于两个类之间关系的引用，即&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个类拥有另一个类的类级别的引用&lt;/font&gt;&lt;/u&gt;</li>
+<li>Association&lt;u&gt;&lt;font color=&quot;red&quot;&gt;没有部分-整体的关系&lt;/font&gt;&lt;/u&gt;</li>
+<li>单向功能（<code>uni-directional functional</code>）的Association对应于面向对象（<code>OO</code>）编程语言里一个类的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;引用属性&lt;/font&gt;&lt;/u&gt;（<code>reference property</code>），<code>SQL</code>中一个表的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;外键&lt;/font&gt;&lt;/u&gt;</li>
+<li>两个对象类型之间的Association被称作&lt;u&gt;&lt;font color=&quot;red&quot;&gt;双向&lt;/font&gt;&lt;/u&gt;的（<code>binary</code>）</li>
+</ul>
+<h1>Aggregation</h1>
+<h2>定义</h2>
+<ul>
+<li>当一个对象使用另一个对象时出现Aggregation关系，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;对象之间处于部分-整体的关系&lt;/font&gt;&lt;/u&gt;，并且部分的生命期并不依赖于整体的生命期</li>
+<li>Aggregation是部分-整体关联的一种特殊形式，即整体的部分可以被其它的整体共享</li>
+<li>Aggregation的多重性可以使用<code>*</code>在任何一边结束，因为这里的部分可能属于或被其它的整体分享</li>
+</ul>
+<h1>Composition</h1>
+<h2>定义</h2>
+<ul>
+<li>Composition关系中一个对象使用另一个对象，并且对象之间&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存在部分-整体的关系&lt;/font&gt;&lt;/u&gt;，但是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;部分的生命期依赖于整体的生命期&lt;/font&gt;&lt;/u&gt;</li>
+<li>如果一个Composition对象被删除了，所有其它的实例都会被删除</li>
+<li>Composition的多重性使用<code>1</code>或<code>0..1</code>在合成的一边结束，依赖于该组件是否有许多合成体</li>
+</ul>
+<h1>参考方案</h1>
+<ol>
+<li><a href="https://www.codeproject.com/articles/330447/understanding-association-aggregation-and-composit" target="_blank" rel="external"><strong>Understanding Association, Aggregation, and Composition</strong></a></li>
+<li><a href="https://www.codeproject.com/Articles/880451/Really-Understanding-Association-Aggregation-and-C" target="_blank" rel="external"><strong>Really Understanding Association, Aggregation, and Composition</strong></a></li>
+<li><a href="https://www.codeproject.com/articles/845140/why-are-associations-so-difficult-to-understand-no" target="_blank" rel="external"><strong>Why Are Associations So Difficult to Understand, Not Just for Developers?</strong></a></li>
+<li><a href="https://www.codeproject.com/Articles/777540/Association-Aggregation-Composition-Dependency-and" target="_blank" rel="external"><strong>Association, Aggregation, Composition, Dependency and IOC for Beginners</strong></a></li>
+</ol>
+
+          
         
       
     </div>
@@ -1245,21 +1630,56 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<strong><code>Guava</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>中的字符串处理，尤其是<strong><code>Joiner</code></strong><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>和<strong><code>Splitter</code></strong><sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>的使用</p>
-<h1 id="Joiner"><a href="#Joiner" class="headerlink" title="Joiner"></a>Joiner</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p> 使用特定的分隔符（<code>seperator</code>）把一个字符串序列拼接起来，尤其处理字符串序列中含有<code>null</code>的时候非常有用</p>
+          
+            <h1>概述</h1>
+<p>本文主要介绍**<code>Guava</code><strong>&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;中的字符串处理，尤其是</strong><code>Joiner</code><strong>&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;和</strong><code>Splitter</code>**&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;的使用</p>
+<h1>Joiner</h1>
+<h2>定义</h2>
+<p>使用特定的分隔符（<code>seperator</code>）把一个字符串序列拼接起来，尤其处理字符串序列中含有<code>null</code>的时候非常有用</p>
 <p>Note：</p>
 <ol>
 <li>Joiner的实例总是不可变（<code>immutable</code>）的，其配置方法总会返回一个新的Joiner实例</li>
 <li>Joiner的配置方法有<code>skipNulls</code>和<code>useForNull</code></li>
-<li>skipNulls会过滤掉字符串序列中的null，当不使用该配置方法时，<u><font color="red">一定要保证字符串序列中不要含有null，否则会报异常</font></u></li>
-<li>useForNull会<u><font color="red">使用指定的字符串替换字符串序列中的null</font></u></li>
-<li>MapJoiner是针对Map的拼接，<u><font color="red">通过Joiner实例创建，在Joiner实例上可以使用useForNull方法，但不能使用skipNulls方法</font></u></li>
+<li>skipNulls会过滤掉字符串序列中的null，当不使用该配置方法时，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一定要保证字符串序列中不要含有null，否则会报异常&lt;/font&gt;&lt;/u&gt;</li>
+<li>useForNull会&lt;u&gt;&lt;font color=&quot;red&quot;&gt;使用指定的字符串替换字符串序列中的null&lt;/font&gt;&lt;/u&gt;</li>
+<li>MapJoiner是针对Map的拼接，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;通过Joiner实例创建，在Joiner实例上可以使用useForNull方法，但不能使用skipNulls方法&lt;/font&gt;&lt;/u&gt;</li>
 </ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/09/Guava学习-字符串处理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<p>&lt;!-- more --&gt;</p>
+<h2>使用</h2>
+<h3>把List转换为String</h3>
+<p><code>Joiner.on(String seperator)</code>指定List中每个元素的特定分隔符，<code>Joiner.join(Iterable&lt;?&gt; parts)</code>来拼接List中的数据</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String result = Joiner.on(<span class="string">"; "</span>).skipNulls()</div><div class="line">		.join(Lists.newArrayList(<span class="string">"Harry"</span>, <span class="keyword">null</span>, <span class="string">"Ron"</span>, <span class="string">"hermione"</span>));</div></pre></td></tr></table></figure></p>
+<h3>把Map转换为String</h3>
+<p><code>Joiner.on(String seperator)</code>指定Map中每个元素的特定分隔符，<code>Joiner.withKeyValueSeparator(char keyValueSeparator)</code>指定<code>KEY</code>和<code>VALUE</code>的分隔符，<code>MapJoiner.join(Iterable&lt;? extends Entry&lt;?, ?&gt;&gt; entries)</code>来拼接<code>Map</code>中的数据</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, Integer&gt; salary = Maps.newHashMap();</div><div class="line">salary.put(<span class="string">"John"</span>, <span class="number">1000</span>);</div><div class="line">salary.put(<span class="string">"Jane"</span>, <span class="number">1500</span>);</div><div class="line">String result = Joiner.on(<span class="string">" , "</span>).withKeyValueSeparator(<span class="string">" = "</span>)</div><div class="line">                                .join(salary);</div></pre></td></tr></table></figure></p>
+<h3>拼接嵌套的Collections</h3>
+<p>拼接集合中的每个<code>Collection</code>被转换后的字符串</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">List&lt;ArrayList&lt;String&gt;&gt; nested = Lists.newArrayList(</div><div class="line">Lists.newArrayList(<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>),</div><div class="line">Lists.newArrayList(<span class="string">"cat"</span>, <span class="string">"dog"</span>, <span class="string">"bird"</span>),</div><div class="line">Lists.newArrayList(<span class="string">"John"</span>, <span class="string">"Jane"</span>, <span class="string">"Adam"</span>));</div><div class="line">String result = Joiner.on(<span class="string">";"</span>).join(Iterables.transform(nested,</div><div class="line">    <span class="keyword">new</span> Function&lt;List&lt;String&gt;, String&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">apply</span><span class="params">(List&lt;String&gt; input)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> Joiner.on(<span class="string">"-"</span>).join(input);</div><div class="line">        &#125;</div><div class="line">    &#125;));</div></pre></td></tr></table></figure></p>
+<h1>Splitter</h1>
+<h2>定义</h2>
+<p>使用特定的分隔符（<code>seperator</code>）将字符串分割出来，并根据条件组合成列表数据</p>
+<h2>使用</h2>
+<h3>把String转换为List</h3>
+<p><code>Splitter.on(String seperator)</code>指定特定的分隔符，<code>Splitter.trimResults()</code>去掉字符串开始和结尾处的空格，<code>Splitter.splitToList(CharSequence sequence)</code>将字符串序列组合成列表</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String input = <span class="string">"apple - banana - orange"</span>;</div><div class="line">List&lt;String&gt; result = Splitter.on(<span class="string">"-"</span>).trimResults()</div><div class="line">                                      .splitToList(input);</div></pre></td></tr></table></figure></p>
+<h3>把String转换为Map</h3>
+<p><code>Splitter.on(String seperator)</code>指定特定的分隔符，<code>Splitter.withKeyValueSeparator(String separator)</code>指定字符串中<code>KEY</code>和<code>VALUE</code>的分隔符，<code>MapSplitter.MapSplitter(CharSequence sequence)</code>将指定的字符串序列组合成<code>Map</code></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String input = <span class="string">"John=first,Adam=second"</span>;</div><div class="line">Map&lt;String, String&gt; result = Splitter.on(<span class="string">","</span>)</div><div class="line">                                     .withKeyValueSeparator(<span class="string">"="</span>)</div><div class="line">                                     .split(input);</div></pre></td></tr></table></figure></p>
+<h3>多个分隔符分割String</h3>
+<p><code>Splitter.onPattern(String separatorPattern)</code>指定满足正则条件的分隔符，<code>Splitter.omitEmptyStrings()</code>忽略掉空字符串，<code>Splitter.splitToList(CharSequence sequence)</code>将字符串序列组合成列表</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String input = <span class="string">"apple.banana,,orange,,."</span>;</div><div class="line">List&lt;String&gt; result = Splitter.onPattern(<span class="string">"[.|,]"</span>)</div><div class="line">                              .omitEmptyStrings()</div><div class="line">                              .splitToList(input);</div></pre></td></tr></table></figure></p>
+<h3>根据指定长度分割String</h3>
+<p><code>Splitter.fixedLength(int length)</code>指定分割字符串的长度，<code>Splitter.splitToList(CharSequence sequence)</code>将字符串序列组合成列表</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String input = <span class="string">"Hello world"</span>;</div><div class="line">List&lt;String&gt; result = Splitter.fixedLength(<span class="number">3</span>).splitToList(input);</div></pre></td></tr></table></figure></p>
+<h3>限制分割的结果</h3>
+<p><code>Splitter.on(String seperator)</code>指定特定的分隔符，<code>Splitter.limit(int limit)</code>指定分割字符串序列的次数，<code>Splitter.splitToList(CharSequence sequence)</code>将字符串序列组合成列表</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String input = <span class="string">"a,b,c,d,e"</span>;</div><div class="line">List&lt;String&gt; result = Splitter.on(<span class="string">","</span>)</div><div class="line">                              .limit(<span class="number">4</span>)</div><div class="line">                              .splitToList(input);</div></pre></td></tr></table></figure></p>
+<h1>参考方案</h1>
+<p><a href="http://www.baeldung.com/guava-joiner-and-splitter-tutorial" target="_blank" rel="external"><strong>Guava - Join and Split Collections</strong></a>
+<a href="http://ifeve.com/google-guava/" target="_blank" rel="external"><strong>Google Guava官方教程（中文版）</strong></a></p>
+<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;<a href="https://github.com/google/guava/wiki" target="_blank" rel="external">&lt;strong&gt;Guava Wiki&lt;/strong&gt;</a>&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:2&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;<a href="https://github.com/google/guava/wiki/StringsExplained#joiner" target="_blank" rel="external">&lt;strong&gt;Strings -- Joiner&lt;/strong&gt;</a>&lt;/span&gt;&lt;a href=&quot;#fnref:2&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:3&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;<a href="https://github.com/google/guava/wiki/StringsExplained#splitter" target="_blank" rel="external">&lt;strong&gt;Strings -- Splitter&lt;/strong&gt;</a>&lt;/span&gt;&lt;a href=&quot;#fnref:3&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+          
         
       
     </div>
@@ -1388,12 +1808,265 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要整理了学习资源的网站，包括学习平台、个人博客、开源项目、相关技术点资源等</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/02/网络学习资源整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1>概述</h1>
+<p>本文主要整理了学习资源的网站，包括学习平台、个人博客、开源项目、相关技术点资源等</p>
+<p>&lt;!-- more --&gt;</p>
+<h1>学习平台</h1>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="external"><strong>MDN: MOZILIA DEVELOPER NETWORK</strong></a>	######</li>
+<li><a href="https://www.codecademy.com/learn/all" target="_blank" rel="external"><strong>CodeCademy</strong></a>	######</li>
+<li><a href="https://www.codeschool.com/courses" target="_blank" rel="external"><strong>Code School</strong></a>	######</li>
+<li><a href="https://www.packtpub.com/tech" target="_blank" rel="external"><strong>Packt: TECH</strong></a>	######</li>
+<li><a href="https://medium.mybridge.co/" target="_blank" rel="external"><strong>Mybridge for Professionals</strong></a>	######</li>
+<li><a href="https://medium.com/" target="_blank" rel="external"><strong>Medium</strong></a>	######</li>
+<li><a href="http://tutorialzine.com/" target="_blank" rel="external"><strong>tutorialzone</strong></a>	######</li>
+<li><a href="https://material.google.com/" target="_blank" rel="external"><strong>Google: Material</strong></a>	######</li>
+<li><a href="https://developers.google.cn/" target="_blank" rel="external"><strong>Google: Developers</strong></a>	######</li>
+<li><a href="https://www.codeproject.com/" target="_blank" rel="external"><strong>Code Project</strong></a>	######</li>
+<li><a href="https://futurestud.io/" target="_blank" rel="external"><strong>Future Studio</strong></a>	######</li>
+<li><a href="https://blogs.oracle.com/thejavatutorials/" target="_blank" rel="external"><strong>The Java Tutorials Blog</strong></a>	######</li>
+<li><a href="https://daringfireball.net/" target="_blank" rel="external"><strong>daring fireball</strong></a>	######</li>
+<li><a href="https://8thlight.com/" target="_blank" rel="external"><strong>8thlight</strong></a>	######</li>
+<li><a href="https://realm.io/cn/" target="_blank" rel="external"><strong>realm</strong></a>	######</li>
+<li><a href="http://www.imooc.com/course/list" target="_blank" rel="external"><strong>慕课网</strong></a></li>
+<li><a href="https://gold.xitu.io/" target="_blank" rel="external"><strong>掘金</strong></a></li>
+<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="external"><strong>Android DevTools</strong></a></li>
+<li><a href="https://segmentfault.com/" target="_blank" rel="external"><strong>segmentfault</strong></a></li>
+<li><a href="https://toutiao.io/" target="_blank" rel="external"><strong>开发者头条</strong></a></li>
+<li><a href="http://www.devstore.cn/" target="_blank" rel="external"><strong>Dev Store</strong></a></li>
+<li><a href="http://www.kuqin.com/" target="_blank" rel="external"><strong>酷勤网</strong></a></li>
+<li><a href="http://www.uisdc.com/tag/%E4%BC%98%E7%A7%80%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1" target="_blank" rel="external"><strong>优秀网页设计</strong></a></li>
+<li><a href="http://www.devtf.cn/" target="_blank" rel="external"><strong>开发技术前线</strong></a></li>
+<li><a href="http://corporate.tuenti.com/en/dev/blog" target="_blank" rel="external"><strong>tuenti developers blog</strong></a>	######</li>
+<li><a href="http://www.infoq.com/cn/" target="_blank" rel="external"><strong>InfoQ</strong></a></li>
+<li><a href="http://www.androidweekly.cn/" target="_blank" rel="external"><strong>Android开发技术周报</strong></a></li>
+<li><a href="https://www.v2ex.com/" target="_blank" rel="external"><strong>V2EX</strong></a></li>
+<li><a href="http://bugly.qq.com/bbs/portal.php" target="_blank" rel="external"><strong>Bugly社区</strong></a>	######</li>
+<li><a href="http://www.vogella.com/tutorials/android.html" target="_blank" rel="external"><strong>Android Development</strong></a>	######</li>
+<li><a href="http://www.edumobile.org/android/" target="_blank" rel="external"><strong>EDU mobile</strong></a>	######</li>
+<li><a href="http://www.coreservlets.com/android-tutorial/" target="_blank" rel="external"><strong>Android Programming Tutorials</strong></a>	######</li>
+</ul>
+<h1>个人博客</h1>
+<ul>
+<li><a href="http://android-developers.blogspot.co.id/" target="_blank" rel="external"><strong>Android Developers Blog</strong></a>	######</li>
+<li><a href="http://cyrilmottier.com/" target="_blank" rel="external"><strong>Cyril Mottier</strong></a>	######</li>
+<li><a href="https://chris.banes.me/" target="_blank" rel="external"><strong>Chris Banes</strong></a>	######</li>
+<li><a href="https://zachholman.com/" target="_blank" rel="external"><strong>Zach Holman</strong></a>	######</li>
+<li><a href="https://medium.com/@artem_zin" target="_blank" rel="external"><strong>Artem Zinnatullin</strong></a>	######</li>
+<li><a href="https://medium.com/@kenjuwagatsuma" target="_blank" rel="external"><strong>Kenju</strong></a>	######</li>
+<li><a href="http://hannesdorfmann.com/" target="_blank" rel="external"><strong>Hannes Dorfmann</strong></a> ######</li>
+<li><a href="http://fernandocejas.com/" target="_blank" rel="external"><strong>Fernando Cejas</strong></a>	######</li>
+<li><a href="http://androidperformance.com/" target="_blank" rel="external"><strong>Gracker</strong></a></li>
+<li><a href="https://medium.com/square-corner-blog" target="_blank" rel="external"><strong>The Corner: Square's Engineering and Developer Blog</strong></a> ######</li>
+<li><a href="http://zserge.com/" target="_blank" rel="external"><strong>zserge</strong></a>	######</li>
+<li><a href="https://futurestud.io/tutorials" target="_blank" rel="external"><strong>Future Studio Tutorials</strong></a>	######</li>
+<li><a href="http://blog.karumi.com/" target="_blank" rel="external"><strong>Karumi Blog</strong></a>	######</li>
+<li><a href="https://8thlight.com/blog/" target="_blank" rel="external"><strong>8thlight blog</strong></a>	######</li>
+<li><a href="http://www.ixirong.com/" target="_blank" rel="external"><strong>自由</strong></a></li>
+<li><a href="http://kymjs.com/index.html" target="_blank" rel="external"><strong>张涛-开源实验室</strong></a></li>
+<li><a href="http://hukai.me/" target="_blank" rel="external"><strong>胡凯</strong></a></li>
+<li><a href="http://droidyue.com/" target="_blank" rel="external"><strong>技术小黑屋</strong></a>	######</li>
+<li><a href="http://www.barretlee.com/entry/" target="_blank" rel="external"><strong>小胡子哥</strong></a></li>
+<li><a href="http://blog.csdn.net/v_july_v?viewmode=contents" target="_blank" rel="external"><strong>结构之法 算法之道</strong></a></li>
+<li><a href="http://blog.csdn.net/innost?viewmode=contents" target="_blank" rel="external"><strong>Innost的专栏</strong></a></li>
+<li><a href="http://blog.daimajia.com/" target="_blank" rel="external"><strong>代码家</strong></a></li>
+<li><a href="http://ryanivanka.info/" target="_blank" rel="external"><strong>ryaniwanka</strong></a>	######</li>
+<li><a href="http://blog.csdn.net/column/details/flowingflying02.html" target="_blank" rel="external"><strong>恺风（Wei）之Android专栏</strong></a></li>
+<li><a href="http://ryantang.me/" target="_blank" rel="external"><strong>Ryan's Zone</strong></a></li>
+<li><a href="http://blog.csdn.net/arui319" target="_blank" rel="external"><strong>::: 移动互联网时代开发者 :::</strong></a></li>
+<li><a href="http://blog.csdn.net/column/details/androidluo.html" target="_blank" rel="external"><strong>老罗的Android之旅</strong></a>	######</li>
+<li><a href="http://www.cnblogs.com/dongdong230/" target="_blank" rel="external"><strong>马走日乐</strong></a></li>
+<li><a href="http://blog.csdn.net/singwhatiwanna?viewmode=contents" target="_blank" rel="external"><strong>任玉刚</strong></a>	######</li>
+<li><a href="http://blog.csdn.net/zhaokaiqiang1992?viewmode=contents" target="_blank" rel="external"><strong>赵凯强</strong></a>	######</li>
+<li><a href="https://www.liaohuqiu.net/cn/" target="_blank" rel="external"><strong>Srain</strong></a>	######</li>
+<li><a href="http://www.cnblogs.com/rollenholt/" target="_blank" rel="external"><strong>被遗忘的博客</strong></a></li>
+<li><a href="http://blog.csdn.net/crazy__chen?viewmode=contents" target="_blank" rel="external"><strong>crazychen的专栏</strong></a></li>
+<li><a href="http://blog.csdn.net/ahence?viewmode=contents" target="_blank" rel="external"><strong>Battling against our own ignorance</strong></a>	######</li>
+<li><a href="http://blog.csdn.net/lmj623565791/" target="_blank" rel="external"><strong>Hongyang</strong></a></li>
+<li><a href="https://xiequan.info/" target="_blank" rel="external"><strong>谢权SELF</strong></a></li>
+<li><a href="https://blog.stylingandroid.com/" target="_blank" rel="external"><strong>Styling Android</strong></a>	######</li>
+<li><a href="http://androiddevblog.blogspot.co.id/" target="_blank" rel="external"><strong>Android Programming for Fun</strong></a>	######</li>
+<li><a href="https://commonsware.com/blog/" target="_blank" rel="external"><strong>The CommonsBlog</strong></a>	######</li>
+<li><a href="https://speckyboy.com/" target="_blank" rel="external"><strong>Speckboy</strong></a>	######</li>
+<li><a href="https://zhuanlan.zhihu.com/andlib" target="_blank" rel="external"><strong>Android 科学院</strong></a>	######</li>
+<li><a href="http://www.worldbestlearningcenter.com/" target="_blank" rel="external"><strong>World Best Learning Center</strong></a>	######</li>
+<li><a href="http://xialeizhou.com/?p=71&amp;comefrom=http://blogread.cn/news/" target="_blank" rel="external"><strong>YuMo's Blog</strong></a>	######</li>
+</ul>
+<h1>开源项目</h1>
+<ul>
+<li><a href="https://github.com/" target="_blank" rel="external"><strong>Github</strong></a>	######</li>
+<li><a href="https://medium.mybridge.co/21-amazing-open-source-ios-apps-written-in-swift-5e835afee98e#.m3r3loxbz" target="_blank" rel="external"><strong>21 Amazing Open Source iOS Apps Written in Swift</strong></a>	######</li>
+<li><a href="https://medium.com/swift-programming/15-swift-ios-open-source-projects-you-cannot-ignore-6bd4ac37d7dd#.1gzatwjae" target="_blank" rel="external"><strong>10 Swift IOS open-source projects you cannot ignore</strong></a>	######</li>
+<li><a href="https://android-arsenal.com/" target="_blank" rel="external"><strong>android arsenal</strong></a>	######</li>
+<li><a href="http://p.codekk.com/" target="_blank" rel="external"><strong>codeKK</strong></a></li>
+<li><a href="http://blog.daimajia.com/android-library-collection/" target="_blank" rel="external"><strong>Android开源库</strong></a></li>
+<li><a href="http://www.androidchina.net/1992.html" target="_blank" rel="external"><strong>Android酷炫实用的开源框架（UI框架）</strong></a></li>
+<li><a href="http://android.jobbole.com/82606/" target="_blank" rel="external"><strong>GitHub 热门 Android 开源库 Top 100</strong></a></li>
+</ul>
+<h1>相关技术点</h1>
+<h2>Android</h2>
+<h3>Arch</h3>
+<ul>
+<li><a href="https://medium.com/@cainwong/android-mvp-an-alternate-approach-1a2b02108f7a#.xvww7gsl3" target="_blank" rel="external"><strong>Android MVP — An Alternate Approach</strong></a>	######</li>
+<li><a href="https://medium.com/@kenjuwagatsuma/mvp-architecture-in-android-development-3d63cc32707a#.oxgbqvrbf" target="_blank" rel="external"><strong>MVP Architecture in Android Development</strong></a>	######</li>
+<li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="external"><strong>The Clean Architecture</strong></a>	######</li>
+<li><a href="https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android" target="_blank" rel="external"><strong>Introduction to Model View Presenter on Android</strong></a>	######</li>
+<li><a href="https://medium.com/@artem_zin/m-model-from-mvc-mvp-in-android-flow-and-mortar-bd1e50c45395#.ejl9wsbo6" target="_blank" rel="external"><strong>M — Model in MVC, MVP, MVVC in Android</strong></a>	######</li>
+<li><a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank" rel="external"><strong>Architecting Android…The clean way?</strong></a>	######</li>
+<li><a href="https://android.jlelse.eu/android-architecture-2f12e1c7d4db#.27ek8tjnn" target="_blank" rel="external"><strong>Android Architecture</strong></a>	######</li>
+<li><a href="https://github.com/inloop/AndroidViewModel" target="_blank" rel="external"><strong>AndroidViewModel</strong></a>	######</li>
+<li><a href="https://github.com/pedrovgs/EffectiveAndroidUI/" target="_blank" rel="external"><strong>Effective Android UI</strong></a>	######</li>
+<li><a href="https://github.com/square/mortar" target="_blank" rel="external"><strong>Mortar</strong></a>	######</li>
+<li><a href="http://hannesdorfmann.com/mosby/" target="_blank" rel="external"><strong>Model-View-Presenter library for android</strong></a>	######</li>
+<li><a href="http://hannesdorfmann.com/mosby/mvp/" target="_blank" rel="external"><strong>Model-View-Presenter</strong></a>	######</li>
+</ul>
+<h3>Http</h3>
+<ul>
+<li><a href="http://www.trinea.cn/android/android-http-api-compare/" target="_blank" rel="external"><strong>Android HttpURLConnection及HttpClient选择</strong></a></li>
+<li><a href="https://realm.io/cn/news/droidcon-jake-wharton-simple-http-retrofit-2/?from=timeline&amp;isappinstalled=0" target="_blank" rel="external"><strong>用 Retrofit 2 简化 HTTP 请求</strong></a></li>
+<li><a href="https://segmentfault.com/a/1190000003703008" target="_blank" rel="external"><strong>Android框架之Volley</strong></a></li>
+</ul>
+<h3>Guide</h3>
+<ul>
+<li><a href="https://source.android.com/source/life-of-a-bug.html" target="_blank" rel="external"><strong>Life of a Bug</strong></a></li>
+<li><a href="https://docs.gradle.org/current/userguide/userguide_single.html" target="_blank" rel="external"><strong>Gradle User Guide</strong></a>	######</li>
+<li><a href="http://blog.csdn.net/singwhatiwanna/article/details/49560409" target="_blank" rel="external"><strong>Android学习路线指南</strong></a></li>
+</ul>
+<h3>优化</h3>
+<ul>
+<li><a href="http://hukai.me/android-training-course-in-chinese/best-performance.html" target="_blank" rel="external"><strong>性能优化</strong></a></li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=400656149&amp;idx=1&amp;sn=122b4f4965fafebf78ec0b4fce2ef62a&amp;scene=0#wechat_redirect" target="_blank" rel="external"><strong>Android内存优化杂谈</strong></a>	######</li>
+<li><a href="http://hukai.me/android-performance-patterns-season-3/#jtss-tsina" target="_blank" rel="external"><strong>Android性能优化典范 - 第3季</strong></a></li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI0MjE3OTYwMg==&amp;mid=401426609&amp;idx=1&amp;sn=5e5570bf88cd30fb4818d6cb26f119f8&amp;scene=0#wechat_redirect" target="_blank" rel="external"><strong>5个Android开发中比较常见的内存泄漏问题及解决办法</strong></a>	######</li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI0MjE3OTYwMg==&amp;mid=401667209&amp;idx=1&amp;sn=79925cebb11a3a73246e49fa5d840f38&amp;scene=0#wechat_redirect" target="_blank" rel="external"><strong>Android 内存泄漏总结（上）</strong></a>	######</li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI0MjE3OTYwMg==&amp;mid=401667209&amp;idx=2&amp;sn=f1a085f8838e59de55927d71260ec83c&amp;scene=0#wechat_redirect" target="_blank" rel="external"><strong>Android 内存泄漏总结（下）</strong></a>	######</li>
+</ul>
+<h3>Bitmap</h3>
+<ul>
+<li><a href="http://bugly.qq.com/bbs/forum.php?mod=viewthread&amp;tid=498&amp;fromuid=6" target="_blank" rel="external"><strong>Android 开发绕不过的坑：你的 Bitmap 究竟占多大内存？</strong></a></li>
+</ul>
+<h3>RxJava</h3>
+<ul>
+<li><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external"><strong>给 Android 开发者的 RxJava 详解</strong></a></li>
+<li><a href="https://asce1885.gitbooks.io/android-rd-senior-advanced/content/che_di_le_jie_rxjava_ff08_yi_ff09_ji_chu_zhi_shi.html" target="_blank" rel="external"><strong>彻底了解RxJava（一）基础知识</strong></a></li>
+<li><a href="http://tomstechnicalblog.blogspot.co.id/2016/02/rxjava-maximizing-parallelization.html?utm_source=Android+Weekly&amp;utm_campaign=39574cfef4-Android_Weekly_194&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-39574cfef4-337854961" target="_blank" rel="external"><strong>Thomas Nield</strong></a></li>
+<li><a href="http://gank.io/post/56e80c2c677659311bed9841?from=timeline&amp;isappinstalled=0&amp;nsukey=g1D1Y6PMp3BW%2B0%2F%2Butx4StSJxcUCTm4%2BN8T7LnPNCCe%2FaWm8QHONudwUmEGI%2BBvB%2BUdrqwhooI6NerB5CgO%2FGg%3D%3D" target="_blank" rel="external"><strong>RxJava 与 Retrofit 结合的最佳实践</strong></a></li>
+<li><a href="http://square.github.io/retrofit/" target="_blank" rel="external"><strong>Retrofit</strong></a></li>
+<li><a href="https://segmentfault.com/a/1190000004536439" target="_blank" rel="external"><strong>[原创]Retrofit使用教程(一)</strong></a></li>
+<li><a href="https://segmentfault.com/a/1190000004641798" target="_blank" rel="external"><strong>[原创]Retrofit使用教程(二)</strong></a></li>
+</ul>
+<h3>Design</h3>
+<ul>
+<li><a href="http://www.csdn.net/article/2014-03-28/2819036-10-key-design-tips-for-great-mobile-apps" target="_blank" rel="external"><strong>设计移动App的十大技巧</strong></a></li>
+<li><a href="http://androidniceties.tumblr.com/" target="_blank" rel="external"><strong>Android Niceties</strong></a>	######</li>
+<li><a href="https://unitid.nl/androidpatterns/" target="_blank" rel="external"><strong>Android Patterns</strong></a>	######</li>
+<li><a href="http://www.mobile-patterns.com/" target="_blank" rel="external"><strong>Mobile Patterns</strong></a>	######</li>
+<li><a href="https://speckyboy.com/top-50-web-mobile-gui-templates-2014/" target="_blank" rel="external"><strong>40 Free Web UI Kits and Templates from 2014</strong></a>	######</li>
+<li><a href="http://petrnohejl.github.io/Android-Cheatsheet-For-Graphic-Designers/" target="_blank" rel="external"><strong>Android Cheatsheet for Graphic Designers</strong></a>	######</li>
+</ul>
+<h3>Android Studio</h3>
+<ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA4NTQwNDcyMA==&amp;mid=402416974&amp;idx=1&amp;sn=a8fd70a65ff3973758e4a7975c361139#rd" target="_blank" rel="external"><strong>AS技巧合集「常用技巧篇」</strong></a>	######</li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA4NTQwNDcyMA==&amp;mid=402416974&amp;idx=2&amp;sn=136e2a77c9bdd2cf971143d7f35e57d2#rd" target="_blank" rel="external"><strong>AS技巧合集「编码技巧篇」</strong></a>	######</li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA4NTQwNDcyMA==&amp;mid=402416974&amp;idx=3&amp;sn=3a0f99a753e7e8372cb98b696542d2cb#rd" target="_blank" rel="external"><strong>AS技巧合集「调试技巧篇」</strong></a>	######</li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI0MjE3OTYwMg==&amp;mid=401433512&amp;idx=1&amp;sn=8cf34feea0a8f76a1e04cb40bdc7e60c&amp;scene=0#wechat_redirect" target="_blank" rel="external"><strong>60条Android日常开发总结的技术经验</strong></a>	######</li>
+<li><a href="http://www.jianshu.com/p/b5001c832c2d" target="_blank" rel="external"><strong>Android 在ListView中实现置顶功能</strong></a></li>
+<li><a href="https://gold.xitu.io/entry/56eb5da7c4c9710051672e05" target="_blank" rel="external"><strong>Android 热修复实践应用 --AndFix</strong></a>	######</li>
+<li><a href="https://gold.xitu.io/entry/56ea6f33731956005d036cf7" target="_blank" rel="external"><strong>Android MotionEvent 详解</strong></a>	######</li>
+<li><a href="https://github.com/Arisono/MarksToAndroid" target="_blank" rel="external"><strong>MarksToAndroid</strong></a>	######</li>
+<li><a href="http://www.cnblogs.com/witer666/archive/2013/02/24/2925554.html" target="_blank" rel="external"><strong>[android开发必备] Android开发者社区汇总</strong></a></li>
+<li><a href="http://www.importnew.com/8822.html" target="_blank" rel="external"><strong>Android Kitkat系列文章—OAT文件分析—Part1</strong></a></li>
+<li><a href="http://www.imooc.com/article/1596" target="_blank" rel="external"><strong>Android项目总结之社会化分享</strong></a></li>
+<li><a href="https://www.guardsquare.com/en/proguard/manual/examples" target="_blank" rel="external"><strong>ProGuard manual</strong></a>	######</li>
+<li><a href="http://www.worldbestlearningcenter.com/tips/Delete-SMS-Android.htm" target="_blank" rel="external"><strong>Delete SMS Android</strong></a>	######</li>
+<li><a href="http://adbshell.com/" target="_blank" rel="external"><strong>ADB Shell</strong></a>	######</li>
+<li><a href="https://gold.xitu.io/entry/56acd5f2d342d30054426f42?utm_source=leopost&amp;utm_medium=20160201&amp;utm_campaign=weibo" target="_blank" rel="external"><strong>如何自定义 Android 注解？</strong></a></li>
+<li><a href="http://frogermcs.github.io/dagger2metrics-measure-performance-of-graph-initialization/" target="_blank" rel="external"><strong>Dagger2Metrics - measure performance of DI graph initialization</strong></a>	######</li>
+<li><a href="http://www.codekk.com/open-source-project-analysis/detail/Android/FFish/DynamicLoadApk%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90" target="_blank" rel="external"><strong>DynamicLoadApk 源码解析</strong></a></li>
+<li><a href="https://github.com/jobbole/awesome-wechat-dev-posts-2015" target="_blank" rel="external"><strong>2015 年在微信热传的 100+ 经典技术文章</strong></a>	######</li>
+</ul>
+<h2>Java</h2>
+<h3>Reflection</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/rollenholt/archive/2011/09/02/2163758.html" target="_blank" rel="external"><strong>java反射详解</strong></a></li>
+<li><a href="http://blog.csdn.net/nokiaguy/article/details/5770263" target="_blank" rel="external"><strong>Android系统原理与源码分析（1）：利用Java反射技术阻止通过按钮关闭对话框</strong></a></li>
+</ul>
+<h3>Sorting</h3>
+<ul>
+<li><a href="http://www.java2novice.com/java-sorting-algorithms/" target="_blank" rel="external"><strong>Java Sorting Algorithms</strong></a></li>
+<li><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Sorting%20Algorithms/sorting.html" target="_blank" rel="external"><strong>Sorting</strong></a></li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li><a href="http://www.importnew.com/16459.html" target="_blank" rel="external"><strong>改善Java文档的理由、建议和技巧</strong></a></li>
+<li><a href="http://www.importnew.com/15605.html" target="_blank" rel="external"><strong>Java习惯用法总结</strong></a></li>
+<li><a href="http://codepub.cn/2015/04/22/How-to-load-resource-file-in-a-Jar-package-correctly/" target="_blank" rel="external"><strong>Jar包中如何正确地加载资源文件</strong></a></li>
+<li><a href="https://github.com/jobbole/awesome-java-cn" target="_blank" rel="external"><strong>Java资源大全中文版</strong></a></li>
+<li><a href="https://realm.io/cn/news/christopher-downer-design-101-for-developers/" target="_blank" rel="external"><strong>那些开发者需要了解的设计基本原则</strong></a></li>
+</ul>
+<h2>React Native</h2>
+<ul>
+<li><a href="http://wiki.jikexueyuan.com/project/react-native/" target="_blank" rel="external"><strong>React Native 中文版(含新增 Android 章节)</strong></a></li>
+<li><a href="https://www.liaohuqiu.net/cn/posts/react-native-1/" target="_blank" rel="external"><strong>React Native: 配置和起步</strong></a></li>
+</ul>
+<h2>Go</h2>
+<ul>
+<li><a href="https://blog.golang.org/godoc-documenting-go-code" target="_blank" rel="external"><strong>The Go Programming Language</strong></a></li>
+<li><a href="http://www.philo.top/2015/07/10/golang-doc/" target="_blank" rel="external"><strong>godoc技巧与注意事项</strong></a></li>
+<li><a href="http://studygolang.com/" target="_blank" rel="external"><strong>GO语言中文网</strong></a></li>
+<li><a href="https://jan.newmarch.name/go/" target="_blank" rel="external"><strong>Network programming with Go</strong></a></li>
+<li><a href="http://go-book.appsp0t.com/" target="_blank" rel="external"><strong>Let's learn Go!</strong></a></li>
+<li><a href="https://beego.me/" target="_blank" rel="external"><strong>Beego Framework</strong></a></li>
+</ul>
+<h2>Kotlin</h2>
+<ul>
+<li><a href="http://kotlinlang.org/" target="_blank" rel="external"><strong>Kotlin Language</strong></a></li>
+<li><a href="https://medium.com/@CodingDoug/kotlin-android-a-brass-tacks-experiment-part-4-4b7b501fa457#.9p2fk2skp" target="_blank" rel="external"><strong>Kotlin &amp; Android: A Brass Tacks Experiment, Part 4</strong></a></li>
+</ul>
+<h2>Web</h2>
+<h3>CSS</h3>
+<ul>
+<li><a href="http://www.imooc.com/article/1290" target="_blank" rel="external"><strong>2015年学习CSS3的15个高级免费教程</strong></a></li>
+<li><a href="http://www.imooc.com/learn/33?from=weibo" target="_blank" rel="external"><strong>十天精通CSS3</strong></a></li>
+<li><a href="http://luopq.com/2016/01/05/css-optimize/" target="_blank" rel="external"><strong>CSS代码重构与优化之路</strong></a></li>
+<li><a href="https://tympanus.net/codrops/2015/02/03/introducing-codrops-css-reference/" target="_blank" rel="external"><strong>Introducing the Codrops CSS Reference</strong></a></li>
+<li><a href="http://jinlong.github.io/2016/01/14/checkbox-trickery-with-css/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external"><strong>复选框的 CSS 魔法</strong></a></li>
+<li><a href="http://www.imooc.com/article/1707" target="_blank" rel="external"><strong>近20个绚丽实用的jQuery/CSS3侧边栏菜单</strong></a></li>
+</ul>
+<h3>HTML</h3>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000002712653" target="_blank" rel="external"><strong>HTML5与移动端web学习笔记</strong></a></li>
+<li><a href="http://johncblandii.com/2011/07/html5-video-fullscreen.html" target="_blank" rel="external"><strong>HTML5 Video: Fullscreen</strong></a></li>
+<li><a href="http://www.html5cn.org/article-9198-1.html" target="_blank" rel="external"><strong>20 个交互非常棒的按钮代码</strong></a></li>
+</ul>
+<h3>JavaScript</h3>
+<ul>
+<li><a href="http://web-engineering.info/tech/JsFrontendApp/book/" target="_blank" rel="external"><strong>Building Front-End Web Apps with Plain JavaScript</strong></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="external"><strong>MDN: JavaScript</strong></a></li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li><a href="http://www.barretlee.com/blog/2015/12/10/after-framework-we-gonna-to-hug-data/" target="_blank" rel="external"><strong>近几年前端技术盘点以及 2016 年技术发展方向</strong></a></li>
+<li><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="external"><strong>Progressive Web Apps</strong></a></li>
+</ul>
+<h2>Design</h2>
+<h3>PS</h3>
+<ul>
+<li><a href="http://www.52psxt.com/" target="_blank" rel="external"><strong>PS学堂</strong></a></li>
+<li><a href="http://www.missyuan.com/thread-555387-1-1.html" target="_blank" rel="external"><strong>国外优秀photoshop作品精选103张</strong></a></li>
+</ul>
+<h3>UI</h3>
+<ul>
+<li><a href="http://www.ui.cn/" target="_blank" rel="external"><strong>UI设计</strong></a></li>
+<li><a href="http://www.uisdc.com/vintage-vector-freebies-download" target="_blank" rel="external"><strong>优设</strong></a></li>
+<li><a href="http://www.uisdc.com/find-great-app-screenshot-pttrns" target="_blank" rel="external"><strong>优设利器推荐！专门收集优秀APP截图的酷站PTTRNS</strong></a></li>
+</ul>
+
+          
         
       
     </div>
@@ -1534,168 +2207,70 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍表的关系及相关查询操作</p>
-<p><strong>P.S.</strong>：译自<strong><code>SQL for Beginners: Part 3 – Database Relationships</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-<h1 id="Database-Relationships"><a href="#Database-Relationships" class="headerlink" title="Database Relationships"></a>Database Relationships</h1><h2 id="One-to-One-Relationships"><a href="#One-to-One-Relationships" class="headerlink" title="One to One Relationships"></a>One to One Relationships</h2><p> 一对一意味着两个表之间的关联只存在于从表A的任意一行至多在表B中拥有一行，其中应用到了FOREIGN KEY，用于关联从表</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/10/初学者快速使用SQL(三)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/10/初学者快速使用SQL(二)/" itemprop="url">
-                  初学者快速使用SQL(二)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-10T11:41:38+08:00" content="2016-08-10">
-              2016-08-10
-            </time>
-          </span>
-
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learn/" itemprop="url" rel="index">
-                    <span itemprop="name">learn</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learn/translation/" itemprop="url" rel="index">
-                    <span itemprop="name">translation</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learn/translation/sql/" itemprop="url" rel="index">
-                    <span itemprop="name">sql</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/10/初学者快速使用SQL(二)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/10/初学者快速使用SQL(二)/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p> 本文主要介绍<u><font color="red">索引</font></u>、<u><font color="red">数据类型</font></u>和更多复杂的<u><font color="red">查询结构</font></u></p>
-<p><strong>P.S.</strong>：译自<strong><code>SQL for Beginners Part 2</code></strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
-<h1 id="Database-Indexes"><a href="#Database-Indexes" class="headerlink" title="Database Indexes"></a>Database Indexes</h1><p> <code>Indexes</code>或<code>keys</code>主要用于<u><font color="red">提高表的数据获取速度</font></u>。对于指数化数据库的列的大多数原因如下：</p>
+            <h1>概述</h1>
+<p>本文主要介绍表的关系及相关查询操作</p>
+<p><strong>P.S.</strong>：译自**<code>SQL for Beginners: Part 3 – Database Relationships</code>**&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;</p>
+<h1>Database Relationships</h1>
+<h2>One to One Relationships</h2>
+<p>一对一意味着两个表之间的关联只存在于从表A的任意一行至多在表B中拥有一行，其中应用到了FOREIGN KEY，用于关联从表</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>One to Many and Many to One Relationships</h2>
 <ul>
-<li>每个表应该有一个<code>PRIMARY KEY</code>索引，通常作为一个<code>id</code>列</li>
-<li>如果一列预计含有唯一的值，那么该列应该有一个<code>UNIQUE</code>索引</li>
-<li>如果经常在一列上执行搜索（在<code>WHERE</code>语句里），应该有一个正规的索引</li>
-<li>如果一列用于和另一个表的关系，如果可能，该列应该是一个<code>FOREIGN KEY</code>，否则只有一个正规的索引</li>
+<li>最常用的关联类型</li>
+<li>创建一对多的关联都是关于主键（PRIMARY KEY），然后还要添加一个外键（FOREIGN KEY）建立表之间的关联</li>
+<li>通常的方式是在一对多关联的从表（对应多的表）里插入一个外键</li>
 </ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/10/初学者快速使用SQL(二)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<h2>Many to Many Relationships</h2>
+<ul>
+<li>在一些情况下，关联的两边需要多个实例，即一个表的多行可以相互映射到另一个表的多行</li>
+<li>多对多关联的好设计是充分利用join表，该表只存放两个关联表的主键值（作为外键的形式）</li>
+</ul>
+<h2>Self Referencing Relationships</h2>
+<p>用于一个表需要有自身的关联，类似于一对多关联</p>
+<h1>FOREIGN KEY</h1>
+<h2>显示定义外键</h2>
+<p>使用到FOREIGN KEY关键字，两个关联表的对应列必须是同一数据类型</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> customers (</div><div class="line">  customer_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">  customer_name <span class="built_in">VARCHAR</span>(<span class="number">100</span>)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</div><div class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">  customer_id <span class="built_in">INT</span>,</div><div class="line">  amount <span class="keyword">DOUBLE</span>,</div><div class="line">  FOREIGN <span class="keyword">KEY</span> (customer_id) <span class="keyword">REFERENCES</span> customers(customer_id)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<h2>隐式定义外键</h2>
+<p>没有使用到外键（FOREIGN KEY）定义两个表之间的关联，但数据库仍然会将该列作为外键</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</div><div class="line">  order_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">  customer_id <span class="built_in">INT</span>,</div><div class="line">  amount <span class="keyword">DOUBLE</span>,</div><div class="line">  <span class="keyword">INDEX</span> (customer_id)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<h1>JOIN Queries</h1>
+<p>为了从关联表里获取到数据，需要使用到JOIN查询</p>
+<h2>Cross Join</h2>
+<p>当没有条件指定时，这是一种默认的JOIN查询类型，意味着第一个表的每一行匹配到第二个表的每一行</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders;</div></pre></td></tr></table></figure></p>
+<p>JOIN关键字可以使用逗号代替</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers , orders;</div></pre></td></tr></table></figure></p>
+<h2>Natural Join</h2>
+<p>这种JOIN查询需要两个关联表有匹配的列名，并且重复列只显示一次</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> orders;</div></pre></td></tr></table></figure></p>
+<h2>Inner Join</h2>
+<p>当一个join条件被指定时，Inner Join开始执行，查询结果类似于Natural Join，区别是Inner Join不处理重复的列</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">WHERE</span> customers.customer_id = orders.customer_id;</div></pre></td></tr></table></figure></p>
+<h3>ON语句</h3>
+<p>在把JOIN条件放在分离语句里非常有效</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">ON</span> (customers.customer_id = orders.customer_id)</div><div class="line"><span class="keyword">WHERE</span> order.amount &gt; <span class="number">15</span>;</div></pre></td></tr></table></figure></p>
+<h2>USING语句</h2>
+<p>类似于ON语句，但是更短；事实上更像Natural JOIN，查询结果中重复的行只显示一次</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">USING</span> (customer_id)</div><div class="line"><span class="keyword">WHERE</span> order.amount &gt; <span class="number">15</span>;</div></pre></td></tr></table></figure></p>
+<h2>Left(Outer) Join</h2>
+<p>Left Join是Outer Join的一种类型，如果从第二个表里没有匹配的行被找到，第一个表里的记录仍然被显示</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">USING</span> (customer_id);</div></pre></td></tr></table></figure></p>
+<p>Note：OUTER关键字是可选的，可以只使用LEFT JOIN代替LEFT OUTER JOIN</p>
+<h2>Right(Outer) Join</h2>
+<p>RIGHT OUTER JOIN的工作机制与LEFT OUTER JOIN类似，但是表的顺序倒过来了</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers RIGHTOUTER <span class="keyword">JOIN</span> orders</div><div class="line"><span class="keyword">USING</span> (customer_id);</div></pre></td></tr></table></figure></p>
+<p>Note：可以调换两个表的顺序，达到与LEFT OUTER JOIN一样的查询结果</p>
+<h1>参考方案</h1>
+<ol>
+<li><a href="https://howtoprogramwithjava.com/database-relationships-many-many-one-one/" target="_blank" rel="external"><strong>Database Relationships – Many to Many / One to One</strong></a></li>
+<li><a href="https://howtoprogramwithjava.com/database-relationships-one-to-many/" target="_blank" rel="external"><strong>Database Relationships – One to Many</strong></a></li>
+</ol>
+<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;<a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank" rel="external">&lt;strong&gt;SQL for Beginners: Part 3 – Database Relationships&lt;/strong&gt;</a>&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+          
         
       
     </div>
@@ -1767,7 +2342,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1775,7 +2350,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1784,7 +2359,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1821,7 +2396,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
