@@ -102,19 +102,19 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念 多任务 Multitasking，&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;同时执行多个任务的过程&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;，可以用于充分利用CPU。   基于进程的多任务  &amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red">
+<meta name="description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念多任务 Multitasking，同时执行多个任务的过程，可以用于充分利用CPU。  基于进程的多任务  每个进程在内存中有自己的地址（每个进程分配独立的内存区） 进程是重量级的 进程间通信的代价是昂贵的 从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等   基于线程的多任务">
 <meta name="keywords" content="Blog,Java,Multithreading">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多线程">
 <meta property="og:url" content="http://yoursite.com/2016/06/07/Java多线程/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念 多任务 Multitasking，&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;同时执行多个任务的过程&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;，可以用于充分利用CPU。   基于进程的多任务  &amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red">
+<meta property="og:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念多任务 Multitasking，同时执行多个任务的过程，可以用于充分利用CPU。  基于进程的多任务  每个进程在内存中有自己的地址（每个进程分配独立的内存区） 进程是重量级的 进程间通信的代价是昂贵的 从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等   基于线程的多任务">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/java-multithreading/thread-5-states.jpg">
 <meta property="og:updated_time" content="2017-09-27T07:37:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程">
-<meta name="twitter:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念 多任务 Multitasking，&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;同时执行多个任务的过程&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt;，可以用于充分利用CPU。   基于进程的多任务  &amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red">
+<meta name="twitter:description" content="概况 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等 相关概念多任务 Multitasking，同时执行多个任务的过程，可以用于充分利用CPU。  基于进程的多任务  每个进程在内存中有自己的地址（每个进程分配独立的内存区） 进程是重量级的 进程间通信的代价是昂贵的 从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等   基于线程的多任务">
 <meta name="twitter:image" content="http://yoursite.com/images/java-multithreading/thread-5-states.jpg">
 
 
@@ -383,56 +383,45 @@
       
 
       
-        <h1>概况</h1>
-<p>本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等</p>
-<h1>相关概念</h1>
-<h2>多任务</h2>
-<p><code>Multitasking</code>，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;同时执行多个任务的过程&lt;/font&gt;&lt;/u&gt;，可以用于充分利用CPU。</p>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java中线程的概念及使用、多线程的优势及应用、垃圾收集的原理等</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h2><p> <code>Multitasking</code>，<u><font color="red">同时执行多个任务的过程</font></u>，可以用于充分利用CPU。</p>
 <ol>
-<li>
-<p><strong>基于进程的多任务</strong></p>
+<li><p><strong>基于进程的多任务</strong></p>
 <ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;每个进程在内存中有自己的地址&lt;/font&gt;&lt;/u&gt;（每个进程分配独立的内存区）</li>
-<li>进程是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;重量级&lt;/font&gt;&lt;/u&gt;的</li>
-<li>进程间通信的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;代价是昂贵&lt;/font&gt;&lt;/u&gt;的</li>
+<li><u><font color="red">每个进程在内存中有自己的地址</font></u>（每个进程分配独立的内存区）</li>
+<li>进程是<u><font color="red">重量级</font></u>的</li>
+<li>进程间通信的<u><font color="red">代价是昂贵</font></u>的</li>
 <li>从一个进程切换到另一个进程需要一段时间保存和备份寄存器、内存映射区、更新列表等</li>
 </ul>
 </li>
-<li>
-<p><strong>基于线程的多任务</strong></p>
+<li><p><strong>基于线程的多任务</strong></p>
 <ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;线程共享同一地址空间</li>
-<li>线程是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;轻量级&lt;/font&gt;&lt;/u&gt;的</li>
-<li>线程间通信的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;代价很低&lt;/font&gt;&lt;/u&gt;</li>
+<li><u><font color="red">线程共享同一地址空间</font></u></li>
+<li>线程是<u><font color="red">轻量级</font></u>的</li>
+<li>线程间通信的<u><font color="red">代价很低</font></u></li>
 </ul>
 </li>
 </ol>
-<p>&lt;!-- more --&gt;</p>
-<h2>线程</h2>
-<ol>
-<li>线程是一个&lt;u&gt;&lt;font color=&quot;red&quot;&gt;轻量级的子进程&lt;/font&gt;&lt;/u&gt;，一个&lt;u&gt;&lt;font color=&quot;red&quot;&gt;最小处理单元&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程是一个&lt;u&gt;&lt;font color=&quot;red&quot;&gt;单独的执行路径&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;独立&lt;/font&gt;&lt;/u&gt;的，如果一个线程中发生异常，该线程&lt;u&gt;&lt;font color=&quot;red&quot;&gt;并不影响其它线程&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程&lt;u&gt;&lt;font color=&quot;red&quot;&gt;共享通用内存区&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在进程里被执行&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程间&lt;u&gt;&lt;font color=&quot;red&quot;&gt;存在上下文切换&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;每次只有一个线程被执行&lt;/font&gt;&lt;/u&gt;</li>
+<a id="more"></a>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
+<li>线程是一个<u><font color="red">轻量级的子进程</font></u>，一个<u><font color="red">最小处理单元</font></u></li>
+<li>线程是一个<u><font color="red">单独的执行路径</font></u></li>
+<li>线程是<u><font color="red">独立</font></u>的，如果一个线程中发生异常，该线程<u><font color="red">并不影响其它线程</font></u></li>
+<li>线程<u><font color="red">共享通用内存区</font></u></li>
+<li>线程<u><font color="red">在进程里被执行</font></u></li>
+<li>线程间<u><font color="red">存在上下文切换</font></u></li>
+<li><u><font color="red">每次只有一个线程被执行</font></u></li>
 </ol>
-<h2>Java多线程</h2>
-<h3>概念</h3>
-<ul>
-<li><code>Java多线程</code>是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;同时执行多个线程的过程&lt;/font&gt;&lt;/u&gt;</li>
-<li>使用多线程而不是多进程，是因为&lt;u&gt;&lt;font color=&quot;red&quot;&gt;线程共享通用内存区&lt;/font&gt;&lt;/u&gt;，它们不需要分配独立的内存区，可以节省内存，同时&lt;u&gt;&lt;font color=&quot;red&quot;&gt;线程间的上下文切换比进程间更省时&lt;/font&gt;&lt;/u&gt;。</li>
+<h2 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><code>Java多线程</code>是<u><font color="red">同时执行多个线程的过程</font></u></li>
+<li>使用多线程而不是多进程，是因为<u><font color="red">线程共享通用内存区</font></u>，它们不需要分配独立的内存区，可以节省内存，同时<u><font color="red">线程间的上下文切换比进程间更省时</font></u>。</li>
 </ul>
-<h3>优势</h3>
-<ol>
-<li>因为线程是独立的，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;不会堵塞用户，并且可以同时执行多个操作&lt;/font&gt;&lt;/u&gt;</li>
-<li>可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;同时执行许多操作来节省时间&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程是独立的，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;如果一个线程发生异常了，它不会影响其它线程&lt;/font&gt;&lt;/u&gt;</li>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
+<li>因为线程是独立的，<u><font color="red">不会堵塞用户，并且可以同时执行多个操作</font></u></li>
+<li>可以<u><font color="red">同时执行许多操作来节省时间</font></u></li>
+<li>线程是独立的，<u><font color="red">如果一个线程发生异常了，它不会影响其它线程</font></u></li>
 </ol>
-<h1>线程相关点</h1>
-<h2>生命周期（状态）</h2>
-<p>Java中线程的生命周期由<code>JVM</code>控制，如下图所示</p>
+<h1 id="线程相关点"><a href="#线程相关点" class="headerlink" title="线程相关点"></a>线程相关点</h1><h2 id="生命周期（状态）"><a href="#生命周期（状态）" class="headerlink" title="生命周期（状态）"></a>生命周期（状态）</h2><p>Java中线程的生命周期由<code>JVM</code>控制，如下图所示</p>
 <p><img src="/images/java-multithreading/thread-5-states.jpg" alt=""></p>
 <ol>
 <li><strong>New</strong>：如果你创建了一个线程实例，但还未调用<code>start()</code>方法，此时该线程处于<strong>新建状态</strong></li>
@@ -441,174 +430,136 @@
 <li><strong>Non-Runnable（Blocked）</strong>：当线程还存活时该线程处于<strong>不可运行（堵塞）状态</strong>，但是该线程当前不能运行</li>
 <li><strong>Terminated</strong>：当线程的<code>run()</code>方法存在时该线程处于<strong>终止/死亡状态</strong></li>
 </ol>
-<h2>create()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;创建线程&lt;/font&gt;&lt;/u&gt;，有以下两种方式</p>
-<h3>继承Thread类</h3>
-<ul>
-<li>线程类提供了&lt;u&gt;&lt;font color=&quot;red&quot;&gt;构造函数&lt;/font&gt;&lt;/u&gt;和&lt;u&gt;&lt;font color=&quot;red&quot;&gt;方法&lt;/font&gt;&lt;/u&gt;来创建和执行线程操作</li>
+<h2 id="create"><a href="#create" class="headerlink" title="create()"></a>create()</h2><p> <u><font color="red">创建线程</font></u>，有以下两种方式</p>
+<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><ul>
+<li>线程类提供了<u><font color="red">构造函数</font></u>和<u><font color="red">方法</font></u>来创建和执行线程操作</li>
 <li>线程类继承<code>Object</code>类，实现<code>Runnable</code>接口</li>
 </ul>
-<h3>实现Runnable接口</h3>
-<ul>
-<li><code>Runnable</code>接口应该由想要&lt;u&gt;&lt;font color=&quot;red&quot;&gt;被线程执行的类&lt;/font&gt;&lt;/u&gt;实现</li>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><ul>
+<li><code>Runnable</code>接口应该由想要<u><font color="red">被线程执行的类</font></u>实现</li>
 <li><code>Runnable</code>接口只有一个<code>run()</code>方法</li>
 </ul>
-<h2>start()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;启动一个新建的线程&lt;/font&gt;&lt;/u&gt;，执行以下任务</p>
+<h2 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h2><p> <u><font color="red">启动一个新建的线程</font></u>，执行以下任务</p>
 <ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个新建的线程启动&lt;/font&gt;&lt;/u&gt;（包括<strong>调用堆栈</strong>）</li>
+<li><u><font color="red">一个新建的线程启动</font></u>（包括<strong>调用堆栈</strong>）</li>
 <li>线程从<code>New</code>状态变换到<code>Runnable</code>状态</li>
 <li>当线程得到机会执行时，它的<code>run()</code>方法会执行</li>
 </ul>
-<h2>启动线程两次</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个线程启动后，不会再次被启动&lt;/font&gt;&lt;/u&gt;</li>
-<li>如果再次启动同一线程，会抛出<code>IllegalThreadStateException</code>。&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在这种情况下，线程会运行一次，但在几秒之后会抛出异常&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="启动线程两次"><a href="#启动线程两次" class="headerlink" title="启动线程两次"></a>启动线程两次</h2><ul>
+<li><u><font color="red">一个线程启动后，不会再次被启动</font></u></li>
+<li>如果再次启动同一线程，会抛出<code>IllegalThreadStateException</code>。<u><font color="red">在这种情况下，线程会运行一次，但在几秒之后会抛出异常</font></u></li>
 </ul>
-<h2>调用run()方法</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;每个线程在单独的调用堆栈里启动&lt;/font&gt;&lt;/u&gt;</li>
-<li>从主线程调用<code>run()</code>方法，会&lt;u&gt;&lt;font color=&quot;red&quot;&gt;进入到当前调用堆栈而不是新建调用堆栈&lt;u&gt;&lt;font color=&quot;red&quot;&gt;</li>
+<h2 id="调用run-方法"><a href="#调用run-方法" class="headerlink" title="调用run()方法"></a>调用run()方法</h2><ul>
+<li><u><font color="red">每个线程在单独的调用堆栈里启动</font></u></li>
+<li>从主线程调用<code>run()</code>方法，会<u><font color="red">进入到当前调用堆栈而不是新建调用堆栈<u><font color="red"></font></u></font></u></li>
 </ul>
-<h2>sleep()</h2>
-<p>用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;休眠一个进程指定的时间&lt;/font&gt;&lt;/u&gt;。线程提供两种方法休眠一个进程</p>
+<h2 id="sleep"><a href="#sleep" class="headerlink" title="sleep()"></a>sleep()</h2><p>用于<u><font color="red">休眠一个进程指定的时间</font></u>。线程提供两种方法休眠一个进程</p>
 <ul>
 <li><strong>public static void sleep(long miliseconds) throws InterruptedException</strong></li>
 <li><strong>public static void sleep(long miliseconds, int nanos) throws InterruptedException</strong></li>
 </ul>
-<h2>join()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;等待一个线程死亡&lt;/font&gt;&lt;/u&gt;。换句话说，<code>join()</code>方法引起当前运行着的线程停止执行知道联合的线程完成任务</p>
-<h2>命名线程</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;线程提供方法修改和获取线程的名字&lt;/font&gt;&lt;/u&gt;</p>
+<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p> <u><font color="red">等待一个线程死亡</font></u>。换句话说，<code>join()</code>方法引起当前运行着的线程停止执行知道联合的线程完成任务</p>
+<h2 id="命名线程"><a href="#命名线程" class="headerlink" title="命名线程"></a>命名线程</h2><p> <u><font color="red">线程提供方法修改和获取线程的名字</font></u></p>
 <ul>
 <li><strong>public String getName()</strong>：用于返回一个线程的名字</li>
 <li><strong>public void setName(String name)</strong>：用于修改一个线程的名字</li>
 </ul>
-<h2>currentThread()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;返回当前执行线程对象的引用&lt;/font&gt;&lt;/u&gt;</p>
-<h2>线程优先级</h2>
-<h3>概念</h3>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;每个线程有一个优先级&lt;/font&gt;&lt;/u&gt;</li>
-<li>优先级可以使用&lt;u&gt;&lt;font color=&quot;red&quot;&gt;1~10的数字&lt;/font&gt;&lt;/u&gt;来描述</li>
-<li>大多数情况下线程调度器&lt;u&gt;&lt;font color=&quot;red&quot;&gt;根据优先级&lt;/font&gt;&lt;/u&gt;（<strong>抢占式调度</strong>）来调度线程，但是不能保证因为依赖于JVM的规范选择哪种调度方式</li>
+<h2 id="currentThread"><a href="#currentThread" class="headerlink" title="currentThread()"></a>currentThread()</h2><p> <u><font color="red">返回当前执行线程对象的引用</font></u></p>
+<h2 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><u><font color="red">每个线程有一个优先级</font></u></li>
+<li>优先级可以使用<u><font color="red">1~10的数字</font></u>来描述</li>
+<li>大多数情况下线程调度器<u><font color="red">根据优先级</font></u>（<strong>抢占式调度</strong>）来调度线程，但是不能保证因为依赖于JVM的规范选择哪种调度方式</li>
 </ul>
-<h3>线程定义的3个常量</h3>
-<ul>
+<h3 id="线程定义的3个常量"><a href="#线程定义的3个常量" class="headerlink" title="线程定义的3个常量"></a>线程定义的3个常量</h3><ul>
 <li><strong>public static int MIN_PRIORITY</strong></li>
 <li><strong>public static int NORM_PRIORITY</strong></li>
-<li><strong>public static int MAX_PRIORITY</strong></li>
+<li><p><strong>public static int MAX_PRIORITY</strong></p>
+<p>一个线程的<u><font color="red">默认优先级是5</font></u>（NORM_PRIORITY），MIN_PRIORITY的值为1，MAX_PRIORITY的值为10</p>
+</li>
 </ul>
-<p>一个线程的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;默认优先级是5&lt;/font&gt;&lt;/u&gt;（NORM_PRIORITY），MIN_PRIORITY的值为1，MAX_PRIORITY的值为10</p>
-<h2>守护线程</h2>
-<h3>概念</h3>
-<ul>
+<h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><ul>
 <li>Java中的<strong>守护线程</strong>是一个提供服务线程，可以为用户线程提供服务</li>
-<li>它的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;生命周期依赖于用户线程&lt;/font&gt;&lt;/u&gt;，当所有的用户线程都死亡后，JVM自动终止这个线程</li>
-<li>有一些&lt;u&gt;&lt;font color=&quot;red&quot;&gt;自动运行&lt;/font&gt;&lt;/u&gt;着的守护线程，如finalizer。</li>
+<li>它的<u><font color="red">生命周期依赖于用户线程</font></u>，当所有的用户线程都死亡后，JVM自动终止这个线程</li>
+<li>有一些<u><font color="red">自动运行</font></u>着的守护线程，如finalizer。</li>
 </ul>
-<h3>特征</h3>
-<ul>
-<li>为&lt;u&gt;&lt;font color=&quot;red&quot;&gt;支持后台任务&lt;/font&gt;&lt;/u&gt;，提供服务给用户线程，其生命周期中只有服务用户线程的角色</li>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ul>
+<li>为<u><font color="red">支持后台任务</font></u>，提供服务给用户线程，其生命周期中只有服务用户线程的角色</li>
 <li>生命周期依赖于用户线程</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;低优先级&lt;/font&gt;&lt;/u&gt;的线程</li>
+<li><u><font color="red">低优先级</font></u>的线程</li>
 </ul>
-<h3>若没有用户线程，JVM终止守护线程</h3>
-<p>守护线程的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;单独目的是为支持后台任务&lt;/font&gt;&lt;/u&gt;，提供服务给用户线程。如果没有用户线程了，JVM为何要一直运行此线程呢？</p>
-<h1>线程调度器</h1>
-<ul>
-<li>线程是JVM的一部分，用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;决定哪个线程应该运行&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;没有保证哪个可运行的线程被线程调度器选中运行&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在一个单独的进程中，一次只要一个线程可以运行&lt;/font&gt;&lt;/u&gt;</li>
-<li>线程调度器主要使用&lt;u&gt;&lt;font color=&quot;red&quot;&gt;抢占式调度&lt;/font&gt;&lt;/u&gt;或&lt;u&gt;&lt;font color=&quot;red&quot;&gt;时间分片调度&lt;/font&gt;&lt;/u&gt;来调度线程</li>
-</ul>
+<h3 id="若没有用户线程，JVM终止守护线程"><a href="#若没有用户线程，JVM终止守护线程" class="headerlink" title="若没有用户线程，JVM终止守护线程"></a>若没有用户线程，JVM终止守护线程</h3><p> 守护线程的<u><font color="red">单独目的是为支持后台任务</font></u>，提供服务给用户线程。如果没有用户线程了，JVM为何要一直运行此线程呢？</p>
+<h1 id="线程调度器"><a href="#线程调度器" class="headerlink" title="线程调度器"></a>线程调度器</h1><ul>
+<li>线程是JVM的一部分，用于<u><font color="red">决定哪个线程应该运行</font></u></li>
+<li><u><font color="red">没有保证哪个可运行的线程被线程调度器选中运行</font></u></li>
+<li><u><font color="red">在一个单独的进程中，一次只要一个线程可以运行</font></u></li>
+<li><p>线程调度器主要使用<u><font color="red">抢占式调度</font></u>或<u><font color="red">时间分片调度</font></u>来调度线程</p>
 <p><strong>Note</strong>：抢占式调度与时间分片调度的区别</p>
-<ul>
-<li>抢占式调度中，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;高优先级的任务执行，直到进入等待或死亡状态&lt;/font&gt;&lt;/u&gt;</li>
-<li>时间分片中，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个任务执行一段预定时间片，然后重新进入准备任务池，调度器然后基于优先级和其它因素来决定接下来哪个任务应该执行&lt;/font&gt;&lt;/u&gt;</li>
+</li>
+<li>抢占式调度中，<u><font color="red">高优先级的任务执行，直到进入等待或死亡状态</font></u></li>
+<li>时间分片中，<u><font color="red">一个任务执行一段预定时间片，然后重新进入准备任务池，调度器然后基于优先级和其它因素来决定接下来哪个任务应该执行</font></u></li>
 </ul>
-<h1>线程池</h1>
-<h2>概念</h2>
-<ul>
-<li>线程池代表&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一组等待多次工作和重用的工作线程&lt;/font&gt;&lt;/u&gt;</li>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>线程池代表<u><font color="red">一组等待多次工作和重用的工作线程</font></u></li>
 <li>在线程池的情况下，一组固定大小的线程被创建</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个线程从线程池中被取出来，被服务提供者分配一个工作&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在工作完成后，线程再次保留在线程池中&lt;/font&gt;&lt;/u&gt;</li>
+<li><u><font color="red">一个线程从线程池中被取出来，被服务提供者分配一个工作</font></u></li>
+<li><u><font color="red">在工作完成后，线程再次保留在线程池中</font></u></li>
 </ul>
-<h2>优势</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;节省时间，因没有必要创建新线程&lt;/font&gt;&lt;/u&gt;</p>
-<h1>线程组</h1>
-<ul>
-<li>Java提供了一种方式&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在一个单独的对象里组合多个线程，在这种情况下，可以通过一个单独的方法调用来实现一组线程的挂起、重启或中断&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h2><p> <u><font color="red">节省时间，因没有必要创建新线程</font></u></p>
+<h1 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h1><ul>
+<li>Java提供了一种方式<u><font color="red">在一个单独的对象里组合多个线程，在这种情况下，可以通过一个单独的方法调用来实现一组线程的挂起、重启或中断</font></u></li>
 <li>Java线程组被<code>java.lang.ThreadGroup</code>类实现</li>
 </ul>
-<h1>Java Shutdown Hook</h1>
-<h2>概念</h2>
-<ul>
-<li><code>shutdown hook</code>用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;当JVM正常或异常关闭时执行清理资源或保存状态&lt;/font&gt;&lt;/u&gt;</li>
-<li>执行清理资源意味着&lt;u&gt;&lt;font color=&quot;red&quot;&gt;关闭日志文件、发送警告或其它&lt;/font&gt;&lt;/u&gt;</li>
+<h1 id="Java-Shutdown-Hook"><a href="#Java-Shutdown-Hook" class="headerlink" title="Java Shutdown Hook"></a>Java Shutdown Hook</h1><h2 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><code>shutdown hook</code>用于<u><font color="red">当JVM正常或异常关闭时执行清理资源或保存状态</font></u></li>
+<li>执行清理资源意味着<u><font color="red">关闭日志文件、发送警告或其它</font></u></li>
 <li>在JVM关闭前若想要执行一些代码，使用<code>shutdown hook</code></li>
 </ul>
-<h2>JVM什么时候使用shutdown hook？</h2>
-<ul>
+<h2 id="JVM什么时候使用shutdown-hook？"><a href="#JVM什么时候使用shutdown-hook？" class="headerlink" title="JVM什么时候使用shutdown hook？"></a>JVM什么时候使用shutdown hook？</h2><ul>
 <li>用户按下<code>Ctrl+C</code></li>
 <li>调用<code>System.exit(int)</code>方法</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;用户注销&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;用户关闭&lt;/font&gt;&lt;/u&gt;</li>
+<li><u><font color="red">用户注销</font></u></li>
+<li><u><font color="red">用户关闭</font></u></li>
 </ul>
-<h2>addShutdownHook(THread hook)</h2>
-<p><code>Runtime</code>类的<code>addShutdownHook()</code>方法用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;注册虚拟机的线程&lt;/font&gt;&lt;/u&gt;。<code>Runtime</code>类的对象可以通过调用静态工厂方法<code>getRuntime()</code>来获取。</p>
-<h1>执行多任务</h1>
-<ul>
+<h2 id="addShutdownHook-THread-hook"><a href="#addShutdownHook-THread-hook" class="headerlink" title="addShutdownHook(THread hook)"></a>addShutdownHook(THread hook)</h2><p> <code>Runtime</code>类的<code>addShutdownHook()</code>方法用于<u><font color="red">注册虚拟机的线程</font></u>。<code>Runtime</code>类的对象可以通过调用静态工厂方法<code>getRuntime()</code>来获取。</p>
+<h1 id="执行多任务"><a href="#执行多任务" class="headerlink" title="执行多任务"></a>执行多任务</h1><ul>
 <li><strong>使用多线程执行单独的任务</strong>：如果需要被许多线程执行单独的任务，只需要拥有一个<code>run()</code>方法</li>
 <li><strong>使用多线程执行多个任务</strong>：如果需要被许多线程执行多个任务，需要拥有多个<code>run()</code>方法</li>
 </ul>
-<h1>垃圾收集</h1>
-<h2>概念</h2>
-<ul>
-<li>Java中垃圾意味着&lt;u&gt;&lt;font color=&quot;red&quot;&gt;不被引用的对象&lt;/font&gt;&lt;/u&gt;</li>
-<li>垃圾收集是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一种自动回收运行时未使用内存的机制&lt;/font&gt;&lt;/u&gt;，换句话说，是一种销毁不再使用对象的方式</li>
+<h1 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h1><h2 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>Java中垃圾意味着<u><font color="red">不被引用的对象</font></u></li>
+<li>垃圾收集是<u><font color="red">一种自动回收运行时未使用内存的机制</font></u>，换句话说，是一种销毁不再使用对象的方式</li>
 <li><code>C</code>中使用<code>free()</code>，<code>C++</code>中使用<code>delete()</code>来收集垃圾。但<code>Java</code>中自动执行，所有<code>Java</code>提供了更好的内存管理</li>
 </ul>
-<h2>优势</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;让Java内存高效&lt;/font&gt;&lt;/u&gt;，因为垃圾收集从堆内存里移除了不被引用的对象</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;由垃圾收集自动完成&lt;/font&gt;&lt;/u&gt;，不需要做额外功</li>
+<h2 id="优势-2"><a href="#优势-2" class="headerlink" title="优势"></a>优势</h2><ul>
+<li><u><font color="red">让Java内存高效</font></u>，因为垃圾收集从堆内存里移除了不被引用的对象</li>
+<li><u><font color="red">由垃圾收集自动完成</font></u>，不需要做额外功</li>
 </ul>
-<h2>对象可以如何被未引用？</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;置空引用&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;把一个引用赋值给另一个引用&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;匿名类&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="对象可以如何被未引用？"><a href="#对象可以如何被未引用？" class="headerlink" title="对象可以如何被未引用？"></a>对象可以如何被未引用？</h2><ul>
+<li><u><font color="red">置空引用</font></u></li>
+<li><u><font color="red">把一个引用赋值给另一个引用</font></u></li>
+<li><u><font color="red">匿名类</font></u></li>
 </ul>
-<h2>finalize()</h2>
-<ul>
+<h2 id="finalize"><a href="#finalize" class="headerlink" title="finalize()"></a>finalize()</h2><ul>
 <li>在对象被垃圾回收之前，<code>finalize()</code>方法每次都会被调用</li>
-<li>该方法可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;执行清除操作&lt;/font&gt;&lt;/u&gt;</li>
+<li>该方法可以<u><font color="red">执行清除操作</font></u></li>
 <li>该方法在<code>Object</code>类里被定义</li>
 <li><code>JVM</code>的垃圾收集器只回收使用<code>new</code>关键字创建的对象。所以如果没有使用<code>new</code>创建对象，可以使用<code>finalize()</code>方法执行清除操作</li>
 </ul>
-<h2>gc()</h2>
-<ul>
-<li>用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;调用垃圾回收器执行清除操作&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="gc"><a href="#gc" class="headerlink" title="gc()"></a>gc()</h2><ul>
+<li>用于<u><font color="red">调用垃圾回收器执行清除操作</font></u></li>
 <li>该方法在<code>System</code>和<code>Runtime</code>类里被定义里</li>
 <li>垃圾收集被一个叫<code>GC (Garbage Collection)</code>的守护线程执行。守护线程在对象被垃圾回收之前调用<code>finalize()</code>方法</li>
 </ul>
-<h1>Runtime</h1>
-<ul>
+<h1 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h1><ul>
 <li><code>Runtime</code>类用于和<code>java运行时环境</code>交互</li>
 <li><code>Runtime</code>类提供方法执行操作，如调用<code>GC</code>、获取全部和剩余内存等</li>
 <li>对于一个Java应用来说，只有一个<code>java.lang.Runtime</code>类实例</li>
 <li><code>Runtime.getRuntime()</code>方法返回<code>Runtime</code>类的实例</li>
 </ul>
-<h2>exec()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在一个单独的进程里执行被提供的命令&lt;/font&gt;&lt;/u&gt;</p>
-<h2>freeMemory()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;返回JVM里剩余内存&lt;/font&gt;&lt;/u&gt;</p>
-<h2>totalMemory()</h2>
-<p>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;返回JVM里全部内存&lt;/font&gt;&lt;/u&gt;</p>
-<h1>参考方案</h1>
-<p><a href="http://www.javatpoint.com/multithreading-in-java" target="_blank" rel="external"><strong>Multithreading in Java</strong></a></p>
+<h2 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h2><p> <u><font color="red">在一个单独的进程里执行被提供的命令</font></u></p>
+<h2 id="freeMemory"><a href="#freeMemory" class="headerlink" title="freeMemory()"></a>freeMemory()</h2><p> <u><font color="red">返回JVM里剩余内存</font></u></p>
+<h2 id="totalMemory"><a href="#totalMemory" class="headerlink" title="totalMemory()"></a>totalMemory()</h2><p> <u><font color="red">返回JVM里全部内存</font></u></p>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><p><a href="http://www.javatpoint.com/multithreading-in-java" target="_blank" rel="external"><strong>Multithreading in Java</strong></a></p>
 
       
     </div>
@@ -725,7 +676,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -733,7 +684,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -742,7 +693,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -771,7 +722,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">多任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">Java多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">优势</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">线程相关点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">生命周期（状态）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">create()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">继承Thread类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">实现Runnable接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">start()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">启动线程两次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.</span> <span class="nav-text">调用run()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.6.</span> <span class="nav-text">sleep()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.7.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.8.</span> <span class="nav-text">命名线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.9.</span> <span class="nav-text">currentThread()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.10.</span> <span class="nav-text">线程优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.10.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.10.2.</span> <span class="nav-text">线程定义的3个常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.11.</span> <span class="nav-text">守护线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.11.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.11.2.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.11.3.</span> <span class="nav-text">若没有用户线程，JVM终止守护线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">线程调度器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">线程组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Java Shutdown Hook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.2.</span> <span class="nav-text">JVM什么时候使用shutdown hook？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.3.</span> <span class="nav-text">addShutdownHook(THread hook)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">执行多任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">垃圾收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.3.</span> <span class="nav-text">对象可以如何被未引用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.4.</span> <span class="nav-text">finalize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.5.</span> <span class="nav-text">gc()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">Runtime</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">10.1.</span> <span class="nav-text">exec()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">10.2.</span> <span class="nav-text">freeMemory()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">10.3.</span> <span class="nav-text">totalMemory()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">11.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关概念"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多任务"><span class="nav-number">2.1.</span> <span class="nav-text">多任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">2.2.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java多线程"><span class="nav-number">2.3.</span> <span class="nav-text">Java多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">2.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优势"><span class="nav-number">2.3.2.</span> <span class="nav-text">优势</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程相关点"><span class="nav-number">3.</span> <span class="nav-text">线程相关点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期（状态）"><span class="nav-number">3.1.</span> <span class="nav-text">生命周期（状态）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create"><span class="nav-number">3.2.</span> <span class="nav-text">create()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承Thread类"><span class="nav-number">3.2.1.</span> <span class="nav-text">继承Thread类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现Runnable接口"><span class="nav-number">3.2.2.</span> <span class="nav-text">实现Runnable接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#start"><span class="nav-number">3.3.</span> <span class="nav-text">start()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动线程两次"><span class="nav-number">3.4.</span> <span class="nav-text">启动线程两次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用run-方法"><span class="nav-number">3.5.</span> <span class="nav-text">调用run()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep"><span class="nav-number">3.6.</span> <span class="nav-text">sleep()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">3.7.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名线程"><span class="nav-number">3.8.</span> <span class="nav-text">命名线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#currentThread"><span class="nav-number">3.9.</span> <span class="nav-text">currentThread()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程优先级"><span class="nav-number">3.10.</span> <span class="nav-text">线程优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-1"><span class="nav-number">3.10.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程定义的3个常量"><span class="nav-number">3.10.2.</span> <span class="nav-text">线程定义的3个常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#守护线程"><span class="nav-number">3.11.</span> <span class="nav-text">守护线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-2"><span class="nav-number">3.11.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征"><span class="nav-number">3.11.2.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#若没有用户线程，JVM终止守护线程"><span class="nav-number">3.11.3.</span> <span class="nav-text">若没有用户线程，JVM终止守护线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程调度器"><span class="nav-number">4.</span> <span class="nav-text">线程调度器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池"><span class="nav-number">5.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念-3"><span class="nav-number">5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势-1"><span class="nav-number">5.2.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程组"><span class="nav-number">6.</span> <span class="nav-text">线程组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-Shutdown-Hook"><span class="nav-number">7.</span> <span class="nav-text">Java Shutdown Hook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念-4"><span class="nav-number">7.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM什么时候使用shutdown-hook？"><span class="nav-number">7.2.</span> <span class="nav-text">JVM什么时候使用shutdown hook？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addShutdownHook-THread-hook"><span class="nav-number">7.3.</span> <span class="nav-text">addShutdownHook(THread hook)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行多任务"><span class="nav-number">8.</span> <span class="nav-text">执行多任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集"><span class="nav-number">9.</span> <span class="nav-text">垃圾收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念-5"><span class="nav-number">9.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势-2"><span class="nav-number">9.2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象可以如何被未引用？"><span class="nav-number">9.3.</span> <span class="nav-text">对象可以如何被未引用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finalize"><span class="nav-number">9.4.</span> <span class="nav-text">finalize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gc"><span class="nav-number">9.5.</span> <span class="nav-text">gc()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Runtime"><span class="nav-number">10.</span> <span class="nav-text">Runtime</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exec"><span class="nav-number">10.1.</span> <span class="nav-text">exec()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#freeMemory"><span class="nav-number">10.2.</span> <span class="nav-text">freeMemory()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#totalMemory"><span class="nav-number">10.3.</span> <span class="nav-text">totalMemory()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">11.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>

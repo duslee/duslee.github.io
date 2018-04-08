@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念 Java同步  Java同步是&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;控制多线程访问任意共享资源的能力&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt; 在想要&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;允许唯一一个线程访问共享资源&amp;lt;/">
+<meta name="description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念Java同步 Java同步是控制多线程访问任意共享资源的能力 在想要允许唯一一个线程访问共享资源时Java同步是一种更好的选择  为什么使用同步 阻止线程干涉 阻止一致性问题">
 <meta name="keywords" content="Blog,Java,Synchronization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java同步">
 <meta property="og:url" content="http://yoursite.com/2016/06/12/Java同步/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念 Java同步  Java同步是&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;控制多线程访问任意共享资源的能力&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt; 在想要&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;允许唯一一个线程访问共享资源&amp;lt;/">
+<meta property="og:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念Java同步 Java同步是控制多线程访问任意共享资源的能力 在想要允许唯一一个线程访问共享资源时Java同步是一种更好的选择  为什么使用同步 阻止线程干涉 阻止一致性问题">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-27T07:37:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java同步">
-<meta name="twitter:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念 Java同步  Java同步是&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;控制多线程访问任意共享资源的能力&amp;lt;/font&amp;gt;&amp;lt;/u&amp;gt; 在想要&amp;lt;u&amp;gt;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;允许唯一一个线程访问共享资源&amp;lt;/">
+<meta name="twitter:description" content="概况 本文主要介绍Java中同步的概念、类型、使用等相关内容。 相关概念Java同步 Java同步是控制多线程访问任意共享资源的能力 在想要允许唯一一个线程访问共享资源时Java同步是一种更好的选择  为什么使用同步 阻止线程干涉 阻止一致性问题">
 
 
 
@@ -381,82 +381,65 @@
       
 
       
-        <h1>概况</h1>
-<p>本文主要介绍Java中同步的概念、类型、使用等相关内容。</p>
-<h1>相关概念</h1>
-<h2>Java同步</h2>
-<ul>
-<li><strong>Java同步</strong>是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;控制多线程访问任意共享资源的能力&lt;/font&gt;&lt;/u&gt;</li>
-<li>在想要&lt;u&gt;&lt;font color=&quot;red&quot;&gt;允许唯一一个线程访问共享资源&lt;/font&gt;&lt;/u&gt;时Java同步是一种更好的选择</li>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Java中同步的概念、类型、使用等相关内容。</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="Java同步"><a href="#Java同步" class="headerlink" title="Java同步"></a>Java同步</h2><ul>
+<li><strong>Java同步</strong>是<u><font color="red">控制多线程访问任意共享资源的能力</font></u></li>
+<li>在想要<u><font color="red">允许唯一一个线程访问共享资源</font></u>时Java同步是一种更好的选择</li>
 </ul>
-<h2>为什么使用同步</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;阻止线程干涉&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;阻止一致性问题&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="为什么使用同步"><a href="#为什么使用同步" class="headerlink" title="为什么使用同步"></a>为什么使用同步</h2><ul>
+<li><u><font color="red">阻止线程干涉</font></u></li>
+<li><u><font color="red">阻止一致性问题</font></u></li>
 </ul>
-<p>&lt;!-- more --&gt;</p>
-<h2>同步类型</h2>
-<ul>
+<a id="more"></a>
+<h2 id="同步类型"><a href="#同步类型" class="headerlink" title="同步类型"></a>同步类型</h2><ul>
 <li><strong>进程同步</strong></li>
 <li><strong>线程同步</strong></li>
 </ul>
-<h2>线程同步</h2>
-<ul>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><ul>
 <li><strong>互斥锁</strong></li>
 <li><strong>协作</strong>（Java线程间通信）</li>
 </ul>
-<h2>Java锁的概念</h2>
-<ul>
-<li><strong>同步</strong>是由称为<strong>锁</strong>或<strong>监视器</strong>的&lt;u&gt;&lt;font color=&quot;red&quot;&gt;内部实体&lt;/font&gt;&lt;/u&gt;构建</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;每个对象有一个与之关联的锁&lt;/font&gt;&lt;/u&gt;</li>
-<li>按照惯例，一个需要&lt;u&gt;&lt;font color=&quot;red&quot;&gt;持续访问一个对象的域&lt;/font&gt;&lt;/u&gt;的线程不得不&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在访问之前获取对象的锁，当完成访问后释放该锁&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="Java锁的概念"><a href="#Java锁的概念" class="headerlink" title="Java锁的概念"></a>Java锁的概念</h2><ul>
+<li><strong>同步</strong>是由称为<strong>锁</strong>或<strong>监视器</strong>的<u><font color="red">内部实体</font></u>构建</li>
+<li><u><font color="red">每个对象有一个与之关联的锁</font></u></li>
+<li>按照惯例，一个需要<u><font color="red">持续访问一个对象的域</font></u>的线程不得不<u><font color="red">在访问之前获取对象的锁，当完成访问后释放该锁</font></u></li>
 </ul>
-<h1>互斥锁</h1>
-<p>互斥锁&lt;u&gt;&lt;font color=&quot;red&quot;&gt;帮助在共享数据时阻止线程相互干涉&lt;/font&gt;&lt;/u&gt;</p>
-<h2>Java同步方法</h2>
-<ul>
-<li>同步方法因任意共享资源用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;锁定一个对象&lt;/font&gt;&lt;/u&gt;</li>
-<li>当一个线程调用同步方法时，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;自动获取对象的锁，并且当线程完成任务时释放该锁&lt;/font&gt;&lt;/u&gt;</li>
+<h1 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h1><p> 互斥锁<u><font color="red">帮助在共享数据时阻止线程相互干涉</font></u></p>
+<h2 id="Java同步方法"><a href="#Java同步方法" class="headerlink" title="Java同步方法"></a>Java同步方法</h2><ul>
+<li>同步方法因任意共享资源用于<u><font color="red">锁定一个对象</font></u></li>
+<li>当一个线程调用同步方法时，<u><font color="red">自动获取对象的锁，并且当线程完成任务时释放该锁</font></u></li>
 </ul>
-<h2>Java同步块</h2>
-<ul>
-<li>同步块因任意共享资源用于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;锁定一个对象&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;同步块的作用范围比同步方法更小&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="Java同步块"><a href="#Java同步块" class="headerlink" title="Java同步块"></a>Java同步块</h2><ul>
+<li>同步块因任意共享资源用于<u><font color="red">锁定一个对象</font></u></li>
+<li><u><font color="red">同步块的作用范围比同步方法更小</font></u></li>
 </ul>
-<h2>Java静态同步</h2>
-<ul>
-<li>如果&lt;u&gt;&lt;font color=&quot;red&quot;&gt;让任意的静态方法同步&lt;/font&gt;&lt;/u&gt;，这个锁会&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在类上而不是对象上&lt;/font&gt;&lt;/u&gt;</li>
-<li>也可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在同步块上使用类锁&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="Java静态同步"><a href="#Java静态同步" class="headerlink" title="Java静态同步"></a>Java静态同步</h2><ul>
+<li>如果<u><font color="red">让任意的静态方法同步</font></u>，这个锁会<u><font color="red">在类上而不是对象上</font></u></li>
+<li>也可以<u><font color="red">在同步块上使用类锁</font></u></li>
 </ul>
-<h1>Java死锁</h1>
-<ul>
-<li><strong>Java死锁</strong>是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;多线程的一部分&lt;/font&gt;&lt;/u&gt;</li>
-<li><strong>死锁发生情况</strong>：&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一个对象等待被另一个线程获取的对象锁，并且另一个线程也在等待被第一个线程获取的对象锁&lt;/font&gt;&lt;/u&gt;。因为&lt;u&gt;&lt;font color=&quot;red&quot;&gt;两个线程都在等待对方释放对象锁&lt;/font&gt;&lt;/u&gt;，这种情况称为死锁</li>
+<h1 id="Java死锁"><a href="#Java死锁" class="headerlink" title="Java死锁"></a>Java死锁</h1><ul>
+<li><strong>Java死锁</strong>是<u><font color="red">多线程的一部分</font></u></li>
+<li><strong>死锁发生情况</strong>：<u><font color="red">一个对象等待被另一个线程获取的对象锁，并且另一个线程也在等待被第一个线程获取的对象锁</font></u>。因为<u><font color="red">两个线程都在等待对方释放对象锁</font></u>，这种情况称为死锁</li>
 </ul>
-<h1>Java线程间通信</h1>
-<ul>
-<li><strong>线程间通信</strong>或<strong>协作</strong>是关于&lt;u&gt;&lt;font color=&quot;red&quot;&gt;允许同步线程相互通信&lt;/font&gt;&lt;/u&gt;</li>
-<li>协作（线程间通信）是&lt;u&gt;&lt;font color=&quot;red&quot;&gt;一种机制&lt;/font&gt;&lt;/u&gt;，即&lt;u&gt;&lt;font color=&quot;red&quot;&gt;在关键部分运行着的线程被暂停，同时另一个线程在同一关键部分被允许进入或锁住&lt;/font&gt;&lt;/u&gt;</li>
+<h1 id="Java线程间通信"><a href="#Java线程间通信" class="headerlink" title="Java线程间通信"></a>Java线程间通信</h1><ul>
+<li><strong>线程间通信</strong>或<strong>协作</strong>是关于<u><font color="red">允许同步线程相互通信</font></u></li>
+<li>协作（线程间通信）是<u><font color="red">一种机制</font></u>，即<u><font color="red">在关键部分运行着的线程被暂停，同时另一个线程在同一关键部分被允许进入或锁住</font></u></li>
 </ul>
-<h2>wait()</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;引起当前线程释放锁&lt;/font&gt;&lt;/u&gt;，直到另一个线程要么调用<code>notify()</code>或<code>notifyAll()</code>方法或&lt;u&gt;&lt;font color=&quot;red&quot;&gt;指定的时间已经过去&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;当前线程必须拥有对象的监视器&lt;/font&gt;&lt;/u&gt;，所以<code>wait()</code>方法必须&lt;u&gt;&lt;font color=&quot;red&quot;&gt;从同步方法内被调用，否则会抛出异常&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h2><ul>
+<li><u><font color="red">引起当前线程释放锁</font></u>，直到另一个线程要么调用<code>notify()</code>或<code>notifyAll()</code>方法或<u><font color="red">指定的时间已经过去</font></u></li>
+<li><u><font color="red">当前线程必须拥有对象的监视器</font></u>，所以<code>wait()</code>方法必须<u><font color="red">从同步方法内被调用，否则会抛出异常</font></u></li>
 <li><strong>public final void wait() throws InterruptedException</strong>: 等待直到对象被通知</li>
 <li><strong>public final void wait(long timeout) throws InterruptedException</strong>: 等待指定的时间</li>
 </ul>
-<h2>notify()</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;唤醒正在等待这个对象的监视器的一个单独线程&lt;/font&gt;&lt;/u&gt;</li>
-<li>如果一些线程正在这个对象上等待，&lt;u&gt;&lt;font color=&quot;red&quot;&gt;其中一个线程被选择唤醒&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;这种选择是随意的，并且由执行自行决定&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="notify"><a href="#notify" class="headerlink" title="notify()"></a>notify()</h2><ul>
+<li><u><font color="red">唤醒正在等待这个对象的监视器的一个单独线程</font></u></li>
+<li>如果一些线程正在这个对象上等待，<u><font color="red">其中一个线程被选择唤醒</font></u></li>
+<li><u><font color="red">这种选择是随意的，并且由执行自行决定</font></u></li>
 </ul>
-<h2>notifyAll()</h2>
-<ul>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;唤醒等待这个对象的监视器的所有线程&lt;/font&gt;&lt;/u&gt;</li>
+<h2 id="notifyAll"><a href="#notifyAll" class="headerlink" title="notifyAll()"></a>notifyAll()</h2><ul>
+<li><u><font color="red">唤醒等待这个对象的监视器的所有线程</font></u></li>
 </ul>
-<h2>理解线程间通信的过程</h2>
-<ol>
+<h2 id="理解线程间通信的过程"><a href="#理解线程间通信的过程" class="headerlink" title="理解线程间通信的过程"></a>理解线程间通信的过程</h2><ol>
 <li>线程开始获取锁</li>
 <li>锁被线程获取</li>
 <li>如果调用<code>wait()</code>方法，线程进入暂停状态，否则线程释放锁并退出</li>
@@ -464,10 +447,8 @@
 <li>线程可获取锁</li>
 <li>任务完成后，线程释放锁，并退出对象的监视状态</li>
 </ol>
-<h2>特点</h2>
-<p><code>wait()</code>，<code>notifiy()</code>和<code>notifyAll()</code>方法&lt;u&gt;&lt;font color=&quot;red&quot;&gt;与锁关联，并且对象有锁&lt;/font&gt;&lt;/u&gt;，所以这些方法被定义在<code>Object</code>类而不是<code>Thread</code>类</p>
-<h2>wait()和sleep()方法的区别</h2>
-<table>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p><code>wait()</code>，<code>notifiy()</code>和<code>notifyAll()</code>方法<u><font color="red">与锁关联，并且对象有锁</font></u>，所以这些方法被定义在<code>Object</code>类而不是<code>Thread</code>类</p>
+<h2 id="wait-和sleep-方法的区别"><a href="#wait-和sleep-方法的区别" class="headerlink" title="wait()和sleep()方法的区别"></a>wait()和sleep()方法的区别</h2><table>
 <thead>
 <tr>
 <th style="text-align:left">wait()</th>
@@ -477,7 +458,7 @@
 <tbody>
 <tr>
 <td style="text-align:left">wait() method releases the lock</td>
-<td style="text-align:left">sleep() method doesn't release the lock.</td>
+<td style="text-align:left">sleep() method doesn’t release the lock.</td>
 </tr>
 <tr>
 <td style="text-align:left">is the method of Object class</td>
@@ -497,21 +478,18 @@
 </tr>
 </tbody>
 </table>
-<h1>中断线程</h1>
-<ul>
-<li>如果一个线程正在休眠或等待状态（sleep()或wait()方法被调用），在这个线程上调用<code>interrupt()</code>方法，会&lt;u&gt;&lt;font color=&quot;red&quot;&gt;打破休眠或等待状态，抛出异常&lt;/font&gt;&lt;/u&gt;</li>
-<li>如果一个线程不在休眠或等待状态，调用<code>interrupt()</code>方法&lt;u&gt;&lt;font color=&quot;red&quot;&gt;表现正常的行为，不中断线程&lt;/font&gt;&lt;/u&gt;，但是设置中断标记为<code>true</code></li>
+<h1 id="中断线程"><a href="#中断线程" class="headerlink" title="中断线程"></a>中断线程</h1><ul>
+<li>如果一个线程正在休眠或等待状态（sleep()或wait()方法被调用），在这个线程上调用<code>interrupt()</code>方法，会<u><font color="red">打破休眠或等待状态，抛出异常</font></u></li>
+<li>如果一个线程不在休眠或等待状态，调用<code>interrupt()</code>方法<u><font color="red">表现正常的行为，不中断线程</font></u>，但是设置中断标记为<code>true</code></li>
 <li><strong>public void interrupt()</strong></li>
 <li><strong>public static boolean interrupted()</strong></li>
 <li><strong>public boolean isInterrupted()</strong>: 返回中断的标记（<code>true</code>或<code>false</code>）</li>
 </ul>
-<h1>重进入监视器</h1>
-<ul>
-<li>如果一个方法可以&lt;u&gt;&lt;font color=&quot;red&quot;&gt;从方法内部调用&lt;/font&gt;&lt;/u&gt;，Java线程因不同的同步方法&lt;u&gt;&lt;font color=&quot;red&quot;&gt;可重用同一监视器&lt;/font&gt;&lt;/u&gt;</li>
-<li>&lt;u&gt;&lt;font color=&quot;red&quot;&gt;终结了单线程死锁的可能性&lt;/font&gt;&lt;/u&gt;</li>
+<h1 id="重进入监视器"><a href="#重进入监视器" class="headerlink" title="重进入监视器"></a>重进入监视器</h1><ul>
+<li>如果一个方法可以<u><font color="red">从方法内部调用</font></u>，Java线程因不同的同步方法<u><font color="red">可重用同一监视器</font></u></li>
+<li><u><font color="red">终结了单线程死锁的可能性</font></u></li>
 </ul>
-<h1>参考方案</h1>
-<p><a href="http://www.javatpoint.com/synchronization-in-java" target="_blank" rel="external"><strong>Synchronization in Java</strong></a></p>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><p><a href="http://www.javatpoint.com/synchronization-in-java" target="_blank" rel="external"><strong>Synchronization in Java</strong></a></p>
 
       
     </div>
@@ -628,7 +606,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -636,7 +614,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -645,7 +623,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -674,7 +652,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Java同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">为什么使用同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">同步类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">Java锁的概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">互斥锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">Java同步方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">Java同步块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">Java静态同步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Java死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Java线程间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">wait()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">notify()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.3.</span> <span class="nav-text">notifyAll()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.4.</span> <span class="nav-text">理解线程间通信的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.5.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.6.</span> <span class="nav-text">wait()和sleep()方法的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">中断线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">重进入监视器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关概念"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java同步"><span class="nav-number">2.1.</span> <span class="nav-text">Java同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用同步"><span class="nav-number">2.2.</span> <span class="nav-text">为什么使用同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步类型"><span class="nav-number">2.3.</span> <span class="nav-text">同步类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步"><span class="nav-number">2.4.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java锁的概念"><span class="nav-number">2.5.</span> <span class="nav-text">Java锁的概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#互斥锁"><span class="nav-number">3.</span> <span class="nav-text">互斥锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java同步方法"><span class="nav-number">3.1.</span> <span class="nav-text">Java同步方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java同步块"><span class="nav-number">3.2.</span> <span class="nav-text">Java同步块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java静态同步"><span class="nav-number">3.3.</span> <span class="nav-text">Java静态同步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java死锁"><span class="nav-number">4.</span> <span class="nav-text">Java死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java线程间通信"><span class="nav-number">5.</span> <span class="nav-text">Java线程间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wait"><span class="nav-number">5.1.</span> <span class="nav-text">wait()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#notify"><span class="nav-number">5.2.</span> <span class="nav-text">notify()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#notifyAll"><span class="nav-number">5.3.</span> <span class="nav-text">notifyAll()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解线程间通信的过程"><span class="nav-number">5.4.</span> <span class="nav-text">理解线程间通信的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">5.5.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wait-和sleep-方法的区别"><span class="nav-number">5.6.</span> <span class="nav-text">wait()和sleep()方法的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断线程"><span class="nav-number">6.</span> <span class="nav-text">中断线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重进入监视器"><span class="nav-number">7.</span> <span class="nav-text">重进入监视器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">8.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>

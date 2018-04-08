@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Blog,Source Code View,CharSequence," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -102,20 +102,13 @@
 
 
 
-<meta name="description" content="概述 该文档主要从源码角度学习CharSequence及相关内容（如SpannableString、SpannableStringBuilder、String、StringBuilder、StringBuffer等）的组织结构和实现 具体的组织结构结构可以查看下图  参考方案">
-<meta name="keywords" content="Blog,Source Code View,CharSequence">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CharSequence相关源码查看">
-<meta property="og:url" content="http://yoursite.com/2018/03/26/CharSequence相关源码查看/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jeff&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/System/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概述 该文档主要从源码角度学习CharSequence及相关内容（如SpannableString、SpannableStringBuilder、String、StringBuilder、StringBuffer等）的组织结构和实现 具体的组织结构结构可以查看下图  参考方案">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/CharSequence.svg">
-<meta property="og:updated_time" content="2018-03-26T02:45:05.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CharSequence相关源码查看">
-<meta name="twitter:description" content="概述 该文档主要从源码角度学习CharSequence及相关内容（如SpannableString、SpannableStringBuilder、String、StringBuilder、StringBuffer等）的组织结构和实现 具体的组织结构结构可以查看下图  参考方案">
-<meta name="twitter:image" content="http://yoursite.com/images/CharSequence.svg">
+<meta name="twitter:title" content="Jeff&#39;s Blog">
 
 
 
@@ -133,7 +126,7 @@
   };
 </script>
 
-  <title> CharSequence相关源码查看 | Jeff's Blog </title>
+  <title> 标签: System | Jeff's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,7 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container one-collumn sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -272,179 +265,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                CharSequence相关源码查看
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-03-26T10:26:27+08:00" content="2018-03-26">
-              2018-03-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learn/" itemprop="url" rel="index">
-                    <span itemprop="name">learn</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learn/Source-Code-View/" itemprop="url" rel="index">
-                    <span itemprop="name">Source Code View</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learn/Source-Code-View/CharSequence/" itemprop="url" rel="index">
-                    <span itemprop="name">CharSequence</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/03/26/CharSequence相关源码查看/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/26/CharSequence相关源码查看/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1>概述</h1>
-<p>该文档主要从源码角度学习<code>CharSequence</code>及相关内容（如<code>SpannableString</code>、<code>SpannableStringBuilder</code>、<code>String</code>、<code>StringBuilder</code>、<code>StringBuffer</code>等）的组织结构和实现</p>
-<p>具体的组织结构结构可以查看下图</p>
-<p><img src="/images/CharSequence.svg" alt=""></p>
-<h1>参考方案</h1>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        System
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2018/04/02/System-java-源码学习/" itemprop="url">
+              
+                <span itemprop="name">System.java 源码学习</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-02T08:50:20+08:00"
+              content="2018-04-02" >
+          04-02
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Blog/" rel="tag">#Blog</a>
-          
-            <a href="/tags/Source-Code-View/" rel="tag">#Source Code View</a>
-          
-            <a href="/tags/CharSequence/" rel="tag">#CharSequence</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/09/28/Mac下常用终端命令备忘录/" rel="next" title="Mac下常用终端命令备忘录">
-                <i class="fa fa-chevron-left"></i> Mac下常用终端命令备忘录
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -452,14 +312,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2018/03/26/CharSequence相关源码查看/"
-           data-title="CharSequence相关源码查看" data-url="http://yoursite.com/2018/03/26/CharSequence相关源码查看/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -479,17 +331,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/my_avatar.jpg"
@@ -500,7 +343,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -508,7 +351,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -517,7 +360,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -539,17 +382,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -646,10 +478,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

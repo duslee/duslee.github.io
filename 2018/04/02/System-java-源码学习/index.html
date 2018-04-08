@@ -1,0 +1,857 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,Source Code View,System," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概述 本文主要从源码角度学习System.java的内部组织结构和实现  具体结构可查看下图">
+<meta name="keywords" content="Blog,Source Code View,System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="System.java 源码学习">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/System-java-源码学习/index.html">
+<meta property="og:site_name" content="Jeff&#39;s Blog">
+<meta property="og:description" content="概述 本文主要从源码角度学习System.java的内部组织结构和实现  具体结构可查看下图">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/system/java-System.svg">
+<meta property="og:updated_time" content="2018-04-08T01:38:34.664Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="System.java 源码学习">
+<meta name="twitter:description" content="概述 本文主要从源码角度学习System.java的内部组织结构和实现  具体结构可查看下图">
+<meta name="twitter:image" content="http://yoursite.com/images/system/java-System.svg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> System.java 源码学习 | Jeff's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jeff's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'zS2MTrod2Emy9CFwkkhx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                System.java 源码学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-02T08:50:20+08:00" content="2018-04-02">
+              2018-04-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/" itemprop="url" rel="index">
+                    <span itemprop="name">learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/Source-Code-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Source Code View</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learn/Source-Code-View/System/" itemprop="url" rel="index">
+                    <span itemprop="name">System</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/04/02/System-java-源码学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/02/System-java-源码学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>本文主要从源码角度学习<code>System.java</code>的内部组织结构和实现</p>
+</blockquote>
+<p>具体结构可查看下图</p>
+<p><img src="/images/system/java-System.svg" alt=""></p>
+<a id="more"></a>
+<h1 id="域和相关类"><a href="#域和相关类" class="headerlink" title="域和相关类"></a>域和相关类</h1><h2 id="in"><a href="#in" class="headerlink" title="in"></a>in</h2><ul>
+<li><code>InputStream</code></li>
+<li>标准输入流</li>
+<li>用于键盘输入或其它由主机环境或用户指定的输入源</li>
+</ul>
+<h2 id="out"><a href="#out" class="headerlink" title="out"></a>out</h2><ul>
+<li><code>PrintStream</code></li>
+<li>标准输出流</li>
+<li>用于显示输出或其它由主机环境或用户指定的输出目的</li>
+</ul>
+<h2 id="err"><a href="#err" class="headerlink" title="err"></a>err</h2><ul>
+<li><code>PrintStream</code></li>
+<li>标准错误输出流</li>
+<li>用于显示错误信息或其它立即提示用户的信息</li>
+</ul>
+<h2 id="SecurityManager"><a href="#SecurityManager" class="headerlink" title="SecurityManager"></a>SecurityManager</h2><ol>
+<li>描述<ul>
+<li>允许应用实现安全策略的安全管理器</li>
+<li>允许应用在执行不安全或敏感操作之前确定这个操作是什么以及此操作是否在允许被执行的安全环境里</li>
+<li>有一系列以<code>check</code>开头的方法，用于在执行某些潜在敏感操作之前</li>
+<li>若操作不被允许，会抛出<code>SecurityException</code>异常</li>
+</ul>
+</li>
+<li><p><u><font color="red">public void checkPermission(Permission perm)</font></u>：基于当前的安全策略，若提供的权限不被允许，会抛出<code>SecurityException</code>异常；内部实现是通过<code>AccessController.checkPermission(Permission)</code>来完成的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkPermission</span><span class="params">(Permission perm)</span> </span>&#123;</div><div class="line">    java.security.AccessController.checkPermission(perm);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public Object getSecurityContext()</font></u>：创建一个封装当前执行环境的对象；返回的结果是<code>AccessControlContext</code>对象（封装有当前执行环境的充足信息用于执行安全检查）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getSecurityContext</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> AccessController.getContext();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">protected native Class[] getClassContext()</font></u>：<code>native</code>方法，返回当前的执行栈到<code>Class</code>数组里；数组的长度是执行栈的方法数，其中指数为<code>0</code>的元素是当前执行方法的类，指数为<code>1</code>的元素是方法调用者的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="keyword">native</span> Class[] getClassContext();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h2><ol>
+<li>描述<ul>
+<li>用于访问基于字符的终端设备，若有的话，该终端设备关联当前的Java虚拟机</li>
+<li>一个虚拟机是否拥有一个终端，依赖于基础平台和虚拟机被调用的方式。若虚拟机通过交互式命令行启动，并没有重定向标准输入/输出流，那么它的终端会存在并且通常连接到启动虚拟机的键盘和显示；若果虚拟机自动启动，例如通过一个后台工作调度器，那么它通常没有终端</li>
+<li>如果虚拟机有终端，那么可以通过调用<code>System.console()</code>方法可以获取唯一实例；如果没有终端设备，该方法会返回<code>null</code></li>
+<li>读写操作是同步的，为了保证重要操作的原子级的完成</li>
+<li>当终端输入流读到最后时，终端的<code>read()</code>方法返回<code>null</code>，如在<code>UNIX</code>中输入<code>Ctrl+D</code>或<code>Windows</code>中输入<code>Ctrl+Z</code></li>
+<li>如果应用需要读取密码或其它安全数据，应该使用<code>readPassword()</code>等方法，并且在最小化敏感数据在内存的生命期后手动置空返回的字符数组</li>
+</ul>
+</li>
+<li><u><font color="red">private char[] readline(boolean zeroOut) throws IOException</font></u>：<strong>待补充</strong></li>
+<li><u><font color="red">private Console()</font></u>：<strong>待补充</strong></li>
+</ol>
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><ol>
+<li>描述<ul>
+<li>表示一系列属性，可通过流完成存取操作；属性列表里的键和键对应的值都是字符串</li>
+<li>一个属性列表可以包含有另一个属性列表作为“<code>defaults</code>”，如果属性的键在原始的属性列表里没有找到，会去第二个属性列表里查找</li>
+<li>线程安全，多线程可以分享同一个<code>Properties</code>实例</li>
+</ul>
+</li>
+<li><p><u><font color="red">public synchronized Object setProperty(String key, String value)</font></u>：内部调用<code>HashTable</code>的<code>put()</code>方法；返回的结果是调用<code>HashTable</code>的<code>put()</code>方法后的结果（若提供的键在属性列表里存在，返回之前该键所在的值，否则返回<code>null</code>）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">setProperty</span><span class="params">(String key, String value)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> put(key, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public String getProperty(String key)</font></u>：在属性列表里根据提供的键搜索对应的属性；若属性列表这个键没有找到，会去检查默认的属性列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getProperty</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">    Object oval = <span class="keyword">super</span>.get(key);</div><div class="line">    String sval = (oval <span class="keyword">instanceof</span> String) ? (String)oval : <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">return</span> ((sval == <span class="keyword">null</span>) &amp;&amp; (defaults != <span class="keyword">null</span>)) ? defaults.getProperty(key) : sval;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="标准输入-输出"><a href="#标准输入-输出" class="headerlink" title="标准输入/输出"></a>标准输入/输出</h2><blockquote>
+<p>主要是关于大家熟悉的<a href="#in"><code>in</code></a>、<a href="#out"><code>out</code></a>、<a href="#err"><code>err</code></a>等标准流</p>
+</blockquote>
+<h3 id="非native方法"><a href="#非native方法" class="headerlink" title="非native方法"></a>非native方法</h3><ol>
+<li><p><u><font color="red">public static void setIn(InputStream in)</font></u>：重分配标准输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setIn</span><span class="params">(InputStream in)</span> </span>&#123;</div><div class="line">    checkIO();	<span class="comment">// 通过SecurityManager.checkPermission()检查是否有“setIO”运行时权限</span></div><div class="line">    setIn0(in);	<span class="comment">// 调用native方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static void setOut(PrintStream out)</font></u>：重分配标准输出流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setOut</span><span class="params">(PrintStream out)</span> </span>&#123;</div><div class="line">    checkIO();	<span class="comment">// 通过SecurityManager.checkPermission()检查是否有“setIO”运行时权限</span></div><div class="line">    setOut0(out);	<span class="comment">// 调用native方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static void setErr(PrintStream err)</font></u>：重分配标准错误流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setErr</span><span class="params">(PrintStream err)</span> </span>&#123;</div><div class="line">    checkIO();	<span class="comment">// 通过SecurityManager.checkPermission()检查是否有“setIO”运行时权限</span></div><div class="line">    setErr0(err);	<span class="comment">// 调用native方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="native方法"><a href="#native方法" class="headerlink" title="native方法"></a>native方法</h3><ol>
+<li><u><font color="red">private static native void setIn0(InputStream in)</font></u>：设置标准输入流</li>
+<li><u><font color="red">private static native void setOut0(PrintStream out)</font></u>：设置标准输出流</li>
+<li><u><font color="red">private static native void setErr0(PrintStream err)</font></u>：设置标准错误流</li>
+</ol>
+<h2 id="访问属性-环境变量"><a href="#访问属性-环境变量" class="headerlink" title="访问属性/环境变量"></a>访问属性/环境变量</h2><blockquote>
+<p>用于获取系统的相关属性、环境变量</p>
+</blockquote>
+<h3 id="非native方法-1"><a href="#非native方法-1" class="headerlink" title="非native方法"></a>非native方法</h3><ol>
+<li><p><u><font color="red">public static Properties getProperties()</font></u>：获取系统属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Properties <span class="title">getProperties</span><span class="params">()</span> </span>&#123;</div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPropertiesAccess();	<span class="comment">// 首先判断是否有属性访问权限</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> props;	<span class="comment">// 由initializeSystemClass()创建或setProperties()方法提供</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static String getProperty(String key)</font></u>：根据给定的键获取对应的系统属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">    checkKey(key);	<span class="comment">// 检查提供的键是否有效（即不能为null或“”）</span></div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPropertyAccess(key);	<span class="comment">// 检查是否有属性访问权限</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> props.getProperty(key);	<span class="comment">// 根据对应的键获取对应的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static void setProperties(Properties props)</font></u>：将系统属性设置为给定的属性；注意如果给定的参数为<code>null</code>，新建一个属性设置为系统属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setProperties</span><span class="params">(Properties props)</span> </span>&#123;</div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPropertiesAccess();	<span class="comment">// 检查是否有属性访问权限</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (props == <span class="keyword">null</span>) &#123;	<span class="comment">// 给定的参数为null，新建一个系统属性，和initializeSystemClass()创建一样</span></div><div class="line">        props = <span class="keyword">new</span> Properties();</div><div class="line">        initProperties(props);</div><div class="line">    &#125;</div><div class="line">    System.props = props;	<span class="comment">// 将给定或新建的参数设置为系统属性</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static String setProperty(String key, String value)</font></u>：根据给定的键和值设置对应的系统属性；返回值为系统属性之前的值，若不存在则返回<code>null</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">setProperty</span><span class="params">(String key, String value)</span> </span>&#123;</div><div class="line">    checkKey(key);	<span class="comment">// 检查提供的键是否有效（即不能为null或“”）</span></div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPermission(<span class="keyword">new</span> PropertyPermission(key,</div><div class="line">            SecurityConstants.PROPERTY_WRITE_ACTION));	<span class="comment">// 检查是否有写属性操作权限</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (String) props.setProperty(key, value);	<span class="comment">// 返回对应键的系统属性之前的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static String clearProperty(String key)</font></u>：根据给定的键移除对应的系统属性；返回值为系统属性之前的值，若不存在则返回<code>null</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">clearProperty</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">    checkKey(key);	<span class="comment">// 检查提供的键是否有效（即不能为null或“”）</span></div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPermission(<span class="keyword">new</span> PropertyPermission(key, <span class="string">"write"</span>));	<span class="comment">// 检查是否有写属性操作权限</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (String) props.remove(key);	<span class="comment">// 返回对应键的系统属性之前的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static java.util.Map<string,string> getenv()</string,string></font></u>：返回当前系统变量未修改的<code>map</code>视图；如果系统不支持环境变量，会返回一个空的<code>map</code>；返回的<code>map</code>不会含有为<code>null</code>的键和值，否则查询时会抛出<code>NullPointerException</code>；返回的<code>map</code>的键和值都是<code>String</code>类型，否则查询时会抛出<code>ClassCastException</code>；返回的<code>map</code>在所有平台上是大小写敏感</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> java.util.<span class="function">Map&lt;String,String&gt; <span class="title">getenv</span><span class="params">()</span> </span>&#123;</div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPermission(<span class="keyword">new</span> RuntimePermission(<span class="string">"getenv.*"</span>));	<span class="comment">// 检查是否有“getenv*”运行时访问权限</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ProcessEnvironment.getenv();	<span class="comment">// Java源码实现（？）</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static String getenv(String name)</font></u>：根据提供的环境变量名获取对应的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getenv</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">    SecurityManager sm = getSecurityManager();</div><div class="line">    <span class="keyword">if</span> (sm != <span class="keyword">null</span>) &#123;</div><div class="line">        sm.checkPermission(<span class="keyword">new</span> RuntimePermission(<span class="string">"getenv."</span>+name));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ProcessEnvironment.getenv(name);	<span class="comment">// Java源码实现（？）</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="native方法-1"><a href="#native方法-1" class="headerlink" title="native方法"></a>native方法</h3><ol>
+<li><u><font color="red">private static native Properties initProperties(Properties props)</font></u>：完成<code>Properties</code>的初始化</li>
+</ol>
+<h2 id="加载文件-库"><a href="#加载文件-库" class="headerlink" title="加载文件/库"></a>加载文件/库</h2><blockquote>
+<p>常用于以文件的形式加载本地库</p>
+</blockquote>
+<ol>
+<li><p><u><font color="red">public static void load(String filename)</font></u>：根据给定的文件名加载本地库；文件名必须是绝对路径名（必须带有平台指定的前缀、路径、扩展名等）；通过<code>Runtime</code>完成文件的加载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@CallerSensitive</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">(String filename)</span> </span>&#123;</div><div class="line">    Runtime.getRuntime().load0(Reflection.getCallerClass(), filename);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static void loadLibrary(String libname)</font></u>：根据给定的库名称加载本地库；文件名并不必须带有平台指定的前缀、路径、扩展名等；通过<code>Runtime</code>完成文件的加载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@CallerSensitive</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadLibrary</span><span class="params">(String libname)</span> </span>&#123;</div><div class="line">    Runtime.getRuntime().loadLibrary0(Reflection.getCallerClass(), libname);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h2><blockquote>
+<p>使用<code>native</code>的方式实现数组的拷贝</p>
+</blockquote>
+<ol>
+<li><u><font color="red">public static native void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</font></u>：从提供的源数组拷贝<code>[srcPos, srcPos+len)</code>区间的内容到目的数组的<code>[destPos, destPos+len)</code>区间处</li>
+</ol>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><blockquote>
+<p>主要执行<code>垃圾回收</code>、<code>对象结束</code>、<code>进程退出</code>等工作</p>
+</blockquote>
+<ol>
+<li><p><u><font color="red">public static void gc()</font></u>：运行垃圾回收器；使Java虚拟机回收未再使用的对象，让它们占用的内存可以快速复用；通过<code>Runtime</code>完成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">gc</span><span class="params">()</span> </span>&#123;</div><div class="line">    Runtime.getRuntime().gc();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static void runFinalization()</font></u>：运行待结束的对象的结束方法；使Java虚拟机运行对象的<code>finalize()</code>方法，这些对象要求是被丢弃，但是<code>finalize()</code>方法还未运行；通过<code>Runtime</code>完成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runFinalization</span><span class="params">()</span> </span>&#123;</div><div class="line">    Runtime.getRuntime().runFinalization();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">public static void exit(int status)</font></u>：终结当前运行着的Java虚拟机；若给定的参数非0，表示异常终结；通过<code>Runtime</code>完成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exit</span><span class="params">(<span class="keyword">int</span> status)</span> </span>&#123;</div><div class="line">    Runtime.getRuntime().exit(status);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="非native方法-2"><a href="#非native方法-2" class="headerlink" title="非native方法"></a>非native方法</h3><ol>
+<li><p><u><font color="red">public static Console console()</font></u>：如果有的话，获取当前Java虚拟机关联的<code>Console</code>单例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Console <span class="title">console</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (cons == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">synchronized</span> (System.class) &#123;</div><div class="line">            cons = sun.misc.SharedSecrets.getJavaIOAccess().console();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cons;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><u><font color="red">private static void initializeSystemClass()</font></u>：用于初始化<code>System</code>类，在线程初始化后被调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initializeSystemClass</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 初始化系统属性</span></div><div class="line">    props = <span class="keyword">new</span> Properties();</div><div class="line">    initProperties(props);  <span class="comment">// initialized by the VM</span></div><div class="line"></div><div class="line">    <span class="comment">// 设置文件输入/输出/错误流</span></div><div class="line">    FileInputStream fdIn = <span class="keyword">new</span> FileInputStream(FileDescriptor.in);</div><div class="line">    FileOutputStream fdOut = <span class="keyword">new</span> FileOutputStream(FileDescriptor.out);</div><div class="line">    FileOutputStream fdErr = <span class="keyword">new</span> FileOutputStream(FileDescriptor.err);</div><div class="line">    setIn0(<span class="keyword">new</span> BufferedInputStream(fdIn));</div><div class="line">    setOut0(newPrintStream(fdOut, props.getProperty(<span class="string">"sun.stdout.encoding"</span>)));</div><div class="line">    setErr0(newPrintStream(fdErr, props.getProperty(<span class="string">"sun.stderr.encoding"</span>)));</div><div class="line"></div><div class="line">    <span class="comment">// 加载zip库，用于之后使用java.util.zip.ZipFile加载该库</span></div><div class="line">    loadLibrary(<span class="string">"zip"</span>);</div><div class="line"></div><div class="line">    <span class="comment">// register shared secrets</span></div><div class="line">    setJavaLangAccess();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="native方法-2"><a href="#native方法-2" class="headerlink" title="native方法"></a>native方法</h3><ol>
+<li><u><font color="red">private static native void registerNatives()</font></u>：通过静态初始块注册<code>natives</code>，虚拟机会调用<code>initializeSystemClass()</code>方法完成初始化过程</li>
+<li><u><font color="red">public static native long currentTimeMillis()</font></u>：获取当前毫秒级的时间；注意当返回的时间值的单位是毫秒时，粒度由基本的操作系统决定，也可能更大，如许多操作系统是几十毫秒级的单位</li>
+<li><u><font color="red">public static native long nanoTime()</font></u>：返回运行着的Java虚拟机高解析时间源的纳秒级时间值；只用于逝去的时间，并不关联系统或挂钟时间</li>
+<li><u><font color="red">public static native int identityHashCode(Object x)</font></u>：返回给定对象<code>hashCode()</code>方法的哈希码，无论给定对象是否重写该方法</li>
+<li><u><font color="red">public static native String mapLibraryName(String libname)</font></u>：将给定的库名映射到指定平台的本地库名，返回指定平台的本地库名；若库名为<code>null</code>，将抛出<code>NullPointerException</code></li>
+</ol>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
+<li><a href="https://www.tutorialspoint.com/java/lang/java_lang_system.htm" target="_blank" rel="external"><strong>java.lang.System Class</strong></a></li>
+<li><a href="https://www.geeksforgeeks.org/java-lang-system-class-java/" target="_blank" rel="external"><strong>java.lang.System in Java</strong></a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+            <a href="/tags/Source-Code-View/" rel="tag">#Source Code View</a>
+          
+            <a href="/tags/System/" rel="tag">#System</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/26/CharSequence相关源码学习/" rel="next" title="CharSequence相关源码学习">
+                <i class="fa fa-chevron-left"></i> CharSequence相关源码学习
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/04/02/System-java-源码学习/"
+           data-title="System.java 源码学习" data-url="http://yoursite.com/2018/04/02/System-java-源码学习/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/my_avatar.jpg"
+               alt="Jeff" />
+          <p class="site-author-name" itemprop="name">Jeff</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域和相关类"><span class="nav-number">2.</span> <span class="nav-text">域和相关类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#in"><span class="nav-number">2.1.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#out"><span class="nav-number">2.2.</span> <span class="nav-text">out</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#err"><span class="nav-number">2.3.</span> <span class="nav-text">err</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecurityManager"><span class="nav-number">2.4.</span> <span class="nav-text">SecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Console"><span class="nav-number">2.5.</span> <span class="nav-text">Console</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">2.6.</span> <span class="nav-text">Properties</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准输入-输出"><span class="nav-number">3.1.</span> <span class="nav-text">标准输入/输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非native方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">非native方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#native方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">native方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问属性-环境变量"><span class="nav-number">3.2.</span> <span class="nav-text">访问属性/环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非native方法-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">非native方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#native方法-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">native方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载文件-库"><span class="nav-number">3.3.</span> <span class="nav-text">加载文件/库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组拷贝"><span class="nav-number">3.4.</span> <span class="nav-text">数组拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行命令"><span class="nav-number">3.5.</span> <span class="nav-text">执行命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">3.6.</span> <span class="nav-text">其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非native方法-2"><span class="nav-number">3.6.1.</span> <span class="nav-text">非native方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#native方法-2"><span class="nav-number">3.6.2.</span> <span class="nav-text">native方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">4.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"duslee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

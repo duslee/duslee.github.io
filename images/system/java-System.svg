@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="47.5 73 317 336.5" width="317pt" height="336.5pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.4.3 
+    <dc:date>2018-04-03 09:44:08 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="Helvetica" font-size="12" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="522.9492" cap-height="717.28516" ascent="770.0195" descent="-229.98047" font-weight="500">
+      <font-face-src>
+        <font-face-name name="Helvetica"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="PingFang SC" font-size="12" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" width="317" height="336.5"/>
+    <g>
+      <title>Layer 1</title>
+      <ellipse cx="98" cy="241" rx="50.00008" ry="25.00004" fill="#ff80ff"/>
+      <ellipse cx="98" cy="241" rx="50.00008" ry="25.00004" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(63 234)" fill="black">
+        <tspan font-family="Helvetica" font-size="12" font-weight="500" x="2.3222656" y="11" textLength="65.35547">System.java</tspan>
+      </text>
+      <path d="M 242.025 370.5 L 342.475 370.5 C 354.3568 370.5 364 379.124 364 389.75 C 364 400.376 354.3568 409 342.475 409 L 242.025 409 C 230.1432 409 220.5 400.376 220.5 389.75 C 220.5 379.124 230.1432 370.5 242.025 370.5" fill="#80ff80"/>
+      <path d="M 242.025 370.5 L 342.475 370.5 C 354.3568 370.5 364 379.124 364 389.75 C 364 400.376 354.3568 409 342.475 409 L 242.025 409 C 230.1432 409 220.5 400.376 220.5 389.75 C 220.5 379.124 230.1432 370.5 242.025 370.5" stroke="#7671ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(239.85 381.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="46.4" y="13" textLength="12">…</tspan>
+      </text>
+      <path d="M 242.025 73.5 L 342.475 73.5 C 354.3568 73.5 364 82.124 364 92.75 C 364 103.376 354.3568 112 342.475 112 L 242.025 112 C 230.1432 112 220.5 103.376 220.5 92.75 C 220.5 82.124 230.1432 73.5 242.025 73.5" fill="#80ff80"/>
+      <path d="M 242.025 73.5 L 342.475 73.5 C 354.3568 73.5 364 82.124 364 92.75 C 364 103.376 354.3568 112 342.475 112 L 242.025 112 C 230.1432 112 220.5 103.376 220.5 92.75 C 220.5 82.124 230.1432 73.5 242.025 73.5" stroke="#7671ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(239.85 84.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="14.733008" y="13" textLength="48">标准输入</tspan>
+        <tspan font-family="Helvetica" font-size="12" font-weight="500" x="62.73301" y="13" textLength="3.3339844">/</tspan>
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="66.06699" y="13" textLength="24">输出</tspan>
+      </text>
+      <path d="M 242.025 132 L 342.475 132 C 354.3568 132 364 140.624 364 151.25 C 364 161.876 354.3568 170.5 342.475 170.5 L 242.025 170.5 C 230.1432 170.5 220.5 161.876 220.5 151.25 C 220.5 140.624 230.1432 132 242.025 132" fill="#80ff80"/>
+      <path d="M 242.025 132 L 342.475 132 C 354.3568 132 364 140.624 364 151.25 C 364 161.876 354.3568 170.5 342.475 170.5 L 242.025 170.5 C 230.1432 170.5 220.5 161.876 220.5 151.25 C 220.5 140.624 230.1432 132 242.025 132" stroke="#7671ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(239.85 142.75)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="1.4" y="13" textLength="102">访问属性/环境变量</tspan>
+      </text>
+      <path d="M 242.025 191.5 L 342.475 191.5 C 354.3568 191.5 364 200.124 364 210.75 C 364 221.376 354.3568 230 342.475 230 L 242.025 230 C 230.1432 230 220.5 221.376 220.5 210.75 C 220.5 200.124 230.1432 191.5 242.025 191.5" fill="#80ff80"/>
+      <path d="M 242.025 191.5 L 342.475 191.5 C 354.3568 191.5 364 200.124 364 210.75 C 364 221.376 354.3568 230 342.475 230 L 242.025 230 C 230.1432 230 220.5 221.376 220.5 210.75 C 220.5 200.124 230.1432 191.5 242.025 191.5" stroke="#7671ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(239.85 202.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="19.4" y="13" textLength="66">加载文件/库</tspan>
+      </text>
+      <path d="M 242.025 251.75 L 342.475 251.75 C 354.3568 251.75 364 260.374 364 271 C 364 281.626 354.3568 290.25 342.475 290.25 L 242.025 290.25 C 230.1432 290.25 220.5 281.626 220.5 271 C 220.5 260.374 230.1432 251.75 242.025 251.75" fill="#80ff80"/>
+      <path d="M 242.025 251.75 L 342.475 251.75 C 354.3568 251.75 364 260.374 364 271 C 364 281.626 354.3568 290.25 342.475 290.25 L 242.025 290.25 C 230.1432 290.25 220.5 281.626 220.5 271 C 220.5 260.374 230.1432 251.75 242.025 251.75" stroke="#7671ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(239.85 262.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="28.4" y="13" textLength="48">数组拷贝</tspan>
+      </text>
+      <path d="M 242.025 310.5 L 342.475 310.5 C 354.3568 310.5 364 319.124 364 329.75 C 364 340.376 354.3568 349 342.475 349 L 242.025 349 C 230.1432 349 220.5 340.376 220.5 329.75 C 220.5 319.124 230.1432 310.5 242.025 310.5" fill="#80ff80"/>
+      <path d="M 242.025 310.5 L 342.475 310.5 C 354.3568 310.5 364 319.124 364 329.75 C 364 340.376 354.3568 349 342.475 349 L 242.025 349 C 230.1432 349 220.5 340.376 220.5 329.75 C 220.5 319.124 230.1432 310.5 242.025 310.5" stroke="#7671ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(239.85 321.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="28.4" y="13" textLength="48">执行命令</tspan>
+      </text>
+      <line x1="134.72255" y1="224.03295" x2="241.59925" y2="174.65234" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="145.74787" y1="233.56436" x2="214.28857" y2="222.8907" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="145.78256" y1="248.37955" x2="214.2286" y2="258.95036" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="134.91155" y1="257.86435" x2="241.11223" y2="306.3859" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="125.34144" y1="261.93713" x2="259.25164" y2="364.481" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="125.40595" y1="220.084" x2="259.1571" y2="118.00623" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

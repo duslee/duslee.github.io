@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="概况 本文主要介绍Mac终端下常用命令使用，如Homebrew、npm等。 Homebrew 用于macOS的包管理器 &amp;lt;!-- more --&amp;gt; Homebrew安装 在终端输入如下命令 1/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/inst">
+<meta name="description" content="概况 本文主要介绍Mac终端下常用命令使用，如Homebrew、npm等。 Homebrew 用于macOS的包管理器">
 <meta name="keywords" content="Blog,Tool,Cmd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac下常用终端命令备忘录">
 <meta property="og:url" content="http://yoursite.com/2017/09/28/Mac下常用终端命令备忘录/index.html">
 <meta property="og:site_name" content="Jeff&#39;s Blog">
-<meta property="og:description" content="概况 本文主要介绍Mac终端下常用命令使用，如Homebrew、npm等。 Homebrew 用于macOS的包管理器 &amp;lt;!-- more --&amp;gt; Homebrew安装 在终端输入如下命令 1/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/inst">
+<meta property="og:description" content="概况 本文主要介绍Mac终端下常用命令使用，如Homebrew、npm等。 Homebrew 用于macOS的包管理器">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-29T02:59:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下常用终端命令备忘录">
-<meta name="twitter:description" content="概况 本文主要介绍Mac终端下常用命令使用，如Homebrew、npm等。 Homebrew 用于macOS的包管理器 &amp;lt;!-- more --&amp;gt; Homebrew安装 在终端输入如下命令 1/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/inst">
+<meta name="twitter:description" content="概况 本文主要介绍Mac终端下常用命令使用，如Homebrew、npm等。 Homebrew 用于macOS的包管理器">
 
 
 
@@ -381,62 +381,43 @@
       
 
       
-        <h1>概况</h1>
-<p>本文主要介绍Mac终端下常用命令使用，如<code>Homebrew</code>、<code>npm</code>等。</p>
-<h1>Homebrew</h1>
-<p>用于<code>macOS</code>的包管理器</p>
-<p>&lt;!-- more --&gt;</p>
-<h2>Homebrew安装</h2>
-<p>在终端输入如下命令</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure></p>
-<h2>Homebrew用途</h2>
-<ol>
+        <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p> 本文主要介绍Mac终端下常用命令使用，如<code>Homebrew</code>、<code>npm</code>等。</p>
+<h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><p> 用于<code>macOS</code>的包管理器</p>
+<a id="more"></a>
+<h2 id="Homebrew安装"><a href="#Homebrew安装" class="headerlink" title="Homebrew安装"></a>Homebrew安装</h2><p> 在终端输入如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure>
+<h2 id="Homebrew用途"><a href="#Homebrew用途" class="headerlink" title="Homebrew用途"></a>Homebrew用途</h2><ol>
 <li>用于通过命令行形式快速安装Apple不支持的软件工具或第三方库</li>
 <li>用于创建自己的Homebrew包</li>
 </ol>
-<p>&lt;font color=&quot;red&quot;&gt;<strong>Note</strong>&lt;/font&gt;：<code>brew</code>的具体使用可通过<code>brew help</code>命令查看</p>
-<h2>Homebrew-cask</h2>
-<h3>介绍</h3>
-<p>用来下载带界面的软件，下载后自动安装，并能在Mac中直接运行使用</p>
-<h3>安装</h3>
-<p>在Homebrew安装OK的前提下，输入如下命令：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew tap caskroom/cask</div></pre></td></tr></table></figure></p>
-<h3>使用</h3>
-<p>通过如下命令完成软件名为<code>XXX</code>的自动安装</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew cask install XXX</div></pre></td></tr></table></figure></p>
-<p>&lt;font color=&quot;red&quot;&gt;<strong>Note</strong>&lt;/font&gt;：<code>brew-cask</code>的具体使用可通过<code>brew cask help</code>命令查看</p>
-<h1>npm</h1>
-<h2>介绍</h2>
-<ol>
-<li>使JavaScript开发者很方便分享/重用/更新代码（可参考<strong>What is npm</strong>&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;）</li>
+<p><font color="red"><strong>Note</strong></font>：<code>brew</code>的具体使用可通过<code>brew help</code>命令查看</p>
+<h2 id="Homebrew-cask"><a href="#Homebrew-cask" class="headerlink" title="Homebrew-cask"></a>Homebrew-cask</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p> 用来下载带界面的软件，下载后自动安装，并能在Mac中直接运行使用</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p> 在Homebrew安装OK的前提下，输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew tap caskroom/cask</div></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p> 通过如下命令完成软件名为<code>XXX</code>的自动安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew cask install XXX</div></pre></td></tr></table></figure>
+<p><font color="red"><strong>Note</strong></font>：<code>brew-cask</code>的具体使用可通过<code>brew cask help</code>命令查看</p>
+<h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><ol>
+<li>使JavaScript开发者很方便分享/重用/更新代码（可参考<strong>What is npm</strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>）</li>
 <li>结合<a href="https://nodejs.org/en/download/" target="_blank" rel="external"><strong>NodeJS</strong></a>使用，能解决NodeJS代码部署上的很多问题</li>
 </ol>
-<h2>升级</h2>
-<p>终端输入命令（<strong>升级出现问题未解决</strong>）</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sudo] npm install npm@latest -g</div></pre></td></tr></table></figure></p>
-<h2>安装npm包</h2>
-<h3>locally</h3>
-<p>终端输入命令</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install &lt;pacakge name&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p> 终端输入命令（<strong>升级出现问题未解决</strong>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sudo] npm install npm@latest -g</div></pre></td></tr></table></figure>
+<h2 id="安装npm包"><a href="#安装npm包" class="headerlink" title="安装npm包"></a>安装npm包</h2><h3 id="locally"><a href="#locally" class="headerlink" title="locally"></a>locally</h3><p> 终端输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install &lt;pacakge name&gt;</div></pre></td></tr></table></figure>
 <ol>
 <li>输入命令后会在当前目录下生成<code>node_modules</code>目录，并将下载的包存放在此目录下</li>
 <li>可根据<code>pacakge.json</code>文件查看已安装包的版本等信息</li>
-<li>可直接在代码里使用该包，通过<code>require('&lt;package name&gt;')</code>的方式</li>
+<li>可直接在代码里使用该包，通过<code>require(&#39;&lt;package name&gt;&#39;)</code>的方式</li>
 </ol>
-<h3>globally</h3>
-<p>可直接将安装的包用作命令行工具，在终端输入命令</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g &lt;package name&gt;</div></pre></td></tr></table></figure></p>
-<h3>node更新</h3>
-<p>终端输入命令</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g n</div><div class="line">n latest</div></pre></td></tr></table></figure></p>
-<h1>wget</h1>
-<h2>介绍</h2>
-<p>使用<code>HTTP</code>、<code>HTTPS</code>、<code>FTP</code>和<code>FTPS</code>协议获取免费软件包的管理器</p>
-<h2>安装</h2>
-<p>终端输入命令</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sudo] brew install wget</div></pre></td></tr></table></figure></p>
-<h1>参考方案</h1>
-<ol>
+<h3 id="globally"><a href="#globally" class="headerlink" title="globally"></a>globally</h3><p> 可直接将安装的包用作命令行工具，在终端输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g &lt;package name&gt;</div></pre></td></tr></table></figure>
+<h3 id="node更新"><a href="#node更新" class="headerlink" title="node更新"></a>node更新</h3><p> 终端输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g n</div><div class="line">n latest</div></pre></td></tr></table></figure>
+<h1 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h1><h2 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h2><p> 使用<code>HTTP</code>、<code>HTTPS</code>、<code>FTP</code>和<code>FTPS</code>协议获取免费软件包的管理器</p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p> 终端输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sudo] brew install wget</div></pre></td></tr></table></figure>
+<h1 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h1><ol>
 <li><a href="https://brew.sh/" target="_blank" rel="external"><strong>Homebrew</strong></a></li>
 <li><a href="https://caskroom.github.io/" target="_blank" rel="external"><strong>Homebrew Cask</strong></a></li>
 <li><a href="https://github.com/caskroom/homebrew-cask" target="_blank" rel="external"><strong>Homebrew-cask Github</strong></a></li>
@@ -445,8 +426,7 @@
 <li><a href="https://nodejs.org/en/" target="_blank" rel="external"><strong>nodejs</strong></a></li>
 <li><a href="http://www.gnu.org/software/wget/" target="_blank" rel="external"><strong>wget</strong></a></li>
 </ol>
-<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;&lt;a href=&quot;https://docs.npmjs.com/getting-started/what-is-npm&quot;&gt;&lt;strong&gt;What is npm?&lt;/strong&gt;&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
-
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.npmjs.com/getting-started/what-is-npm" target="_blank" rel="external"><strong>What is npm?</strong></a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -488,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/26/CharSequence相关源码查看/" rel="prev" title="CharSequence相关源码查看">
-                CharSequence相关源码查看 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/26/CharSequence相关源码学习/" rel="prev" title="CharSequence相关源码学习">
+                CharSequence相关源码学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -562,7 +542,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -570,7 +550,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -579,7 +559,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -608,7 +588,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Homebrew安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Homebrew用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">Homebrew-cask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.3.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">npm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">安装npm包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">locally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.2.</span> <span class="nav-text">globally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.3.</span> <span class="nav-text">node更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">wget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Homebrew"><span class="nav-number">2.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew安装"><span class="nav-number">2.1.</span> <span class="nav-text">Homebrew安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew用途"><span class="nav-number">2.2.</span> <span class="nav-text">Homebrew用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew-cask"><span class="nav-number">2.3.</span> <span class="nav-text">Homebrew-cask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">2.3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.3.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.3.3.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm"><span class="nav-number">3.</span> <span class="nav-text">npm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-1"><span class="nav-number">3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级"><span class="nav-number">3.2.</span> <span class="nav-text">升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装npm包"><span class="nav-number">3.3.</span> <span class="nav-text">安装npm包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#locally"><span class="nav-number">3.3.1.</span> <span class="nav-text">locally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#globally"><span class="nav-number">3.3.2.</span> <span class="nav-text">globally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node更新"><span class="nav-number">3.3.3.</span> <span class="nav-text">node更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wget"><span class="nav-number">4.</span> <span class="nav-text">wget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-2"><span class="nav-number">4.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-1"><span class="nav-number">4.2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考方案"><span class="nav-number">5.</span> <span class="nav-text">参考方案</span></a></li></ol></div>
             
           </div>
         </section>
